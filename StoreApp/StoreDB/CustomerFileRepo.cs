@@ -14,6 +14,30 @@ namespace StoreDB
 {
     public class CustomerFileRepo : ICustomerRepository
     {
-        string customerfilepath = 
+        //  string customerfilepath = 
+        public void AddCustomerAsync(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddOrder(Order order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Order>> GetAllOrdersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Order>> ICustomerRepository.GetAllOrdersAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

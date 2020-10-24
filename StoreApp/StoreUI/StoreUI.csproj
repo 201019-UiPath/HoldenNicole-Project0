@@ -5,6 +5,8 @@
     <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
     <ProjectReference Include="..\OrderLib\OrderLib.csproj" />
     <ProjectReference Include="..\ProductLib\ProductLib.csproj" />
+    <ProjectReference Include="..\ManagerLib\ManagerLib.csproj" />
+    <ProjectReference Include="..\StoreBL\StoreBL.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

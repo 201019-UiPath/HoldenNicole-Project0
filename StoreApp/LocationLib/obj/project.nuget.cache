@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J6Z2m7AQi/PLG5KfQCrjcqxgh2w39WrDU31AtFt6dKgAnbLjOxNQLh6yYT4KizSktcNPFCyzgdU+t/9rlM5/ZA==",
+  "dgSpecHash": "99ORdXxggvPpLyTtenNJ14V/dBEzSY775x2HE1I53CQ9yfrDv9EklzPUTXunolZYLZlEGZkauj26CzhKIJIZhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj",
+  "projectFilePath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

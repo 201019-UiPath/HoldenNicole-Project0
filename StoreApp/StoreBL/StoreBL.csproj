@@ -1,5 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
+    <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
+    <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
+    <ProjectReference Include="..\ManagerLib\ManagerLib.csproj" />
+    <ProjectReference Include="..\OrderLib\OrderLib.csproj" />
+    <ProjectReference Include="..\ProductLib\ProductLib.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>

@@ -1,13 +1,12 @@
-using CustomerLib;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LocationLib;
-using ManagerLib;
+using CustomerLib;
 using OrderLib;
 using ProductLib;
+
 namespace StoreDB
 {
-    public interface IRepository
+    public interface ICustomerRepository
     {
          /// <summary>
          /// 

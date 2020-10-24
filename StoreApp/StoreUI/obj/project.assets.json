@@ -1,11 +1,78 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "CustomerLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CustomerLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomerLib.dll": {}
+        }
+      },
+      "LocationLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/LocationLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LocationLib.dll": {}
+        }
+      },
+      "OrderLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/OrderLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OrderLib.dll": {}
+        }
+      },
+      "ProductLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ProductLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProductLib.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CustomerLib/1.0.0": {
+      "type": "project",
+      "path": "../CustomerLib/CustomerLib.csproj",
+      "msbuildProject": "../CustomerLib/CustomerLib.csproj"
+    },
+    "LocationLib/1.0.0": {
+      "type": "project",
+      "path": "../LocationLib/LocationLib.csproj",
+      "msbuildProject": "../LocationLib/LocationLib.csproj"
+    },
+    "OrderLib/1.0.0": {
+      "type": "project",
+      "path": "../OrderLib/OrderLib.csproj",
+      "msbuildProject": "../OrderLib/OrderLib.csproj"
+    },
+    "ProductLib/1.0.0": {
+      "type": "project",
+      "path": "../ProductLib/ProductLib.csproj",
+      "msbuildProject": "../ProductLib/ProductLib.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "CustomerLib >= 1.0.0",
+      "LocationLib >= 1.0.0",
+      "OrderLib >= 1.0.0",
+      "ProductLib >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\nfh22\\.nuget\\packages\\": {}
@@ -13,11 +80,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
+      "projectUniqueName": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
       "projectName": "StoreUI",
-      "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
+      "projectPath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
       "packagesPath": "C:\\Users\\nfh22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\obj\\",
+      "outputPath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nfh22\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -32,7 +99,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj": {
+              "projectPath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj"
+            },
+            "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
+              "projectPath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
+            },
+            "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj": {
+              "projectPath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj"
+            },
+            "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj": {
+              "projectPath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
