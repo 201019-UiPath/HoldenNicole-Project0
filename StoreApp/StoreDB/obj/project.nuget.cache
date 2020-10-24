@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "20iCz00HJ/Qaf6mVzhTWFY3/DrAjKd2U/oRESG/DYd9JV4VOT8G/gsINSgFQwzhdSqHm3kKzZE23S+q9wNrBOw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\nfh22\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
