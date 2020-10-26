@@ -1,0 +1,9 @@
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\bin\Debug\netstandard2.0\LocationLib.deps.json
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\bin\Debug\netstandard2.0\LocationLib.dll
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\bin\Debug\netstandard2.0\LocationLib.pdb
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\obj\Debug\netstandard2.0\LocationLib.csprojAssemblyReference.cache
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\obj\Debug\netstandard2.0\LocationLib.AssemblyInfoInputs.cache
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\obj\Debug\netstandard2.0\LocationLib.AssemblyInfo.cs
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\obj\Debug\netstandard2.0\LocationLib.csproj.CoreCompileInputs.cache
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\obj\Debug\netstandard2.0\LocationLib.dll
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\LocationLib\obj\Debug\netstandard2.0\LocationLib.pdb

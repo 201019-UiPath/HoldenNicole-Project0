@@ -1,13 +1,11 @@
 using CustomerLib;
 using ManagerLib;
-using StoreBL;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
+using System;
 namespace StoreUI.Menus
 {
     public class SignInMenu : IMenu
     {
-        //StoreBL storeBL = new StoreBL();
+        StoreBL.StoreBLL storeBL = new StoreBL.StoreBLL();
         public void Start(){
             System.Console.WriteLine("Howdy! Welcome to Sports Authenticated!");
             System.Console.WriteLine("Please select the option matching you below:");
@@ -16,28 +14,30 @@ namespace StoreUI.Menus
             do{
                 switch (userInput){
                     case "1":
-                        Manager manager = GetManagerDetails();
+                        Manager manager = new Manager();
                         System.Console.WriteLine("Please enter your username:");
-                        string userName = System.Console.ReadLine();
-                        manager.CheckManager(userName);
-                        System.Console.WriteLine($"Welcome back {userName.ManagerUserName}");
+                        string managerUserName = System.Console.ReadLine();
+                        storeBL.CheckManager(manager);
+                        System.Console.WriteLine($"Welcome back {manager.ManagerName}");
+                        // manager name should be linked to location
                         /// <summary>
-                        /// send to manager menu
+                        /// send to location corresponding to manager's location
                         /// </summary>
                         break;
                     case "2":
+                        Customer customer = new Customer();
                         System.Console.WriteLine("Please enter your username:");
                         string returningCustomerUserName = System.Console.ReadLine();
-                        storeBL.CheckCustomer(returningCustomerUserName);
-                        System.Console.WriteLine($"Welcome back {returningCustomerUserName.CustomerUserName}");
+                        storeBL.CheckCustomer(customer);
+                        System.Console.WriteLine($"Welcome back {customer.UserName}");
+                        Console.WriteLine("Hope you find something you like!");
                         /// <summary>
                         /// send to customer menu
                         /// </summary>
                         break;
                     case "3":
-                        Customer newCustomer = GetCustomerDetails();
+                        Customer newCustomer = new Customer();
                         storeBL.AddCustomer(newCustomer);
-                        
                         /// <summary>
                         /// 
                         /// if pass add to customer list then

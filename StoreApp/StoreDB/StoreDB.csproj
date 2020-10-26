@@ -24,8 +24,17 @@
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="StoreDataHoldingCell\CustomerCell\" />
+    <Folder Include="StoreDataHoldingCell\LocationCell\" />
+    <Folder Include="StoreDataHoldingCell\ManagerCell\" />
+    <Folder Include="StoreDataHoldingCell\ProductCell\" />
+    <Folder Include="StoreDataHoldingCell\OrderCell\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
 </Project>

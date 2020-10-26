@@ -1,15 +1,12 @@
-using LocationLib;
-using OrderLib;
-using StoreUI;
-using Store BL;
+using StoreBL;
 
 namespace StoreUI.Menus
 {
     public class LocationOrderHistoryMenu : IMenu
     {
-        StoreBL storeBL = new StoreBL();
+        private StoreBLL storeBL = new StoreBLL();
         public void Start(){
-            Location locationID = new Location();
+            LocationLib.Location locationID = new LocationLib.Location();
             
             System.Console.WriteLine($"How would you like the order history for {locationID.LocationName} sorted?");
             System.Console.WriteLine("[1] Date most recent-oldest /n [2] Date oldest-most recent /n [3] Price high-low /n [4] Price low-high /n [5] Return to customer menu /n [6] exit");

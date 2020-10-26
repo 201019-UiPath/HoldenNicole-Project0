@@ -1,6 +1,4 @@
-using CustomerLib;
 //using StoreBL;
-using OrderLib;
 namespace StoreUI.Menus
 {
     public class CustomerOrderHistoryMenu : IMenu

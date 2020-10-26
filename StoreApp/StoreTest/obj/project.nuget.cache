@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZwrP6qH3JSt9Y+Jttb44OZybCYeB8bofS03o7PvWk48bpHSrg3WdkWy4wnEERYXdBi27hQQoVhWbkUZ9evzIkg==",
+  "dgSpecHash": "s/IXCdsDlKMwkrY1eLYfPbyynBB0xqNpwvjwK8ujduZCyNHwn0VskpAaoKFR+v2bZI/VAYBXmYtJwtETTQzDHA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
+  "projectFilePath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

@@ -1,6 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="MailChimp.Net.V3" Version="4.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
     <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
     <ProjectReference Include="..\OrderLib\OrderLib.csproj" />
@@ -12,6 +16,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
 </Project>

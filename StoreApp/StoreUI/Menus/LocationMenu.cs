@@ -1,44 +1,42 @@
-//using ManagerLib;
-//using StoreBL;
+﻿using System;
 using LocationLib;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
+
 namespace StoreUI.Menus
 {
-    public class LocationMenu : IMenu
+    class LocationMenu : IMenu
     {
-        //StoreBL storeBL = new StoreBL();
-        public void Start(){
-            System.Console.WriteLine("Which location are you the manager for?");
-            System.Console.WriteLine("[1] Location 1 /n [2] Location 2 /n [3] Location 3 ");
-            string locationID = System.Console.ReadLine();
-
-            System.Console.WriteLine($"What would you like to do for {locationID.LocationName}");
-            System.Console.WriteLine("[1] View order history for this location /n [2] View location inventory /n [3] exit");
-            string managerInput = System.Console.ReadLine();
-            do{
-                switch(managerInput){
+        public void Start()
+        {
+            Location location = new Location();
+            Console.WriteLine("Please pick from this list of stores to look for the inventory for that store:");
+            Console.WriteLine("[1] World of Bats /n [2] World of Games /n [3] World of Jerseys /n [4] World of Sticks /n [5] exit store");
+            string locationID = Console.ReadLine();
+            do
+            {
+                switch (locationID)
+                {
                     case "1":
-                        System.Console.WriteLine("Redirecting you to the location order history menu");
-                        /// <summary>
-                        /// send manager to location order history menu
-                        /// </summary>
+                        //send to location inventory menu with ID = 1
+                        Console.WriteLine("Sending you to the World of Bats menu");
                         break;
                     case "2":
-                        System.Console.WriteLine("Redirecting you to location inventory menu");
-                        /// <summary>
-                        /// send manager to location order history menu with locationID
-                        /// </summary>
+                        //send to location inventory menu with ID = 2
+                        Console.WriteLine("Sending you to the World of Games menu");
                         break;
-                    default:
-                        System.Console.WriteLine("Redirecting you back to sign in menu");
-                        /// <summary>
-                        /// send user back to sign in/ sign up menu
-                        /// </summary>
+                    case "3":
+                        //send to location inventory menu with ID = 3
+                        Console.WriteLine("Sending you to the World of Jerseys menu");
+                        break;
+                    case "4":
+                        // send to location inventory menu with ID = 4
+                        Console.WriteLine("Sending you to the World of Sticks menu");
+                        break;
+                    case "5":
+                        //exit store
+                        Console.WriteLine("Bye. Hope you come back soon.");
                         break;
                 }
-            } while (!managerInput.Equals(3));
+            } while (!locationID.Equals(5));
         }
-        
     }
 }

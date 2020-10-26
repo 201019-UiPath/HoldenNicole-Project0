@@ -1,0 +1,9 @@
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\bin\Debug\netstandard2.0\OrderLib.deps.json
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\bin\Debug\netstandard2.0\OrderLib.dll
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\bin\Debug\netstandard2.0\OrderLib.pdb
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\obj\Debug\netstandard2.0\OrderLib.csprojAssemblyReference.cache
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\obj\Debug\netstandard2.0\OrderLib.AssemblyInfoInputs.cache
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\obj\Debug\netstandard2.0\OrderLib.AssemblyInfo.cs
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\obj\Debug\netstandard2.0\OrderLib.csproj.CoreCompileInputs.cache
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\obj\Debug\netstandard2.0\OrderLib.dll
+C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrderLib\obj\Debug\netstandard2.0\OrderLib.pdb

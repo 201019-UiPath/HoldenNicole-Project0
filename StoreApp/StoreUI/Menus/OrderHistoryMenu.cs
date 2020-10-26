@@ -1,7 +1,6 @@
 //using ManagerLib;
 //using StoreBL;
 using LocationLib;
-using OrderLib;
 namespace StoreUI.Menus
 {
     public class OrderHistoryMenu : IMenu
