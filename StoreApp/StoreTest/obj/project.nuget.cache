@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s/IXCdsDlKMwkrY1eLYfPbyynBB0xqNpwvjwK8ujduZCyNHwn0VskpAaoKFR+v2bZI/VAYBXmYtJwtETTQzDHA==",
+  "dgSpecHash": "BaIW5RjEKP6WkUSqRGIAQYHEqZiHwjHTcgQ2FkwHZqA+tLQ5yDW6yovit7NmwifqLO+lLuKFyOGqJA6j1VUr6w==",
   "success": true,
   "projectFilePath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\nfh22\\.nuget\\packages\\system.runtime.serialization.primitives\\4.1.1\\system.runtime.serialization.primitives.4.1.1.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.text.encoding\\4.0.11\\system.text.encoding.4.0.11.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.text.encoding.extensions\\4.0.11\\system.text.encoding.extensions.4.0.11.nupkg.sha512",
+    "C:\\Users\\nfh22\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.text.regularexpressions\\4.1.0\\system.text.regularexpressions.4.1.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",

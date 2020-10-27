@@ -721,6 +721,15 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
+      "System.Text.Json/4.7.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -900,6 +909,74 @@
         },
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
+        }
+      },
+      "CustomerLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CustomerLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomerLib.dll": {}
+        }
+      },
+      "LocationLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/LocationLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LocationLib.dll": {}
+        }
+      },
+      "ManagerLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ManagerLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ManagerLib.dll": {}
+        }
+      },
+      "OrderLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/OrderLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OrderLib.dll": {}
+        }
+      },
+      "ProductLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ProductLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProductLib.dll": {}
+        }
+      },
+      "StoreDB/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "CustomerLib": "1.0.0",
+          "LocationLib": "1.0.0",
+          "ManagerLib": "1.0.0",
+          "OrderLib": "1.0.0",
+          "ProductLib": "1.0.0",
+          "System.Text.Json": "4.7.2"
+        },
+        "compile": {
+          "bin/placeholder/StoreDB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StoreDB.dll": {}
         }
       }
     }
@@ -2976,6 +3053,28 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
+    "System.Text.Json/4.7.2": {
+      "sha512": "TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
+      "type": "package",
+      "path": "system.text.json/4.7.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/netcoreapp3.0/System.Text.Json.dll",
+        "lib/netcoreapp3.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.4.7.2.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Text.RegularExpressions/4.1.0": {
       "sha512": "i88YCXpRTjCnoSQZtdlHkAOx4KNNik4hMy83n0+Ftlb7jvV6ZiZWMpnEZHhjBp6hQVh8gWd/iKNPzlPF7iyA2g==",
       "type": "package",
@@ -3494,11 +3593,47 @@
         "xunit.runner.visualstudio.2.4.0.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "CustomerLib/1.0.0": {
+      "type": "project",
+      "path": "../CustomerLib/CustomerLib.csproj",
+      "msbuildProject": "../CustomerLib/CustomerLib.csproj"
+    },
+    "LocationLib/1.0.0": {
+      "type": "project",
+      "path": "../LocationLib/LocationLib.csproj",
+      "msbuildProject": "../LocationLib/LocationLib.csproj"
+    },
+    "ManagerLib/1.0.0": {
+      "type": "project",
+      "path": "../ManagerLib/ManagerLib.csproj",
+      "msbuildProject": "../ManagerLib/ManagerLib.csproj"
+    },
+    "OrderLib/1.0.0": {
+      "type": "project",
+      "path": "../OrderLib/OrderLib.csproj",
+      "msbuildProject": "../OrderLib/OrderLib.csproj"
+    },
+    "ProductLib/1.0.0": {
+      "type": "project",
+      "path": "../ProductLib/ProductLib.csproj",
+      "msbuildProject": "../ProductLib/ProductLib.csproj"
+    },
+    "StoreDB/1.0.0": {
+      "type": "project",
+      "path": "../StoreDB/StoreDB.csproj",
+      "msbuildProject": "../StoreDB/StoreDB.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CustomerLib >= 1.0.0",
+      "LocationLib >= 1.0.0",
+      "ManagerLib >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
+      "OrderLib >= 1.0.0",
+      "ProductLib >= 1.0.0",
+      "StoreDB >= 1.0.0",
       "coverlet.collector >= 1.2.0",
       "xunit >= 2.4.0",
       "xunit.runner.visualstudio >= 2.4.0"
@@ -3529,7 +3664,26 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj"
+            },
+            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
+            },
+            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj"
+            },
+            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj"
+            },
+            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj"
+            },
+            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

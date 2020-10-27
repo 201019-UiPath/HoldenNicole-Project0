@@ -1,6 +1,6 @@
 ﻿using CustomerLib;
-using ManagerLib;
 using StoreDB;
+using StoreDB.Models;
 using System.Collections.Generic;
 namespace StoreBL
 {
@@ -8,7 +8,7 @@ namespace StoreBL
     {
         IRepository repo = new FileRepo();
 
-        public void AddCustomer(Customer newCustomer)
+        public void ValidateAddCustomer(Customer newCustomer)
         {
             // take in UserName, Email, and ShippingAddress from sign up menu
             // compare to list of CustomerIDs, UserNames, and Emails

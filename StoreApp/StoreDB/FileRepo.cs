@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using CustomerLib;
 using LocationLib;
-using ManagerLib;
-using OrderLib;
-using ProductLib;
 using System.IO;
+using StoreDB;
 using System.Text.Json;
 using System.Threading.Tasks;
+using StoreDB.Models;
 
 namespace StoreDB
 {
@@ -38,7 +37,7 @@ namespace StoreDB
         /// adds product to cart file
         /// </summary>
         string productcartfilepath = "StoreDB/StoreDataHoldingCell/CartCell/CartData.txt";
-        public async void AddProductToCartAsync(Product product, Order order)
+        public async void AddProductToCartAsync(Products product, Order order)
         {
             using (FileStream fs = File.Create(productcartfilepath))
             {
@@ -49,7 +48,7 @@ namespace StoreDB
         /// add product to location file
         /// </summary>
         string productlocationfilepath = "StoreDB/StoreDataHoldingCell/ProductCell/ProductLocationData.txt";
-        public async void AddProductToLocationAsync(Product product, Location location)
+        public async void AddProductToLocationAsync(Products product, Location location)
         {
             using (FileStream fs = File.Create(productlocationfilepath))
             {
