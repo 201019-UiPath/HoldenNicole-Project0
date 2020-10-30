@@ -1,19 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using LocationLib;
-using ProductLib;
-using StoreBL;
+using System.Text;
 
 namespace StoreUI.Menus
 {
-    class ManagerLocationInventory : IMenu
+    public class ManagerWorldOfSticks
     {
+        private CustomerMenu customerMenu;
+        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
+        private CustomerSearch customerSearch;
+        private LocationInventoryMenu locationInventoryMenu;
+        private LocationOrderHistoryMenu locationOrderHistoryMenu;
+        private ManagerLocationInventory managerLocationInventory;
+        private SearchBySport searchBySport;
+        private SearchByType searchByType;
+        private SignInMenu signInMenu;
+        private SportOrderHistoryMenu sportOrderHistoryMenu;
+        private TypeOrderHistoryMenu typeOrderHistoryMenu;
+        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
+        private ManagerWorldOfBats managerWorldOfBats;
+        private ManagerWorldOfGames managerWorldOfGames;
+        private ManagerWorldOfJerseys managerWorldOfJerseys;
+        private ManagerWorldOfSticks managerWorldOfSticks;
+        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
+        private CustomerInventorySticksMenu customerInventorySticksMenu;
+        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
+        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         StoreBLL storeBL = new StoreBLL();
         public void Start()
         {
             ///retrieve location from previous menu
             Location location = new Location();
-            Console.WriteLine($"How would you like to see the inventory for {location.LocationName} :");
+            Console.WriteLine($"How would you like to see the inventory for World of Sticks :");
             Console.WriteLine("[1] By type /n [2] By sport /n [3] By person /n [4] exit store");
             string sorting = System.Console.ReadLine();
             do
@@ -90,9 +108,10 @@ namespace StoreUI.Menus
                 else
                 {
                     Console.WriteLine("Redirecting you back to the first menu");
-                    // redirect to sign in menu
+                    signInMenu.Start();
                 }
             }
         }
     }
 }
+

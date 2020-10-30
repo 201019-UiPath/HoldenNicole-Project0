@@ -599,11 +599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
+      "projectUniqueName": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
       "projectName": "StoreDB",
-      "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
+      "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
       "packagesPath": "C:\\Users\\nfh22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\obj\\",
+      "outputPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nfh22\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -619,20 +619,20 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj"
             }
           }
         }

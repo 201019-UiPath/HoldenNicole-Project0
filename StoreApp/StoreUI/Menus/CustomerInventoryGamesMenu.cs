@@ -1,14 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using LocationLib;
-using ProductLib;
-using StoreBL;
-
 namespace StoreUI.Menus
 {
-    class LocationInventoryMenu : IMenu
+    public class CustomerInventoryGamesMenu : IMenu
     {
-        StoreBLL storeBL = new StoreBLL();
+        private CustomerMenu customerMenu;
+        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
+        private CustomerSearch customerSearch;
+        private LocationInventoryMenu locationInventoryMenu;
+        private LocationOrderHistoryMenu locationOrderHistoryMenu;
+        private ManagerLocationInventory managerLocationInventory;
+        private SearchBySport searchBySport;
+        private SearchByType searchByType;
+        private SignInMenu signInMenu;
+        private SportOrderHistoryMenu sportOrderHistoryMenu;
+        private TypeOrderHistoryMenu typeOrderHistoryMenu;
+        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
+        private ManagerWorldOfBats managerWorldOfBats;
+        private ManagerWorldOfGames managerWorldOfGames;
+        private ManagerWorldOfJerseys managerWorldOfJerseys;
+        private ManagerWorldOfSticks managerWorldOfSticks;
+        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
+        private CustomerInventorySticksMenu customerInventorySticksMenu;
+        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
+        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         public void Start()
         {
             ///retrieve location from previous menus

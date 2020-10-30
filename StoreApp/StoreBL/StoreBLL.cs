@@ -2,23 +2,46 @@
 using StoreDB;
 using StoreDB.Models;
 using System.Collections.Generic;
+using System;
 namespace StoreBL
 {
     public class StoreBLL //errors are all from having no data yet
     {
+        private string userInput;
+
+        private CustomerMenu customerMenu;
+        private CustomerLocationMenu customerLocationMenu;
+        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
+        private CustomerSearch customerSearch;
+        private LocationInventoryMenu locationInventoryMenu;
+        private LocationOrderHistoryMenu locationOrderHistoryMenu;
+        private ManagerLocationInventory managerLocationInventory;
+        private SearchBySport searchBySport;
+        private SearchByType searchByType;
+        private SignInMenu signInMenu;
+        private SportOrderHistoryMenu sportOrderHistoryMenu;
+        private TypeOrderHistoryMenu typeOrderHistoryMenu;
+        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
+        private ManagerWorldOfBats managerWorldOfBats;
+        private ManagerWorldOfGames managerWorldOfGames;
+        private ManagerWorldOfJerseys managerWorldOfJerseys;
+        private ManagerWorldOfSticks managerWorldOfSticks;
+
         IRepository repo = new FileRepo();
 
-        public void ValidateAddCustomer(Customer newCustomer)
+        public void AddCustomer(Customer newCustomer)
         {
-            // take in UserName, Email, and ShippingAddress from sign up menu
-            // compare to list of CustomerIDs, UserNames, and Emails
-            if (!List<Emails>.Contains(Email))
+            ///take in user input and check if email and username in use
+            System.Console.WriteLine("Please enter the email you would like to use to sign up:");
+            email = Console.ReadLine();
+            if (!List<Emails>.Contains(email))
             {
-
+                Console.WriteLine("Please enter a user name: ");
+                string userName = Console.ReadLine();
                 if (!(List<UserNames>.Contains(UserName)))
                 {
                     System.Console.WriteLine($"New user created with user name: {UserName}");
-                    System.Console.WriteLine("Redirecting you to Customer menu");
+                    customerMenu.Start();
                 }
                 else
                 {
@@ -36,65 +59,40 @@ namespace StoreBL
             // take username from sign in 
             if (List<CustomerUserNames>.contains(customerUserName))
             {
-                System.Console.WriteLine($"Welcome back {customerUserName.UserName}");
-                System.Console.WriteLine("Which would you like to do?");
-                System.Console.WriteLine("[1] view order history /n [2] go to customer menu /n [3] exit store");
-                string userInput = System.Console.ReadLine();
-                do
-                {
-                    switch (userInput)
-                    {
-                        case "1":
-                            System.Console.WriteLine("Redirecting you to order history menu");
-                            // send to customer order history menu
-                            break;
-                        case "2":
-                            System.Console.WriteLine("Redirecting you to main customer menu");
-                            //send to main customer menu
-                            break;
-                        case "3":
-                            System.Console.WriteLine("Hope you come back to Sports Authenticated soon");
-                            break;
-                    }
-                } while (!(userInput.Equals(3)));
+                customerMenu.Start();
             }
         } 
         public void CheckManager(Manager managerName){
                 // take 
             if (List<ManagerNames>.contains(managerName))
                 {
-                System.Console.WriteLine($"Welcome back {managerName.ManagerName}");
-                    System.Console.WriteLine("Which location inventory would you like to look at?");
-                    System.Console.WriteLine("[1] World of Bats /n [2] World of Sports /n [3] World of Sticks /n [4] World of Jerseys /n [5] exit");
-                    string location = System.Console.ReadLine();
-                    do
-                    {
-                        switch (location)
-                        {
-                            case "1":
-                                System.Console.WriteLine("Redirecting you to World of Bats Menu");
-                                // send to World of Bats menu
-                                break;
-                            case "2":
-                                System.Console.WriteLine("Redirecting you to World of Sports Menu");
-                                //send to World of Sports menu
-                                break;
-                            case "3":
-                                System.Console.WriteLine("Redirecting you to World of Sticks Menu");
-                                //send to World of Sticks Menu
-                                break;
-                            case "4":
-                                System.Console.WriteLine("Redirecting you to World of Jerseys Menu");
-                                //send to World of Jerseys Menu
-                                break;
-                            case "5":
-                                System.Console.WriteLine("Bye come back again soon");
-                                break;
-                        }
-
-                    } while (!(location.Equals(5)));
+                System.Console.WriteLine($"Welcome back {managerName.UserName}");
+                ///want to compare this manager name and pull the corresponding location
+                int location = manager.LocationID;
+                switch (location)
+                {
+                    case "1":
+                        System.Console.WriteLine("Redirecting you to World of Bats Menu");
+                        managerWorldOfBats.Start();
+                        break;
+                    case "2":
+                         System.Console.WriteLine("Redirecting you to World of Games Menu");
+                         managerWorldOfGames.Start();
+                         break;
+                     case "3":
+                        System.Console.WriteLine("Redirecting you to World of Sticks Menu");
+                        managerWorldOfSticks();
+                        break;
+                     case "4":
+                        System.Console.WriteLine("Redirecting you to World of Jerseys Menu");
+                        managerWorldOfJerseys.Start();
+                        break;
+                    default:
+                        System.Console.WriteLine("Could not connect you to your location. Please try again.");
+                        signInMenu.Start();
+                        break;
                 }
+            }
         } 
-    
     }
 }

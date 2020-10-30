@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj",
+      "projectUniqueName": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj",
       "projectName": "CustomerLib",
-      "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj",
+      "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj",
       "packagesPath": "C:\\Users\\nfh22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\obj\\",
+      "outputPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nfh22\\AppData\\Roaming\\NuGet\\NuGet.Config",

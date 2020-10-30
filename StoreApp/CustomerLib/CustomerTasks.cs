@@ -20,7 +20,7 @@ namespace CustomerLib
             await Task.Run(new Action(GetProducts));//gets products placed in cart by customer
             Console.WriteLine("Hope you found everything you were looking for today!");
             Console.WriteLine("Come back to Sports Authenticated soon!");
-            placedOrder();// call to notify all subscribers
+            OnPlacedOrder();// call to notify all subscribers
         }
         // make sure events are binded to handlers
         public void OnPlacedOrder()
@@ -36,6 +36,7 @@ namespace CustomerLib
         public void GetProducts()
         {
             Console.WriteLine("Getting items in your cart");
+
             System.Threading.Thread.Sleep(2000);
             string items = System.IO.File.ReadAllText(path);
             Console.WriteLine("Items in cart:");
@@ -50,7 +51,7 @@ namespace CustomerLib
         public async void orderHistory()
         {
             Console.WriteLine("Retrieving your order history");
-            await Task.Run(new Action(customerOrderHistory));
+            await Task.Run(new Action(CustomerOrderHistory));
             Console.WriteLine("Order history acquired hit enter to see it:");
             OrderHistory();
         }
@@ -67,7 +68,7 @@ namespace CustomerLib
         /// <summary>
         /// retrieves customer order history
         /// </summary>
-        public void customerOrderHistory()
+        public void CustomerOrderHistory()
         {
             Console.WriteLine("Getting Order History for you");
             System.Threading.Thread.Sleep(2000);

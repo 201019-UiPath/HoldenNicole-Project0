@@ -188,6 +188,16 @@
         "runtime": {
           "bin/placeholder/StoreDB.dll": {}
         }
+      },
+      "StoreUI/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "compile": {
+          "bin/placeholder/StoreUI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StoreUI.dll": {}
+        }
       }
     }
   },
@@ -603,6 +613,11 @@
       "type": "project",
       "path": "../StoreDB/StoreDB.csproj",
       "msbuildProject": "../StoreDB/StoreDB.csproj"
+    },
+    "StoreUI/1.0.0": {
+      "type": "project",
+      "path": "../StoreUI/StoreUI.csproj",
+      "msbuildProject": "../StoreUI/StoreUI.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -613,7 +628,8 @@
       "NETStandard.Library >= 2.0.3",
       "OrderLib >= 1.0.0",
       "ProductLib >= 1.0.0",
-      "StoreDB >= 1.0.0"
+      "StoreDB >= 1.0.0",
+      "StoreUI >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -622,11 +638,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\StoreBL.csproj",
+      "projectUniqueName": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\StoreBL.csproj",
       "projectName": "StoreBL",
-      "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\StoreBL.csproj",
+      "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\StoreBL.csproj",
       "packagesPath": "C:\\Users\\nfh22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\obj\\",
+      "outputPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nfh22\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -642,23 +658,26 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\CustomerLib\\CustomerLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrderLib\\OrderLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj"
             },
-            "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj": {
-              "projectPath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj"
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj"
+            },
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj"
             }
           }
         }
@@ -692,5 +711,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project StoreUI is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project StoreUI supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
+      "libraryId": "StoreUI",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

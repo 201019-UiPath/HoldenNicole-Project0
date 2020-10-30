@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YGeCI96o/w7XQBt/DZ+p36tOSB3aJAhhHNR3hTh3XZIBTfsdYAXEVbY3T4eVcrtSky1w3xE/Ux624TI8NsUGAQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
+  "dgSpecHash": "oS7P5PeYUCZR1fLujCNC+0P7Nv7oqTGZ5fVcH881zCNmQd34V5iKXdn5ADTJofiRi28BtFIic548IkhDhHKw6A==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\mailchimp.net.v3\\4.2.1\\mailchimp.net.v3.4.2.1.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.extensions.configuration\\1.1.1\\microsoft.extensions.configuration.1.1.1.nupkg.sha512",
@@ -88,5 +88,15 @@
     "C:\\Users\\nfh22\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Cycle detected. \r\n  StoreUI -> StoreBL -> StoreUI.",
+      "libraryId": "StoreUI",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

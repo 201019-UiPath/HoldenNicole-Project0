@@ -8,7 +8,6 @@ namespace CustomerLib
     {
         void PlaceOrder();
         void GetProducts();
-        void orderHistory();
-        void customerOrderHistory();
+        void CustomerOrderHistory();
     }
 }

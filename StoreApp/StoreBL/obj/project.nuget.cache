@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NF6wTDVQuqWd1hJIl+gk7KD3/stdb9+4hN+ZSvcb2G5YZ2rzXIj53miesRxAd6DUleL0JkHCaIs+NfnISC93xg==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\StoreBL.csproj",
+  "dgSpecHash": "AbZVE5Y+uvGm76cZlJJR5DWlZDCvAc69YIKkgQXaU5MPqLqNkBzeQB8SXPjWMH1/f73gvnDMMMhhRorFGWrapA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreBL\\StoreBL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
@@ -15,5 +15,15 @@
     "C:\\Users\\nfh22\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project StoreUI is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project StoreUI supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
+      "libraryId": "StoreUI",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

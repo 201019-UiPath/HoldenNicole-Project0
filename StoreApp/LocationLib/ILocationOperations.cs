@@ -8,7 +8,6 @@ namespace LocationLib
     {
         void CheckInventory();
         void GetInventory();
-        void RetrieveHistory();
         void GetHistory();
     }
 }

@@ -1,10 +1,31 @@
-﻿using ProductLib;
+﻿using StoreDB;
+using StoreDB.Models;
 using System;
 
 namespace StoreUI.Menus
 {
-    class CustomerSearch : IMenu
+    public class CustomerSearch : IMenu
     {
+        private CustomerMenu customerMenu;
+        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
+        private CustomerSearch customerSearch;
+        private LocationInventoryMenu locationInventoryMenu;
+        private LocationOrderHistoryMenu locationOrderHistoryMenu;
+        private ManagerLocationInventory managerLocationInventory;
+        private SearchBySport searchBySport;
+        private SearchByType searchByType;
+        private SignInMenu signInMenu;
+        private SportOrderHistoryMenu sportOrderHistoryMenu;
+        private TypeOrderHistoryMenu typeOrderHistoryMenu;
+        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
+        private ManagerWorldOfBats managerWorldOfBats;
+        private ManagerWorldOfGames managerWorldOfGames;
+        private ManagerWorldOfJerseys managerWorldOfJerseys;
+        private ManagerWorldOfSticks managerWorldOfSticks;
+        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
+        private CustomerInventorySticksMenu customerInventorySticksMenu;
+        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
+        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         public void Start()
         {
             Product product = new Product();
