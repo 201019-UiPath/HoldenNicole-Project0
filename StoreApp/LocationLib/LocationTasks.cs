@@ -1,80 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 using System.Threading.Tasks;
+using System.Text;
+using System.Collections.Generic;
 
 namespace LocationLib
 {
     public delegate void LocationDel();
     public class LocationTasks : ILocationOperations
     {
-        string path = @"LocationLib\Inventory.txt";
-        public event LocationDel checkedInventory;
-        /// <summary>
-        /// used to check inventory of location 
-        /// seen by both customer and manager
-        /// </summary>
-        public async void CheckInventory()
-        {
-            Console.WriteLine("Pulling up location inventory");
-            await Task.Run(new Action(GetInventory)); //create thread and returns to main when task is done
-            Console.WriteLine("Location inventory is ready hit enter to see it");
-            OnCheckedInventory(); //called to notify subscribers
-        }
-        /// <summary>
-        /// checks event binding
-        /// </summary>
-        public void OnCheckedInventory()
-        {
-            if (checkedInventory != null)
-            {
-                CheckInventory();//raises event
-            }
-        }
-        /// <summary>
-        /// used to print out inventory at location
-        /// </summary>
-        public void GetInventory()
-        {
-            Console.WriteLine("Getting Inventory");
+        string path = @"LocationLib\LocationInventory.txt";
+        public event LocationDel managedInventory;
+
+        ///section to check inventory
+        public void GetInventory(){
+            System.Console.WriteLine("Getting all items in inventory");
             System.Threading.Thread.Sleep(2000);
             string items = System.IO.File.ReadAllText(path);
-            Console.WriteLine("Inventory Available: ");
-            Console.WriteLine($"{items}");
+            System.Console.WriteLine("Items in store inventory");
+            System.Console.WriteLine($"{items}");
         }
-        /// <summary>
-        /// section used to retrieve order history for location
-        /// </summary>
-        string path2 = @"LocationLib\OrderHistory.txt";
-        public event LocationDel retrievedHistory;
-        
-        public async void RetrieveHistory()
-        {
-            Console.WriteLine("Beginning retrieval of location order history");
-            await Task.Run(new Action(GetHistory));
-            Console.WriteLine("Order history retrieved");
-            OnRetrievedHistory();
+
+        /// allows manager to see store inventory
+        public async void AddInventory(){
+            System.Console.WriteLine("Opened Store Inventory");
+            await Task.Run(new Action(GetInventory)); //retrieves inventory list
+            System.Console.WriteLine("Adding to inventory");
+            OnAddInventory();
         }
-        /// <summary>
-        /// checking event binding
-        /// </summary>
-        public void OnRetrievedHistory()
-        {
-            if(retrievedHistory != null)
-            {
-                retrievedHistory(); //raises event
+        public void OnAddInventory(){
+            if(managedInventory != null){
+                managedInventory();
             }
         }
-        /// <summary>
-        /// used to pull up and write out all history
-        /// </summary>
-        public void GetHistory()
-        {
-            Console.WriteLine("Pulling up order history");
+
+        string path2 = @"LocationLib\LocationOrderHistory.txt";
+        public event LocationDel OrderHistory;
+        ///retrieves location order history which can be further sorted from menus
+
+        public async void GetHistory(){
+            System.Console.WriteLine("Retrieving location order history");
+            await.Task.Run(new Action(LocationOrderHistory));
+            System.Console.WriteLine("Order history acquired");
+            OrderHistory();
+        }
+
+        public void LocationOrderHistory(){
+            System.Console.WriteLine("Compiling order history");
             System.Threading.Thread.Sleep(2000);
-            string history = System.IO.File.ReadAllText(path2);
-            Console.WriteLine("Location history retrieved:");
-            Console.WriteLine($"{history}");
+            string orderHistory = System.IO.File.ReadAllText(path2);
+            System.Console.WriteLine("Order history obtained");
+            System.Console.WriteLine($"{orderHistory}");
         }
     }
 }

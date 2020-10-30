@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f2PWZbDXRBIvC2nFmcS/1XLK1HnS1uDTkay4J1YLFA6PZKguG2COTSG7pmg/h1NRa4jV2CslQYI5GdNdeF3ZJQ==",
+  "dgSpecHash": "4v2J+pR1jTUFImeRnHbJ7wQaSnL5JBoZnAGCwOMOpboQxoNS/JlSMcfGKECgTIpuNY9neAAGMZXNta5QXiT6MA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj",
+  "projectFilePath": "c:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ProductLib\\ProductLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

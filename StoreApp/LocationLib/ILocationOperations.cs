@@ -6,7 +6,7 @@ namespace LocationLib
 {
     interface ILocationOperations
     {
-        void CheckInventory();
+        void AddInventory();
         void GetInventory();
         void GetHistory();
     }

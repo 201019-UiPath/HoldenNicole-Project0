@@ -9,10 +9,10 @@ namespace StoreDB
     {
      ///contains all methods to be implemented in location repo
          public void AddProductToLocationAsync(Products product, Location location);
-         public Task<List<Order>> GetAllOrdersAsync();
-         public Task<List<Manager>> GetAllManagersAsync();
-        public Task<List<Products>> ViewAllProductsAtLocationAsync();
-        public Task<List<Order>> GetAllOrdersAtLocation();
+         public List<Order> GetAllOrdersAsync();
+         public List<Manager> GetAllManagersAsync();
+        public List<Products> ViewAllProductsAtLocationAsync();
+        public List<Order> GetAllOrdersAtLocation();
 
         /* Want to add section
         Task<List<Order>> GetAllOrdersByType();

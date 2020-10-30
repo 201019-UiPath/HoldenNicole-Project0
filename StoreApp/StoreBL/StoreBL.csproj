@@ -1,17 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
     <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
     <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
-    <ProjectReference Include="..\ManagerLib\ManagerLib.csproj" />
-    <ProjectReference Include="..\OrderLib\OrderLib.csproj" />
-    <ProjectReference Include="..\ProductLib\ProductLib.csproj" />
-	  <ProjectReference Include="..\StoreUI\StoreUI.csproj" />
+    <ProjectReference Include="..\StoreBL\StoreBL.csproj" />
+    <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
+    <ProjectReference Include="..\StoreUI\StoreUI.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework><netstandard3 class="1"></netstandard3></TargetFramework>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 

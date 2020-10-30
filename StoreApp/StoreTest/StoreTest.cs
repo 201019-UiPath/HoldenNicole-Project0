@@ -1,13 +1,6 @@
 using Xunit;
-using System;
-using CustomerLib;
-using LocationLib;
-using ManagerLib;
-using OrderLib;
-using ProductLib;
 using StoreDB;
 using System.Data.Common;
-using Js
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.ComponentModel;
