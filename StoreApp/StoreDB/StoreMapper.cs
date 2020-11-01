@@ -1,6 +1,7 @@
 using StoreDB.Entities;
 using System.Collections.Generic;
 using StoreDB.Models;
+using System.Threading.Tasks;
 
 namespace StoreDB
 {
@@ -92,10 +93,17 @@ namespace StoreDB
             }
             return allOrders;
         }
-        public ICollection<Orders> ParseOrders(List<Orders> order)
+
+        public List<Products> ParseOrder(List<Products> products)
         {
-            throw new System.NotImplementedException();
+            List<Products> allProducts = new List<Products>();
+            foreach (var p in products)
+            {
+                allProducts.Add(p);
+            }
+            return allProducts;
         }
+
         public Products ParseProducts(Products product)
         {
             return new Products()

@@ -1,0 +1,12 @@
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\bin\Debug\netstandard2.0\OrdersLib.deps.json
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\bin\Debug\netstandard2.0\OrdersLib.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\bin\Debug\netstandard2.0\OrdersLib.pdb
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\bin\Debug\netstandard2.0\StoreDB.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\bin\Debug\netstandard2.0\StoreDB.pdb
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.csprojAssemblyReference.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.AssemblyInfoInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.AssemblyInfo.cs
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.csproj.CoreCompileInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.csproj.CopyComplete
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\OrdersLib\obj\Debug\netstandard2.0\OrdersLib.pdb

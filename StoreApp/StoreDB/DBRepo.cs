@@ -37,13 +37,13 @@ namespace StoreDB
         }
         public void PlaceOrderAsync(Orders order)
         {
-            context.Order.PlaceOrderAsync(mapper.ParseOrder(order));
+            //context.Order.PlaceOrderAsync(mapper.ParseOrder(order));
             context.SaveChangesAsync();
         }
-        public Task<List<Products>> GetAllProductsInCartByCartID(int id)
+        public List<Products> GetAllProductsInCartByCartID(int id)
         {
-            return (Task<List<Products>>)mapper.ParseOrders(
-                context.Order
+            return mapper.ParseOrder(
+                context.Product
                 .Where(x => x.ID == context.Order.Single(y => y.ID == id).ID)
                 .Include("Products - Quantity - Price")
                 .ToList()
@@ -60,7 +60,7 @@ namespace StoreDB
         }
         public void DeleteProductInCart(Products product)
         {
-            context.Product.Delete(mapper.ParseProducts(product));
+          //  context.Product.DeleteProductInCart(mapper.ParseProducts(product));
             context.SaveChanges();
         }
 
@@ -100,7 +100,7 @@ namespace StoreDB
         }
         public List<Orders> GetAllOrdersByCustomerIDDateDescending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.CustomerID == context.Customer.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -109,7 +109,7 @@ namespace StoreDB
         }
         public List<Orders> GetAllOrdersByCustomerIDPriceAscending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.CustomerID == context.Customer.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -118,7 +118,7 @@ namespace StoreDB
         }
         public List<Orders> GetAllOrdersByCustomerIDPriceDescending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.CustomerID == context.Customer.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -127,7 +127,7 @@ namespace StoreDB
         }
         public List<Orders> GetAllOrdersByLocationIDDateAscending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.LocationID == context.Location.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -137,7 +137,7 @@ namespace StoreDB
 
         public List<Orders> GetAllOrdersByLocationIDDateDescending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.LocationID == context.Location.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -146,7 +146,7 @@ namespace StoreDB
         }
         public List<Orders> GetAllOrdersByLocationIDPriceAscending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.LocationID == context.Location.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -155,7 +155,7 @@ namespace StoreDB
         }
         public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
         {
-            return (List<Orders>)mapper.ParseOrders(
+            return (List<Orders>)mapper.ParseOrder(
                 context.Order
                 .Where(x => x.LocationID == context.Location.Single(y => y.ID == id).ID)
                 .Include("OrderID - ProductID - Quantity - Date - Price")
@@ -209,7 +209,7 @@ namespace StoreDB
         }
         public void DeleteProduct(Products product)
         {
-            context.Product.Delete(mapper.ParseProducts(product));
+         //   context.Product.Delete(mapper.ParseProducts(product));
             context.SaveChanges();
         }
         public List<Managers> GetAllManagers()

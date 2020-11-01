@@ -12,6 +12,6 @@ namespace StoreDB
         Products GetProductByID(int id);
         void DeleteProductInCart(Products products);
         void AddProductToCartAsync(Products product);
-        Task<List<Products>> GetAllProductsInCartByCartID(int id);
+        List<Products> GetAllProductsInCartByCartID(int id);
     }
 }

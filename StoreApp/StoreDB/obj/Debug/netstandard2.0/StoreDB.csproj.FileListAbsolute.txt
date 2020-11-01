@@ -1,0 +1,9 @@
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\obj\Debug\netstandard2.0\StoreDB.csprojAssemblyReference.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\obj\Debug\netstandard2.0\StoreDB.AssemblyInfoInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\obj\Debug\netstandard2.0\StoreDB.AssemblyInfo.cs
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\obj\Debug\netstandard2.0\StoreDB.csproj.CoreCompileInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\bin\Debug\netstandard2.0\StoreDB.deps.json
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\bin\Debug\netstandard2.0\StoreDB.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\bin\Debug\netstandard2.0\StoreDB.pdb
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\obj\Debug\netstandard2.0\StoreDB.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreDB\obj\Debug\netstandard2.0\StoreDB.pdb
