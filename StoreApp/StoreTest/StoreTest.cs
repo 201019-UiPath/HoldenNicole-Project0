@@ -1,35 +1,28 @@
-using Xunit;
 using StoreDB;
-using System.Data.Common;
-using System.Threading.Tasks;
+using StoreDB.Entities;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Security.Cryptography.X509Certificates;
+using Xunit;
 
 namespace StoreTest
 {
     public class StoreTest
     {
-        Customer testCustomer = new Customer();
-        Location testLocation = new Location();
-        Manager testManager = new Manager();
-        Order testOrder = new Order();
-        Product testProduct = new Product();
-        
+        Customers testCustomer = new Customers();
+        Locations testLocation = new Locations();
+        Managers testManager = new Managers();
+        Orders testOrder = new Orders();
+        Products testProduct = new Products();
+
         public void AddCustomerShouldAddCustomer(int customerID, string userName, string userEmail, string userAddress)
         {
-            FileRepo storeDB = new FileRepo();
+            DBRepo dBRepo;
             // do the thing you want to test
-            testCustomer.AddCustomer(customerID, userName, userEmail, userAddress);
-            List<Customer> allCustomers = storeDB.GetAllCustomersAsync();
-            using (FileStream fs = File.OpenRead(customerfilepath))
-            {
-                allCustomers.Add(await JsonSerializer.DeserializeAsync<Customer>(fs));
-            }
-            return allCustomers;
+            testCustomer.AddCustomerAsync(customerID, userName, userEmail, userAddress);
+            List<Customers> allCustomers = dBRepo.GetAllCustomersAsync();
+
 
             //asert
-            Assert.Equal((customerID, userName, userEmail, userAddress),Customer.Customers.Peek());
+            Assert.Equal((customerID, userName, userEmail, userAddress), Customer.Customers.Peek());
 
         }
     }

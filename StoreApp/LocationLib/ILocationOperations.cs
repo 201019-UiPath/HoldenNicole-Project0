@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StoreDB.Entities;
 
 namespace LocationLib
 {
     interface ILocationOperations
     {
-        void AddInventory();
-        void GetInventory();
-        void GetHistory();
+        void AddInventory(Products product);
+        void GetInventory(int id);
+        void GetHistory(int id);
     }
 }

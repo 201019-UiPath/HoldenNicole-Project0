@@ -1,9 +1,0 @@
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\bin\Debug\netstandard2.0\ProductLib.deps.json
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\bin\Debug\netstandard2.0\ProductLib.dll
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\bin\Debug\netstandard2.0\ProductLib.pdb
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\obj\Debug\netstandard2.0\ProductLib.csprojAssemblyReference.cache
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\obj\Debug\netstandard2.0\ProductLib.AssemblyInfoInputs.cache
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\obj\Debug\netstandard2.0\ProductLib.AssemblyInfo.cs
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\obj\Debug\netstandard2.0\ProductLib.csproj.CoreCompileInputs.cache
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\obj\Debug\netstandard2.0\ProductLib.dll
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\ProductLib\obj\Debug\netstandard2.0\ProductLib.pdb

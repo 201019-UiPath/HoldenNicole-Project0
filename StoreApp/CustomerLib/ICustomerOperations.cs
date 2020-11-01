@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StoreDB.Entities;
 
 namespace CustomerLib
 {
     interface ICustomerOperations
     {
-        void PlaceOrder();
-        void GetProducts();
-        void CustomerOrderHistory();
+        void PlaceOrder(Orders order);
+        void GetProducts(int id);
+        void CustomerOrderHistory(int id);
     }
 }

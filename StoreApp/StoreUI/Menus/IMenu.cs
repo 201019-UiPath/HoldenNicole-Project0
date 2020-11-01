@@ -9,6 +9,6 @@ namespace StoreUI.Menus
         /// starting point
         ///
         void Start();
-         
+
     }
 }

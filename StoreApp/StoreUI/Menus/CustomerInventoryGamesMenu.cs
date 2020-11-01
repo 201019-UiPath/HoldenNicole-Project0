@@ -1,32 +1,36 @@
+using StoreDB;
+using StoreDB.Entities;
+using System;
+using System.Collections.Generic;
+
 namespace StoreUI.Menus
 {
     public class CustomerInventoryGamesMenu : IMenu
     {
+        private string userInput;
         private CustomerMenu customerMenu;
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerSearch customerSearch;
-        private LocationInventoryMenu locationInventoryMenu;
         private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private ManagerLocationInventory managerLocationInventory;
         private SearchBySport searchBySport;
         private SearchByType searchByType;
+        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
         private SportOrderHistoryMenu sportOrderHistoryMenu;
         private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
         private ManagerWorldOfBats managerWorldOfBats;
         private ManagerWorldOfGames managerWorldOfGames;
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventorySticksMenu customerInventorySticksMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
+        DBRepo dBRepo;
         public void Start()
         {
             ///retrieve location from previous menus
-            Location location = new Location();
-            Console.WriteLine($"How would you like to see the inventory for {location.LocationName} :");
+            Locations location = new Locations();
+            Console.WriteLine($"How would you like to see the inventory for World of Games:");
             Console.WriteLine("[1] By type /n [2] By sport /n [3] By person /n [4] exit store");
             string sorting = System.Console.ReadLine();
             do
@@ -35,27 +39,35 @@ namespace StoreUI.Menus
                 {
                     /// lists products sorted by type
                     case "1":
-                        List<Product> allProductsByType = storeBL.GetAllProductsByType();
+                        List<Products> allProductsByType = dBRepo.GetAllProductsByType();
+                        Console.WriteLine("What type of autographed item are you looking for?");
+                        string item = Console.ReadLine();
+                        ///want to add function that will only show items type requested
                         foreach (var product in allProductsByType)
                         {
-                            Console.WriteLine($"Product {product.ProductName} - {product.Quantity}");
+                            Console.WriteLine($"Product {product.Sport} - {product.Athlete} - {product.Quantity} - {product.Price}");
                         }
                         break;
                     ///lists products sorted by sport
                     case "2":
-                        List<Product> allProductBySport = storeBL.GetAllProductsBySport();
+                        List<Products> allProductBySport = dBRepo.GetAllProductsBySport();
+                        Console.WriteLine("What sport are you looking for autographs for?");
+                        string sport = Console.ReadLine();
+                        ///want to add function that will only show items belonging to sport requested
                         foreach (var product in allProductBySport)
                         {
-                            Console.WriteLine($"Products {product.ProductName} - {product.Quantity}");
+                            Console.WriteLine($"Products {product.Athlete} - {product.Item} - {product.Quantity} - {product.Price}");
                         }
                         break;
                     /// lists products by person
                     case "3":
-                        List<Product> allProductsByPerson = storeBL.GetAllProductsByPerson();
-                        Console.WriteLine("Product name - Quantity");
+                        List<Products> allProductsByPerson = dBRepo.GetAllProductsByPerson();
+                        Console.WriteLine("What athlete are you looking for?");
+                        string athlete = Console.ReadLine();
+                        ///want to add function that will only show athlete requested
                         foreach (var product in allProductsByPerson)
                         {
-                            Console.WriteLine($"Products {product.ProductName} - {product.Quantity}");
+                            Console.WriteLine($"Products {product.Sport} - {product.Item} - {product.Quantity} - {product.Price}");
                         }
                         break;
                     case "4":

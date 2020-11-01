@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StoreDB;
+using StoreDB.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace CustomerLib
@@ -8,16 +8,16 @@ namespace CustomerLib
     public delegate void CustomerDel();
     public class CustomerTasks : ICustomerOperations
     {
-        string path = @"CustomerLib\CustomerCartItems.txt";
         public event CustomerDel placedOrder;
-        
+        public DBRepo dBRepo;
+
         /// <summary>
         /// section used to allow customer to place order
         /// </summary>
-        public async void PlaceOrder()
+        public void PlaceOrder(Orders order)
         {
             Console.WriteLine("Opened Cart");
-            await Task.Run(new Action(GetProducts));//gets products placed in cart by customer
+            dBRepo.PlaceOrderAsync(order);
             Console.WriteLine("Hope you found everything you were looking for today!");
             Console.WriteLine("Come back to Sports Authenticated soon!");
             OnPlacedOrder();// call to notify all subscribers
@@ -25,7 +25,7 @@ namespace CustomerLib
         // make sure events are binded to handlers
         public void OnPlacedOrder()
         {
-            if(placedOrder != null)
+            if (placedOrder != null)
             {
                 placedOrder();// raises event
             }
@@ -33,25 +33,19 @@ namespace CustomerLib
         /// <summary>
         /// retrieves products in cart
         /// </summary>
-        public void GetProducts()
+        public void GetProducts(int id)
         {
             Console.WriteLine("Getting items in your cart");
-
-            System.Threading.Thread.Sleep(2000);
-            string items = System.IO.File.ReadAllText(path);
-            Console.WriteLine("Items in cart:");
-            Console.WriteLine($"{items}");
+            dBRepo.GetAllProductsInCartByCartID(id);
         }
 
-        string path2 = @"CustomerLib\CustomerOrderHistory";
         public event CustomerDel OrderHistory;
         /// <summary>
         /// section used to retrieve customer order history
         /// </summary>
-        public async void orderHistory()
+        public void orderHistory()
         {
             Console.WriteLine("Retrieving your order history");
-            await Task.Run(new Action(CustomerOrderHistory));
             Console.WriteLine("Order history acquired hit enter to see it:");
             OrderHistory();
         }
@@ -60,7 +54,7 @@ namespace CustomerLib
         /// </summary>
         public void OnOrderHistory()
         {
-            if(OrderHistory != null)
+            if (OrderHistory != null)
             {
                 OrderHistory();
             }
@@ -68,13 +62,11 @@ namespace CustomerLib
         /// <summary>
         /// retrieves customer order history
         /// </summary>
-        public void CustomerOrderHistory()
+        public void CustomerOrderHistory(int id)
         {
             Console.WriteLine("Getting Order History for you");
-            System.Threading.Thread.Sleep(2000);
-            string orderHistory = System.IO.File.ReadAllText(path);
-            Console.WriteLine($"Order History obtained {orderHistory}");
+            dBRepo.GetAllOrdersByCustomerIDDateAscending(id); //return list "orderHistory"
         }
-        
+
     }
 }

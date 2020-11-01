@@ -1,4 +1,0 @@
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreBL\obj\Debug\netstandard2.0\StoreBL.csprojAssemblyReference.cache
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreBL\obj\Debug\netstandard2.0\StoreBL.AssemblyInfoInputs.cache
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreBL\obj\Debug\netstandard2.0\StoreBL.AssemblyInfo.cs
-C:\Users\nfh22\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreBL\obj\Debug\netstandard2.0\StoreBL.csproj.CoreCompileInputs.cache

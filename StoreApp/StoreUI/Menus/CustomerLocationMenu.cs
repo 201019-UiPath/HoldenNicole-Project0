@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StoreUI.Menus
+﻿namespace StoreUI.Menus
 {
     public class CustomerLocationMenu : IMenu
     {
+        private string userInput;
         private CustomerMenu customerMenu;
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerSearch customerSearch;
-        private LocationInventoryMenu locationInventoryMenu;
         private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private ManagerLocationInventory managerLocationInventory;
         private SearchBySport searchBySport;
         private SearchByType searchByType;
+        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
         private SportOrderHistoryMenu sportOrderHistoryMenu;
         private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
         private ManagerWorldOfBats managerWorldOfBats;
         private ManagerWorldOfGames managerWorldOfGames;
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventorySticksMenu customerInventorySticksMenu;
+        private CustomerInventorySticks customerInventorySticksMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
+        private CustomerLocationMenu customerLocationMenu;
 
-        public void Start(){
+        public void Start()
+        {
             System.Console.WriteLine("Which store would you like to shop at?");
             System.Console.WriteLine("[1] World of Bats /n [2] World of Sticks /n [3] World of Jerseys /n [4] World of Games /n [5] Back to Sign in menu");
             string userInput = System.Console.ReadLine();
-            switch(userInput)
+            switch (userInput)
             {
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
@@ -55,8 +52,10 @@ namespace StoreUI.Menus
                     break;
                 case "5":
                     signInMenu.Start();
-                default: 
-                    CustomerLocationMenu.Start();
+                    break;
+                default:
+                    customerLocationMenu.Start();
+                    break;
             }
         }
 

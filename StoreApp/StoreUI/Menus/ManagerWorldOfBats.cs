@@ -1,50 +1,36 @@
-﻿using System;
+﻿using StoreDB;
+using StoreDB.Entities;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace StoreUI.Menus
 {
     public class ManagerWorldOfBats
     {
+        private string userInput;
         private CustomerMenu customerMenu;
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerSearch customerSearch;
-        private LocationInventoryMenu locationInventoryMenu;
         private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private ManagerLocationInventory managerLocationInventory;
         private SearchBySport searchBySport;
         private SearchByType searchByType;
+        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
         private SportOrderHistoryMenu sportOrderHistoryMenu;
         private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
         private ManagerWorldOfBats managerWorldOfBats;
         private ManagerWorldOfGames managerWorldOfGames;
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventorySticksMenu customerInventorySticksMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationInventoryMenu locationInventoryMenu;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private ManagerLocationInventory managerLocationInventory;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
-        StoreBLL storeBL = new StoreBLL();
+        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
+        // StoreBLL storeBL = new StoreBLL();
+        DBRepo dBRepo;
         public void Start()
         {
             ///retrieve location from previous menu
-            Location location = new Location();
+            Locations location = new Locations();
             Console.WriteLine($"How would you like to see the inventory for World of Bats :");
             Console.WriteLine("[1] By type /n [2] By sport /n [3] By person /n [4] exit store");
             string sorting = System.Console.ReadLine();
@@ -54,27 +40,35 @@ namespace StoreUI.Menus
                 {
                     /// lists products sorted by type
                     case "1":
-                        List<Product> allProductsByType = storeBL.GetAllProductsByType();
+                        List<Products> allProductsByType = dBRepo.GetAllProductsByType();
+                        Console.WriteLine("What type of autographed item are you looking for?");
+                        string item = Console.ReadLine();
+                        ///want to add function that will only show items type requested
                         foreach (var product in allProductsByType)
                         {
-                            Console.WriteLine($"Product {product.ProductName} - {product.Quantity}");
+                            Console.WriteLine($"Product {product.Sport} - {product.Athlete} - {product.Quantity} - {product.Price}");
                         }
                         break;
                     ///lists products sorted by sport
                     case "2":
-                        List<Product> allProductBySport = storeBL.GetAllProductsBySport();
+                        List<Products> allProductBySport = dBRepo.GetAllProductsBySport();
+                        Console.WriteLine("What sport are you looking for autographs for?");
+                        string sport = Console.ReadLine();
+                        ///want to add function that will only show items belonging to sport requested
                         foreach (var product in allProductBySport)
                         {
-                            Console.WriteLine($"Products {product.ProductName} - {product.Quantity}");
+                            Console.WriteLine($"Products {product.Athlete} - {product.Item} - {product.Quantity} - {product.Price}");
                         }
                         break;
                     /// lists products by person
                     case "3":
-                        List<Product> allProductsByPerson = storeBL.GetAllProductsByPerson();
-                        Console.WriteLine("Product name - Quantity");
+                        List<Products> allProductsByPerson = dBRepo.GetAllProductsByPerson();
+                        Console.WriteLine("What athlete are you looking for?");
+                        string athlete = Console.ReadLine();
+                        ///want to add function that will only show athlete requested
                         foreach (var product in allProductsByPerson)
                         {
-                            Console.WriteLine($"Products {product.ProductName} - {product.Quantity}");
+                            Console.WriteLine($"Products {product.Sport} - {product.Item} - {product.Quantity} - {product.Price}");
                         }
                         break;
                     case "4":
@@ -82,7 +76,7 @@ namespace StoreUI.Menus
                         break;
                 }
             } while (!sorting.Equals(4));
-            
+
             // allowing manager to replenish inventory after seeing remaining inventory at this store
             Console.WriteLine("Would you like to replenish the inventory at your location? (yes/no)");
             string response = System.Console.ReadLine();
@@ -91,7 +85,7 @@ namespace StoreUI.Menus
                 string local = location.ToString();
                 Console.WriteLine("How many products would you like to add?");
                 string newProducts = Console.ReadLine();
-                int newP = (int) Convert.ToInt64(newProducts);
+                int newP = (int)Convert.ToInt64(newProducts);
                 int i = 1;
                 do
                 {
@@ -105,7 +99,7 @@ namespace StoreUI.Menus
                     Console.WriteLine("Please enter the product quantity you would like to add: ");
                     string quantity = Console.ReadLine();
                     int quan = (int)Convert.ToInt64(quantity);
-                    Product addProduct = new Product(id, productName, productType, quan, local);
+                    Products addProduct = new Products(id, productName, productType, quan, local);
                     i += 1;
                 }
                 while (i <= newP);

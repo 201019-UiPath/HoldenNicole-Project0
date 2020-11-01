@@ -1,45 +1,66 @@
+using StoreDB;
+using StoreDB.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using StoreDB.Models;
 namespace CustomerLib
 {
     public class CustomerService
-    {
-        private ICustomerRepo customerRepo;
-        public CustomerService(ICustomerRepo customerRepo){
-            this.customerRepo=customerRepo;
+    {/// <summary>
+     /// need to replace this with DBRepo
+     /// </summary>
+        private DBRepo dbRepo;
+        public CustomerService(DBRepo dbRepo)
+        {
+            this.dbRepo = dbRepo;
         }
-        public void AddCustomerAsync(Customer customer){
-            /// if customer in customers table give error
-            /// otherwise
-            customerRepo.AddCustomerAsync(customer);
+        public Customers GetCustomerByID(int id)
+        {
+            Customers customer = dbRepo.GetCustomerByID(id);
+            return customer;
         }
-        public List<Customer> GetAllCustomersAsync(){
+        public Customers GetCustomerByName(string name)
+        {
+            Customers customer = dbRepo.GetCustomerByName(name);
+            return customer;
+        }
+        public void AddCustomerAsync(Customers customer)
+        {
+            if (!GetAllCustomersAsync().Contains(customer))
+            {
+                dbRepo.AddCustomerAsync(customer);
+            }
+            else
+            {
+                System.Console.WriteLine("Sorry could not register you at this time.");
+                System.Console.WriteLine("Please try again.");
+            }
+        }
+        public List<Customers> GetAllCustomersAsync()
+        {
             /// <summary>
             /// retrieve list of customers from customer table
             /// </summary>
-            /// <param name="order"></param>
-            Task<List<Customer>> getCustomers = customerRepo.GetAllCustomersAsync();
+            Task<List<Customers>> getCustomers = dbRepo.GetAllCustomersAsync();
             return getCustomers.Result;
         }
-        public void PlaceOrderAsync(Order order){
+        public void PlaceOrderAsync(Orders order)
+        {
             /// <summary>
             /// if order not in orders table
             /// </summary>
             /// <param name="order"></param>
-            customerRepo.PlaceOrderAsync(order);
+            dbRepo.PlaceOrderAsync(order);
         }
-        public List<Customer> GetOrdersByCustomerAsync(){
-            Task<List<Customer>> getOrderHistory = customerRepo.GetOrdersByCustomerAsync();
-            return getOrderHistory.Result;
+        
+        public List<Products> ViewAllProductsAtLocationAsync(int id)
+        {
+            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocation(id);
+            return viewProductsAtLocation;
         }
-        public List<Products> ViewAllProductsAtLocationAsync(){
-            Task<List<Products>> viewProductsAtLocation = customerRepo.ViewAllProductsAtLocationAsync();
-            return viewProductsAtLocation.Result;
-        }
-        public void AddProductToCartAsync(){
+        public void AddProductToCartAsync(Products product)
+        {
             ///buisiness logic is somewhere else 1am so forgot
-            customerRepo.AddProductToCartAsync();
+            dbRepo.AddProductToCartAsync(product);
         }
     }
 }

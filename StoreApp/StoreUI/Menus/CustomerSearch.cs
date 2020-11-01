@@ -1,34 +1,31 @@
-﻿using StoreDB;
-using StoreDB.Models;
+﻿using StoreDB.Entities;
 using System;
 
 namespace StoreUI.Menus
 {
     public class CustomerSearch : IMenu
     {
+        private string userInput;
         private CustomerMenu customerMenu;
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerSearch customerSearch;
-        private LocationInventoryMenu locationInventoryMenu;
         private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private ManagerLocationInventory managerLocationInventory;
         private SearchBySport searchBySport;
         private SearchByType searchByType;
+        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
         private SportOrderHistoryMenu sportOrderHistoryMenu;
         private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
         private ManagerWorldOfBats managerWorldOfBats;
         private ManagerWorldOfGames managerWorldOfGames;
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventorySticksMenu customerInventorySticksMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         public void Start()
         {
-            Product product = new Product();
+            Products product = new Products();
             System.Console.WriteLine("What would you like to search by in the entire Sports Authenticated inventory today?");
             System.Console.WriteLine("[1] Search by sport /n [2] Search by type of item /n [3] Search by person /n [4] exit store");
             string searchSelection = Console.ReadLine();

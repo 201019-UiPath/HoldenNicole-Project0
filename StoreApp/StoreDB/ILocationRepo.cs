@@ -1,18 +1,18 @@
+using StoreDB.Entities;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using LocationLib;
-using StoreDB.Models;
 
 namespace StoreDB
 {
     public interface ILocationRepo
     {
-     ///contains all methods to be implemented in location repo
-         public void AddProductToLocationAsync(Products product, Location location);
-         public List<Order> GetAllOrdersAsync();
-         public List<Manager> GetAllManagersAsync();
-        public List<Products> ViewAllProductsAtLocationAsync();
-        public List<Order> GetAllOrdersAtLocation();
+        ///contains all methods to be implemented in location repo
+        void AddProductToLocationAsync(Products product);
+        void UpdateProducts(Products product);
+        void DeleteProduct(Products product);
+        List<Products> ViewAllProductsAtLocation(int id);
+        Locations GetLocationByID(int id);
+        Locations GetLocationByName(string name);
+        List<Locations> GetAllLocations();
 
         /* Want to add section
         Task<List<Order>> GetAllOrdersByType();

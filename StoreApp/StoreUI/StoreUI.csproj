@@ -1,21 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="MailChimp.Net.V3" Version="4.2.1" />
+	  <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
+	  <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
+	  <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
+	  <ProjectReference Include="..\OrdersLib\OrdersLib.csproj" />
+	  <ProjectReference Include="..\ProductsLib\ProductsLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
-    <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
-    <ProjectReference Include="..\StoreBL\StoreBL.csproj" />
-    <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
-    <ProjectReference Include="..\StoreUI\StoreUI.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
+    <PackageReference Include="Npgsql" Version="4.1.5" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
 </Project>

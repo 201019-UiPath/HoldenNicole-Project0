@@ -1,35 +1,34 @@
-﻿using System;
-using CustomerLib;
-using StoreDB.Models;
+﻿using StoreDB.Entities;
+using System;
 
 namespace StoreUI.Menus
 {
     public class CustomerMenu : IMenu
     {
+        private string userInput;
         private CustomerMenu customerMenu;
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerSearch customerSearch;
-        private LocationInventoryMenu locationInventoryMenu;
         private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private ManagerLocationInventory managerLocationInventory;
         private SearchBySport searchBySport;
         private SearchByType searchByType;
+        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
         private SportOrderHistoryMenu sportOrderHistoryMenu;
         private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private AthleteOrderHistoryMenu athleteOrderHistoryMenu;
         private ManagerWorldOfBats managerWorldOfBats;
         private ManagerWorldOfGames managerWorldOfGames;
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventorySticksMenu customerInventorySticksMenu;
+        private CustomerInventorySticks customerInventorySticksMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
-        
+        private CustomerLocationMenu customerLocationMenu;
+
         public void Start()
         {
-            Customer customer = new Customer();
+            Customers customer = new Customers();
             //retrieve customer info from sign in menu
             Console.WriteLine($"Howdy {customer.UserName}! What would you like to do today at Sports Authenticated?");
             Console.WriteLine("[1] View your order history /n [2] Shop at a specific store /n [3] Search entire inventory /n [4] exit store");

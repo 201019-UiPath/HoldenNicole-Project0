@@ -1,55 +1,46 @@
-using System;
-using System.Threading.Tasks;
-using System.Text;
-using System.Collections.Generic;
+using StoreDB;
+using StoreDB.Entities;
 
 namespace LocationLib
 {
     public delegate void LocationDel();
     public class LocationTasks : ILocationOperations
     {
-        string path = @"LocationLib\LocationInventory.txt";
+        public DBRepo dbRepo;
         public event LocationDel managedInventory;
 
         ///section to check inventory
-        public void GetInventory(){
+        public void GetInventory(int id)
+        {
             System.Console.WriteLine("Getting all items in inventory");
-            System.Threading.Thread.Sleep(2000);
-            string items = System.IO.File.ReadAllText(path);
             System.Console.WriteLine("Items in store inventory");
-            System.Console.WriteLine($"{items}");
+            dbRepo.ViewAllProductsAtLocation(id);///return list "items"
         }
-
-        /// allows manager to see store inventory
-        public async void AddInventory(){
+        /// allows manager to see add to inventory
+        public void AddInventory(Products product)
+        {
             System.Console.WriteLine("Opened Store Inventory");
-            await Task.Run(new Action(GetInventory)); //retrieves inventory list
+            dbRepo.AddProductToLocationAsync(product); //manager can add to location inventory
             System.Console.WriteLine("Adding to inventory");
             OnAddInventory();
         }
-        public void OnAddInventory(){
-            if(managedInventory != null){
+        public void OnAddInventory()
+        {
+            if (managedInventory != null)
+            {
                 managedInventory();
             }
         }
 
-        string path2 = @"LocationLib\LocationOrderHistory.txt";
         public event LocationDel OrderHistory;
         ///retrieves location order history which can be further sorted from menus
 
-        public async void GetHistory(){
+        public void GetHistory(int id)
+        {
             System.Console.WriteLine("Retrieving location order history");
-            await.Task.Run(new Action(LocationOrderHistory));
             System.Console.WriteLine("Order history acquired");
+            dbRepo.GetAllOrdersByLocationIDDateAscending(id); //return OrderHistory
             OrderHistory();
-        }
-
-        public void LocationOrderHistory(){
-            System.Console.WriteLine("Compiling order history");
-            System.Threading.Thread.Sleep(2000);
-            string orderHistory = System.IO.File.ReadAllText(path2);
-            System.Console.WriteLine("Order history obtained");
-            System.Console.WriteLine($"{orderHistory}");
         }
     }
 }

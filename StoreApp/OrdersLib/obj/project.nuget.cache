@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "PaMnCp3x1ahNqvVk8QXANshf0eC9rs1F12uYxQ3aCVo1u28EJGg0hM84iSYT1kZ9US9u6Q1vdDy5PpiJdfLGEA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrdersLib\\OrdersLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\nfh22\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
