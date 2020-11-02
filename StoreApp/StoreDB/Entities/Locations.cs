@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace StoreDB.Entities
@@ -12,5 +13,10 @@ namespace StoreDB.Entities
         public string Address { get; set; }
         public List<int> ProductIDs { get; set; }
         public List<int> OrderHistory { get; set; }
+
+        public static implicit operator int(Locations v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

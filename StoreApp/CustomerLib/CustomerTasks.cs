@@ -17,7 +17,7 @@ namespace CustomerLib
         public void PlaceOrder(Orders order)
         {
             Console.WriteLine("Opened Cart");
-            dBRepo.PlaceOrderAsync(order);
+           // dBRepo.PlaceOrderAsync(order);
             Console.WriteLine("Hope you found everything you were looking for today!");
             Console.WriteLine("Come back to Sports Authenticated soon!");
             OnPlacedOrder();// call to notify all subscribers

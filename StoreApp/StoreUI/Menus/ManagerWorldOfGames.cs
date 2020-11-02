@@ -39,36 +39,21 @@ namespace StoreUI.Menus
                 {
                     /// lists products sorted by type
                     case "1":
-                        List<Products> allProductsByType = dBRepo.GetAllProductsByType();
                         Console.WriteLine("What type of autographed item are you looking for?");
                         string item = Console.ReadLine();
-                        ///want to add function that will only show items type requested
-                        foreach (var product in allProductsByType)
-                        {
-                            Console.WriteLine($"Product {product.Sport} - {product.Athlete} - {product.Quantity} - {product.Price}");
-                        }
+                        List<Products> allProductsByType = dBRepo.ViewAllProductsByItem(item);
                         break;
-                    ///lists products sorted by sport
+                    ///lists products of sport
                     case "2":
-                        List<Products> allProductBySport = dBRepo.GetAllProductsBySport();
                         Console.WriteLine("What sport are you looking for autographs for?");
                         string sport = Console.ReadLine();
-                        ///want to add function that will only show items belonging to sport requested
-                        foreach (var product in allProductBySport)
-                        {
-                            Console.WriteLine($"Products {product.Athlete} - {product.Item} - {product.Quantity} - {product.Price}");
-                        }
+                        List<Products> allProductBySport = dBRepo.ViewAllProductsBySport(sport);
                         break;
-                    /// lists products by person
+                    /// lists products of person
                     case "3":
-                        List<Products> allProductsByPerson = dBRepo.GetAllProductsByPerson();
                         Console.WriteLine("What athlete are you looking for?");
                         string athlete = Console.ReadLine();
-                        ///want to add function that will only show athlete requested
-                        foreach (var product in allProductsByPerson)
-                        {
-                            Console.WriteLine($"Products {product.Sport} - {product.Item} - {product.Quantity} - {product.Price}");
-                        }
+                        List<Products> allProductsByPerson = dBRepo.ViewAllProductsByAthlete(athlete);
                         break;
                     case "4":
                         Console.WriteLine("Bye hope you come again soon");
@@ -101,7 +86,7 @@ namespace StoreUI.Menus
                     Products addProduct = new Products(id, productName, productType, quan, local);
                     i += 1;
                 }
-                while (i <= newP);
+                while (i <= newP); 
             }
             else
             {
@@ -117,7 +102,7 @@ namespace StoreUI.Menus
                     Console.WriteLine("Redirecting you back to the first menu");
                     signInMenu.Start();
                 }
-            }
-        }
+            } 
+        } 
     }
 }

@@ -4,6 +4,7 @@ using StoreDB.Entities;
 using System;
 using LocationLib;
 using System.Configuration;
+using System.Collections.Generic;
 
 namespace StoreUI.Menus
 {
@@ -27,6 +28,7 @@ namespace StoreUI.Menus
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
+        private ManagerMenu managerMenu;
 
         private Customers customer;
         private StoreContext storeContext;
@@ -36,13 +38,7 @@ namespace StoreUI.Menus
         private LocationService locationService;
 
         private DBRepo dBRepo;
-
-        public WelcomeMenu(StoreContext storeContext, ICustomerRepo customerRepo, ILocationRepo locationRepo)
-        {
-            this.storeContext = storeContext;
-            this.customerRepo = customerRepo;
-            this.locationRepo = locationRepo;
-        }
+        
 
         public void Start()
         {
@@ -58,14 +54,16 @@ namespace StoreUI.Menus
                         Managers manager = new Managers();
                         Console.WriteLine("Please enter your username:");
                         string managerUserName = Console.ReadLine();
-                        dBRepo.GetAllManagersAsync();
+                        /// would like to validate this but idk how
                         ///if output from dBRepo contains user input redirect to location corresponding to manager
+                        managerMenu.Start();
                         break;
                     case "2":
                         Customers customer = new Customers();
                         System.Console.WriteLine("Please enter your username:");
                         string returningCustomerUserName = System.Console.ReadLine();
                         dBRepo.GetAllCustomersAsync();
+                        /// not sure about validations so going to redirect and try to figure it out later
                         ///compare output with returning user input
                         ///if passes
                         System.Console.WriteLine($"Welcome back {customer.UserName}");
@@ -86,6 +84,10 @@ namespace StoreUI.Menus
                         break;
                     case "4":
                         System.Console.WriteLine("Bye come again some other time.");
+                        break;
+                    default:
+                        System.Console.WriteLine("Invalid Input please try again");
+                        signInMenu.Start();
                         break;
                 }
             } while (!userInput.Equals("4"));

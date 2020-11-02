@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StoreDB;
+using System.Data;
 
 namespace StoreDB
 {
@@ -30,6 +31,14 @@ namespace StoreDB
         {
             return mapper.ParseCustomer(context.Customer.Include("UserName, Email").First(x => x.UserName == "name"));
         }
+        public Managers GetManagerByName(string name)
+        {
+            return mapper.ParseManager(context.Managers.Include("location").First(x => x.Name == "name"));
+        }
+        public Managers GetManagerByID(int id)
+        {
+            return mapper.ParseManager(context.Managers.Include("UserName, Location").First(x => x.ID == id));
+        }
         public void AddProductToCartAsync(Products product)
         {
             context.Product.AddAsync(mapper.ParseProducts(product));
@@ -37,9 +46,9 @@ namespace StoreDB
         }
         public void PlaceOrderAsync(Orders order)
         {
-            //context.Order.PlaceOrderAsync(mapper.ParseOrder(order));
+            context.Order.AddAsync(mapper.ParseOrder(order));
             context.SaveChangesAsync();
-        }
+        } 
         public List<Products> GetAllProductsInCartByCartID(int id)
         {
             return mapper.ParseOrder(
@@ -60,9 +69,9 @@ namespace StoreDB
         }
         public void DeleteProductInCart(Products product)
         {
-          //  context.Product.DeleteProductInCart(mapper.ParseProducts(product));
+            context.Product.Remove(mapper.ParseProducts(product));
             context.SaveChanges();
-        }
+        } 
 
         /// <summary>
         /// customer section
@@ -83,7 +92,7 @@ namespace StoreDB
                 )
             );
         }
-
+         
         /// <summary>
         /// Order histories
         /// </summary>
@@ -175,7 +184,39 @@ namespace StoreDB
                     .Where(x => x.locationID == context.Location.Single(y => y.locationID == id).locationID)
                     .ToList()
                 );
-            }
+        }
+        /// <summary>
+        /// search entire inventory by sport/ athlete/ item
+        /// </summary>
+        /// <param name="sport"></param>
+        /// <returns></returns>
+        public List<Products> ViewAllProductsBySport(string sport)
+        {
+            return (List<Products>)mapper.ParseProducts(
+                context.Product
+                .Include("Name - Quantity - Item - Price")
+                .Where(x => x.Sport == sport)
+                .ToList()
+            );
+        }
+        public List<Products> ViewAllProductsByAthlete(string athlete)
+        {
+            return (List<Products>)mapper.ParseProducts(
+                context.Product
+                .Include("Name - Quantity - Item - Price")
+                .Where(x => x.Athlete == athlete)
+                .ToList()
+            );
+        }
+        public List<Products> ViewAllProductsByItem(string item)
+        {
+            return (List<Products>)mapper.ParseProducts(
+                context.Product
+                .Include("Name - Quantity - Item - Price")
+                .Where(x => x.Item == item)
+                .ToList()
+            );
+        }
         /// <summary>
         /// manager/location section
         /// </summary>     
@@ -209,7 +250,7 @@ namespace StoreDB
         }
         public void DeleteProduct(Products product)
         {
-         //   context.Product.Delete(mapper.ParseProducts(product));
+            context.Product.Remove(mapper.ParseProducts(product));
             context.SaveChanges();
         }
         public List<Managers> GetAllManagers()

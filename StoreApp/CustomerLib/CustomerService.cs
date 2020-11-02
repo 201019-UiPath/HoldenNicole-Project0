@@ -50,7 +50,7 @@ namespace CustomerLib
             /// </summary>
             /// <param name="order"></param>
             dbRepo.PlaceOrderAsync(order);
-        }
+        } 
         
         public List<Products> ViewAllProductsAtLocationAsync(int id)
         {

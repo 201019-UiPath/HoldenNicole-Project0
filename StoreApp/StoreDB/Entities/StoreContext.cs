@@ -21,6 +21,7 @@ namespace StoreDB.Entities
         public virtual DbSet<JerseyLocation> JerseyLocations { get; set; }
         public virtual DbSet<Orders> Order { get; set; }
         public virtual DbSet<Products> Product { get; set; }
+        public object Sport { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,31 +36,8 @@ namespace StoreDB.Entities
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /* modelBuilder
-                .HasPostgresExtension("btree_gin")
-                .HasPostgresExtension("citext")
-                .HasPostgresExtension("cube")
-                .HasPostgresExtension("dblink")
-                .HasPostgresExtension("dict_int")
-                .HasPostgresExtension("dict_xsyn")
-                .HasPostgresExtension("earthdistance")
-                .HasPostgresExtension("fuzzystrmatch")
-                .HasPostgresExtension("hstore")
-                .HasPostgresExtension("intarray")
-                .HasPostgresExtension("ltree")
-                .HasPostgresExtension("pg_stat_statements")
-                .HasPostgresExtension("pg_trgm")
-                .HasPostgresExtension("pgcrypto")
-                .HasPostgresExtension("pgrowlocks")
-                .HasPostgresExtension("pgstattuple")
-                .HasPostgresExtension("tablefunc")
-                .HasPostgresExtension("unaccent")
-                .HasPostgresExtension("uuid-ossp")
-                .HasPostgresExtension("xml2");
-      */
             modelBuilder.Entity<BatLocation>(entity =>
             {
                 entity.ToTable("batworld");

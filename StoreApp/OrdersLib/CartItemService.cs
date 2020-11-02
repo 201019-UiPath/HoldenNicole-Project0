@@ -34,6 +34,6 @@ namespace OrdersLib
         public void DeleteProductInCart(Products product)
         {
             dBRepo.DeleteProductInCart(product);
-        }
+        } 
     }
 }

@@ -40,6 +40,10 @@ namespace LocationLib
         {
             dbRepo.DeleteProduct(product);
         }
-
+        public Managers GetManagers(string name)
+        {
+            Managers manager = dbRepo.GetManagerByName(name);
+            return manager;
+        }
     }
 }

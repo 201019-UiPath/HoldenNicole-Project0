@@ -35,15 +35,15 @@ namespace StoreUI.Menus
                 {
                     case "1":
                         Console.WriteLine("Sending you to the search by sport menu");
-                        //redirect to search by sport menu
+                        searchBySport.Start();
                         break;
                     case "2":
                         Console.WriteLine("Sending you to the search by type of item menu");
-                        //redirect to search by item menu
+                        searchByType.Start();
                         break;
                     case "3":
                         Console.WriteLine("Sending you to the search by person menu");
-                        //redirect to search by person menu
+                        searchByPerson.Start();
                         break;
                     case "4":
                         Console.WriteLine("Bye hope you come again soon");

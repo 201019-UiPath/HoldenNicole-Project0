@@ -23,6 +23,7 @@ namespace StoreUI.Menus
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
+        private ManagerMenu managerMenu;
 
         private DBRepo dBRepo;
         public void Start()
@@ -33,6 +34,7 @@ namespace StoreUI.Menus
             /// </summary>
             /// <value></value>
             System.Console.WriteLine($"How would you like the order history for {locationID.Name} sorted?");
+            int id = locationID;
             System.Console.WriteLine("[1] Date most recent-oldest /n [2] Date oldest-most recent /n [3] Price high-low /n [4] Price low-high /n [5] Return to customer menu /n [6] exit");
             string sortedHistory = System.Console.ReadLine();
             do
@@ -41,19 +43,19 @@ namespace StoreUI.Menus
                 {
                     case "1":
                         System.Console.WriteLine("Here is the location order history sorted by most recent first: ");
-                        /// output sorted order history most recent first
+                        dBRepo.GetAllOrdersByLocationIDDateDescending(id);
                         break;
                     case "2":
                         System.Console.WriteLine("Here is the location order history with oldest orders first: ");
-                        /// output sorted order history oldest first
+                        dBRepo.GetAllOrdersByLocationIDDateAscending(id);
                         break;
                     case "3":
                         System.Console.WriteLine("Here is the location order history sorted by highest price first: ");
-                        /// output sorted order history most expensive first
+                        dBRepo.GetAllOrdersByLocationIDPriceDescending(id);
                         break;
                     case "4":
                         System.Console.WriteLine("Here is the location order history with cheapest items first: ");
-                        /// output sorted order history cheapest items first
+                        dBRepo.GetAllOrdersByLocationIDPriceDescending(id);
                         break;
                     case "5":
                         System.Console.WriteLine("Redirecting you back to the order history menu: ");
@@ -61,6 +63,7 @@ namespace StoreUI.Menus
                         /// return manager to order history menu
                         /// </summary>
                         /// <returns></returns>
+                        managerMenu.Start();
                         break;
                 }
             } while (!sortedHistory.Equals(6));
