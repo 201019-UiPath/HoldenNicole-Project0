@@ -1,4 +1,7 @@
-﻿namespace StoreUI.Menus
+﻿using StoreDB;
+using StoreDB.Entities;
+
+namespace StoreUI.Menus
 {
     public class CustomerLocationMenu : IMenu
     {
@@ -22,11 +25,24 @@
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private CustomerLocationMenu customerLocationMenu;
+        private StoreContext storeContext;
+        private StoreMapper storeMapper;
+
+        public CustomerLocationMenu(StoreContext storeContext, StoreMapper storeMapper)
+        {
+            this.storeContext = storeContext;
+            this.storeMapper = storeMapper;
+        }
 
         public void Start()
         {
             System.Console.WriteLine("Which store would you like to shop at?");
-            System.Console.WriteLine("[1] World of Bats /n [2] World of Sticks /n [3] World of Jerseys /n [4] World of Games /n [5] Back to Sign in menu");
+            System.Console.WriteLine("[1] World of Bats");
+            System.Console.WriteLine("[2] World of Sticks");
+            System.Console.WriteLine("[3] World of Jerseys");
+            System.Console.WriteLine("[4] World of Games");
+            System.Console.WriteLine("[5] Back to Sign in menu");
+            System.Console.WriteLine("[6] Exit store");
             string userInput = System.Console.ReadLine();
             switch (userInput)
             {
@@ -52,6 +68,9 @@
                     break;
                 case "5":
                     signInMenu.Start();
+                    break;
+                case "6":
+                    System.Console.WriteLine("Come back again soon!");
                     break;
                 default:
                     customerLocationMenu.Start();

@@ -672,7 +672,7 @@
           }
         }
       },
-      "Serilog/2.10.0": {
+      "Serilog/2.10.1-dev-01249": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Serilog.dll": {}
@@ -2934,10 +2934,10 @@
         "version.txt"
       ]
     },
-    "Serilog/2.10.0": {
-      "sha512": "+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+    "Serilog/2.10.1-dev-01249": {
+      "sha512": "xVVhSG4jtvtf6kuKinSYakLYc7EzRHgulNXskFnShB7e4FbalkV/8xR7iRKu+ZX+7Vo3K8vd34EQjEU8y9D4tw==",
       "type": "package",
-      "path": "serilog/2.10.0",
+      "path": "serilog/2.10.1-dev-01249",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2954,7 +2954,7 @@
         "lib/netstandard2.0/Serilog.xml",
         "lib/netstandard2.1/Serilog.dll",
         "lib/netstandard2.1/Serilog.xml",
-        "serilog.2.10.0.nupkg.sha512",
+        "serilog.2.10.1-dev-01249.nupkg.sha512",
         "serilog.nuspec"
       ]
     },
@@ -6587,7 +6587,7 @@
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.9",
       "Npgsql >= 4.1.5",
       "OrdersLib >= 1.0.0",
-      "Serilog >= 2.10.0",
+      "Serilog >= 2.10.1-dev-01249",
       "StoreDB >= 1.0.0",
       "System.Text.Json >= 4.7.2",
       "xunit >= 2.4.1"
@@ -6661,7 +6661,7 @@
           },
           "Serilog": {
             "target": "Package",
-            "version": "[2.10.0, )"
+            "version": "[2.10.1-dev-01249, )"
           },
           "System.Text.Json": {
             "target": "Package",

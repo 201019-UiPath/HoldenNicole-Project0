@@ -26,6 +26,15 @@ namespace StoreUI.Menus
         private ManagerMenu managerMenu;
 
         private DBRepo dBRepo;
+        private StoreContext storeContext;
+        private StoreMapper storeMapper;
+
+        public LocationOrderHistoryMenu(StoreContext storeContext, StoreMapper storeMapper)
+        {
+            this.storeContext = storeContext;
+            this.storeMapper = storeMapper;
+        }
+
         public void Start()
         {
             Locations locationID = new Locations();
@@ -35,7 +44,12 @@ namespace StoreUI.Menus
             /// <value></value>
             System.Console.WriteLine($"How would you like the order history for {locationID.Name} sorted?");
             int id = locationID;
-            System.Console.WriteLine("[1] Date most recent-oldest /n [2] Date oldest-most recent /n [3] Price high-low /n [4] Price low-high /n [5] Return to customer menu /n [6] exit");
+            System.Console.WriteLine("[1] Date most recent-oldest");
+            System.Console.WriteLine("[2] Date oldest-most recent");
+            System.Console.WriteLine("[3] Price high-low");
+            System.Console.WriteLine("[4] Price low-high");
+            System.Console.WriteLine("[5] Return to customer menu");
+            System.Console.WriteLine("[6] exit");
             string sortedHistory = System.Console.ReadLine();
             do
             {

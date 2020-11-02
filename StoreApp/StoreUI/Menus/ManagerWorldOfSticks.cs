@@ -26,12 +26,25 @@ namespace StoreUI.Menus
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private DBRepo dBRepo;
+
+        public ManagerWorldOfSticks(StoreContext storeContext, StoreMapper storeMapper)
+        {
+            StoreContext = storeContext;
+            StoreMapper = storeMapper;
+        }
+
+        public StoreContext StoreContext { get; }
+        public StoreMapper StoreMapper { get; }
+
         public void Start()
         {
             ///retrieve location from previous menu
             Locations location = new Locations();
             Console.WriteLine($"How would you like to see the inventory for World of Sticks :");
-            Console.WriteLine("[1] By type /n [2] By sport /n [3] By person /n [4] exit store");
+            Console.WriteLine("[1] By type");
+            System.Console.WriteLine("[2] By sport");
+            System.Console.WriteLine("[3] By person");
+            System.Console.WriteLine("[4] exit store");
             string sorting = System.Console.ReadLine();
             do
             {

@@ -5,6 +5,8 @@ using System;
 using LocationLib;
 using System.Configuration;
 using System.Collections.Generic;
+using Serilog;
+using Serilog.Debugging;
 
 namespace StoreUI.Menus
 {
@@ -39,12 +41,22 @@ namespace StoreUI.Menus
 
         private DBRepo dBRepo;
         
-
+        public SignInMenu(StoreContext context, IMapper mapper)
+        {
+            this.customerMenu = new CustomerMenu(new StoreContext(), new StoreMapper());
+            this.managerMenu = new ManagerMenu(new StoreContext(), new StoreMapper());
+        }
         public void Start()
         {
+            Log.Debug("Please work");
+            Log.Information("Seriously");
+            Log.Error("Please");
             Console.WriteLine("Howdy! Welcome to Sports Authenticated!");
             Console.WriteLine("Please select the option matching you below:");
-            Console.WriteLine("[1] Sign in as a manager /n [2] Sign in as a returning customer /n [3] Sign up as a new customer /n [4] exit");
+            Console.WriteLine("[1] Sign in as a manager");
+            System.Console.WriteLine("[2] Sign in as a returning customer");
+            System.Console.WriteLine("[3] Sign up as a new customer");
+            System.Console.WriteLine("[4] exit");
             userInput = Console.ReadLine();
             do
             {

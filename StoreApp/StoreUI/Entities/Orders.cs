@@ -10,6 +10,7 @@ namespace StoreUI.Entities
         public int? Locationid { get; set; }
         public DateTime? Date { get; set; }
         public long? Price { get; set; }
+        public List<Products1> Products {get; set;}
 
         public virtual Customers Customer { get; set; }
         public virtual Locations Location { get; set; }

@@ -28,6 +28,14 @@ namespace StoreUI.Menus
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         DBRepo dBRepo;
+        private StoreContext storeContext;
+        private StoreMapper storeMapper;
+
+        public CustomerOrderHistoryMenu(StoreContext storeContext, StoreMapper storeMapper)
+        {
+            this.storeContext = storeContext;
+            this.storeMapper = storeMapper;
+        }
 
         public void Start()
         {
@@ -39,7 +47,12 @@ namespace StoreUI.Menus
             string id = System.Console.ReadLine();
             int idd = Convert.ToInt32(id);
             System.Console.WriteLine("How would you like your order history sorted?");
-            System.Console.WriteLine("[1] Date most recent-oldest /n [2] Date oldest-most recent /n [3] Price high-low /n [4] Price low-high /n [5] Return to customer menu /n [6] exit");
+            System.Console.WriteLine("[1] Date most recent-oldest");
+            System.Console.WriteLine("[2] Date oldest-most recent");
+            System.Console.WriteLine("[3] Price high-low");
+            System.Console.WriteLine("[4] Price low-high");
+            System.Console.WriteLine("[5] Return to customer menu");
+            System.Console.WriteLine("[6] exit");
             string sortedHistory = System.Console.ReadLine();
             do
             {

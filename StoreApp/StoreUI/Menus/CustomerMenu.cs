@@ -1,4 +1,6 @@
-﻿using StoreDB.Entities;
+﻿using CustomerLib;
+using StoreDB;
+using StoreDB.Entities;
 using System;
 
 namespace StoreUI.Menus
@@ -25,13 +27,29 @@ namespace StoreUI.Menus
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private CustomerLocationMenu customerLocationMenu;
+        private CustomerService service;
+        private CustomerTasks tasks;
+        private CustomerService customerService;
+        private DBRepo repo;
+        private DBRepo dBRepo;
+        private StoreContext storeContext;
+        private StoreMapper storeMapper;
+
+        public CustomerMenu(StoreContext storeContext, StoreMapper storeMapper)
+        {
+            this.storeContext = storeContext;
+            this.storeMapper = storeMapper;
+        }
 
         public void Start()
         {
             Customers customer = new Customers();
             //retrieve customer info from sign in menu
             Console.WriteLine($"Howdy {customer.UserName}! What would you like to do today at Sports Authenticated?");
-            Console.WriteLine("[1] View your order history /n [2] Shop at a specific store /n [3] Search entire inventory /n [4] exit store");
+            Console.WriteLine("[1] View your order history");
+            System.Console.WriteLine("[2] Shop at a specific store");
+            System.Console.WriteLine("[3] Search entire inventory");
+            System.Console.WriteLine("[4] exit store");
             string customerInput = Console.ReadLine();
             do
             {
@@ -49,8 +67,8 @@ namespace StoreUI.Menus
                         break;
                     case "3":
                         //redirect to customer search menu
-                        Console.WriteLine("Redirecting you to the search menu");
-                        customerSearch.Start();
+                       /* Console.WriteLine("Redirecting you to the search menu");
+                        customerSearch.Start(); */
                         break;
                     case "4":
                         //exit store

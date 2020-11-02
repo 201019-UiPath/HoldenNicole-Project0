@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nEPHk4Gry5rOH+6sp8KRakT3DHcxCJ4L8p9hN38VjdekPD3QbEWdnfRHQiLyRLgdJrk9L7U649cmIWAoGwiQbw==",
+  "dgSpecHash": "ybjjugkc54NNPdt+ybb9yICAb9+2UJZFZhRKzWXwe0jnEQqEt9LjXGf2vYMz7QNfUS3BONtDt3XLkSAshTSMDA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
+  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

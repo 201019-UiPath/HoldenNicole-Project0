@@ -1,5 +1,6 @@
 ﻿using StoreDB;
 using StoreDB.Entities;
+using StoreUI.Entities;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -29,12 +30,24 @@ namespace StoreUI.Menus
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
 
         private DBRepo dBRepo;
+        private StoreContext storeContext;
+        private StoreMapper storeMapper;
+
+        public CustomerInventoryBatsMenu(StoreContext storeContext, StoreMapper storeMapper)
+        {
+            this.storeContext = storeContext;
+            this.storeMapper = storeMapper;
+        }
+
         public void Start()
         {
             ///retrieve location from previous menus
-            Locations location = new Locations();
+            StoreDB.Entities.Locations location = new StoreDB.Entities.Locations();
             Console.WriteLine($"How would you like to see the inventory for World of Bats:");
-            Console.WriteLine("[1] By type /n [2] By sport /n [3] By person /n [4] exit store");
+            Console.WriteLine("[1] By type of item");
+            System.Console.WriteLine("[2] By sport");
+            System.Console.WriteLine("[3] By person");
+            System.Console.WriteLine("[4] exit store");
             string sorting = System.Console.ReadLine();
             do
             {
@@ -44,19 +57,19 @@ namespace StoreUI.Menus
                     case "1":
                         Console.WriteLine("What type of autographed item are you looking for?");
                         string item = Console.ReadLine();
-                        List<Products> allProductsByType = dBRepo.ViewAllProductsByItem(item);
+                        List<StoreDB.Entities.Products> allProductsByType = dBRepo.ViewAllProductsByItem(item);
                         break;
                     ///lists products sorted by sport
                     case "2":
                         Console.WriteLine("What sport are you looking for autographs for?");
                         string sport = Console.ReadLine();
-                        List<Products> allProductBySport = dBRepo.ViewAllProductsBySport(sport);
+                        List<StoreDB.Entities.Products> allProductBySport = dBRepo.ViewAllProductsBySport(sport);
                         break;
                     /// lists products by person
                     case "3":
                         Console.WriteLine("What athlete are you looking for?");
                         string athlete = Console.ReadLine();
-                        List<Products> allProductsByPerson = dBRepo.ViewAllProductsByAthlete(athlete);
+                        List<StoreDB.Entities.Products> allProductsByPerson = dBRepo.ViewAllProductsByAthlete(athlete);
                         break;
                     case "4":
                         Console.WriteLine("Bye hope you come again soon");
@@ -64,13 +77,36 @@ namespace StoreUI.Menus
                 }
             } while (!sorting.Equals(4)); 
         }
-        public Orders AddOrder()
+        public StoreDB.Entities.Orders AddOrder()
         {
-            Orders order = new Orders();
-            List<Orders> products = new List<Orders>();
-            System.Console.WriteLine("Enter product you would like to add to your order: ");
-            
-        }
+            StoreDB.Entities.Customers customer = new StoreDB.Entities.Customers();
+            StoreDB.Entities.Orders order = new StoreDB.Entities.Orders();
+            List<StoreDB.Entities.Products> products = new List<StoreDB.Entities.Products>();
+            System.Console.WriteLine("Please enter your username:");
+            customer.UserName = Console.ReadLine();
+            order.CustomerID = customer.ID;
+            order.ID = order.ID;
+            order.LocationID = 1;
+            order.Price = order.Price;
+            order.date = order.date;
+            do{
+                StoreDB.Entities.Products product = new StoreDB.Entities.Products();
+                System.Console.WriteLine("Enter product you would like to add to your order: ");
+                string id = Console.ReadLine();
+                product.ID = Convert.ToInt32(id);
+                product.Sport = product.Sport;
+                product.Price = product.Price;
+                product.Item = product.Item;
+                product.Athlete = product.Athlete;
+                if(product.ID.Equals("end")) break;
+                System.Console.WriteLine("How many would you like to order");
+                string quantity = Console.ReadLine();
+                product.Quantity = Convert.ToInt32(quantity);
+                products.Add(product);
+            } while(true);
+            order.Products = products;
+            return order;
+        } 
 
         public override bool Equals(object obj)
         {

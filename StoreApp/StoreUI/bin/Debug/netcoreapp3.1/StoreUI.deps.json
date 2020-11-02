@@ -15,7 +15,7 @@
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.9",
           "Npgsql": "4.1.5",
           "OrdersLib": "1.0.0",
-          "Serilog": "2.10.0",
+          "Serilog": "2.10.1-dev-01249",
           "StoreDB": "1.0.0",
           "System.Text.Json": "4.7.2",
           "xunit": "2.4.1"
@@ -486,11 +486,11 @@
           }
         }
       },
-      "Serilog/2.10.0": {
+      "Serilog/2.10.1-dev-01249": {
         "runtime": {
           "lib/netstandard2.1/Serilog.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.10.0.0"
+            "fileVersion": "2.10.1.0"
           }
         }
       },
@@ -1681,12 +1681,12 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "Serilog/2.10.0": {
+    "Serilog/2.10.1-dev-01249": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
-      "path": "serilog/2.10.0",
-      "hashPath": "serilog.2.10.0.nupkg.sha512"
+      "sha512": "sha512-xVVhSG4jtvtf6kuKinSYakLYc7EzRHgulNXskFnShB7e4FbalkV/8xR7iRKu+ZX+7Vo3K8vd34EQjEU8y9D4tw==",
+      "path": "serilog/2.10.1-dev-01249",
+      "hashPath": "serilog.2.10.1-dev-01249.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

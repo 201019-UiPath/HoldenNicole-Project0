@@ -10,5 +10,6 @@ namespace StoreUI.Entities
         public string Athlete { get; set; }
         public string Item { get; set; }
         public int Quantity { get; set; }
+        public long Price { get; set; }
     }
 }
