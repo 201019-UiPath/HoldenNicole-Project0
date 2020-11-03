@@ -1,38 +1,22 @@
-//using StoreBL;
 using StoreDB;
 using StoreDB.Entities;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Serilog;
+using CustomerLib;
 
 namespace StoreUI.Menus
 {
     public class CustomerOrderHistoryMenu : IMenu
     {
-        private string userInput;
         private CustomerMenu customerMenu;
-        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SearchByPerson searchByPerson;
-        private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
-        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
-        DBRepo dBRepo;
+        private CustomerService customerService;
         private StoreContext storeContext;
         private StoreMapper storeMapper;
+        private Customers customer;
 
-        public CustomerOrderHistoryMenu(StoreContext storeContext, StoreMapper storeMapper)
+        public CustomerOrderHistoryMenu(Customers customer, StoreContext storeContext, StoreMapper storeMapper)
         {
+            this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -54,37 +38,48 @@ namespace StoreUI.Menus
             System.Console.WriteLine("[5] Return to customer menu");
             System.Console.WriteLine("[6] exit");
             string sortedHistory = System.Console.ReadLine();
-            do
+            
+            switch (sortedHistory)
             {
-                switch (sortedHistory)
-                {
-                    case "1":
-                        System.Console.WriteLine("Here is your order history sorted by most recent first: ");
-                        dBRepo.GetAllOrdersByCustomerIDDateDescending(idd);
-                        
-                        break;
-                    case "2":
-                        System.Console.WriteLine("Here is your order history with oldest orders first: ");
-                        dBRepo.GetAllOrdersByCustomerIDPriceAscending(idd);
-                        break;
-                    case "3":
-                        System.Console.WriteLine("Here is your order history sorted by highest price first: ");
-                        dBRepo.GetAllOrdersByCustomerIDPriceDescending(idd);
-                        break;
-                    case "4":
-                        System.Console.WriteLine("Here is your order history with cheapest items first: ");
-                        dBRepo.GetAllOrdersByCustomerIDPriceDescending(idd);
-                        break;
-                    case "5":
-                        System.Console.WriteLine("Redirecting you back to customer main menu");
-                        customerMenu.Start();
-                        /// <summary>
-                        /// return customer to main customer menu
-                        /// </summary>
-                        /// <returns></returns>
-                        break;
-                }
-            } while (!sortedHistory.Equals(6)); 
+                case "1":
+                    System.Console.WriteLine("Here is your order history sorted by most recent first: ");
+                    customerService.GetAllOrdersByCustomerIDDateDescending(idd);
+                    Log.Information("order history newest first");
+                    break;
+                case "2":
+                    System.Console.WriteLine("Here is your order history with oldest orders first: ");
+                    customerService.GetAllOrdersByCustomerIDPriceAscending(idd);
+                    Log.Information("order history oldest first");
+                    break;
+                case "3":
+                    System.Console.WriteLine("Here is your order history sorted by highest price first: ");
+                    customerService.GetAllOrdersByCustomerIDPriceDescending(idd);
+                    Log.Information("order history most expensive first");
+                    break;
+                case "4":
+                    System.Console.WriteLine("Here is your order history with cheapest items first: ");
+                    customerService.GetAllOrdersByCustomerIDPriceDescending(idd);
+                    Log.Information("order history cheapest first");
+                    break;
+                case "5":
+                    System.Console.WriteLine("Redirecting you back to customer main menu");
+                    customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
+                    customerMenu.Start();
+                    Log.Information("back to customer menu");
+                    /// <summary>
+                    /// return customer to main customer menu
+                    /// </summary>
+                    /// <returns></returns>
+                    break;
+                case "6":
+                    Environment.Exit(0);
+                    Log.Information("buy something already");
+                    break;
+                default:
+                    System.Console.WriteLine("Invalid Input");
+                    Log.Error("Invalid input");
+                    break;
+            }
         } 
     }
 }

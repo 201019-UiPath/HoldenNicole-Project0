@@ -672,13 +672,28 @@
           }
         }
       },
-      "Serilog/2.10.1-dev-01249": {
+      "Serilog/2.10.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Serilog.dll": {}
         },
         "runtime": {
           "lib/netstandard2.1/Serilog.dll": {}
+        }
+      },
+      "Serilog.Sinks.File/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "2.5.0",
+          "System.IO.FileSystem": "4.0.1",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading.Timer": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Sinks.File.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Sinks.File.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -2934,10 +2949,10 @@
         "version.txt"
       ]
     },
-    "Serilog/2.10.1-dev-01249": {
-      "sha512": "xVVhSG4jtvtf6kuKinSYakLYc7EzRHgulNXskFnShB7e4FbalkV/8xR7iRKu+ZX+7Vo3K8vd34EQjEU8y9D4tw==",
+    "Serilog/2.10.0": {
+      "sha512": "+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
       "type": "package",
-      "path": "serilog/2.10.1-dev-01249",
+      "path": "serilog/2.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2954,8 +2969,28 @@
         "lib/netstandard2.0/Serilog.xml",
         "lib/netstandard2.1/Serilog.dll",
         "lib/netstandard2.1/Serilog.xml",
-        "serilog.2.10.1-dev-01249.nupkg.sha512",
+        "serilog.2.10.0.nupkg.sha512",
         "serilog.nuspec"
+      ]
+    },
+    "Serilog.Sinks.File/4.1.0": {
+      "sha512": "U0b34w+ZikbqWEZ3ui7BdzxY/19zwrdhLtI3o6tfmLdD3oXxg7n2TZJjwCCTlKPgRuYic9CBWfrZevbb70mTaw==",
+      "type": "package",
+      "path": "serilog.sinks.file/4.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Serilog.Sinks.File.dll",
+        "lib/net45/Serilog.Sinks.File.pdb",
+        "lib/net45/Serilog.Sinks.File.xml",
+        "lib/netstandard1.3/Serilog.Sinks.File.dll",
+        "lib/netstandard1.3/Serilog.Sinks.File.pdb",
+        "lib/netstandard1.3/Serilog.Sinks.File.xml",
+        "lib/netstandard2.0/Serilog.Sinks.File.dll",
+        "lib/netstandard2.0/Serilog.Sinks.File.pdb",
+        "lib/netstandard2.0/Serilog.Sinks.File.xml",
+        "serilog.sinks.file.4.1.0.nupkg.sha512",
+        "serilog.sinks.file.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -6587,9 +6622,10 @@
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.9",
       "Npgsql >= 4.1.5",
       "OrdersLib >= 1.0.0",
-      "Serilog >= 2.10.1-dev-01249",
+      "Serilog >= 2.10.0",
       "StoreDB >= 1.0.0",
       "System.Text.Json >= 4.7.2",
+      "serilog.sinks.file >= 4.1.0",
       "xunit >= 2.4.1"
     ]
   },
@@ -6661,11 +6697,15 @@
           },
           "Serilog": {
             "target": "Package",
-            "version": "[2.10.1-dev-01249, )"
+            "version": "[2.10.0, )"
           },
           "System.Text.Json": {
             "target": "Package",
             "version": "[4.7.2, )"
+          },
+          "serilog.sinks.file": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           },
           "xunit": {
             "target": "Package",

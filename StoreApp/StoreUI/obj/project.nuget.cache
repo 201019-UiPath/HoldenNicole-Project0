@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "96MVvmR/BjPoCpolyHWqET8HL+04Vd3QBWqRsVzRt7gTx32KZvWaVQriQZorVWTdDK3YxxGJrZyV6Foo+CmR6A==",
+  "dgSpecHash": "k0R2j9SG4PrQdfeB81AH+9j5nqhDgbZINPSKMTGXfrOU0+F6XVTmd79vGtqWCkgFrX2GYpcGPfzVQ5iV/jdfaA==",
   "success": true,
   "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreUI\\StoreUI.csproj",
   "expectedPackageFiles": [
@@ -58,7 +58,8 @@
     "C:\\Users\\nfh22\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\nfh22\\.nuget\\packages\\serilog\\2.10.1-dev-01249\\serilog.2.10.1-dev-01249.nupkg.sha512",
+    "C:\\Users\\nfh22\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\nfh22\\.nuget\\packages\\serilog.sinks.file\\4.1.0\\serilog.sinks.file.4.1.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\system.codedom\\4.7.0\\system.codedom.4.7.0.nupkg.sha512",

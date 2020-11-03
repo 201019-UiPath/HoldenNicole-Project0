@@ -26,9 +26,11 @@ namespace StoreUI.Menus
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private StoreContext storeContext;
         private StoreMapper storeMapper;
+        private Customers customer;
 
-        public CustomerSearch(StoreContext storeContext, StoreMapper storeMapper)
+        public CustomerSearch(Customers customer, StoreContext storeContext, StoreMapper storeMapper)
         {
+            this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }

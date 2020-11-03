@@ -1,36 +1,21 @@
 using StoreDB;
 using StoreDB.Entities;
+using Serilog;
+using LocationLib;
 
 namespace StoreUI.Menus
 {
     public class LocationOrderHistoryMenu : IMenu
     {
-        private string userInput;
-        private CustomerMenu customerMenu;
-        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SearchByPerson searchByPerson;
-        private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
-        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private ManagerMenu managerMenu;
-
-        private DBRepo dBRepo;
+        private LocationService locationService;
         private StoreContext storeContext;
         private StoreMapper storeMapper;
+        private Managers manager;
 
-        public LocationOrderHistoryMenu(StoreContext storeContext, StoreMapper storeMapper)
+        public LocationOrderHistoryMenu(Managers manager, StoreContext storeContext, StoreMapper storeMapper)
         {
+            this.manager = manager;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -51,36 +36,44 @@ namespace StoreUI.Menus
             System.Console.WriteLine("[5] Return to customer menu");
             System.Console.WriteLine("[6] exit");
             string sortedHistory = System.Console.ReadLine();
-            do
+            
+            switch (sortedHistory)
             {
-                switch (sortedHistory)
-                {
-                    case "1":
-                        System.Console.WriteLine("Here is the location order history sorted by most recent first: ");
-                        dBRepo.GetAllOrdersByLocationIDDateDescending(id);
-                        break;
-                    case "2":
-                        System.Console.WriteLine("Here is the location order history with oldest orders first: ");
-                        dBRepo.GetAllOrdersByLocationIDDateAscending(id);
-                        break;
-                    case "3":
-                        System.Console.WriteLine("Here is the location order history sorted by highest price first: ");
-                        dBRepo.GetAllOrdersByLocationIDPriceDescending(id);
-                        break;
-                    case "4":
-                        System.Console.WriteLine("Here is the location order history with cheapest items first: ");
-                        dBRepo.GetAllOrdersByLocationIDPriceDescending(id);
-                        break;
-                    case "5":
-                        System.Console.WriteLine("Redirecting you back to the order history menu: ");
-                        /// <summary>
-                        /// return manager to order history menu
-                        /// </summary>
-                        /// <returns></returns>
-                        managerMenu.Start();
-                        break;
-                }
-            } while (!sortedHistory.Equals(6));
+                case "1":
+                    System.Console.WriteLine("Here is the location order history sorted by most recent first: ");
+                    locationService.GetAllOrdersByLocationIDDateDescending(id);
+                    Log.Information("order history newest first");
+                    break;
+                case "2":
+                    System.Console.WriteLine("Here is the location order history with oldest orders first: ");
+                    locationService.GetAllOrdersByLocationIDDateAscending(id);
+                    Log.Information("order history oldest first");
+                    break;
+                case "3":
+                    System.Console.WriteLine("Here is the location order history sorted by highest price first: ");
+                    locationService.GetAllOrdersByLocationIDPriceDescending(id);
+                    Log.Information("order history most expensive first");
+                    break;
+                case "4":
+                    System.Console.WriteLine("Here is the location order history with cheapest items first: ");
+                    locationService.GetAllOrdersByLocationIDPriceDescending(id);
+                    Log.Information("order history cheapest first");
+                    break;
+                case "5":
+                    System.Console.WriteLine("Redirecting you back to the order history menu: ");
+                    /// <summary>
+                    /// return manager to order history menu
+                    /// </summary>
+                    /// <returns></returns>
+                    managerMenu = new ManagerMenu(manager, storeContext, new StoreMapper());
+                    managerMenu.Start();
+                    Log.Information("menu");
+                    break;
+                default:
+                    System.Console.WriteLine("Invalid Input");
+                    Log.Error("Invalid input");
+                    break;
+            }
         }
     }
 }

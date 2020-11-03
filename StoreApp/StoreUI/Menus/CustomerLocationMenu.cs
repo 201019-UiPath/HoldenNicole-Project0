@@ -1,25 +1,12 @@
 ﻿using StoreDB;
 using StoreDB.Entities;
+using Serilog;
 
 namespace StoreUI.Menus
 {
     public class CustomerLocationMenu : IMenu
     {
-        private string userInput;
-        private CustomerMenu customerMenu;
-        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
         private CustomerInventorySticks customerInventorySticksMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
@@ -28,8 +15,11 @@ namespace StoreUI.Menus
         private StoreContext storeContext;
         private StoreMapper storeMapper;
 
-        public CustomerLocationMenu(StoreContext storeContext, StoreMapper storeMapper)
+        private Customers customer;
+
+        public CustomerLocationMenu(Customers customer, StoreContext storeContext, StoreMapper storeMapper)
         {
+            this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -49,31 +39,43 @@ namespace StoreUI.Menus
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
                     System.Console.WriteLine("Hope you find something you like");
+                    customerInventoryBatsMenu = new CustomerInventoryBatsMenu(customer, storeContext, new StoreMapper());
                     customerInventoryBatsMenu.Start();
+                    Log.Information("bats store selected");
                     break;
                 case "2":
                     System.Console.WriteLine("Sending you to the World of Sticks branch");
                     System.Console.WriteLine("Hope you find something you like");
+                    customerInventorySticksMenu = new CustomerInventorySticks(customer, storeContext, new StoreMapper());
                     customerInventorySticksMenu.Start();
+                    Log.Information("sticks store selected");
                     break;
                 case "3":
                     System.Console.WriteLine("Sending you to the World of Jerseys branch");
                     System.Console.WriteLine("Hope you find something you like");
+                    customerInventoryJerseysMenu = new CustomerInventoryJerseysMenu(customer, storeContext, new StoreMapper());
                     customerInventoryJerseysMenu.Start();
+                    Log.Information("jersey store selected");
                     break;
                 case "4":
                     System.Console.WriteLine("Sending you to the World of Games branch");
                     System.Console.WriteLine("Hope you find somthing you like");
+                    customerInventoryGamesMenu = new CustomerInventoryGamesMenu(customer, storeContext, new StoreMapper());
                     customerInventoryGamesMenu.Start();
+                    Log.Information("games store selected");
                     break;
                 case "5":
                     signInMenu.Start();
+                    Log.Information("backwards");
                     break;
                 case "6":
                     System.Console.WriteLine("Come back again soon!");
+                    Log.Information("seriously buy something");
                     break;
                 default:
+                    customerLocationMenu = new CustomerLocationMenu(customer, storeContext, new StoreMapper());
                     customerLocationMenu.Start();
+                    Log.Information("Invalid try again");
                     break;
             }
         }

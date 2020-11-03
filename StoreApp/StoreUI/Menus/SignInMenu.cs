@@ -1,12 +1,10 @@
-using CustomerLib;
 using StoreDB;
 using StoreDB.Entities;
 using System;
-using LocationLib;
-using System.Configuration;
-using System.Collections.Generic;
 using Serilog;
-using Serilog.Debugging;
+using CustomerLib;
+using OrdersLib;
+using LocationLib;
 
 namespace StoreUI.Menus
 {
@@ -14,96 +12,111 @@ namespace StoreUI.Menus
     {
         private string userInput;
         private CustomerMenu customerMenu;
-        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
-        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private ManagerMenu managerMenu;
-
-        private Customers customer;
         private StoreContext storeContext;
-        private ICustomerRepo customerRepo;
         private CustomerService customerService;
-        private ILocationRepo locationRepo;
+        private CartItemService cartService;
         private LocationService locationService;
-
-        private DBRepo dBRepo;
-        
         public SignInMenu(StoreContext context, IMapper mapper)
         {
-            this.customerMenu = new CustomerMenu(new StoreContext(), new StoreMapper());
-            this.managerMenu = new ManagerMenu(new StoreContext(), new StoreMapper());
+            this.customerMenu = new CustomerMenu(new Customers(), new StoreContext(), new StoreMapper());
+            this.managerMenu = new ManagerMenu(new Managers(), new StoreContext(), new StoreMapper());
         }
         public void Start()
         {
-            Log.Debug("Please work");
-            Log.Information("Seriously");
-            Log.Error("Please");
             Console.WriteLine("Howdy! Welcome to Sports Authenticated!");
             Console.WriteLine("Please select the option matching you below:");
             Console.WriteLine("[1] Sign in as a manager");
-            System.Console.WriteLine("[2] Sign in as a returning customer");
-            System.Console.WriteLine("[3] Sign up as a new customer");
-            System.Console.WriteLine("[4] exit");
+            Console.WriteLine("[2] Sign in as a returning customer");
+            Console.WriteLine("[3] Sign up as a new customer");
+            Console.WriteLine("[4] exit");
             userInput = Console.ReadLine();
-            do
+            
+            switch (userInput)
             {
-                switch (userInput)
-                {
-                    case "1":
-                        Managers manager = new Managers();
-                        Console.WriteLine("Please enter your username:");
-                        string managerUserName = Console.ReadLine();
-                        /// would like to validate this but idk how
-                        ///if output from dBRepo contains user input redirect to location corresponding to manager
-                        managerMenu.Start();
-                        break;
-                    case "2":
-                        Customers customer = new Customers();
-                        System.Console.WriteLine("Please enter your username:");
-                        string returningCustomerUserName = System.Console.ReadLine();
-                        dBRepo.GetAllCustomersAsync();
-                        /// not sure about validations so going to redirect and try to figure it out later
-                        ///compare output with returning user input
-                        ///if passes
-                        System.Console.WriteLine($"Welcome back {customer.UserName}");
-                        Console.WriteLine("Hope you find something you like!");
-                        /// <summary>
-                        /// send to customer menu
-                        /// </summary>
-                        customerMenu.Start();
-                        break;
-                    case "3":
-                        Customers newCustomer = new Customers();
-                        dBRepo.AddCustomerAsync(newCustomer);
-                        /// <summary>
-                        /// if pass add to customer list then
-                        /// send to customer menu otherwise give message try again
-                        /// </summary>
-                        customerMenu.Start();
-                        break;
-                    case "4":
-                        System.Console.WriteLine("Bye come again some other time.");
-                        break;
-                    default:
-                        System.Console.WriteLine("Invalid Input please try again");
-                        signInMenu.Start();
-                        break;
-                }
-            } while (!userInput.Equals("4"));
+                case "1":
+                    Managers manager = ManagerSignIn();
+                    break;
+                case "2":
+                    Customers customer = CustomerSignIn();
+                    break;
+                case "3":
+                    Customers newCustomer = Registration();
+                    break;
+                case "4":
+                    Console.WriteLine("Bye come again some other time.");
+                    Log.Information("seriously????");
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input please try again");
+                    signInMenu.Start();
+                    Log.Information("invalid input");
+                    break;
+            }
         }
-
+        public Customers CustomerSignIn()
+        {
+            Customers customer = new Customers();
+            
+            Console.WriteLine("Please enter your username:");
+            string returningCustomerUserName = Console.ReadLine();
+            try 
+            {
+                //validation brakes the functional code
+                //customer = customerService.GetCustomerByName(returningCustomerUserName);
+                //Customers returningCustomer = customer;
+                //Orders newOrder = new Orders();
+                //newOrder.CustomerID = returningCustomer.ID;
+                customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
+                customerMenu.Start();
+                Log.Information("Returning customer sighted");
+            }
+            catch(InvalidOperationException)
+            {
+                System.Console.WriteLine($"There is no registered user with the username: {customer.UserName}");
+            }
+            return customer;
+        }
+        public Managers ManagerSignIn()
+        {
+            Managers manager = new Managers();
+            Console.WriteLine("Please enter your username:");
+            string managerUserName = Console.ReadLine();
+            try
+            {
+                //validation breaks my functional code
+                //manager = locationService.GetManagerByName(managerUserName);
+                managerMenu = new ManagerMenu(manager, storeContext, new StoreMapper());
+                managerMenu.Start();
+                /// would like to validate this but idk how
+                ///if output from dBRepo contains user input redirect to location corresponding to manager
+                Log.Information("manager sighted");
+            }
+            catch(InvalidOperationException)
+            {
+                System.Console.WriteLine($"There is no manager with username: {manager.Name}");
+            }       
+            return manager;
+        }
+        public Customers Registration()
+        {
+            System.Console.WriteLine("Please enter the username you would like to use:");
+            string Name = Console.ReadLine();
+            System.Console.WriteLine("Please enter your email address:");
+            string email = Console.ReadLine();
+            System.Console.WriteLine("Please enter your address: ");
+            string address = Console.ReadLine();
+            var newCustomer = new Customers()
+            {
+                UserName = Name,
+                Email = email,
+                Address = address
+            };
+            customerMenu = new CustomerMenu(newCustomer, storeContext, new StoreMapper());
+            customerMenu.Start();
+            Log.Information("New customer sighted");
+            return newCustomer;
+        }
     }
 }

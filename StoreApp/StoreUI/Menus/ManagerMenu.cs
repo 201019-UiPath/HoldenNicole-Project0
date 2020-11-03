@@ -1,50 +1,26 @@
-using CustomerLib;
 using StoreDB;
 using StoreDB.Entities;
-using System;
-using LocationLib;
-using System.Configuration;
-using System.Collections.Generic;
+using Serilog;
 
 namespace StoreUI.Menus
 {
-    public class ManagerMenu
+    public class ManagerMenu : IMenu
     {
-        private string userInput;
-        private CustomerMenu customerMenu;
-        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SearchByPerson searchByPerson;
         private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
         private ManagerWorldOfBats managerWorldOfBats;
         private ManagerWorldOfGames managerWorldOfGames;
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
-        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private ManagerMenu managerMenu;
-
-        private Customers customer;
         private StoreContext storeContext;
-        private ICustomerRepo customerRepo;
-        private CustomerService customerService;
-        private ILocationRepo locationRepo;
-        private LocationService locationService;
-        private DBRepo dBRepo;
         private StoreMapper storeMapper;
-
-        public ManagerMenu(StoreContext storeContext, StoreMapper storeMapper)
+        private Managers manager;
+        public ManagerMenu(Managers manager, StoreContext storeContext, StoreMapper storeMapper)
         {
+            this.manager = manager;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
-
         public void Start()
         {
             System.Console.WriteLine("Which store are you the manager of?");
@@ -58,25 +34,36 @@ namespace StoreUI.Menus
             {
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
+                    managerWorldOfBats = new ManagerWorldOfBats(manager, storeContext, new StoreMapper());
                     managerWorldOfBats.Start();
+                    Log.Information("Cob");
                     break;
                 case "2":
                     System.Console.WriteLine("Sending you to the World of Sticks branch");
+                    managerWorldOfSticks = new ManagerWorldOfSticks(manager, storeContext, new StoreMapper());
                     managerWorldOfSticks.Start();
+                    Log.Information("Great One");
                     break;
                 case "3":
                     System.Console.WriteLine("Sending you to the World of Jerseys branch");
+                    managerWorldOfJerseys = new ManagerWorldOfJerseys(manager, storeContext, new StoreMapper());
                     managerWorldOfJerseys.Start();
+                    Log.Information("Miracle Team");
                     break;
                 case "4":
                     System.Console.WriteLine("Sending you to the World of Games branch");
+                    managerWorldOfGames = new ManagerWorldOfGames(manager, storeContext, new StoreMapper());
                     managerWorldOfGames.Start();
+                    Log.Information("Heisman");
                     break;
                 case "5":
+                    signInMenu = new SignInMenu(storeContext, storeMapper);
                     signInMenu.Start();
+                    Log.Information("wrong choice?");
                     break;
                 default:
                     managerMenu.Start();
+                    Log.Information("invalid option try again");
                     break;
             }
         }

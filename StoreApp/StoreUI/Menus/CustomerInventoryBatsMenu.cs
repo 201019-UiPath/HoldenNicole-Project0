@@ -1,40 +1,26 @@
 ﻿using StoreDB;
 using StoreDB.Entities;
-using StoreUI.Entities;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using Serilog;
+using CustomerLib;
+using LocationLib;
+using OrdersLib;
 
 namespace StoreUI.Menus
 {
     class CustomerInventoryBatsMenu : IMenu
     {
-        private string userInput;
-
-        private CustomerMenu customerMenu;
-        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-        private CustomerSearch customerSearch;
-        private LocationOrderHistoryMenu locationOrderHistoryMenu;
-        private SearchBySport searchBySport;
-        private SearchByType searchByType;
-        private SearchByPerson searchByPerson;
-        private SignInMenu signInMenu;
-        private SportOrderHistoryMenu sportOrderHistoryMenu;
-        private TypeOrderHistoryMenu typeOrderHistoryMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
-        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
-
-        private DBRepo dBRepo;
         private StoreContext storeContext;
         private StoreMapper storeMapper;
-
-        public CustomerInventoryBatsMenu(StoreContext storeContext, StoreMapper storeMapper)
+        private StoreDB.Entities.Customers customer;
+        private CustomerService customerService;
+        private CartItemService cartItemService;
+        private ProductServices productServices;
+        private CustomerMenu customerMenu;
+        public CustomerInventoryBatsMenu(StoreDB.Entities.Customers customer,  StoreContext storeContext, StoreMapper storeMapper)
         {
+            this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -49,33 +35,55 @@ namespace StoreUI.Menus
             System.Console.WriteLine("[3] By person");
             System.Console.WriteLine("[4] exit store");
             string sorting = System.Console.ReadLine();
-            do
+
+            switch (sorting)
             {
-                switch (sorting)
-                {
-                    /// lists products sorted by type
-                    case "1":
-                        Console.WriteLine("What type of autographed item are you looking for?");
-                        string item = Console.ReadLine();
-                        List<StoreDB.Entities.Products> allProductsByType = dBRepo.ViewAllProductsByItem(item);
-                        break;
-                    ///lists products sorted by sport
-                    case "2":
-                        Console.WriteLine("What sport are you looking for autographs for?");
-                        string sport = Console.ReadLine();
-                        List<StoreDB.Entities.Products> allProductBySport = dBRepo.ViewAllProductsBySport(sport);
-                        break;
-                    /// lists products by person
-                    case "3":
-                        Console.WriteLine("What athlete are you looking for?");
-                        string athlete = Console.ReadLine();
-                        List<StoreDB.Entities.Products> allProductsByPerson = dBRepo.ViewAllProductsByAthlete(athlete);
-                        break;
-                    case "4":
-                        Console.WriteLine("Bye hope you come again soon");
-                        break;
-                }
-            } while (!sorting.Equals(4)); 
+                /// lists products sorted by type
+                case "1":
+                    Console.WriteLine("Here are the products available at this location sorted by item:");
+                    int id = 1;
+                    List<Products> allProductsByType = productServices.ViewAllProductsAtLocationGroupByItem(id);
+                    foreach(Products p in allProductsByType)
+                    {
+                        Products product = cartItemService.GetProductByID(p.ID);
+                        System.Console.WriteLine($"[{p.ID}] {p.Item} | {p.Athlete} | {p.Sport} | {p.Quantity} | {p.Price}");
+                    }
+                    System.Console.WriteLine("Would you like to add to or start new order (yes/no)?");
+                    string add = Console.ReadLine();
+                    if(add.Equals("yes"))
+                    {
+                        AddOrder();
+                    }
+                    else
+                    {
+                        customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
+                        customerMenu.Start();
+                    }
+                    Log.Information("type of item selected");
+                    break;
+                ///lists products sorted by sport
+                case "2":
+                    Console.WriteLine("What sport are you looking for autographs for?");
+                    string sport = Console.ReadLine();
+                    List<StoreDB.Entities.Products> allProductBySport = productServices.ViewAllProductsBySport(sport);
+                    Log.Information("sport selected");
+                    break;
+                /// lists products by person
+                case "3":
+                    Console.WriteLine("What athlete are you looking for?");
+                    string athlete = Console.ReadLine();
+                    List<StoreDB.Entities.Products> allProductsByPerson = productServices.ViewAllProductsByAthlete(athlete);
+                    Log.Information("athlete selected");
+                    break;
+                case "4":
+                    Console.WriteLine("Bye hope you come again soon");
+                    Log.Information("Hsss leaving store");
+                    break;
+                default:
+                    System.Console.WriteLine("Invalid Input");
+                    Log.Error("Invalid input");
+                    break;
+            }
         }
         public StoreDB.Entities.Orders AddOrder()
         {
@@ -89,6 +97,7 @@ namespace StoreUI.Menus
             order.LocationID = 1;
             order.Price = order.Price;
             order.date = order.date;
+            Log.Information("adding order from bats store");
             do{
                 StoreDB.Entities.Products product = new StoreDB.Entities.Products();
                 System.Console.WriteLine("Enter product you would like to add to your order: ");
@@ -107,16 +116,5 @@ namespace StoreUI.Menus
             order.Products = products;
             return order;
         } 
-
-        public override bool Equals(object obj)
-        {
-            return obj is CustomerInventoryBatsMenu menu &&
-                   EqualityComparer<DBRepo>.Default.Equals(dBRepo, menu.dBRepo);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(dBRepo);
-        }
     }
 }
