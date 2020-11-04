@@ -1,5 +1,5 @@
-﻿using StoreDB;
-using StoreDB.Entities;
+﻿using StoreUI;
+using StoreUI.Entities;
 using System;
 using System.Collections.Generic;
 using Serilog;
@@ -11,14 +11,14 @@ namespace StoreUI.Menus
 {
     class CustomerInventoryBatsMenu : IMenu
     {
-        private StoreContext storeContext;
+        private hyfhtbziContext storeContext;
         private StoreMapper storeMapper;
-        private StoreDB.Entities.Customers customer;
+        private StoreUI.Entities.Customers customer;
         private CustomerService customerService;
         private CartItemService cartItemService;
         private ProductServices productServices;
         private CustomerMenu customerMenu;
-        public CustomerInventoryBatsMenu(StoreDB.Entities.Customers customer,  StoreContext storeContext, StoreMapper storeMapper)
+        public CustomerInventoryBatsMenu(StoreUI.Entities.Customers customer,  hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
@@ -28,7 +28,7 @@ namespace StoreUI.Menus
         public void Start()
         {
             ///retrieve location from previous menus
-            StoreDB.Entities.Locations location = new StoreDB.Entities.Locations();
+            StoreUI.Entities.Locations location = new StoreUI.Entities.Locations();
             Console.WriteLine($"How would you like to see the inventory for World of Bats:");
             Console.WriteLine("[1] By type of item");
             System.Console.WriteLine("[2] By sport");
@@ -52,11 +52,11 @@ namespace StoreUI.Menus
                     string add = Console.ReadLine();
                     if(add.Equals("yes"))
                     {
-                        AddOrder();
+                       // AddOrder();
                     }
                     else
                     {
-                        customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
+                        customerMenu = new CustomerMenu(customer, new hyfhtbziContext(), new StoreMapper());
                         customerMenu.Start();
                     }
                     Log.Information("type of item selected");
@@ -65,14 +65,14 @@ namespace StoreUI.Menus
                 case "2":
                     Console.WriteLine("What sport are you looking for autographs for?");
                     string sport = Console.ReadLine();
-                    List<StoreDB.Entities.Products> allProductBySport = productServices.ViewAllProductsBySport(sport);
+                    List<StoreUI.Entities.Products> allProductBySport = productServices.ViewAllProductsBySport(sport);
                     Log.Information("sport selected");
                     break;
                 /// lists products by person
                 case "3":
                     Console.WriteLine("What athlete are you looking for?");
                     string athlete = Console.ReadLine();
-                    List<StoreDB.Entities.Products> allProductsByPerson = productServices.ViewAllProductsByAthlete(athlete);
+                    List<StoreUI.Entities.Products> allProductsByPerson = productServices.ViewAllProductsByAthlete(athlete);
                     Log.Information("athlete selected");
                     break;
                 case "4":
@@ -85,11 +85,11 @@ namespace StoreUI.Menus
                     break;
             }
         }
-        public StoreDB.Entities.Orders AddOrder()
+      /*  public StoreUI.Entities.Orders AddOrder()
         {
-            StoreDB.Entities.Customers customer = new StoreDB.Entities.Customers();
-            StoreDB.Entities.Orders order = new StoreDB.Entities.Orders();
-            List<StoreDB.Entities.Products> products = new List<StoreDB.Entities.Products>();
+            StoreUI.Entities.Customers customer = new StoreUI.Entities.Customers();
+            StoreUI.Entities.Orders order = new StoreUI.Entities.Orders();
+            List<StoreUI.Entities.Products> products = new List<StoreUI.Entities.Products>();
             System.Console.WriteLine("Please enter your username:");
             customer.UserName = Console.ReadLine();
             order.CustomerID = customer.ID;
@@ -99,7 +99,7 @@ namespace StoreUI.Menus
             order.date = order.date;
             Log.Information("adding order from bats store");
             do{
-                StoreDB.Entities.Products product = new StoreDB.Entities.Products();
+                StoreUI.Entities.Products product = new StoreUI.Entities.Products();
                 System.Console.WriteLine("Enter product you would like to add to your order: ");
                 string id = Console.ReadLine();
                 product.ID = Convert.ToInt32(id);
@@ -115,6 +115,6 @@ namespace StoreUI.Menus
             } while(true);
             order.Products = products;
             return order;
-        } 
+        } */
     }
 }

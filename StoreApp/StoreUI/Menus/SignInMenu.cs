@@ -1,5 +1,5 @@
-using StoreDB;
-using StoreDB.Entities;
+using StoreUI;
+using StoreUI.Entities;
 using System;
 using Serilog;
 using CustomerLib;
@@ -14,14 +14,14 @@ namespace StoreUI.Menus
         private CustomerMenu customerMenu;
         private SignInMenu signInMenu;
         private ManagerMenu managerMenu;
-        private StoreContext storeContext;
+        private hyfhtbziContext storeContext;
         private CustomerService customerService;
         private CartItemService cartService;
         private LocationService locationService;
-        public SignInMenu(StoreContext context, IMapper mapper)
+        public SignInMenu(hyfhtbziContext context, IMapper mapper)
         {
-            this.customerMenu = new CustomerMenu(new Customers(), new StoreContext(), new StoreMapper());
-            this.managerMenu = new ManagerMenu(new Managers(), new StoreContext(), new StoreMapper());
+            this.customerMenu = new CustomerMenu(new Customers(), new hyfhtbziContext(), new StoreMapper());
+            this.managerMenu = new ManagerMenu(new Managers(), new hyfhtbziContext(), new StoreMapper());
         }
         public void Start()
         {
@@ -109,7 +109,7 @@ namespace StoreUI.Menus
             string address = Console.ReadLine();
             var newCustomer = new Customers()
             {
-                UserName = Name,
+                Name = Name,
                 Email = email,
                 Address = address
             };

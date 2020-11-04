@@ -1,5 +1,5 @@
-﻿using StoreDB;
-using StoreDB.Entities;
+﻿using StoreUI;
+using StoreUI.Entities;
 using System;
 using System.Collections.Generic;
 using Serilog;
@@ -14,20 +14,20 @@ namespace StoreUI.Menus
         private Managers manager;
         private ProductServices productServices;
 
-        public ManagerWorldOfSticks(Managers manager, StoreContext storeContext, StoreMapper storeMapper)
+        public ManagerWorldOfSticks(Managers manager, hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
 
-        public ManagerWorldOfSticks(StoreContext storeContext, StoreMapper storeMapper)
+        public ManagerWorldOfSticks(hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
 
         }
-        public StoreContext storeContext { get; }
+        public hyfhtbziContext storeContext { get; }
         public StoreMapper storeMapper { get; }
 
         /*   public string ViewAllProductsAtLocation(int id)
@@ -66,12 +66,12 @@ namespace StoreUI.Menus
                 case "1":
                     Console.WriteLine("What type of autographed item are you looking for?");
                     string sport = Console.ReadLine();
+                    int id = 2;
 
-                    List<Products> products = (List<Products>)storeContext.Product.GroupBy(p => p.Sport);
-                    foreach(var t in products)
+                    foreach(Products t in productServices.ViewAllProductsAtLocationGroupByItem(id))
                     {
-                        System.Console.WriteLine($"{t.Athlete}, {t.Item}");
-                    }  
+                        System.Console.WriteLine($"Products available: Athlete: {t.Athlete} | Item: {t.Item} | Price: {t.Price} | Available Quantity: {t.Quantity}");
+                    }
                     Log.Information("Item type selected");
                     break;
                     ///lists products of sport

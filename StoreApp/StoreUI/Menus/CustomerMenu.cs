@@ -1,6 +1,6 @@
 ﻿using CustomerLib;
-using StoreDB;
-using StoreDB.Entities;
+using StoreUI;
+using StoreUI.Entities;
 using System;
 using Serilog;
 
@@ -10,11 +10,11 @@ namespace StoreUI.Menus
     {
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerLocationMenu customerLocationMenu;
-        private StoreContext storeContext;
+        private hyfhtbziContext storeContext;
         private StoreMapper storeMapper;
         private Customers customer;
 
-        public CustomerMenu(Customers customer, StoreContext storeContext, StoreMapper storeMapper)
+        public CustomerMenu(Customers customer, hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;

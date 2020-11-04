@@ -1,5 +1,5 @@
-﻿using StoreDB;
-using StoreDB.Entities;
+﻿using StoreUI;
+using StoreUI.Entities;
 using System;
 using System.Collections.Generic;
 using Serilog;
@@ -11,11 +11,11 @@ namespace StoreUI.Menus
     {
         private SignInMenu signInMenu;
         private ProductServices productServices;
-        private StoreContext storeContext;
+        private hyfhtbziContext storeContext;
         private StoreMapper storeMapper;
         private Managers manager;
 
-        public ManagerWorldOfBats(Managers manager, StoreContext storeContext, StoreMapper storeMapper)
+        public ManagerWorldOfBats(Managers manager, hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;

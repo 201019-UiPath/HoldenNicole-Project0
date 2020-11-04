@@ -1,5 +1,5 @@
-using StoreDB;
-using StoreDB.Entities;
+using StoreUI;
+using StoreUI.Entities;
 using Serilog;
 
 namespace StoreUI.Menus
@@ -12,10 +12,10 @@ namespace StoreUI.Menus
         private ManagerWorldOfJerseys managerWorldOfJerseys;
         private ManagerWorldOfSticks managerWorldOfSticks;
         private ManagerMenu managerMenu;
-        private StoreContext storeContext;
+        private hyfhtbziContext storeContext;
         private StoreMapper storeMapper;
         private Managers manager;
-        public ManagerMenu(Managers manager, StoreContext storeContext, StoreMapper storeMapper)
+        public ManagerMenu(Managers manager, hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;

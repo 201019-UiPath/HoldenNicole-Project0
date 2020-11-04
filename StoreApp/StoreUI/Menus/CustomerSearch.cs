@@ -1,5 +1,5 @@
-﻿using StoreDB;
-using StoreDB.Entities;
+﻿using StoreUI;
+using StoreUI.Entities;
 using System;
 
 namespace StoreUI.Menus
@@ -24,11 +24,11 @@ namespace StoreUI.Menus
         private CustomerInventoryBatsMenu customerInventoryBatsMenu;
         private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
         private CustomerInventoryGamesMenu customerInventoryGamesMenu;
-        private StoreContext storeContext;
+        private hyfhtbziContext storeContext;
         private StoreMapper storeMapper;
         private Customers customer;
 
-        public CustomerSearch(Customers customer, StoreContext storeContext, StoreMapper storeMapper)
+        public CustomerSearch(Customers customer, hyfhtbziContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
