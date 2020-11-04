@@ -1,18 +1,22 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-
-namespace StoreDB.Entities
+namespace StoreUI.Entities
 {
     public partial class Orders
     {
-        public DateTime date = new DateTime();
-        public int ID { get; set; }
-        public int CustomerID { get; set; }
-        public int LocationID { get; set; }
-        public int Price {get; set;}
-        public List<Products> Products {get; set;}
-        public List<int> ProductIDs { get; set; }
-        public List<string> ProductNames { get; set; }
+        internal object date;
+
+        public int Id { get; set; }
+        public object ID { get; internal set; }
+        public int? Customerid { get; set; }
+        public object CustomerID { get; internal set; }
+        public int? Locationid { get; set; }
+        public object LocationID { get; internal set; }
+        public DateTime? Date { get; set; }
+        public long? Price { get; set; }
+
+        public virtual Customers Customer { get; set; }
+        public virtual Locations Location { get; set; }
     }
 }

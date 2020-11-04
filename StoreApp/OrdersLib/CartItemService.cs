@@ -1,8 +1,7 @@
-using StoreDB;
-using StoreDB.Entities;
-using StoreDB.Models;
+using StoreUI;
+using StoreUI.Entities;
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace OrdersLib
 {
@@ -35,5 +34,18 @@ namespace OrdersLib
         {
             dBRepo.DeleteProductInCart(product);
         } 
+        public void PlaceOrderAsync(Orders order)
+        {
+            /// <summary>
+            /// if order not in orders table
+            /// </summary>
+            /// <param name="order"></param>
+            dBRepo.PlaceOrderAsync(order);
+        }
+
+        public Products GetProductByID(object iD)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

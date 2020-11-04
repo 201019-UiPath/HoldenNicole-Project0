@@ -1,5 +1,5 @@
-using StoreDB;
-using StoreDB.Entities;
+using StoreUI;
+using StoreUI.Entities;
 
 namespace LocationLib
 {
@@ -14,7 +14,8 @@ namespace LocationLib
         {
             System.Console.WriteLine("Getting all items in inventory");
             System.Console.WriteLine("Items in store inventory");
-            dbRepo.ViewAllProductsAtLocation(id);///return list "items"
+            dbRepo.ViewAllProductsAtLocationGroupBySport(id);
+            ///return list "items"
         }
         /// allows manager to see add to inventory
         public void AddInventory(Products product)

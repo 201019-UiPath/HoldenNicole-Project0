@@ -1,7 +1,6 @@
-﻿using StoreDB;
-using StoreDB.Entities;
+﻿using StoreUI;
+using StoreUI.Entities;
 using System;
-using System.Threading.Tasks;
 
 namespace CustomerLib
 {

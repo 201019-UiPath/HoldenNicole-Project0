@@ -1,10 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using StoreDB.Entities;
+using StoreUI.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface ICartRepo
     {

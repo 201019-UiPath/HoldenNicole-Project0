@@ -1,14 +1,14 @@
-using StoreDB;
-using StoreDB.Entities;
+using StoreUI;
+using StoreUI.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace CustomerLib
 {
     public class CustomerService
-    {/// <summary>
-     /// need to replace this with DBRepo
-     /// </summary>
+    {
         private DBRepo dbRepo;
+        private readonly hyfhtbziContext context;
+        private readonly IMapper mapper;
         public CustomerService(DBRepo dbRepo)
         {
             this.dbRepo = dbRepo;
@@ -23,17 +23,24 @@ namespace CustomerLib
             Customers customer = dbRepo.GetCustomerByName(name);
             return customer;
         }
-        public void AddCustomerAsync(Customers customer)
+        public void AddCustomer(Customers customer)
         {
-            if (!GetAllCustomersAsync().Contains(customer))
+            Task<List<Customers>> getCustomersTask = dbRepo.GetAllCustomersAsync();
+            foreach(var h in getCustomersTask.Result)
             {
-                dbRepo.AddCustomerAsync(customer);
+                if(customer.Name.Equals(h.Name))
+                {
+                    throw new System.Exception("Sorry this username is already taken");
+                }
+                else 
+                {
+                    if(customer.Email.Equals(h.Email))
+                    {
+                        throw new System.Exception("Sorry this email is already registered");
+                    }
+                }
             }
-            else
-            {
-                System.Console.WriteLine("Sorry could not register you at this time.");
-                System.Console.WriteLine("Please try again.");
-            }
+            dbRepo.AddCustomer(customer);
         }
         public List<Customers> GetAllCustomersAsync()
         {
@@ -43,24 +50,40 @@ namespace CustomerLib
             Task<List<Customers>> getCustomers = dbRepo.GetAllCustomersAsync();
             return getCustomers.Result;
         }
-        public void PlaceOrderAsync(Orders order)
+        public List<Products> ViewAllProductsAtLocationGroupBySport(int id)
         {
-            /// <summary>
-            /// if order not in orders table
-            /// </summary>
-            /// <param name="order"></param>
-            dbRepo.PlaceOrderAsync(order);
-        } 
-        
-        public List<Products> ViewAllProductsAtLocationAsync(int id)
-        {
-            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocation(id);
+            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupBySport(id);
             return viewProductsAtLocation;
-        }
-        public void AddProductToCartAsync(Products product)
+        } 
+        public List<Products> ViewAllProductsAtLocationGroupByItem(int id)
         {
-            ///buisiness logic is somewhere else 1am so forgot
-            dbRepo.AddProductToCartAsync(product);
+            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupByItem(id);
+            return viewProductsAtLocation;
+        } 
+        public List<Products> ViewAllProductsAtLocationGroupByAthlete(int id)
+        {
+            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupByAthlete(id);
+            return viewProductsAtLocation;
+        } 
+        public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
+        {
+            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(id);
+            return orders;
+        }
+        public List<Orders> GetAllOrdersByCustomerIDDateDescending(int id)
+        {
+            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDDateDescending(id);
+            return orders;
+        }
+        public List<Orders> GetAllOrdersByCustomerIDPriceAscending(int id)
+        {
+            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDPriceAscending(id);
+            return orders;
+        }
+        public List<Orders> GetAllOrdersByCustomerIDPriceDescending(int id)
+        {
+            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
+            return orders;
         }
     }
 }

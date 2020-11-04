@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StoreDB.Entities;
+﻿using System.Collections.Generic;
+using StoreUI.Entities;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface ICustomerMapper
     {

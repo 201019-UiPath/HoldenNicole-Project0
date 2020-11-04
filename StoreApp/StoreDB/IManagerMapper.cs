@@ -1,9 +1,7 @@
-﻿using StoreDB.Entities;
-using System;
+﻿using StoreUI.Entities;
 using System.Collections.Generic;
-using System.Text;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface IManagerMapper
     {

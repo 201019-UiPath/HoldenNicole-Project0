@@ -1,8 +1,6 @@
-﻿using StoreDB;
-using StoreDB.Entities;
-using System;
+﻿using StoreUI;
+using StoreUI.Entities;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LocationLib
 {
@@ -40,10 +38,40 @@ namespace LocationLib
         {
             dbRepo.DeleteProduct(product);
         }
-        public Managers GetManagers(string name)
+        public Managers GetManagerByName(string name)
         {
             Managers manager = dbRepo.GetManagerByName(name);
             return manager;
+        }
+        public Managers GetManagerByID(int id)
+        {
+            Managers manager = dbRepo.GetManagerByID(id);
+            return manager;
+        }
+        public List<Managers> GetAllManagers()
+        {
+            List<Managers> getAllManagers = dbRepo.GetAllManagers();
+            return getAllManagers;
+        }
+        public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
+        {
+            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
+            return getOrdersByLocation;
+        }
+        public List<Orders> GetAllOrdersByLocationIDPriceAscending(int id)
+        {
+            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceAscending(id);
+            return getOrdersByLocation;
+        }
+        public List<Orders> GetAllOrdersByLocationIDDateDescending(int id)
+        {
+            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
+            return getOrdersByLocation;
+        }
+        public List<Orders> GetAllOrdersByLocationIDDateAscending(int id)
+        {
+            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
+            return getOrdersByLocation;
         }
     }
 }

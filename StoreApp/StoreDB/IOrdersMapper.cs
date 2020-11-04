@@ -1,10 +1,7 @@
-﻿using StoreDB.Entities;
-using System;
+﻿using StoreUI.Entities;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface IOrdersMapper
     {

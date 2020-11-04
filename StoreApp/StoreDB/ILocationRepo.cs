@@ -1,7 +1,7 @@
-using StoreDB.Entities;
+using StoreUI.Entities;
 using System.Collections.Generic;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface ILocationRepo
     {
@@ -9,7 +9,9 @@ namespace StoreDB
         void AddProductToLocationAsync(Products product);
         void UpdateProducts(Products product);
         void DeleteProduct(Products product);
-        List<Products> ViewAllProductsAtLocation(int id);
+        List<Products> ViewAllProductsAtLocationGroupByItem(int id);
+        List<Products> ViewAllProductsAtLocationGroupBySport(int id);
+        List<Products> ViewAllProductsAtLocationGroupByAthlete(int id);
         Locations GetLocationByID(int id);
         Locations GetLocationByName(string name);
         List<Locations> GetAllLocations();

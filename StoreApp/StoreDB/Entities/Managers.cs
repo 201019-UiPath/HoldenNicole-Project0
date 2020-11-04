@@ -1,9 +1,13 @@
-namespace StoreDB.Entities
+﻿namespace StoreUI.Entities
 {
     public partial class Managers
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
+        public object ID { get; internal set; }
         public string Name { get; set; }
-        public int LocationID { get; set; }
+        public int? Location { get; set; }
+
+        public virtual Locations LocationNavigation { get; set; }
+        public object LocationID { get; internal set; }
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using StoreDB.Entities;
-using StoreDB;
+﻿
+using StoreUI.Entities;
+using StoreUI;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace OrdersLib
 {

@@ -1,10 +1,7 @@
-using System;
-using StoreDB.Entities;
-using StoreDB;
+using StoreUI.Entities;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface IOrderRepo
     {

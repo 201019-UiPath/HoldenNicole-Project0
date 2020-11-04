@@ -1,9 +1,7 @@
-using StoreDB.Entities;
+using StoreUI.Entities;
 using System.Collections.Generic;
-using StoreDB.Models;
-using System.Threading.Tasks;
 
-namespace StoreDB
+namespace StoreUI
 {
     public class StoreMapper : IMapper
     {

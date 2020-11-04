@@ -1,4 +1,4 @@
-﻿using StoreDB.Entities;
+﻿using StoreUI.Entities;
 
 namespace CustomerLib
 {

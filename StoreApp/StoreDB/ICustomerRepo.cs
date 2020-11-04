@@ -1,15 +1,13 @@
-﻿using StoreDB.Entities;
-using System;
+﻿using StoreUI.Entities;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace StoreDB
+namespace StoreUI
 {
     public interface ICustomerRepo
     {
         void PlaceOrderAsync(Orders order);
         Task<List<Customers>> GetAllCustomersAsync();
-        void AddCustomerAsync(Customers customer);
+        void AddCustomer(Customers customer);
     }
 }

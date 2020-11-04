@@ -1,12 +1,11 @@
-using StoreDB;
-using StoreDB.Entities;
-using System.Collections.Generic;
-using Xunit;
+using StoreUI;
+using StoreUI.Entities;
 
 namespace StoreTest
 {
     public class StoreTest
     {
+        private DBRepo dBrepo;
         Customers testCustomer = new Customers();
         Locations testLocation = new Locations();
         Managers testManager = new Managers();
@@ -15,15 +14,8 @@ namespace StoreTest
 
         public void AddCustomerShouldAddCustomer(int customerID, string userName, string userEmail, string userAddress)
         {
-         /*   DBRepo dBRepo;
-            // do the thing you want to test
-           testCustomer.AddCustomerAsync(customerID, userName, userEmail, userAddress);
-            List<Customers> allCustomers = dBRepo.GetAllCustomersAsync();
-
-
-            //asert
-            Assert.Equal((customerID, userName, userEmail, userAddress), Customer.Customers.Peek());
-        */
+            //Arange
+         //   var options = new 
         }
     }
 }
