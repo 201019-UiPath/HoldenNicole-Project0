@@ -5,7 +5,7 @@ using CustomerLib;
 
 namespace StoreUI.Menus
 {
-    public class CustomerOrderHistoryMenu : IMenu
+  /*  public class CustomerOrderHistoryMenu : IMenu
     {
         private CustomerMenu customerMenu;
         private CustomerService customerService;
@@ -81,4 +81,5 @@ namespace StoreUI.Menus
             }
         } 
     }
+    */
 }

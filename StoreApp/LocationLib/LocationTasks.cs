@@ -40,7 +40,7 @@ namespace LocationLib
         {
             System.Console.WriteLine("Retrieving location order history");
             System.Console.WriteLine("Order history acquired");
-            dbRepo.GetAllOrdersByLocationIDDateAscending(id); //return OrderHistory
+           // dbRepo.GetAllOrdersByLocationIDDateAscending(id); //return OrderHistory
             OrderHistory();
         }
     }

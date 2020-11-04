@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreUI
 {
-    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo, IOrderRepo
+    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo //IOrderRepo
     {
         private readonly ixdssaucContext context;
         private readonly IMapper mapper;
@@ -212,8 +212,8 @@ namespace StoreUI
             context.SaveChanges();
         }
         #endregion
-        #region Order histories
-        public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
+/*        #region Order histories
+       public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
@@ -318,3 +318,6 @@ namespace StoreUI
                 .OrderByDescending(s => s.Price);
         }
         #endregion
+        */
+    }
+}

@@ -21,7 +21,7 @@ namespace OrdersLib
             List<Orders> orders = GetAllOrdersByCustomerID(id);
             return orders;
         }
-        public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
+     /*   public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             List<Orders> orders = dBRepo.GetAllOrdersByCustomerIDDateAscending(id);
             return orders;
@@ -40,6 +40,6 @@ namespace OrdersLib
         {
             List<Orders> orders = dBRepo.GetAllOrdersByCustomerIDPriceDescending(id);
             return orders;
-        }
+        } */
     }
 }

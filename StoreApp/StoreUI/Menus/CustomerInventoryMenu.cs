@@ -64,7 +64,7 @@ namespace StoreUI.Menus
                     break;
             }
         }
-        public Orders AddOrder()
+      /*  public Orders AddOrder()
         {
             Customer customer = new Customer();
             Orders order = new Orders();
@@ -95,6 +95,6 @@ namespace StoreUI.Menus
             } while(true);
             order.Products = products;
             return order;
-        } 
+        } */
     }
 }
