@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreUI
 {
-    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo //IOrderRepo
+    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo, IOrderRepo
     {
         private readonly ixdssaucContext context;
         private readonly IMapper mapper;
@@ -212,112 +212,64 @@ namespace StoreUI
             context.SaveChanges();
         }
         #endregion
-/*        #region Order histories
+        #region Order histories
        public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Customer.Equals(context.Customer.SingleOrDefault(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderBy(s => s.date);
+                (List<Orders>)context.Orders
+                .Where(x => x.Customer == id)
+                .OrderBy(s => s.OrderDate));
         }
         public List<Orders> GetAllOrdersByCustomerIDDateDescending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Customer.Equals(context.Customer).Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderByDescending(s => s.date);
+                (List<Orders>)context.Orders
+                .Where(x => x.Customer == id)
+                .OrderByDescending(s => s.OrderDate));
         }
         public List<Orders> GetAllOrdersByCustomerIDPriceAscending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Customer.Equals(context.Customer).Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderBy(s => s.Price);
+                (List<Orders>)context.Orders
+                .Where(x => x.Customer == id)
+                .OrderBy(s => s.Price));
         }
         public List<Orders> GetAllOrdersByCustomerIDPriceDescending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Customer.Equals(context.Customer).Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderByDescending(s => s.Price);
+                (List<Orders>)context.Orders
+                .Where(x => x.Customer == id)
+                .OrderByDescending(s => s.Price));
         }
         public List<Orders> GetAllOrdersByLocationIDDateAscending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderBy(s => s.date);
+                (List<Orders>)context.Orders
+                .Where(x => x.Location == id)
+                .OrderBy(s => s.OrderDate));
         }
         public List<Orders> GetAllOrdersByLocationIDDateDescending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderByDescending(s => s.date);
+                (List<Orders>)context.Orders
+                .Where(x => x.Location == id)
+                .OrderByDescending(s => s.OrderDate));
         }
         public List<Orders> GetAllOrdersByLocationIDPriceAscending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderBy(s => s.Price);
+                (List<Orders>)context.Orders
+                .Where(x => x.Location == id)
+                .OrderBy(s => s.Price));
         }
         public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
-                context.Orders
-                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
-                .Include("OrderID")
-                .Include("ProductID")
-                .Include("Quantity")
-                .Include("Date")
-                .Include("Price")
-                .ToList())
-                .OrderByDescending(s => s.Price);
+                (List<Orders>)context.Orders
+                .Where(x => x.Location == id)
+                .OrderByDescending(s => s.Price));
         }
         #endregion
-        */
+        
     }
 }

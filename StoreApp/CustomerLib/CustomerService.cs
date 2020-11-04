@@ -2,6 +2,7 @@ using StoreUI;
 using StoreUI.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 namespace CustomerLib
 {
     public class CustomerService
@@ -65,7 +66,7 @@ namespace CustomerLib
             List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupByAthlete(id);
             return viewProductsAtLocation;
         } 
-     /*   public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
+        public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(id);
             return orders;
@@ -84,6 +85,6 @@ namespace CustomerLib
         {
             List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
             return orders;
-        } */
+        } 
     }
 }

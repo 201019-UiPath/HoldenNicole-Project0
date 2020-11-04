@@ -1,8 +1,9 @@
 using StoreUI;
+using StoreUI.Entities;
 
 namespace StoreTest
 {
-  /*  public class StoreTest
+    public class StoreTest
     {
         private DBRepo dBrepo;
         Customer testCustomer = new Customer();
@@ -16,5 +17,5 @@ namespace StoreTest
             //Arange
          //   var options = new 
         }
-    } */
+    } 
 }

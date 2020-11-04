@@ -64,7 +64,7 @@ namespace CustomerLib
         public void CustomerOrderHistory(int id)
         {
             Console.WriteLine("Getting Order History for you");
-           // dBRepo.GetAllOrdersByCustomerIDDateAscending(id); //return list "orderHistory"
+            dBRepo.GetAllOrdersByCustomerIDDateAscending(id); //return list "orderHistory"
         }
 
     }

@@ -18,7 +18,7 @@ namespace StoreUI.Entities
         public decimal Price { get; set; }
 
         public virtual ICollection<CartItems> CartItems { get; set; }
-        public int Quantity { get; internal set; }
+        public int Quantity { get; set; }
         public object locationID { get; internal set; }
     }
 }

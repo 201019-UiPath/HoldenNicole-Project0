@@ -5,7 +5,7 @@ using LocationLib;
 
 namespace StoreUI.Menus
 {
- /*   public class LocationOrderHistoryMenu : IMenu
+    public class LocationOrderHistoryMenu : IMenu
     {
         private ManagerMenu managerMenu;
         private LocationService locationService;
@@ -75,5 +75,5 @@ namespace StoreUI.Menus
                     break;
             }
         }
-    } */
+    } 
 }

@@ -3,7 +3,7 @@ using StoreUI.Entities;
 
 namespace StoreUI
 {
-  /*  public interface IOrderRepo
+    public interface IOrderRepo
    {
          void PlaceOrderAsync(Orders order);
          List<Orders> GetAllOrdersByCustomerIDDateAscending(int id);
@@ -14,5 +14,5 @@ namespace StoreUI
          List<Orders> GetAllOrdersByLocationIDDateDescending(int id);
          List<Orders> GetAllOrdersByLocationIDPriceAscending(int id);
          List<Orders> GetAllOrdersByLocationIDPriceDescending(int id); 
-    } */
+    } 
 }

@@ -14,6 +14,6 @@ namespace StoreUI
         Orders ParseOrder(Orders order);
         Locations ParseLocation(Locations locations);
         List<Locations> ParseLocation(List<Locations> lists);
-        object ParseOrder(List<Orders> lists);
+        object ParseOrder(List<Orders> lists); 
     }
 }

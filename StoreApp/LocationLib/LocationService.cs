@@ -41,7 +41,7 @@ namespace LocationLib
             List<Managers> getAllManagers = dbRepo.GetAllManagers();
             return getAllManagers;
         }
-    /*    public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
+        public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
         {
             List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
             return getOrdersByLocation;
@@ -60,6 +60,6 @@ namespace LocationLib
         {
             List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
             return getOrdersByLocation;
-        } */
+        } 
     }
 }

@@ -6,7 +6,7 @@ namespace StoreUI.Menus
 {
     public class CustomerMenu : IMenu
     {
-      //  private CustomerOrderHistoryMenu customerOrderHistoryMenu;
+        private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerLocationMenu customerLocationMenu;
         private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
@@ -32,12 +32,12 @@ namespace StoreUI.Menus
                 switch (customerInput)
                 {
                     case "1":
-                      /*  //redirect to customer order history
+                        //redirect to customer order history
                         Console.WriteLine("Redirecting you to your order history");
                         customerOrderHistoryMenu = new CustomerOrderHistoryMenu(customer, storeContext, new StoreMapper());
                         customerOrderHistoryMenu.Start();
                         Log.Information("order history");
-                        break; */
+                        break; 
                     case "2":
                         //redirect to location menu
                         Console.WriteLine("Redirecting you to the location menu. Hope you find something you like.");
@@ -58,5 +58,6 @@ namespace StoreUI.Menus
                 }
             } while (!customerInput.Equals(4));
         }
+       // public void AddProduct()
     }
 }

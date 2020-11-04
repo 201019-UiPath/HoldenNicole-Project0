@@ -23,11 +23,11 @@ namespace StoreUI
             IMenu customerMenu = new CustomerMenu(new Customer(), new ixdssaucContext(), new StoreMapper());
             customerMenu.Start();
 
-         /*   IMenu customerOrderHistoryMenu = new CustomerOrderHistoryMenu(new Customer(), new ixdssaucContext(), new StoreMapper());
+            IMenu customerOrderHistoryMenu = new CustomerOrderHistoryMenu(new Customer(), new ixdssaucContext(), new StoreMapper());
             customerOrderHistoryMenu.Start();
 
             IMenu locationOrderHistoryMenu = new LocationOrderHistoryMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
-            locationOrderHistoryMenu.Start(); */
+            locationOrderHistoryMenu.Start(); 
 
             IMenu managerMenu = new ManagerMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
             managerMenu.Start();

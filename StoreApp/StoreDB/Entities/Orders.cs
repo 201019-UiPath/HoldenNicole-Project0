@@ -20,6 +20,6 @@ namespace StoreUI.Entities
         public virtual Customer CustomerNavigation { get; set; }
         public virtual Locations LocationNavigation { get; set; }
         public virtual ICollection<LineItems> LineItems { get; set; }
-        public List<Products> Products { get; internal set; }
+        public List<Products> Products { get; set; }
     }
 }

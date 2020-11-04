@@ -1,22 +1,23 @@
+using System.Collections.Generic;
+using LocationLib;
+using Serilog;
 using StoreUI.Entities;
 using System;
-using System.Collections.Generic;
-using Serilog;
-using LocationLib;
 
 namespace StoreUI.Menus
 {
-    public class CustomerInventoryMenu : IMenu
+    public class ManagerInventoryMenu : IMenu
     {
+        
         private ProductServices productServices;
         private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
-        private Customer customer;
+        private Managers manager;
         private ixdssaucContext ixdssaucContext;
 
-        public CustomerInventoryMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public ManagerInventoryMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
-            this.customer = customer;
+            this.manager = manager;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -24,8 +25,8 @@ namespace StoreUI.Menus
         {
             ///retrieve location from previous menus
             StoreUI.Entities.Locations location = new StoreUI.Entities.Locations();
-            Console.WriteLine($"How would you like to see the inventory for World Of Sticks:");
-            Console.WriteLine("[1] By type of item");
+            System.Console.WriteLine($"How would you like to see the inventory for {location.Name} sorted?");
+            System.Console.WriteLine("[1] By type of item");
             System.Console.WriteLine("[2] By sport");
             System.Console.WriteLine("[3] By person");
             System.Console.WriteLine("[4] exit store");
@@ -35,8 +36,8 @@ namespace StoreUI.Menus
             {
                 /// lists products sorted by type
                 case "1":
-                    Console.WriteLine("What type of autographed item are you looking for?");
-                    string item = Console.ReadLine();
+                    System.Console.WriteLine("What type of autographed item are you looking for?");
+                    string item = System.Console.ReadLine();
                     List<Products> allProductsByType = productServices.ViewAllProductsByItem(item);
                     Log.Information("type of item selected");
                     break;
@@ -64,37 +65,6 @@ namespace StoreUI.Menus
                     break;
             }
         }
-        public Orders AddOrder()
-        {
-            Customer customer = new Customer();
-            Orders order = new Orders();
-            List<Products> products = new List<Products>();
-            System.Console.WriteLine("Please enter your username:");
-            customer.Username = Console.ReadLine();
-            object iD = customer.ID;
-            order.Customer = (int)iD;
-            order.Id = order.Id;
-            order.Location = 1;
-            order.Price = order.Price;
-            order.OrderDate = order.OrderDate;
-            Log.Information("adding order from sticks store");
-            do{
-                Products product = new Products();
-                System.Console.WriteLine("Enter product you would like to add to your order: ");
-                string id = Console.ReadLine();
-                product.Id = Convert.ToInt32(id);
-                product.Sport = product.Sport;
-                product.Price = product.Price;
-                product.Item = product.Item;
-                product.Athlete = product.Athlete;
-                if(product.ID.Equals("end")) break;
-                System.Console.WriteLine("How many would you like to order");
-                string quantity = Console.ReadLine();
-                product.Quantity = Convert.ToInt32(quantity);
-                products.Add(product);
-            } while(true);
-            order.Products = products;
-            return order;
-        } 
+        
     }
 }

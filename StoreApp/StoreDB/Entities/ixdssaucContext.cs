@@ -25,15 +25,7 @@ namespace StoreUI.Entities
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseNpgsql("Host=lallah.db.elephantsql.com;Port=5432;Database=ixdssauc;Username=ixdssauc;Password=TaJeWT22Nmhi-cD0Irk2sOermZ4AvenE");
-            }
-        }
+        public int CustomerID { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
