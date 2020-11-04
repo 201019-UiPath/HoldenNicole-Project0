@@ -9,11 +9,11 @@ namespace StoreUI.Menus
     {
         private ManagerMenu managerMenu;
         private LocationService locationService;
-        private hyfhtbziContext storeContext;
+        private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
         private Managers manager;
 
-        public LocationOrderHistoryMenu(Managers manager, hyfhtbziContext storeContext, StoreMapper storeMapper)
+        public LocationOrderHistoryMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;

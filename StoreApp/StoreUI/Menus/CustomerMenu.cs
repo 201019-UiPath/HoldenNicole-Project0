@@ -1,6 +1,4 @@
-﻿using CustomerLib;
-using StoreUI;
-using StoreUI.Entities;
+﻿using StoreUI.Entities;
 using System;
 using Serilog;
 
@@ -10,11 +8,12 @@ namespace StoreUI.Menus
     {
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
         private CustomerLocationMenu customerLocationMenu;
-        private hyfhtbziContext storeContext;
+        private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
-        private Customers customer;
+        private Customer customer;
+        private ixdssaucContext ixdssaucContext;
 
-        public CustomerMenu(Customers customer, hyfhtbziContext storeContext, StoreMapper storeMapper)
+        public CustomerMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
@@ -26,8 +25,7 @@ namespace StoreUI.Menus
             Console.WriteLine("Howdy! What would you like to do today at Sports Authenticated?");
             Console.WriteLine("[1] View your order history");
             Console.WriteLine("[2] Shop at a specific store");
-            Console.WriteLine("[3] Search entire inventory");
-            Console.WriteLine("[4] exit store");
+            Console.WriteLine("[3] exit store");
             string customerInput = Console.ReadLine();
             do
             {
@@ -48,11 +46,6 @@ namespace StoreUI.Menus
                         Log.Information("location menu selected");
                         break;
                     case "3":
-                        //redirect to customer search menu
-                       /* Console.WriteLine("Redirecting you to the search menu");
-                        customerSearch.Start(); */
-                        break;
-                    case "4":
                         //exit store
                         Console.WriteLine("Come back again soon");
                         Environment.Exit(0);

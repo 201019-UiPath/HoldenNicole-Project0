@@ -1,4 +1,3 @@
-using StoreUI;
 using StoreUI.Entities;
 using System;
 using Serilog;
@@ -14,14 +13,14 @@ namespace StoreUI.Menus
         private CustomerMenu customerMenu;
         private SignInMenu signInMenu;
         private ManagerMenu managerMenu;
-        private hyfhtbziContext storeContext;
+        private ixdssaucContext storeContext;
         private CustomerService customerService;
         private CartItemService cartService;
         private LocationService locationService;
-        public SignInMenu(hyfhtbziContext context, IMapper mapper)
+        public SignInMenu(ixdssaucContext context, IMapper mapper)
         {
-            this.customerMenu = new CustomerMenu(new Customers(), new hyfhtbziContext(), new StoreMapper());
-            this.managerMenu = new ManagerMenu(new Managers(), new hyfhtbziContext(), new StoreMapper());
+            this.customerMenu = new CustomerMenu(new Customer(), new ixdssaucContext(), new StoreMapper());
+            this.managerMenu = new ManagerMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
         }
         public void Start()
         {
@@ -39,10 +38,10 @@ namespace StoreUI.Menus
                     Managers manager = ManagerSignIn();
                     break;
                 case "2":
-                    Customers customer = CustomerSignIn();
+                    Customer customer = CustomerSignIn();
                     break;
                 case "3":
-                    Customers newCustomer = Registration();
+                    Customer newCustomer = Registration();
                     break;
                 case "4":
                     Console.WriteLine("Bye come again some other time.");
@@ -55,9 +54,9 @@ namespace StoreUI.Menus
                     break;
             }
         }
-        public Customers CustomerSignIn()
+        public Customer CustomerSignIn()
         {
-            Customers customer = new Customers();
+            Customer customer = new Customer();
             
             Console.WriteLine("Please enter your username:");
             string returningCustomerUserName = Console.ReadLine();
@@ -74,7 +73,7 @@ namespace StoreUI.Menus
             }
             catch(InvalidOperationException)
             {
-                System.Console.WriteLine($"There is no registered user with the username: {customer.UserName}");
+                System.Console.WriteLine($"There is no registered user with the username: {customer.Username}");
             }
             return customer;
         }
@@ -95,11 +94,11 @@ namespace StoreUI.Menus
             }
             catch(InvalidOperationException)
             {
-                System.Console.WriteLine($"There is no manager with username: {manager.Name}");
+                System.Console.WriteLine($"There is no manager with username: {manager.Username}");
             }       
             return manager;
         }
-        public Customers Registration()
+        public Customer Registration()
         {
             System.Console.WriteLine("Please enter the username you would like to use:");
             string Name = Console.ReadLine();
@@ -107,11 +106,10 @@ namespace StoreUI.Menus
             string email = Console.ReadLine();
             System.Console.WriteLine("Please enter your address: ");
             string address = Console.ReadLine();
-            var newCustomer = new Customers()
+            var newCustomer = new Customer()
             {
-                Name = Name,
+                Username = Name,
                 Email = email,
-                Address = address
             };
             customerMenu = new CustomerMenu(newCustomer, storeContext, new StoreMapper());
             customerMenu.Start();

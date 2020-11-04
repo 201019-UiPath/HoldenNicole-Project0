@@ -1,5 +1,5 @@
-using StoreUI.Entities;
 using System.Collections.Generic;
+using StoreUI.Entities;
 
 namespace StoreUI
 {
@@ -15,15 +15,5 @@ namespace StoreUI
         Locations GetLocationByID(int id);
         Locations GetLocationByName(string name);
         List<Locations> GetAllLocations();
-
-        /* Want to add section
-        Task<List<Order>> GetAllOrdersByType();
-        Task<List<Order>> GetAllOrdersBySport();
-        Task<List<Order>> GetAllOrdersByPerson();
-
-        Task<List<Order>> GetAllOrdersByTypeAtLocation();
-        Task<List<Order>> GetAllOrdersBySportAtLocation();
-        Task<List<Order>> GetAllOrdersByPersonAtLocation();
-        */
     }
 }

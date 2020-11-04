@@ -26,18 +26,6 @@ namespace LocationLib
             List<Locations> locations = dbRepo.GetAllLocations();
             return locations;
         }
-        public void AddProductToLocationAsync(Products product)
-        {
-            dbRepo.AddProductToLocationAsync(product);
-        }
-        public void UpdateProduct(Products product)
-        {
-            dbRepo.UpdateProducts(product);
-        }
-        public void DeleteProduct(Products product)
-        {
-            dbRepo.DeleteProduct(product);
-        }
         public Managers GetManagerByName(string name)
         {
             Managers manager = dbRepo.GetManagerByName(name);

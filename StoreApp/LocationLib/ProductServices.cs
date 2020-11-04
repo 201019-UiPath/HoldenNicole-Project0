@@ -7,9 +7,8 @@ namespace LocationLib
     public class ProductServices
     {
         private DBRepo dBRepo;
-        private readonly hyfhtbziContext context;
+        private readonly ixdssaucContext context;
         private readonly IMapper mapper;
-        private ILocationRepo repo;
         public ProductServices(DBRepo dBRepo)
         {
             this.dBRepo = dBRepo;
@@ -36,7 +35,7 @@ namespace LocationLib
         }
         public List<Products> ViewAllProductsAtLocationGroupByItem(int id)
         {
-            List<Products> viewAllProductsAtLocationGroupByItem = repo.ViewAllProductsAtLocationGroupByItem(id);
+            List<Products> viewAllProductsAtLocationGroupByItem = dBRepo.ViewAllProductsAtLocationGroupByItem(id);
             return viewAllProductsAtLocationGroupByItem;
         }
         public List<Products> ViewAllProductsAtLocationGroupBySport(int id)

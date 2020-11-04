@@ -1,12 +1,11 @@
 using StoreUI;
-using StoreUI.Entities;
 
 namespace StoreTest
 {
-    public class StoreTest
+  /*  public class StoreTest
     {
         private DBRepo dBrepo;
-        Customers testCustomer = new Customers();
+        Customer testCustomer = new Customer();
         Locations testLocation = new Locations();
         Managers testManager = new Managers();
         Orders testOrder = new Orders();
@@ -17,5 +16,5 @@ namespace StoreTest
             //Arange
          //   var options = new 
         }
-    }
+    } */
 }

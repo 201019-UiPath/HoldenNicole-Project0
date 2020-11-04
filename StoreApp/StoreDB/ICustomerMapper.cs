@@ -5,8 +5,8 @@ namespace StoreUI
 {
     public interface ICustomerMapper
     {
-        Customers ParseCustomer(Customers customer);
-        List<Customers> ParseCustomer(List<Customers> customer);
+        Customer ParseCustomer(Customer customer);
+        List<Customer> ParseCustomer(List<Customer> customer);
 
     }
 }

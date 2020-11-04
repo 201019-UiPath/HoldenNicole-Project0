@@ -7,15 +7,11 @@ namespace StoreUI.Menus
     public class ManagerMenu : IMenu
     {
         private SignInMenu signInMenu;
-        private ManagerWorldOfBats managerWorldOfBats;
-        private ManagerWorldOfGames managerWorldOfGames;
-        private ManagerWorldOfJerseys managerWorldOfJerseys;
-        private ManagerWorldOfSticks managerWorldOfSticks;
         private ManagerMenu managerMenu;
-        private hyfhtbziContext storeContext;
+        private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
         private Managers manager;
-        public ManagerMenu(Managers manager, hyfhtbziContext storeContext, StoreMapper storeMapper)
+        public ManagerMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;
@@ -34,26 +30,22 @@ namespace StoreUI.Menus
             {
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
-                    managerWorldOfBats = new ManagerWorldOfBats(manager, storeContext, new StoreMapper());
-                    managerWorldOfBats.Start();
+                    ///replace
                     Log.Information("Cob");
                     break;
                 case "2":
                     System.Console.WriteLine("Sending you to the World of Sticks branch");
-                    managerWorldOfSticks = new ManagerWorldOfSticks(manager, storeContext, new StoreMapper());
-                    managerWorldOfSticks.Start();
+                    /// replace
                     Log.Information("Great One");
                     break;
                 case "3":
                     System.Console.WriteLine("Sending you to the World of Jerseys branch");
-                    managerWorldOfJerseys = new ManagerWorldOfJerseys(manager, storeContext, new StoreMapper());
-                    managerWorldOfJerseys.Start();
+                    /// replace
                     Log.Information("Miracle Team");
                     break;
                 case "4":
                     System.Console.WriteLine("Sending you to the World of Games branch");
-                    managerWorldOfGames = new ManagerWorldOfGames(manager, storeContext, new StoreMapper());
-                    managerWorldOfGames.Start();
+                    /// replace
                     Log.Information("Heisman");
                     break;
                 case "5":

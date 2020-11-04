@@ -1,39 +1,28 @@
-using StoreUI.Entities;
 using System.Collections.Generic;
+using StoreUI.Entities;
 
 namespace StoreUI
 {
     public class StoreMapper : IMapper
     {
-        public Customers ParseCustomer(Customers customer)
+        public Customer ParseCustomer(Customer customer)
         {
-            return new Customers()
+            return new Customer()
             {
                 ID = customer.ID,
-                UserName = customer.UserName,
-                Address = customer.Address,
+                Username = customer.Username,
                 Email = customer.Email,
             };
         }
 
-        public List<Customers> ParseCustomer(List<Customers> customer)
+        public List<Customer> ParseCustomer(List<Customer> customer)
         {
-            List<Customers> allCustomers = new List<Customers>();
+            List<Customer> allCustomers = new List<Customer>();
             foreach(var c in customer)
             {
                 allCustomers.Add(ParseCustomer(c));
             }
             return allCustomers;
-        }
-
-        public Locations ParseLocation(Locations location)
-        {
-            return new Locations()
-            {
-                ID = location.ID,
-                Name = location.Name,
-                Address = location.Address,
-            };
         }
 
         public List<Locations> ParseLocation(List<Locations> location)
@@ -46,13 +35,18 @@ namespace StoreUI
             return allLocations;
         }
 
+        public Locations ParseLocation(Locations location)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Managers ParseManager(Managers manager)
         {
             return new Managers()
             {
                 ID = manager.ID,
-                Name = manager.Name,
-                LocationID = manager.LocationID,
+                Username = manager.Username,
+                Location = manager.Location,
             };
         }
 
@@ -71,9 +65,9 @@ namespace StoreUI
             return new Orders()
             {
                 ID = order.ID,
-                CustomerID = order.CustomerID,
-                LocationID = order.LocationID,
-                date = order.date,
+                Customer = order.Customer,
+                Location = order.Location,
+                OrderDate = order.OrderDate,
                 Price = order.Price,
                 /* not in order table need to add this functionality see superpowers to do it
                  * ProductIDs = order.ProductIDs,
@@ -100,6 +94,11 @@ namespace StoreUI
                 allProducts.Add(p);
             }
             return allProducts;
+        }
+
+        public object ParseOrder(List<Orders> lists)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Products ParseProducts(Products product)
@@ -130,16 +129,6 @@ namespace StoreUI
             foreach(var o in products)
             {
                 allProducts.Add(o);
-            }
-            return allProducts;
-        }
-
-        ICollection<Products> IMapper.ParseProducts(List<Products> products)
-        {
-            ICollection<Products> allProducts = new List<Products>();
-            foreach(var p in products)
-            {
-                allProducts.Add(ParseProducts(p));
             }
             return allProducts;
         }

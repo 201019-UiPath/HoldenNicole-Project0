@@ -1,13 +1,14 @@
-﻿namespace StoreUI.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace StoreUI.Entities
 {
     public partial class Managers
     {
         public int Id { get; set; }
         public object ID { get; internal set; }
-        public string Name { get; set; }
-        public int? Location { get; set; }
-
-        public virtual Locations LocationNavigation { get; set; }
-        public object LocationID { get; internal set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public object Location { get; internal set; }
     }
 }

@@ -1,4 +1,3 @@
-using StoreUI;
 using StoreUI.Entities;
 using System;
 using Serilog;
@@ -10,11 +9,11 @@ namespace StoreUI.Menus
     {
         private CustomerMenu customerMenu;
         private CustomerService customerService;
-        private hyfhtbziContext storeContext;
+        private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
-        private Customers customer;
-
-        public CustomerOrderHistoryMenu(Customers customer, hyfhtbziContext storeContext, StoreMapper storeMapper)
+        private Customer customer;
+        private ixdssaucContext ixdssaucContext;
+        public CustomerOrderHistoryMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;

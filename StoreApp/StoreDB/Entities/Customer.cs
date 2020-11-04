@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace StoreUI.Entities
 {
-    public partial class Customers
+    public partial class Customer
     {
-        public Customers()
+        public Customer()
         {
+            Carts = new HashSet<Carts>();
             Orders = new HashSet<Orders>();
         }
 
         public int Id { get; set; }
         public object ID { get; internal set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
+        public string Username { get; set; }
         public string Email { get; set; }
 
+        public virtual ICollection<Carts> Carts { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
-        public object UserName { get; internal set; }
     }
 }

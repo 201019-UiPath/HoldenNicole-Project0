@@ -5,21 +5,21 @@ namespace StoreUI.Entities
 {
     public partial class Locations
     {
-        internal object locationID;
-
         public Locations()
         {
-            Managers = new HashSet<Managers>();
+            Carts = new HashSet<Carts>();
             Orders = new HashSet<Orders>();
         }
 
         public int Id { get; set; }
-        public object ID { get; internal set; }
+        public int ID { get; internal set; }
         public string Name { get; set; }
-        public string Address { get; set; }
+        public int Manager { get; set; }
 
-        public virtual ICollection<Managers> Managers { get; set; }
+        public virtual Managers ManagerNavigation { get; set; }
+        public virtual ICollection<Carts> Carts { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
+        public object locationID { get; internal set; }
 
         public static implicit operator int(Locations v)
         {

@@ -1,5 +1,4 @@
-﻿using StoreUI;
-using StoreUI.Entities;
+﻿using StoreUI.Entities;
 using Serilog;
 
 namespace StoreUI.Menus
@@ -7,23 +6,19 @@ namespace StoreUI.Menus
     public class CustomerLocationMenu : IMenu
     {
         private SignInMenu signInMenu;
-        private CustomerInventoryBatsMenu customerInventoryBatsMenu;
-        private CustomerInventorySticks customerInventorySticksMenu;
-        private CustomerInventoryJerseysMenu customerInventoryJerseysMenu;
-        private CustomerInventoryGamesMenu customerInventoryGamesMenu;
         private CustomerLocationMenu customerLocationMenu;
-        private hyfhtbziContext storeContext;
+        private ixdssaucContext storeContext;
         private StoreMapper storeMapper;
 
-        private Customers customer;
+        private Customer customer;
+        private ixdssaucContext ixdssaucContext;
 
-        public CustomerLocationMenu(Customers customer, hyfhtbziContext storeContext, StoreMapper storeMapper)
+        public CustomerLocationMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
-
         public void Start()
         {
             System.Console.WriteLine("Which store would you like to shop at?");
@@ -39,29 +34,25 @@ namespace StoreUI.Menus
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
                     System.Console.WriteLine("Hope you find something you like");
-                    customerInventoryBatsMenu = new CustomerInventoryBatsMenu(customer, storeContext, new StoreMapper());
-                    customerInventoryBatsMenu.Start();
+                    /// change info here
                     Log.Information("bats store selected");
                     break;
                 case "2":
                     System.Console.WriteLine("Sending you to the World of Sticks branch");
                     System.Console.WriteLine("Hope you find something you like");
-                    customerInventorySticksMenu = new CustomerInventorySticks(customer, storeContext, new StoreMapper());
-                    customerInventorySticksMenu.Start();
+                    /// change info here
                     Log.Information("sticks store selected");
                     break;
                 case "3":
                     System.Console.WriteLine("Sending you to the World of Jerseys branch");
                     System.Console.WriteLine("Hope you find something you like");
-                    customerInventoryJerseysMenu = new CustomerInventoryJerseysMenu(customer, storeContext, new StoreMapper());
-                    customerInventoryJerseysMenu.Start();
+                    // change info here
                     Log.Information("jersey store selected");
                     break;
                 case "4":
                     System.Console.WriteLine("Sending you to the World of Games branch");
                     System.Console.WriteLine("Hope you find somthing you like");
-                    customerInventoryGamesMenu = new CustomerInventoryGamesMenu(customer, storeContext, new StoreMapper());
-                    customerInventoryGamesMenu.Start();
+                    //change info here
                     Log.Information("games store selected");
                     break;
                 case "5":

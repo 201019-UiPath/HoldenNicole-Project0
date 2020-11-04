@@ -7,28 +7,28 @@ namespace CustomerLib
     public class CustomerService
     {
         private DBRepo dbRepo;
-        private readonly hyfhtbziContext context;
+        private readonly ixdssaucContext context;
         private readonly IMapper mapper;
         public CustomerService(DBRepo dbRepo)
         {
             this.dbRepo = dbRepo;
         }
-        public Customers GetCustomerByID(int id)
+        public Customer GetCustomerByID(int id)
         {
-            Customers customer = dbRepo.GetCustomerByID(id);
+            Customer customer = dbRepo.GetCustomerByID(id);
             return customer;
         }
-        public Customers GetCustomerByName(string name)
+        public Customer GetCustomerByName(string name)
         {
-            Customers customer = dbRepo.GetCustomerByName(name);
+            Customer customer = dbRepo.GetCustomerByName(name);
             return customer;
         }
-        public void AddCustomer(Customers customer)
+        public void AddCustomer(Customer customer)
         {
-            Task<List<Customers>> getCustomersTask = dbRepo.GetAllCustomersAsync();
+            Task<List<Customer>> getCustomersTask = dbRepo.GetAllCustomersAsync();
             foreach(var h in getCustomersTask.Result)
             {
-                if(customer.Name.Equals(h.Name))
+                if(customer.Username.Equals(h.Username))
                 {
                     throw new System.Exception("Sorry this username is already taken");
                 }
@@ -42,12 +42,12 @@ namespace CustomerLib
             }
             dbRepo.AddCustomer(customer);
         }
-        public List<Customers> GetAllCustomersAsync()
+        public List<Customer> GetAllCustomersAsync()
         {
             /// <summary>
             /// retrieve list of customers from customer table
             /// </summary>
-            Task<List<Customers>> getCustomers = dbRepo.GetAllCustomersAsync();
+            Task<List<Customer>> getCustomers = dbRepo.GetAllCustomersAsync();
             return getCustomers.Result;
         }
         public List<Products> ViewAllProductsAtLocationGroupBySport(int id)

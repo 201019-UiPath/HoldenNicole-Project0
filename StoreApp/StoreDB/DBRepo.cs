@@ -8,56 +8,49 @@ namespace StoreUI
 {
     public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo, IOrderRepo
     {
-        private readonly hyfhtbziContext context;
+        private readonly ixdssaucContext context;
         private readonly IMapper mapper;
 
-        public DBRepo(hyfhtbziContext context, IMapper mapper)
+        public DBRepo(ixdssaucContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
         }
-        /// <summary>
-        /// customer section
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Customers GetCustomerByID(int id)
+        #region Customer section
+        public Customer GetCustomerByID(int id)
         {
-            return mapper.ParseCustomer(context.Customers
+            return mapper.ParseCustomer(context.Customer
             .Include("UserName")
             .Include("Email")
                 .First(x => x.ID.Equals(id)));
         }
-        public Customers GetCustomerByName(string name)
+        public Customer GetCustomerByName(string name)
         {
-            return mapper.ParseCustomer(context.Customers
+            return mapper.ParseCustomer(context.Customer
             .Include("UserName")
             .Include("Email")
-                .First(x => x.UserName.Equals("name")));
+                .First(x => x.Username.Equals("name")));
         }
-        public void AddCustomer(Customers customer)
+        public void AddCustomer(Customer customer)
         {
-            context.Customers.Add(mapper.ParseCustomer(customer));
+            context.Customer.Add(mapper.ParseCustomer(customer));
             context.SaveChanges();
         }
-        public Task<List<Customers>> GetAllCustomersAsync()
+        public Task<List<Customer>> GetAllCustomersAsync()
         {
-            return Task.Run<List<Customers>>(
+            return Task.Run<List<Customer>>(
                 () => mapper.ParseCustomer(
-                    context.Customers
+                    context.Customer
                     .Include("Name")
                     .Include("Email")
                     .ToList()));
         }
-        /// <summary>
-        /// managers section
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        #endregion
+        #region manager section
         public Managers GetManagerByName(string name)
         {
             return mapper.ParseManager(context.Managers.Include("location")
-                .First(x => x.Name.Equals(name)));
+                .First(x => x.Username.Equals(name)));
         }
         public Managers GetManagerByID(int id)
         {
@@ -73,10 +66,8 @@ namespace StoreUI
                 .Include("location")
                 .ToList());
         }
-        /// <summary>
-        /// current order section
-        /// </summary>
-        /// <param name="product"></param>
+        #endregion
+        #region cart section
         public void AddProductToCartAsync(Products product)
         {
             context.Products.AddAsync(mapper.ParseProducts(product));
@@ -86,7 +77,7 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Products
-                .Where(x => x.ID == context.Orders.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.ID.Equals(context.Orders))
                 .Include("Products")
                 .Include("Quantity")
                 .Include("Price")
@@ -107,11 +98,13 @@ namespace StoreUI
             context.Orders.AddAsync(mapper.ParseOrder(order));
             context.SaveChangesAsync();
         }
-        /// <summary>
-        /// customer and manager search section
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+          Products ICartRepo.GetProductByID(int id)
+        {
+            return mapper.ParseProducts(context.Products.Include("Products").First(x => x.ID.Equals(id)));
+        }
+
+        #endregion
+        #region search section
         public Products GetProductByID(int id)
         {
             return mapper.ParseProducts(context.Products.Include("Products").First(x => x.ID.Equals(id)));
@@ -182,11 +175,8 @@ namespace StoreUI
                 .Where(x => x.Sport.Equals(item))
                 .ToList());
         }
-        /// <summary>
-        /// location section
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        #endregion
+        #region location section
         public Locations GetLocationByID(int id)
         {
             return mapper.ParseLocation(context.Locations.Include("Name").First(x => x.ID.Equals(id)));
@@ -204,10 +194,8 @@ namespace StoreUI
                 .Include("Location")
                 .ToList());
         }
-        /// <summary>
-        /// Manager inventory section
-        /// </summary>
-        /// <param name="product"></param>
+        #endregion
+        #region manager inventory section
         public void AddProductToLocationAsync(Products product)
         {
             context.Products.AddAsync(mapper.ParseProducts(product));
@@ -223,16 +211,13 @@ namespace StoreUI
             context.Products.Remove(mapper.ParseProducts(product));
             context.SaveChanges();
         }
-        /// <summary>
-        /// Order histories
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        #endregion
+        #region Order histories
         public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.CustomerID == context.Customers.SingleOrDefault(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Customer.Equals(context.Customer.SingleOrDefault(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -245,7 +230,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.CustomerID == context.Customers.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Customer.Equals(context.Customer).Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -258,7 +243,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.CustomerID == context.Customers.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Customer.Equals(context.Customer).Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -271,7 +256,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.CustomerID == context.Customers.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Customer.Equals(context.Customer).Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -284,7 +269,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.LocationID == context.Locations.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -297,7 +282,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.LocationID == context.Locations.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -310,7 +295,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.LocationID == context.Locations.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -323,7 +308,7 @@ namespace StoreUI
         {
             return (List<Orders>)mapper.ParseOrder(
                 context.Orders
-                .Where(x => x.LocationID == context.Locations.Single(y => y.ID.Equals(id)).ID)
+                .Where(x => x.Location == context.Locations.Single(y => y.ID.Equals(id)).ID)
                 .Include("OrderID")
                 .Include("ProductID")
                 .Include("Quantity")
@@ -332,5 +317,4 @@ namespace StoreUI
                 .ToList())
                 .OrderByDescending(s => s.Price);
         }
-    }
-}
+        #endregion

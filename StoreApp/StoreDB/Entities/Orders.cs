@@ -5,18 +5,21 @@ namespace StoreUI.Entities
 {
     public partial class Orders
     {
-        internal object date;
+        public Orders()
+        {
+            LineItems = new HashSet<LineItems>();
+        }
 
         public int Id { get; set; }
         public object ID { get; internal set; }
-        public int? Customerid { get; set; }
-        public object CustomerID { get; internal set; }
-        public int? Locationid { get; set; }
-        public object LocationID { get; internal set; }
-        public DateTime? Date { get; set; }
-        public long? Price { get; set; }
+        public int Customer { get; set; }
+        public int Location { get; set; }
+        public DateTime OrderDate { get; set; }
+        public decimal Price { get; set; }
 
-        public virtual Customers Customer { get; set; }
-        public virtual Locations Location { get; set; }
+        public virtual Customer CustomerNavigation { get; set; }
+        public virtual Locations LocationNavigation { get; set; }
+        public virtual ICollection<LineItems> LineItems { get; set; }
+        public List<Products> Products { get; internal set; }
     }
 }
