@@ -7,6 +7,7 @@ namespace StoreDB.Entities
         public Locations()
         {
             Carts = new HashSet<Carts>();
+            Inventory = new HashSet<Inventory>();
             Orders = new HashSet<Orders>();
         }
 
@@ -16,6 +17,7 @@ namespace StoreDB.Entities
 
         public virtual Managers ManagerNavigation { get; set; }
         public virtual ICollection<Carts> Carts { get; set; }
+        public virtual ICollection<Inventory> Inventory { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
     }
 }

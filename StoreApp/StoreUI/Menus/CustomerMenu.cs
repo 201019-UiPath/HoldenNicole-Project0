@@ -1,14 +1,14 @@
-﻿using StoreDB.Entities;
-using System;
-using Serilog;
+﻿using Serilog;
+using StoreDB.Entities;
 using StoreDB.Models;
+using System;
 
 namespace StoreUI.Menus
 {
     public class CustomerMenu : IMenu
     {
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
-      
+
         private CustomerLocationMenu customerLocationMenu;
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
@@ -21,7 +21,7 @@ namespace StoreUI.Menus
             this.storeMapper = storeMapper;
         }
 
-       public void Start()
+        public void Start()
         {
             Console.WriteLine("Howdy! What would you like to do today at Sports Authenticated?");
             Console.WriteLine("[1] View your order history");
@@ -38,7 +38,7 @@ namespace StoreUI.Menus
                         customerOrderHistoryMenu = new CustomerOrderHistoryMenu(customer, storeContext, new StoreMapper());
                         customerOrderHistoryMenu.Start();
                         Log.Information("order history");
-                        break; 
+                        break;
                     case "2":
                         //redirect to location menu
                         Console.WriteLine("Redirecting you to the location menu. Hope you find something you like.");

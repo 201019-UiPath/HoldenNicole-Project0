@@ -1,7 +1,7 @@
-using StoreUI;
-using StoreDB.Entities;
-using Serilog;
 using LocationLib;
+using Serilog;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
@@ -11,9 +11,9 @@ namespace StoreUI.Menus
         private readonly LocationService locationService;
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
-        private readonly Managers manager;
+        private readonly ManagerModel manager;
 
-        public LocationOrderHistoryMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public LocationOrderHistoryMenu(ManagerModel manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;
@@ -35,7 +35,7 @@ namespace StoreUI.Menus
             System.Console.WriteLine("[5] Return to customer menu");
             System.Console.WriteLine("[6] exit");
             string sortedHistory = System.Console.ReadLine();
-            
+
             switch (sortedHistory)
             {
                 case "1":
@@ -73,5 +73,5 @@ namespace StoreUI.Menus
                     break;
             }
         }
-    } 
+    }
 }

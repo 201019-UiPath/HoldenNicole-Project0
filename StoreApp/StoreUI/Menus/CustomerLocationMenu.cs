@@ -1,14 +1,13 @@
-﻿using StoreDB.Entities;
+﻿using LocationLib;
 using Serilog;
-using LocationLib;
-using System;
+using StoreDB.Entities;
 using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
     public class CustomerLocationMenu : IMenu
     {
-        private readonly SignInMenu signInMenu;
+        private SignInMenu signInMenu;
         private CustomerLocationMenu customerLocationMenu;
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
@@ -78,6 +77,7 @@ namespace StoreUI.Menus
                     Log.Information("games store selected");
                     break;
                 case "5":
+                    signInMenu = new SignInMenu(new ixdssaucContext(), new StoreMapper());
                     signInMenu.Start();
                     Log.Information("backwards");
                     break;
@@ -93,5 +93,5 @@ namespace StoreUI.Menus
             }
         }
 
-    } 
+    }
 }

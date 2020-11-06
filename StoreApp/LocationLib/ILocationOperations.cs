@@ -1,6 +1,4 @@
-﻿using StoreDB.Entities;
-
-namespace LocationLib
+﻿namespace LocationLib
 {
     interface ILocationOperations
     {

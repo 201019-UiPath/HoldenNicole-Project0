@@ -1,7 +1,6 @@
-﻿using StoreUI;
-using StoreDB.Entities;
+﻿using StoreDB.Models;
+using StoreUI;
 using System;
-using StoreDB.Models;
 
 namespace CustomerLib
 {

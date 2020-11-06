@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace StoreDB.Entities
 {
@@ -8,6 +7,7 @@ namespace StoreDB.Entities
         public Products()
         {
             CartItems = new HashSet<CartItems>();
+            Inventory = new HashSet<Inventory>();
         }
 
         public int Id { get; set; }
@@ -17,5 +17,6 @@ namespace StoreDB.Entities
         public decimal Price { get; set; }
 
         public virtual ICollection<CartItems> CartItems { get; set; }
+        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }

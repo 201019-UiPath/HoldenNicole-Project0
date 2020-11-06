@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using StoreDB.Entities;
 using StoreDB.Models;
+using System.Collections.Generic;
 
 namespace StoreUI
 {
@@ -11,6 +10,6 @@ namespace StoreUI
         void DeleteProductAtLocation(int locationid, int productid, int quantity);
         LocationModel GetLocationByID(int id);
         LocationModel GetLocationByName(string name);
-        List<LocationModel> GetAllLocations(); 
+        List<LocationModel> GetAllLocations();
     }
 }

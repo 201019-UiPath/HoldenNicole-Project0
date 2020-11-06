@@ -1,7 +1,4 @@
 ﻿using StoreUI;
-using StoreDB.Entities;
-using System;
-using System.Collections.Generic;
 
 namespace ManagerLib
 {
@@ -21,9 +18,9 @@ namespace ManagerLib
             dBRepo.DeleteProductAtLocation(locationid, productid, quantity);
         }
 
-        public Managers GetManagerByName(string managerUserName)
+        public void GetManagerByName(string managerUserName)
         {
-            throw new NotImplementedException();
+            dBRepo.GetManagerByName(managerUserName);
         }
     }
 }

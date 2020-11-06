@@ -1,6 +1,6 @@
 using StoreDB.Entities;
-using System;
 using StoreDB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +28,17 @@ namespace StoreUI
             context.CartItems.Update(mapper.ParseCartItem(cartItem));
             context.SaveChanges();
         }
+
+        public void GetManagerByName(string managerUserName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetManagerByName(string v, string managerUserName)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteProductInCart(CartItemModel cartItems)
         {
             context.CartItems.Remove(mapper.ParseCartItem(cartItems));
@@ -51,12 +62,30 @@ namespace StoreUI
         #endregion
 
         #region inventory methods
-         public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
                 .Where(i => i.Location == id)
                 .OrderBy(i => i.Product)
+                .ToList()
+            );
+        }
+        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
+        {
+            return mapper.ParseInventory(
+                context.Inventory
+                .Where(i => i.Location == id)
+                .OrderBy(i => i.Quantity)
+                .ToList()
+            );
+        }
+        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
+        {
+            return mapper.ParseInventory(
+                context.Inventory
+                .Where(i => i.Location == id)
+                .OrderByDescending(i => i.Quantity)
                 .ToList()
             );
         }
@@ -78,14 +107,14 @@ namespace StoreUI
         #region customer methods
         public CustomerModels GetCustomerByID(int id)
         {
-            try 
+            try
             {
                 return mapper.ParseCustomer(
                     context.Customer
                     .First(c => c.Id == id)
                 );
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 System.Console.WriteLine("This customer id does not exist try again");
             }
@@ -94,14 +123,14 @@ namespace StoreUI
 
         public CustomerModels GetCustomerByName(string name)
         {
-            try 
+            try
             {
                 return mapper.ParseCustomer(
                     context.Customer
                     .First(c => c.Username == name)
                 );
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 System.Console.WriteLine("This customer username does not exist try again");
             }
@@ -109,14 +138,14 @@ namespace StoreUI
         }
         public CustomerModels GetCustomerByEmail(string email)
         {
-            try 
+            try
             {
                 return mapper.ParseCustomer(
                     context.Customer
                     .First(c => c.Email == email)
                 );
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 System.Console.WriteLine("This email is not registered try again");
             }
@@ -154,7 +183,7 @@ namespace StoreUI
                     .ToList()
                 );
             }
-            catch(System.InvalidOperationException)
+            catch (System.InvalidOperationException)
             {
                 System.Console.WriteLine("This customer does not have any order history yet");
                 return null;
@@ -163,7 +192,7 @@ namespace StoreUI
 
         public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
-             try
+            try
             {
                 return mapper.ParseOrder(
                     context.Orders
@@ -172,7 +201,7 @@ namespace StoreUI
                     .ToList()
                 );
             }
-            catch(System.InvalidOperationException)
+            catch (System.InvalidOperationException)
             {
                 System.Console.WriteLine("This customer does not have any order history yet");
                 return null;
@@ -181,7 +210,7 @@ namespace StoreUI
 
         public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
         {
-             try
+            try
             {
                 return mapper.ParseOrder(
                     context.Orders
@@ -190,7 +219,7 @@ namespace StoreUI
                     .ToList()
                 );
             }
-            catch(System.InvalidOperationException)
+            catch (System.InvalidOperationException)
             {
                 System.Console.WriteLine("This customer does not have any order history yet");
                 return null;
@@ -199,7 +228,7 @@ namespace StoreUI
 
         public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
         {
-             try
+            try
             {
                 return mapper.ParseOrder(
                     context.Orders
@@ -208,7 +237,7 @@ namespace StoreUI
                     .ToList()
                 );
             }
-            catch(System.InvalidOperationException)
+            catch (System.InvalidOperationException)
             {
                 System.Console.WriteLine("This customer does not have any order history yet");
                 return null;
@@ -216,9 +245,9 @@ namespace StoreUI
         }
 
         #endregion
-        
+
         #region location methods
-         public LocationModel GetLocationByID(int id)
+        public LocationModel GetLocationByID(int id)
         {
             return mapper.ParseLocation(
                 context.Locations

@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
+using System.Collections.Generic;
 
 namespace StoreUI
 {
@@ -37,8 +37,8 @@ namespace StoreUI
 
         public ICollection<CartItems> ParseCartItem(List<CartItemModel> cartItems)
         {
-            ICollection<CartItems> cartItem= new List<CartItems>();
-            foreach(var c in cartItems)
+            ICollection<CartItems> cartItem = new List<CartItems>();
+            foreach (var c in cartItems)
             {
                 cartItem.Add(ParseCartItem(c));
             }
@@ -48,7 +48,7 @@ namespace StoreUI
         public List<CartItemModel> ParseCartItem(ICollection<CartItems> cartItems)
         {
             List<CartItemModel> cartItemModels = new List<CartItemModel>();
-            foreach(var c in cartItems)
+            foreach (var c in cartItems)
             {
                 cartItemModels.Add(ParseCartItem(c));
             }
@@ -78,8 +78,8 @@ namespace StoreUI
 
         public ICollection<Carts> ParseCarts(List<CartsModel> carts)
         {
-            ICollection<Carts> cart= new List<Carts>();
-            foreach(var c in carts)
+            ICollection<Carts> cart = new List<Carts>();
+            foreach (var c in carts)
             {
                 cart.Add(ParseCarts(c));
             }
@@ -120,7 +120,7 @@ namespace StoreUI
         public ICollection<Customer> ParseCustomer(List<CustomerModels> customer)
         {
             ICollection<Customer> customers = new List<Customer>();
-            foreach(var c in customer)
+            foreach (var c in customer)
             {
                 customers.Add(ParseCustomer(c));
             }
@@ -163,6 +163,7 @@ namespace StoreUI
         {
             return new InventoryModel()
             {
+                id = inventory.Id,
                 locationID = inventory.Location,
                 productID = inventory.Product,
                 Quantity = inventory.Quantity
@@ -295,27 +296,7 @@ namespace StoreUI
         }
         public List<ManagerModel> ParseManager(ICollection<Managers> manager)
         {
-            List<ManagerModel> managers= new List<ManagerModel>();
-            foreach (var m in manager)
-            {
-                managers.Add(ParseManager(m));
-            }
-            return managers;
-        }
-
-        public ICollection<Managers> ParseManager(List<Managers> managers)
-        {
-            ICollection<Managers> manager = new List<Managers>();
-            foreach (var m in managers)
-            {
-                manager.Add(ParseManager(m));
-            }
-            return manager;
-        }
-        
-        List<Managers> IManagerMapper.ParseManager(ICollection<Managers> manager)
-        {
-            List<ManagerModel> managers= new List<ManagerModel>();
+            List<ManagerModel> managers = new List<ManagerModel>();
             foreach (var m in manager)
             {
                 managers.Add(ParseManager(m));
@@ -340,7 +321,7 @@ namespace StoreUI
         public ICollection<Orders> ParseOrder(List<OrderModel> order)
         {
             ICollection<Orders> orders = new List<Orders>();
-            foreach(var o in order)
+            foreach (var o in order)
             {
                 orders.Add(ParseOrder(o));
             }
@@ -381,9 +362,9 @@ namespace StoreUI
                 Price = product.Price
             };
         }
-        public List<Products> ParseProducts(ICollection<Products> products)
+        public List<ProductModel> ParseProducts(ICollection<Products> products)
         {
-            List<Products> product = new List<Products>();
+            List<ProductModel> product = new List<ProductModel>();
             foreach (var p in products)
             {
                 product.Add(ParseProducts(p));
@@ -414,12 +395,22 @@ namespace StoreUI
 
         List<ProductModel> IProductMapper.ParseProducts(ICollection<Products> product)
         {
-            List<Products> products = new List<Products>();
+            List<ProductModel> products = new List<ProductModel>();
             foreach (var p in product)
             {
                 products.Add(ParseProducts(p));
             }
             return products;
+        }
+
+        List<Managers> IManagerMapper.ParseManager(ICollection<Managers> manager)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ICollection<Managers> ParseManager(List<Managers> managers)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

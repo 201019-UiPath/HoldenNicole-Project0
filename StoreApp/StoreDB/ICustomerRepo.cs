@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using StoreDB.Entities;
-using StoreDB.Models;
+﻿using StoreDB.Models;
+using System.Collections.Generic;
 
 namespace StoreUI
 {
@@ -10,6 +8,6 @@ namespace StoreUI
         void PlaceOrder(OrderModel order);
         List<CustomerModels> GetAllCustomersOrderByUsername();
         List<CustomerModels> GetAllCustomersOrderByOrders();
-        void AddCustomer(CustomerModels customer); 
+        void AddCustomer(CustomerModels customer);
     }
 }

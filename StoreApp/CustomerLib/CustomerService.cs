@@ -1,7 +1,6 @@
-using StoreUI;
-using StoreDB.Entities;
-using System.Collections.Generic;
 using StoreDB.Models;
+using StoreUI;
+using System.Collections.Generic;
 
 namespace CustomerLib
 {
@@ -25,15 +24,15 @@ namespace CustomerLib
         public void AddCustomer(CustomerModels customer)
         {
             List<CustomerModels> getCustomersTask = dbRepo.GetAllCustomersOrderByUsername();
-            foreach(var h in getCustomersTask)
+            foreach (var h in getCustomersTask)
             {
-                if(customer.Username.Equals(h.Username))
+                if (customer.Username.Equals(h.Username))
                 {
                     throw new System.Exception("Sorry this username is already taken");
                 }
-                else 
+                else
                 {
-                    if(customer.email.Equals(h.email))
+                    if (customer.email.Equals(h.email))
                     {
                         throw new System.Exception("Sorry this email is already registered");
                     }
@@ -49,11 +48,21 @@ namespace CustomerLib
             List<CustomerModels> getCustomers = dbRepo.GetAllCustomersOrderByOrders();
             return getCustomers;
         }
-        public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {
-            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocation(id);
+            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByID(id);
             return viewProductsAtLocation;
-        } 
+        }
+        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
+        {
+            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByQuantityAscending(id);
+            return viewProductsAtLocation;
+        }
+        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
+        {
+            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByQuantityDescending(id);
+            return viewProductsAtLocation;
+        }
         public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
             List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(customer);
@@ -73,6 +82,6 @@ namespace CustomerLib
         {
             List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(customer);
             return orders;
-        } 
+        }
     }
 }

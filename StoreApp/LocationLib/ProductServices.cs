@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using StoreUI;
-using StoreDB.Entities;
 using StoreDB.Models;
+using StoreUI;
+using System.Collections.Generic;
 
 namespace LocationLib
 {
@@ -12,9 +11,19 @@ namespace LocationLib
         {
             this.dBRepo = new DBRepo();
         }
-        public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocation(id);
+            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByID(id);
+            return viewAllProductsAtLocation;
+        }
+        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
+        {
+            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByQuantityAscending(id);
+            return viewAllProductsAtLocation;
+        }
+        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
+        {
+            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByQuantityDescending(id);
             return viewAllProductsAtLocation;
         }
     }

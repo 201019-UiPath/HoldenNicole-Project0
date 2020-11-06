@@ -1,8 +1,5 @@
-﻿
-using StoreDB.Entities;
-using StoreDB.Models;
+﻿using StoreDB.Models;
 using StoreUI;
-using System.Collections.Generic;
 
 namespace OrdersLib
 {
@@ -16,6 +13,6 @@ namespace OrdersLib
         public void PlaceOrder(OrderModel order)
         {
             dBRepo.PlaceOrder(order);
-        } 
-    } 
+        }
+    }
 }

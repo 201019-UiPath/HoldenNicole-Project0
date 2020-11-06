@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.IO;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace StoreDB.Entities
 {
@@ -32,7 +32,7 @@ namespace StoreDB.Entities
             {
                 var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile(@"C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\appsettings.json")
                 .Build();
 
                 var connectionString = configuration.GetConnectionString("HerosDB");
@@ -105,7 +105,6 @@ namespace StoreDB.Entities
 
                 entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Carts)
-                    .HasPrincipalKey(p => p.Id)
                     .HasForeignKey(d => d.Location)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("location");
@@ -128,7 +127,7 @@ namespace StoreDB.Entities
 
             modelBuilder.Entity<Inventory>(entity =>
             {
-                entity.HasNoKey();
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Location).HasColumnName("location");
 
@@ -137,14 +136,13 @@ namespace StoreDB.Entities
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.HasOne(d => d.LocationNavigation)
-                    .WithMany()
-                    .HasPrincipalKey(p => p.Id)
+                    .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.Location)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("location");
 
                 entity.HasOne(d => d.ProductNavigation)
-                    .WithMany()
+                    .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.Product)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("product");
@@ -171,15 +169,11 @@ namespace StoreDB.Entities
 
             modelBuilder.Entity<Locations>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.HasIndex(e => e.Id)
                     .HasName("ID")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedOnAdd();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Manager).HasColumnName("manager");
 
@@ -189,7 +183,7 @@ namespace StoreDB.Entities
                     .HasColumnType("character varying");
 
                 entity.HasOne(d => d.ManagerNavigation)
-                    .WithMany()
+                    .WithMany(p => p.Locations)
                     .HasForeignKey(d => d.Manager)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("manager");
@@ -234,7 +228,6 @@ namespace StoreDB.Entities
 
                 entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Orders)
-                    .HasPrincipalKey(p => p.Id)
                     .HasForeignKey(d => d.Location)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("location");

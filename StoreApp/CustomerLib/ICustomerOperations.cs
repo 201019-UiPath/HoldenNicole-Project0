@@ -1,5 +1,4 @@
-﻿using StoreDB.Entities;
-using StoreDB.Models;
+﻿using StoreDB.Models;
 
 namespace CustomerLib
 {

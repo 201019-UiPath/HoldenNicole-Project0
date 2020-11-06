@@ -1,7 +1,4 @@
-﻿
-using System.Collections.Generic;
-
-namespace StoreDB.Models
+﻿namespace StoreDB.Models
 {
     public class CustomerModels
     {

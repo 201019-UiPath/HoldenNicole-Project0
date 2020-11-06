@@ -1,22 +1,17 @@
-﻿using StoreUI;
-using StoreDB.Entities;
+﻿using StoreDB.Models;
+using StoreUI;
 using System.Collections.Generic;
-using StoreDB.Models;
 
 namespace LocationLib
 {
     public class LocationService
     {
         private readonly DBRepo dbRepo;
-        public LocationService ()
+        public LocationService()
         {
             this.dbRepo = new DBRepo();
 
         }
-
-       // public LocationService()
-        //{
-        //}
 
         public LocationModel GetLocationByID(int id)
         {
@@ -47,11 +42,11 @@ namespace LocationLib
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
             return getOrdersByLocation;
-        } 
+        }
         public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceDescending(id);
             return getOrdersByLocation;
-        } 
+        }
     }
 }

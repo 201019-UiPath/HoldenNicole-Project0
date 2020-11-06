@@ -1,8 +1,8 @@
-using StoreUI;
 using StoreDB.Entities;
+using StoreDB.Models;
+using StoreUI;
 using System;
 using System.Collections.Generic;
-using StoreDB.Models;
 
 namespace OrdersLib
 {
@@ -29,7 +29,7 @@ namespace OrdersLib
         public void DeleteProductInCart(CartItemModel product)
         {
             dBRepo.DeleteProductInCart(product);
-        } 
+        }
         public void PlaceOrder(OrderModel order)
         {
             /// <summary>
@@ -43,5 +43,5 @@ namespace OrdersLib
         {
             throw new NotImplementedException();
         }
-    } 
+    }
 }

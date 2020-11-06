@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using StoreDB;
-using StoreDB.Entities;
+﻿using StoreDB;
 
 namespace StoreUI
 {

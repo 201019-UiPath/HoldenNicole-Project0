@@ -1,7 +1,7 @@
-﻿using StoreUI.Menus;
-using Serilog;
+﻿using Serilog;
 using StoreDB.Entities;
 using StoreDB.Models;
+using StoreUI.Menus;
 
 namespace StoreUI
 {
@@ -9,9 +9,9 @@ namespace StoreUI
     {
         static void Main(string[] args)
         {
-           Log.Logger = new LoggerConfiguration()
-                .WriteTo.File("StoreTest/LogPlease.txt")
-                .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                 .WriteTo.File("StoreTest/LogPlease.txt")
+                 .CreateLogger();
             IMenu main = new SignInMenu(new ixdssaucContext(), new StoreMapper());
             main.Start();
 
@@ -27,14 +27,14 @@ namespace StoreUI
             IMenu customerOrderHistoryMenu = new CustomerOrderHistoryMenu(new CustomerModels(), new ixdssaucContext(), new StoreMapper());
             customerOrderHistoryMenu.Start();
 
-            IMenu locationOrderHistoryMenu = new LocationOrderHistoryMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
-            locationOrderHistoryMenu.Start(); 
+            IMenu locationOrderHistoryMenu = new LocationOrderHistoryMenu(new ManagerModel(), new ixdssaucContext(), new StoreMapper());
+            locationOrderHistoryMenu.Start();
 
-            IMenu managerMenu = new ManagerMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
-            managerMenu.Start(); 
+            IMenu managerMenu = new ManagerMenu(new ManagerModel(), new ixdssaucContext(), new StoreMapper());
+            managerMenu.Start();
 
-            IMenu managerInventoryMenu = new ManagerInventoryMenu(new Managers(), new ixdssaucContext(), new Locations(), new StoreMapper());
+            IMenu managerInventoryMenu = new ManagerInventoryMenu(new ManagerModel(), new ixdssaucContext(), new LocationModel(), new StoreMapper());
             managerInventoryMenu.Start();
-        } 
-    } 
+        }
+    }
 }

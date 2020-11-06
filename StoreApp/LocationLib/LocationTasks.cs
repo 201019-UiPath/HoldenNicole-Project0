@@ -1,5 +1,4 @@
 using StoreUI;
-using StoreDB.Entities;
 
 namespace LocationLib
 {
@@ -14,7 +13,7 @@ namespace LocationLib
         {
             System.Console.WriteLine("Getting all items in inventory");
             System.Console.WriteLine("Items in store inventory");
-            dbRepo.ViewAllProductsAtLocation(id);
+            dbRepo.ViewAllProductsAtLocationSortByID(id);
             ///return list "items"
         }
         /// allows manager to see add to inventory
@@ -40,7 +39,7 @@ namespace LocationLib
         {
             System.Console.WriteLine("Retrieving location order history");
             System.Console.WriteLine("Order history acquired");
-           // dbRepo.GetAllOrdersByLocationIDDateAscending(id); //return OrderHistory
+            // dbRepo.GetAllOrdersByLocationIDDateAscending(id); //return OrderHistory
             OrderHistory();
         }
     }

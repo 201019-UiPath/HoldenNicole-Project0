@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
 	  <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
 	  <ProjectReference Include="..\ManagerLib\ManagerLib.csproj" />

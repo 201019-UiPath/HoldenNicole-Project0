@@ -1,20 +1,20 @@
-using StoreUI;
-using StoreDB.Entities;
+using LocationLib;
 using Serilog;
-using System;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
     public class ManagerMenu : IMenu
     {
         private SignInMenu signInMenu;
-        private Managers manager1;
-        private ixdssaucContext storeContext1;
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
-        private readonly ManagerMenu managerMenu;
-        private readonly Managers manager;
-        public ManagerMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
+        private ManagerMenu managerMenu;
+        private readonly ManagerModel manager;
+        private ManagerInventoryMenu managerInventoryMenu;
+        private LocationService locationService;
+        public ManagerMenu(ManagerModel manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;
@@ -34,21 +34,45 @@ namespace StoreUI.Menus
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
                     ///replace
+                    int id = 1;
+                    locationService = new LocationService();
+                    LocationModel location = locationService.GetLocationByID(id);
+                    /// change info here
+                    managerInventoryMenu = new ManagerInventoryMenu(manager, storeContext, location, new StoreMapper());
+                    managerInventoryMenu.Start();
                     Log.Information("Cob");
                     break;
                 case "2":
                     System.Console.WriteLine("Sending you to the World of Sticks branch");
                     /// replace
+                    int id2 = 2;
+                    locationService = new LocationService();
+                    LocationModel location2 = locationService.GetLocationByID(id2);
+                    /// change info here
+                    managerInventoryMenu = new ManagerInventoryMenu(manager, storeContext, location2, new StoreMapper());
+                    managerInventoryMenu.Start();
                     Log.Information("Great One");
                     break;
                 case "3":
                     System.Console.WriteLine("Sending you to the World of Jerseys branch");
                     /// replace
+                    int id3 = 3;
+                    locationService = new LocationService();
+                    LocationModel location3 = locationService.GetLocationByID(id3);
+                    /// change info here
+                    managerInventoryMenu = new ManagerInventoryMenu(manager, storeContext, location3, new StoreMapper());
+                    managerInventoryMenu.Start();
                     Log.Information("Miracle Team");
                     break;
                 case "4":
                     System.Console.WriteLine("Sending you to the World of Games branch");
                     /// replace
+                    int id4 = 4;
+                    locationService = new LocationService();
+                    LocationModel location4 = locationService.GetLocationByID(id4);
+                    /// change info here
+                    managerInventoryMenu = new ManagerInventoryMenu(manager, storeContext, location4, new StoreMapper());
+                    managerInventoryMenu.Start();
                     Log.Information("Heisman");
                     break;
                 case "5":
@@ -62,5 +86,5 @@ namespace StoreUI.Menus
                     break;
             }
         }
-    } 
+    }
 }

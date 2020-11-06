@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using StoreDB.Entities;
+﻿using StoreDB.Entities;
 using StoreDB.Models;
+using System.Collections.Generic;
 
 namespace StoreUI
 {

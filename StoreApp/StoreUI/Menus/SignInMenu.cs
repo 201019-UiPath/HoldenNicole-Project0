@@ -1,11 +1,9 @@
-using StoreDB.Entities;
-using System;
-using Serilog;
 using CustomerLib;
-using OrdersLib;
-using LocationLib;
 using ManagerLib;
+using Serilog;
+using StoreDB.Entities;
 using StoreDB.Models;
+using System;
 
 namespace StoreUI.Menus
 {
@@ -13,7 +11,7 @@ namespace StoreUI.Menus
     {
         private string userInput;
         private CustomerMenu customerMenu;
-        private readonly SignInMenu signInMenu;
+        private SignInMenu signInMenu;
         private ManagerMenu managerMenu;
         private ixdssaucContext storeContext1;
         private StoreMapper storeMapper;
@@ -23,7 +21,7 @@ namespace StoreUI.Menus
         public SignInMenu(ixdssaucContext context, IMapper mapper)
         {
             this.customerMenu = new CustomerMenu(new CustomerModels(), new ixdssaucContext(), new StoreMapper());
-            this.managerMenu = new ManagerMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
+            this.managerMenu = new ManagerMenu(new ManagerModel(), new ixdssaucContext(), new StoreMapper());
         }
 
         public SignInMenu(ixdssaucContext storeContext1, StoreMapper storeMapper)
@@ -41,11 +39,11 @@ namespace StoreUI.Menus
             Console.WriteLine("[3] Sign up as a new customer");
             Console.WriteLine("[4] exit");
             userInput = Console.ReadLine();
-            
+
             switch (userInput)
             {
                 case "1":
-                    Managers manager = ManagerSignIn();
+                    ManagerModel manager = ManagerSignIn();
                     break;
                 case "2":
                     CustomerModels customer = CustomerSignIn();
@@ -59,6 +57,7 @@ namespace StoreUI.Menus
                     break;
                 default:
                     Console.WriteLine("Invalid Input please try again");
+                    signInMenu = new SignInMenu(storeContext, storeMapper);
                     signInMenu.Start();
                     Log.Information("invalid input");
                     break;
@@ -67,46 +66,45 @@ namespace StoreUI.Menus
         public CustomerModels CustomerSignIn()
         {
             CustomerModels customer = new CustomerModels();
-            
+
             Console.WriteLine("Please enter your username:");
             string returningCustomerUserName = Console.ReadLine();
-            try 
+            try
             {
                 //validation brakes the functional code
-              //  customer = customerService.GetCustomerByName(returningCustomerUserName);
-               // Customer returningCustomer = customer;
-               // Orders orders = new Orders();
-              //  Orders newOrder = orders;
-               // newOrder.Customer = (int)returningCustomer.ID;
+                // customer = customerService.GetCustomerByName(returningCustomerUserName);
+                CustomerModels returningCustomer = customer;
+                Orders orders = new Orders();
+                Orders newOrder = orders;
+                newOrder.Customer = (int)returningCustomer.ID;
                 customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
                 customerMenu.Start();
                 Log.Information("Returning customer sighted");
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 Console.WriteLine($"There is no registered user with the username: {customer.Username}");
             }
             return customer;
         }
-        public Managers ManagerSignIn()
+        public ManagerModel ManagerSignIn()
         {
-            Managers manager = new Managers();
+            ManagerModel manager = new ManagerModel();
             Console.WriteLine("Please enter your username:");
-            string managerUserName = Console.ReadLine();
+            string Username = Console.ReadLine();
             try
             {
                 //validation breaks my functional code
-                manager = managerSevices.GetManagerByName(managerUserName);
                 managerMenu = new ManagerMenu(manager, storeContext, new StoreMapper());
                 managerMenu.Start();
                 /// would like to validate this but idk how
                 ///if output from dBRepo contains user input redirect to location corresponding to manager
                 Log.Information("manager sighted");
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 Console.WriteLine($"There is no manager with username: {manager.Username}");
-            }       
+            }
             return manager;
         }
         public CustomerModels Registration()
@@ -125,5 +123,5 @@ namespace StoreUI.Menus
             Log.Information("New customer sighted");
             return newCustomer;
         }
-    } 
+    }
 }
