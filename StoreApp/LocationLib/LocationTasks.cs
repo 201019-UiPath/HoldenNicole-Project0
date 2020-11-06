@@ -1,5 +1,5 @@
 using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 
 namespace LocationLib
 {
@@ -7,29 +7,29 @@ namespace LocationLib
     public class LocationTasks : ILocationOperations
     {
         public DBRepo dbRepo;
-        public event LocationDel managedInventory;
+        public event LocationDel ManagedInventory;
 
         ///section to check inventory
         public void GetInventory(int id)
         {
             System.Console.WriteLine("Getting all items in inventory");
             System.Console.WriteLine("Items in store inventory");
-            dbRepo.ViewAllProductsAtLocationGroupBySport(id);
+            dbRepo.ViewAllProductsAtLocation(id);
             ///return list "items"
         }
         /// allows manager to see add to inventory
-        public void AddInventory(Products product)
+        public void AddProductToLocation(int locationid, int productid, int quantity)
         {
             System.Console.WriteLine("Opened Store Inventory");
-            dbRepo.AddProductToLocationAsync(product); //manager can add to location inventory
+            dbRepo.AddProductToLocation(locationid, productid, quantity); //manager can add to location inventory
             System.Console.WriteLine("Adding to inventory");
             OnAddInventory();
         }
         public void OnAddInventory()
         {
-            if (managedInventory != null)
+            if (ManagedInventory != null)
             {
-                managedInventory();
+                ManagedInventory();
             }
         }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreUI.Entities
+namespace StoreDB.Entities
 {
     public partial class Products
     {
@@ -11,14 +11,11 @@ namespace StoreUI.Entities
         }
 
         public int Id { get; set; }
-        public int ID { get; internal set; }
         public string Athlete { get; set; }
         public string Item { get; set; }
         public string Sport { get; set; }
         public decimal Price { get; set; }
 
         public virtual ICollection<CartItems> CartItems { get; set; }
-        public int Quantity { get; set; }
-        public object locationID { get; internal set; }
     }
 }

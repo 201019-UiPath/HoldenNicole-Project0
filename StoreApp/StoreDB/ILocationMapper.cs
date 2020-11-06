@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
-using StoreUI.Entities;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI
 {
     public interface ILocationMapper
     {
-        Locations ParseLocation(Locations location);
-        List<Locations> ParseLocation(List<Locations> location);
+        Locations ParseLocation(LocationModel location);
+        ICollection<Locations> ParseLocation(List<LocationModel> location);
+        List<LocationModel> ParseLocation(ICollection<Locations> location);
+        LocationModel ParseLocation(Locations location);
     }
 }

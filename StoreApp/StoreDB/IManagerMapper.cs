@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
-using StoreUI.Entities;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI
 {
     public interface IManagerMapper
     {
-        Managers ParseManager(Managers manager);
-        List<Managers> ParseManager(List<Managers> manager);
+        Managers ParseManager(ManagerModel manager);
+        ManagerModel ParseManager(Managers managers);
+        List<Managers> ParseManager(ICollection<Managers> manager);
+        ICollection<Managers> ParseManager(List<Managers> managers);
     }
 }

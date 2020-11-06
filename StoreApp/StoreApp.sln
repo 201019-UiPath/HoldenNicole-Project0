@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerLib", "CustomerLib\CustomerLib.csproj", "{DF812A56-20AE-4E77-BFF2-61D446D30E7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerLib", "CustomerLib\CustomerLib.csproj", "{DF812A56-20AE-4E77-BFF2-61D446D30E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationLib", "LocationLib\LocationLib.csproj", "{7A2E9EB9-F6FD-4A69-BA05-AE2A69154733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationLib", "LocationLib\LocationLib.csproj", "{7A2E9EB9-F6FD-4A69-BA05-AE2A69154733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersLib", "OrdersLib\OrdersLib.csproj", "{78A43905-8881-4302-90EB-FCC6A72804E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersLib", "OrdersLib\OrdersLib.csproj", "{78A43905-8881-4302-90EB-FCC6A72804E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreDB", "StoreDB\StoreDB.csproj", "{380CB123-324C-4742-BAE3-A17D156B331D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreDB", "StoreDB\StoreDB.csproj", "{380CB123-324C-4742-BAE3-A17D156B331D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTest", "StoreTest\StoreTest.csproj", "{9C5D69E1-313A-49A9-9EF8-26A94187E14D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreTest", "StoreTest\StoreTest.csproj", "{9C5D69E1-313A-49A9-9EF8-26A94187E14D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreUI", "StoreUI\StoreUI.csproj", "{F9732BC4-8101-4D8A-8716-B656EB0C807D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreUI", "StoreUI\StoreUI.csproj", "{F9732BC4-8101-4D8A-8716-B656EB0C807D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerLib", "ManagerLib\ManagerLib.csproj", "{36B604EF-719B-472E-8545-0BA3F622A19D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DF812A56-20AE-4E77-BFF2-61D446D30E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -100,5 +99,23 @@ Global
 		{F9732BC4-8101-4D8A-8716-B656EB0C807D}.Release|x64.Build.0 = Release|Any CPU
 		{F9732BC4-8101-4D8A-8716-B656EB0C807D}.Release|x86.ActiveCfg = Release|Any CPU
 		{F9732BC4-8101-4D8A-8716-B656EB0C807D}.Release|x86.Build.0 = Release|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Debug|x64.Build.0 = Debug|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Debug|x86.Build.0 = Debug|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Release|x64.ActiveCfg = Release|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Release|x64.Build.0 = Release|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Release|x86.ActiveCfg = Release|Any CPU
+		{36B604EF-719B-472E-8545-0BA3F622A19D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BF87977-D183-4E02-9240-17F908EBEADA}
 	EndGlobalSection
 EndGlobal

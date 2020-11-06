@@ -104,3 +104,5 @@ C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Proj
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreUI\obj\Debug\netcoreapp3.1\StoreUI.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreUI\obj\Debug\netcoreapp3.1\StoreUI.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreUI\obj\Debug\netcoreapp3.1\StoreUI.genruntimeconfig.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreUI\bin\Debug\netcoreapp3.1\ManagerLib.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreUI\bin\Debug\netcoreapp3.1\ManagerLib.pdb

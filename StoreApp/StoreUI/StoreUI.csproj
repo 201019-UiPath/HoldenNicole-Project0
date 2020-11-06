@@ -3,6 +3,7 @@
   <ItemGroup>
 	  <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
 	  <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
+	  <ProjectReference Include="..\ManagerLib\ManagerLib.csproj" />
 	  <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
 	  <ProjectReference Include="..\OrdersLib\OrdersLib.csproj" />
   </ItemGroup>
@@ -16,6 +17,10 @@
     <PackageReference Include="serilog.sinks.file" Version="4.1.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="StoreTest\" />
   </ItemGroup>
 
   <PropertyGroup>

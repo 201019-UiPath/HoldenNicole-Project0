@@ -10,6 +10,7 @@
         "dependencies": {
           "CustomerLib": "1.0.0",
           "LocationLib": "1.0.0",
+          "ManagerLib": "1.0.0",
           "Microsoft.EntityFrameworkCore": "3.1.9",
           "Microsoft.EntityFrameworkCore.Design": "3.1.9",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.9",
@@ -1287,6 +1288,14 @@
           "LocationLib.dll": {}
         }
       },
+      "ManagerLib/1.0.0": {
+        "dependencies": {
+          "StoreDB": "1.0.0"
+        },
+        "runtime": {
+          "ManagerLib.dll": {}
+        }
+      },
       "OrdersLib/1.0.0": {
         "dependencies": {
           "StoreDB": "1.0.0"
@@ -2227,6 +2236,11 @@
       "sha512": ""
     },
     "LocationLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ManagerLib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

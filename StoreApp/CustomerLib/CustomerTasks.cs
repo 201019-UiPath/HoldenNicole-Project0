@@ -1,6 +1,7 @@
 ﻿using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System;
+using StoreDB.Models;
 
 namespace CustomerLib
 {
@@ -13,10 +14,10 @@ namespace CustomerLib
         /// <summary>
         /// section used to allow customer to place order
         /// </summary>
-        public void PlaceOrder(Orders order)
+        public void PlaceOrder(OrderModel order)
         {
             Console.WriteLine("Opened Cart");
-           // dBRepo.PlaceOrderAsync(order);
+            dBRepo.PlaceOrder(order);
             Console.WriteLine("Hope you found everything you were looking for today!");
             Console.WriteLine("Come back to Sports Authenticated soon!");
             OnPlacedOrder();// call to notify all subscribers
@@ -61,10 +62,10 @@ namespace CustomerLib
         /// <summary>
         /// retrieves customer order history
         /// </summary>
-        public void CustomerOrderHistory(int id)
+        public void CustomerOrderHistory(CustomerModels customer)
         {
             Console.WriteLine("Getting Order History for you");
-            dBRepo.GetAllOrdersByCustomerIDDateAscending(id); //return list "orderHistory"
+            dBRepo.GetAllOrdersByCustomerIDDateAscending(customer); //return list "orderHistory"
         }
 
     }

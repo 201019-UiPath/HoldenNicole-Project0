@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using StoreUI.Entities;
+using StoreDB.Entities;
+using System;
+using StoreDB.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace StoreUI
 {
@@ -11,265 +11,274 @@ namespace StoreUI
         private readonly ixdssaucContext context;
         private readonly IMapper mapper;
 
-        public DBRepo(ixdssaucContext context, IMapper mapper)
+        public DBRepo()
         {
-            this.context = context;
-            this.mapper = mapper;
+            this.context = new ixdssaucContext();
+            this.mapper = new StoreMapper();
         }
-        #region Customer section
-        public Customer GetCustomerByID(int id)
+
+        #region cart methods
+        public void AddProductToCart(CartItemModel cartItem)
         {
-            return mapper.ParseCustomer(context.Customer
-            .Include("UserName")
-            .Include("Email")
-                .First(x => x.ID.Equals(id)));
+            context.CartItems.Add(mapper.ParseCartItem(cartItem));
+            context.SaveChanges();
         }
-        public Customer GetCustomerByName(string name)
+        public void UpdateCartItems(CartItemModel cartItem)
         {
-            return mapper.ParseCustomer(context.Customer
-            .Include("UserName")
-            .Include("Email")
-                .First(x => x.Username.Equals("name")));
+            context.CartItems.Update(mapper.ParseCartItem(cartItem));
+            context.SaveChanges();
         }
-        public void AddCustomer(Customer customer)
+        public void DeleteProductInCart(CartItemModel cartItems)
+        {
+            context.CartItems.Remove(mapper.ParseCartItem(cartItems));
+            context.SaveChanges();
+        }
+
+        public List<CartItemModel> GetAllProductsInCartByCartID(int id)
+        {
+            return mapper.ParseCartItem(
+                context.CartItems
+                .Where(i => i.Id == id)
+                .ToList()
+            );
+        }
+        public void PlaceOrder(OrderModel order)
+        {
+            context.Orders.First(i => i.Id == order.ID);
+            context.SaveChanges();
+        }
+
+        #endregion
+
+        #region inventory methods
+         public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        {
+            return mapper.ParseInventory(
+                context.Inventory
+                .Where(i => i.Location == id)
+                .OrderBy(i => i.Product)
+                .ToList()
+            );
+        }
+        public void AddProductToLocation(int locationid, int productid, int quantity)
+        {
+            var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
+            inventory.Quantity = inventory.Quantity + quantity;
+            context.SaveChanges();
+        }
+
+        public void DeleteProductAtLocation(int locationid, int productid, int quantity)
+        {
+            var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
+            inventory.Quantity = inventory.Quantity - quantity;
+            context.SaveChanges();
+        }
+        #endregion
+
+        #region customer methods
+        public CustomerModels GetCustomerByID(int id)
+        {
+            try 
+            {
+                return mapper.ParseCustomer(
+                    context.Customer
+                    .First(c => c.Id == id)
+                );
+            }
+            catch(InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer id does not exist try again");
+            }
+            return null;
+        }
+
+        public CustomerModels GetCustomerByName(string name)
+        {
+            try 
+            {
+                return mapper.ParseCustomer(
+                    context.Customer
+                    .First(c => c.Username == name)
+                );
+            }
+            catch(InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer username does not exist try again");
+            }
+            return null;
+        }
+        public CustomerModels GetCustomerByEmail(string email)
+        {
+            try 
+            {
+                return mapper.ParseCustomer(
+                    context.Customer
+                    .First(c => c.Email == email)
+                );
+            }
+            catch(InvalidOperationException)
+            {
+                System.Console.WriteLine("This email is not registered try again");
+            }
+            return null;
+        }
+        public void AddCustomer(CustomerModels customer)
         {
             context.Customer.Add(mapper.ParseCustomer(customer));
             context.SaveChanges();
         }
-        public Task<List<Customer>> GetAllCustomersAsync()
+        public List<CustomerModels> GetAllCustomersOrderByUsername()
         {
-            return Task.Run<List<Customer>>(
-                () => mapper.ParseCustomer(
-                    context.Customer
-                    .Include("Name")
-                    .Include("Email")
-                    .ToList()));
+            return mapper.ParseCustomer(
+                context.Customer
+                .OrderBy(i => i.Username)
+                .ToList()
+            );
         }
-        #endregion
-        #region manager section
-        public Managers GetManagerByName(string name)
+        public List<CustomerModels> GetAllCustomersOrderByOrders()
         {
-            return mapper.ParseManager(context.Managers.Include("location")
-                .First(x => x.Username.Equals(name)));
+            return mapper.ParseCustomer(
+                context.Customer
+                .OrderBy(i => i.Orders)
+                .ToList()
+            );
         }
-        public Managers GetManagerByID(int id)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
-            return mapper.ParseManager(context.Managers
-                .Include("UserName, Location")
-                .First(x => x.ID.Equals(id)));
+            try
+            {
+                return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Customer == customer.ID)
+                    .OrderBy(c => c.OrderDate)
+                    .ToList()
+                );
+            }
+            catch(System.InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer does not have any order history yet");
+                return null;
+            }
         }
-        public List<Managers> GetAllManagers()
+
+        public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
-            return mapper.ParseManager(
-                context.Managers
-                .Include("Name")
-                .Include("location")
-                .ToList());
+             try
+            {
+                return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Customer == customer.ID)
+                    .OrderByDescending(c => c.OrderDate)
+                    .ToList()
+                );
+            }
+            catch(System.InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer does not have any order history yet");
+                return null;
+            }
         }
-        #endregion
-        #region cart section
-        public void AddProductToCartAsync(Products product)
+
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
         {
-            context.Products.AddAsync(mapper.ParseProducts(product));
-            context.SaveChanges();
+             try
+            {
+                return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Customer == customer.ID)
+                    .OrderBy(c => c.Price)
+                    .ToList()
+                );
+            }
+            catch(System.InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer does not have any order history yet");
+                return null;
+            }
         }
-        public List<Products> GetAllProductsInCartByCartID(int id)
+
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
         {
-            return mapper.ParseOrder(
-                context.Products
-                .Where(x => x.ID.Equals(context.Orders))
-                .Include("Products")
-                .Include("Quantity")
-                .Include("Price")
-                .ToList());
-        }
-        public void UpdateCartItems(Products product)
-        {
-            context.Products.Update(mapper.ParseProducts(product));
-            context.SaveChanges();
-        }
-        public void DeleteProductInCart(Products product)
-        {
-            context.Products.Remove(mapper.ParseProducts(product));
-            context.SaveChanges();
-        }
-        public void PlaceOrderAsync(Orders order)
-        {
-            context.Orders.AddAsync(mapper.ParseOrder(order));
-            context.SaveChangesAsync();
-        }
-          Products ICartRepo.GetProductByID(int id)
-        {
-            return mapper.ParseProducts(context.Products.Include("Products").First(x => x.ID.Equals(id)));
+             try
+            {
+                return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Customer == customer.ID)
+                    .OrderByDescending(c => c.Price)
+                    .ToList()
+                );
+            }
+            catch(System.InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer does not have any order history yet");
+                return null;
+            }
         }
 
         #endregion
-        #region search section
-        public Products GetProductByID(int id)
-        {
-            return mapper.ParseProducts(context.Products.Include("Products").First(x => x.ID.Equals(id)));
-        }
-        public List<Products> ViewAllProductsAtLocationGroupByItem(int id)
-        {
-            return (List<Products>)mapper.ParseProducts(
-                (ICollection<Products>)context.Products
-                .Include("Athlete").Include("Item").Include("Price").Include("Quantity")
-                .Where(x => x.locationID.Equals(id))
-                .GroupBy(p => p.Item)
-                .ToList());
-        }
-        public List<Products> ViewAllProductsAtLocationGroupBySport(int id)
-        {
-            return (List<Products>)mapper.ParseProducts(
-                (ICollection<Products>)context.Products
-                .Include("Name")
-                .Include("Quantity")
-                .Include("Item")
-                .Include("Price")
-                .Where(x => x.locationID == context.Locations.Single(y => y.locationID.Equals(id)).locationID)
-                .GroupBy(p => p.Sport)
-                .ToList());
-        }
-        public List<Products> ViewAllProductsAtLocationGroupByAthlete(int id)
-        {
-            return (List<Products>)mapper.ParseProducts(
-                (ICollection<Products>)context.Products
-                .Include("Name")
-                .Include("Quantity")
-                .Include("Item")
-                .Include("Price")
-                .Where(x => x.locationID == context.Locations.Single(y => y.locationID.Equals(id)).locationID)
-                .GroupBy(p => p.Athlete)
-                .ToList());
-        }
-        public List<Products> ViewAllProductsBySport(string sport)
-        {
-            return (List<Products>)mapper.ParseProducts(
-                context.Products
-                .Include("Name")
-                .Include("Quantity")
-                .Include("Item")
-                .Include("Price")
-                .Where(x => x.Sport.Equals(sport))
-                .ToList());
-        }
-        public List<Products> ViewAllProductsByAthlete(string athlete)
-        {
-            return (List<Products>)mapper.ParseProducts(
-                context.Products
-                .Include("Name")
-                .Include("Quantity")
-                .Include("Item")
-                .Include("Price")
-                .Where(x => x.Sport.Equals(athlete))
-                .ToList());
-        }
-        public List<Products> ViewAllProductsByItem(string item)
-        {
-            return (List<Products>)mapper.ParseProducts(
-                context.Products
-                .Include("Name")
-                .Include("Quantity")
-                .Include("Item")
-                .Include("Price")
-                .Where(x => x.Sport.Equals(item))
-                .ToList());
-        }
-        #endregion
-        #region location section
-        public Locations GetLocationByID(int id)
-        {
-            return mapper.ParseLocation(context.Locations.Include("Name").First(x => x.ID.Equals(id)));
-        }
-        public Locations GetLocationByName(string name)
-        {
-            return mapper.ParseLocation(context.Locations.Include("LocationID").First(x => x.Name.Equals(name)));
-        }
-        public List<Locations> GetAllLocations()
+        
+        #region location methods
+         public LocationModel GetLocationByID(int id)
         {
             return mapper.ParseLocation(
                 context.Locations
-                .Include("Name")
-                .Include("IDs")
-                .Include("Location")
-                .ToList());
+                .First(l => l.Id == id)
+            );
         }
+        public LocationModel GetLocationByName(string name)
+        {
+            return mapper.ParseLocation(
+                context.Locations
+                .First(l => l.Name == name)
+            );
+        }
+        public List<LocationModel> GetAllLocations()
+        {
+            return mapper.ParseLocation(
+                context.Locations
+                .ToList()
+            );
+        }
+        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
+        {
+            return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Location == id)
+                    .OrderBy(c => c.OrderDate)
+                    .ToList()
+                );
+        }
+
+        public List<OrderModel> GetAllOrdersByLocationIDDateDescending(int id)
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(l => l.Location == id)
+                .OrderByDescending(l => l.OrderDate)
+                .ToList()
+            );
+        }
+
+        public List<OrderModel> GetAllOrdersByLocationIDPriceAscending(int id)
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(l => l.Location == id)
+                .OrderBy(l => l.Price)
+                .ToList()
+            );
+        }
+
+        public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(l => l.Location == id)
+                .OrderByDescending(l => l.Price)
+                .ToList()
+            );
+        }
+
         #endregion
-        #region manager inventory section
-        public void AddProductToLocationAsync(Products product)
-        {
-            context.Products.AddAsync(mapper.ParseProducts(product));
-            context.SaveChangesAsync();
-        }
-        public void UpdateProducts(Products product)
-        {
-            context.Products.Update(mapper.ParseProducts(product));
-            context.SaveChanges();
-        }
-        public void DeleteProduct(Products product)
-        {
-            context.Products.Remove(mapper.ParseProducts(product));
-            context.SaveChanges();
-        }
-        #endregion
-        #region Order histories
-       public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Customer == id)
-                .OrderBy(s => s.OrderDate));
-        }
-        public List<Orders> GetAllOrdersByCustomerIDDateDescending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Customer == id)
-                .OrderByDescending(s => s.OrderDate));
-        }
-        public List<Orders> GetAllOrdersByCustomerIDPriceAscending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Customer == id)
-                .OrderBy(s => s.Price));
-        }
-        public List<Orders> GetAllOrdersByCustomerIDPriceDescending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Customer == id)
-                .OrderByDescending(s => s.Price));
-        }
-        public List<Orders> GetAllOrdersByLocationIDDateAscending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Location == id)
-                .OrderBy(s => s.OrderDate));
-        }
-        public List<Orders> GetAllOrdersByLocationIDDateDescending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Location == id)
-                .OrderByDescending(s => s.OrderDate));
-        }
-        public List<Orders> GetAllOrdersByLocationIDPriceAscending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Location == id)
-                .OrderBy(s => s.Price));
-        }
-        public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
-        {
-            return (List<Orders>)mapper.ParseOrder(
-                (List<Orders>)context.Orders
-                .Where(x => x.Location == id)
-                .OrderByDescending(s => s.Price));
-        }
-        #endregion
-        
     }
 }

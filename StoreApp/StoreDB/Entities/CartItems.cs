@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace StoreUI.Entities
+﻿namespace StoreDB.Entities
 {
     public partial class CartItems
     {

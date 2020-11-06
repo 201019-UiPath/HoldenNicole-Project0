@@ -1,51 +1,47 @@
 using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System;
 using System.Collections.Generic;
+using StoreDB.Models;
 
 namespace OrdersLib
 {
     public class CartItemService
     {
-        private DBRepo dBRepo;
+        private readonly DBRepo dBRepo;
         public CartItemService(DBRepo dBRepo)
         {
             this.dBRepo = dBRepo;
         }
-        public void AddProductToCartAsync(Products product)
+        public void AddProductToCart(CartItemModel cartItem)
         {
-            dBRepo.AddProductToCartAsync(product);
+            dBRepo.AddProductToCart(cartItem);
         }
-        public void UpdateCartItems(Products products)
+        public void UpdateCartItems(CartItemModel products)
         {
             dBRepo.UpdateCartItems(products);
         }
-        public Products GetProductByID(int id)
+        public List<CartItemModel> GetAllProductsInCartByCartID(int id)
         {
-            Products item = dBRepo.GetProductByID(id);
-            return item;
-        }
-        public List<Products> GetAllProductsInCartByCartID(int id)
-        {
-            List<Products> products = dBRepo.GetAllProductsInCartByCartID(id);
+            List<CartItemModel> products = dBRepo.GetAllProductsInCartByCartID(id);
             return products;
         }
-        public void DeleteProductInCart(Products product)
+        public void DeleteProductInCart(CartItemModel product)
         {
             dBRepo.DeleteProductInCart(product);
         } 
-        public void PlaceOrderAsync(Orders order)
+        public void PlaceOrder(OrderModel order)
         {
             /// <summary>
             /// if order not in orders table
             /// </summary>
             /// <param name="order"></param>
-            dBRepo.PlaceOrderAsync(order);
+            dBRepo.PlaceOrder(order);
         }
 
         public Products GetProductByID(object iD)
         {
             throw new NotImplementedException();
         }
-    }
+    } 
 }

@@ -1,19 +1,16 @@
 using System.Collections.Generic;
-using StoreUI.Entities;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI
 {
     public interface ILocationRepo
     {
         ///contains all methods to be implemented in location repo
-        void AddProductToLocationAsync(Products product);
-        void UpdateProducts(Products product);
-        void DeleteProduct(Products product);
-        List<Products> ViewAllProductsAtLocationGroupByItem(int id);
-        List<Products> ViewAllProductsAtLocationGroupBySport(int id);
-        List<Products> ViewAllProductsAtLocationGroupByAthlete(int id);
-        Locations GetLocationByID(int id);
-        Locations GetLocationByName(string name);
-        List<Locations> GetAllLocations();
+        void AddProductToLocation(int locationid, int productid, int quantity);
+        void DeleteProductAtLocation(int locationid, int productid, int quantity);
+        LocationModel GetLocationByID(int id);
+        LocationModel GetLocationByName(string name);
+        List<LocationModel> GetAllLocations(); 
     }
 }

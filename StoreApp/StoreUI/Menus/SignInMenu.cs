@@ -1,9 +1,11 @@
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System;
 using Serilog;
 using CustomerLib;
 using OrdersLib;
 using LocationLib;
+using ManagerLib;
+using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
@@ -11,17 +13,25 @@ namespace StoreUI.Menus
     {
         private string userInput;
         private CustomerMenu customerMenu;
-        private SignInMenu signInMenu;
+        private readonly SignInMenu signInMenu;
         private ManagerMenu managerMenu;
-        private ixdssaucContext storeContext;
-        private CustomerService customerService;
-        private CartItemService cartService;
-        private LocationService locationService;
+        private ixdssaucContext storeContext1;
+        private StoreMapper storeMapper;
+        private readonly ixdssaucContext storeContext;
+        private readonly CustomerService customerService;
+        private readonly ManagerSevices managerSevices;
         public SignInMenu(ixdssaucContext context, IMapper mapper)
         {
-            this.customerMenu = new CustomerMenu(new Customer(), new ixdssaucContext(), new StoreMapper());
+            this.customerMenu = new CustomerMenu(new CustomerModels(), new ixdssaucContext(), new StoreMapper());
             this.managerMenu = new ManagerMenu(new Managers(), new ixdssaucContext(), new StoreMapper());
         }
+
+        public SignInMenu(ixdssaucContext storeContext1, StoreMapper storeMapper)
+        {
+            this.storeContext1 = storeContext1;
+            this.storeMapper = storeMapper;
+        }
+
         public void Start()
         {
             Console.WriteLine("Howdy! Welcome to Sports Authenticated!");
@@ -38,10 +48,10 @@ namespace StoreUI.Menus
                     Managers manager = ManagerSignIn();
                     break;
                 case "2":
-                    Customer customer = CustomerSignIn();
+                    CustomerModels customer = CustomerSignIn();
                     break;
                 case "3":
-                    Customer newCustomer = Registration();
+                    CustomerModels newCustomer = Registration();
                     break;
                 case "4":
                     Console.WriteLine("Bye come again some other time.");
@@ -54,26 +64,27 @@ namespace StoreUI.Menus
                     break;
             }
         }
-        public Customer CustomerSignIn()
+        public CustomerModels CustomerSignIn()
         {
-            Customer customer = new Customer();
+            CustomerModels customer = new CustomerModels();
             
             Console.WriteLine("Please enter your username:");
             string returningCustomerUserName = Console.ReadLine();
             try 
             {
                 //validation brakes the functional code
-                //customer = customerService.GetCustomerByName(returningCustomerUserName);
-                //Customers returningCustomer = customer;
-                //Orders newOrder = new Orders();
-                //newOrder.CustomerID = returningCustomer.ID;
+              //  customer = customerService.GetCustomerByName(returningCustomerUserName);
+               // Customer returningCustomer = customer;
+               // Orders orders = new Orders();
+              //  Orders newOrder = orders;
+               // newOrder.Customer = (int)returningCustomer.ID;
                 customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
                 customerMenu.Start();
                 Log.Information("Returning customer sighted");
             }
             catch(InvalidOperationException)
             {
-                System.Console.WriteLine($"There is no registered user with the username: {customer.Username}");
+                Console.WriteLine($"There is no registered user with the username: {customer.Username}");
             }
             return customer;
         }
@@ -85,7 +96,7 @@ namespace StoreUI.Menus
             try
             {
                 //validation breaks my functional code
-                //manager = locationService.GetManagerByName(managerUserName);
+                manager = managerSevices.GetManagerByName(managerUserName);
                 managerMenu = new ManagerMenu(manager, storeContext, new StoreMapper());
                 managerMenu.Start();
                 /// would like to validate this but idk how
@@ -94,27 +105,25 @@ namespace StoreUI.Menus
             }
             catch(InvalidOperationException)
             {
-                System.Console.WriteLine($"There is no manager with username: {manager.Username}");
+                Console.WriteLine($"There is no manager with username: {manager.Username}");
             }       
             return manager;
         }
-        public Customer Registration()
+        public CustomerModels Registration()
         {
-            System.Console.WriteLine("Please enter the username you would like to use:");
+            Console.WriteLine("Please enter the username you would like to use:");
             string Name = Console.ReadLine();
-            System.Console.WriteLine("Please enter your email address:");
+            Console.WriteLine("Please enter your email address:");
             string email = Console.ReadLine();
-            System.Console.WriteLine("Please enter your address: ");
-            string address = Console.ReadLine();
-            var newCustomer = new Customer()
+            var newCustomer = new CustomerModels()
             {
                 Username = Name,
-                Email = email,
+                email = email,
             };
             customerMenu = new CustomerMenu(newCustomer, storeContext, new StoreMapper());
             customerMenu.Start();
             Log.Information("New customer sighted");
             return newCustomer;
         }
-    }
+    } 
 }

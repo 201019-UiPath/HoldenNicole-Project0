@@ -1,19 +1,20 @@
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System;
 using Serilog;
 using CustomerLib;
+using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
     public class CustomerOrderHistoryMenu : IMenu
     {
         private CustomerMenu customerMenu;
-        private CustomerService customerService;
-        private ixdssaucContext storeContext;
-        private StoreMapper storeMapper;
-        private Customer customer;
-        private ixdssaucContext ixdssaucContext;
-        public CustomerOrderHistoryMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        private ixdssaucContext storeContext1;
+        private readonly CustomerService customerService;
+        private readonly ixdssaucContext storeContext;
+        private readonly StoreMapper storeMapper;
+        private readonly CustomerModels customer;
+        public CustomerOrderHistoryMenu(CustomerModels customer, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
@@ -26,9 +27,7 @@ namespace StoreUI.Menus
             /// need to figure out how to send customer data here
             /// </summary>
             /// <returns></returns>
-            System.Console.WriteLine("What is your customer id?");
-            string id = System.Console.ReadLine();
-            int idd = Convert.ToInt32(id);
+            int id = customer.ID;
             System.Console.WriteLine("How would you like your order history sorted?");
             System.Console.WriteLine("[1] Date most recent-oldest");
             System.Console.WriteLine("[2] Date oldest-most recent");
@@ -42,22 +41,22 @@ namespace StoreUI.Menus
             {
                 case "1":
                     System.Console.WriteLine("Here is your order history sorted by most recent first: ");
-                    customerService.GetAllOrdersByCustomerIDDateDescending(idd);
+                    customerService.GetAllOrdersByCustomerIDDateDescending(customer);
                     Log.Information("order history newest first");
                     break;
                 case "2":
                     System.Console.WriteLine("Here is your order history with oldest orders first: ");
-                    customerService.GetAllOrdersByCustomerIDPriceAscending(idd);
+                    customerService.GetAllOrdersByCustomerIDPriceAscending(customer);
                     Log.Information("order history oldest first");
                     break;
                 case "3":
                     System.Console.WriteLine("Here is your order history sorted by highest price first: ");
-                    customerService.GetAllOrdersByCustomerIDPriceDescending(idd);
+                    customerService.GetAllOrdersByCustomerIDPriceDescending(customer);
                     Log.Information("order history most expensive first");
                     break;
                 case "4":
                     System.Console.WriteLine("Here is your order history with cheapest items first: ");
-                    customerService.GetAllOrdersByCustomerIDPriceDescending(idd);
+                    customerService.GetAllOrdersByCustomerIDPriceDescending(customer);
                     Log.Information("order history cheapest first");
                     break;
                 case "5":
@@ -80,6 +79,6 @@ namespace StoreUI.Menus
                     break;
             }
         } 
-    }
+    } 
     
 }

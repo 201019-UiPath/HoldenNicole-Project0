@@ -1916,6 +1916,19 @@
           "bin/placeholder/LocationLib.dll": {}
         }
       },
+      "ManagerLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "StoreDB": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ManagerLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ManagerLib.dll": {}
+        }
+      },
       "OrdersLib/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -6602,6 +6615,11 @@
       "path": "../LocationLib/LocationLib.csproj",
       "msbuildProject": "../LocationLib/LocationLib.csproj"
     },
+    "ManagerLib/1.0.0": {
+      "type": "project",
+      "path": "../ManagerLib/ManagerLib.csproj",
+      "msbuildProject": "../ManagerLib/ManagerLib.csproj"
+    },
     "OrdersLib/1.0.0": {
       "type": "project",
       "path": "../OrdersLib/OrdersLib.csproj",
@@ -6617,6 +6635,7 @@
     ".NETCoreApp,Version=v3.1": [
       "CustomerLib >= 1.0.0",
       "LocationLib >= 1.0.0",
+      "ManagerLib >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 3.1.9",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.9",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.9",
@@ -6660,6 +6679,9 @@
             },
             "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj": {
               "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj"
+            },
+            "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj": {
+              "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\ManagerLib\\ManagerLib.csproj"
             },
             "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrdersLib\\OrdersLib.csproj": {
               "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\OrdersLib\\OrdersLib.csproj"

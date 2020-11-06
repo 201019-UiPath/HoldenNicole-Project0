@@ -1,16 +1,19 @@
 using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using Serilog;
+using System;
 
 namespace StoreUI.Menus
 {
     public class ManagerMenu : IMenu
     {
         private SignInMenu signInMenu;
-        private ManagerMenu managerMenu;
-        private ixdssaucContext storeContext;
-        private StoreMapper storeMapper;
-        private Managers manager;
+        private Managers manager1;
+        private ixdssaucContext storeContext1;
+        private readonly ixdssaucContext storeContext;
+        private readonly StoreMapper storeMapper;
+        private readonly ManagerMenu managerMenu;
+        private readonly Managers manager;
         public ManagerMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.manager = manager;
@@ -59,5 +62,5 @@ namespace StoreUI.Menus
                     break;
             }
         }
-    }
+    } 
 }

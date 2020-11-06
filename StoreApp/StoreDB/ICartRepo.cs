@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using StoreUI.Entities;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI
 {
     public interface ICartRepo
     {
-        void UpdateCartItems(Products products);
-        Products GetProductByID(int id);
-        void DeleteProductInCart(Products products);
-        void AddProductToCartAsync(Products product);
-        List<Products> GetAllProductsInCartByCartID(int id);
+        void UpdateCartItems(CartItemModel cartItem);
+        void AddProductToCart(CartItemModel cartItem);
+        List<CartItemModel> GetAllProductsInCartByCartID(int id);
     }
 }

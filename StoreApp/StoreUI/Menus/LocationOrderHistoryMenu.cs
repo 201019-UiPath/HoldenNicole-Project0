@@ -1,5 +1,5 @@
 using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using Serilog;
 using LocationLib;
 
@@ -8,10 +8,10 @@ namespace StoreUI.Menus
     public class LocationOrderHistoryMenu : IMenu
     {
         private ManagerMenu managerMenu;
-        private LocationService locationService;
-        private ixdssaucContext storeContext;
-        private StoreMapper storeMapper;
-        private Managers manager;
+        private readonly LocationService locationService;
+        private readonly ixdssaucContext storeContext;
+        private readonly StoreMapper storeMapper;
+        private readonly Managers manager;
 
         public LocationOrderHistoryMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
@@ -26,9 +26,8 @@ namespace StoreUI.Menus
             /// <summary>
             /// different ways to sort orders select by location
             /// </summary>
-            /// <value></value>
             System.Console.WriteLine($"How would you like the order history for {locationID.Name} sorted?");
-            int id = locationID;
+            int id = locationID.Id;
             System.Console.WriteLine("[1] Date most recent-oldest");
             System.Console.WriteLine("[2] Date oldest-most recent");
             System.Console.WriteLine("[3] Price high-low");
@@ -64,7 +63,6 @@ namespace StoreUI.Menus
                     /// <summary>
                     /// return manager to order history menu
                     /// </summary>
-                    /// <returns></returns>
                     managerMenu = new ManagerMenu(manager, storeContext, new StoreMapper());
                     managerMenu.Start();
                     Log.Information("menu");

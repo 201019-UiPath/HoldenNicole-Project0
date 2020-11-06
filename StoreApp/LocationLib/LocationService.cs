@@ -1,64 +1,56 @@
 ﻿using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System.Collections.Generic;
+using StoreDB.Models;
 
 namespace LocationLib
 {
     public class LocationService
     {
-        private DBRepo dbRepo;
-        public LocationService (DBRepo dbRepo)
+        private readonly DBRepo dbRepo;
+        public LocationService ()
         {
-            this.dbRepo = dbRepo;
+            this.dbRepo = new DBRepo();
+
         }
-        public Locations GetLocationByID(int id)
+
+       // public LocationService()
+        //{
+        //}
+
+        public LocationModel GetLocationByID(int id)
         {
-            Locations location = dbRepo.GetLocationByID(id);
+            LocationModel location = dbRepo.GetLocationByID(id);
             return location;
         }
-        public Locations GetLocationByName(string name)
+        public LocationModel GetLocationByName(string name)
         {
-            Locations location = dbRepo.GetLocationByName(name);
+            LocationModel location = dbRepo.GetLocationByName(name);
             return location;
         }
-        public List<Locations> GetAllLocations()
+        public List<LocationModel> GetAllLocations()
         {
-            List<Locations> locations = dbRepo.GetAllLocations();
+            List<LocationModel> locations = dbRepo.GetAllLocations();
             return locations;
         }
-        public Managers GetManagerByName(string name)
+        public List<OrderModel> GetAllOrdersByLocationIDPriceAscending(int id)
         {
-            Managers manager = dbRepo.GetManagerByName(name);
-            return manager;
-        }
-        public Managers GetManagerByID(int id)
-        {
-            Managers manager = dbRepo.GetManagerByID(id);
-            return manager;
-        }
-        public List<Managers> GetAllManagers()
-        {
-            List<Managers> getAllManagers = dbRepo.GetAllManagers();
-            return getAllManagers;
-        }
-        public List<Orders> GetAllOrdersByLocationIDPriceDescending(int id)
-        {
-            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceAscending(id);
             return getOrdersByLocation;
         }
-        public List<Orders> GetAllOrdersByLocationIDPriceAscending(int id)
+        public List<OrderModel> GetAllOrdersByLocationIDDateDescending(int id)
         {
-            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceAscending(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
             return getOrdersByLocation;
         }
-        public List<Orders> GetAllOrdersByLocationIDDateDescending(int id)
+        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
         {
-            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
             return getOrdersByLocation;
-        }
-        public List<Orders> GetAllOrdersByLocationIDDateAscending(int id)
+        } 
+        public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
         {
-            List<Orders> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceDescending(id);
             return getOrdersByLocation;
         } 
     }

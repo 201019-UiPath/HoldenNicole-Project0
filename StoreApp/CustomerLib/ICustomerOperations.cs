@@ -1,11 +1,12 @@
-﻿using StoreUI.Entities;
+﻿using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace CustomerLib
 {
     interface ICustomerOperations
     {
-        void PlaceOrder(Orders order);
+        void PlaceOrder(OrderModel order);
         void GetProducts(int id);
-        void CustomerOrderHistory(int id);
+        void CustomerOrderHistory(CustomerModels customer);
     }
 }

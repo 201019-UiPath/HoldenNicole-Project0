@@ -1,26 +1,27 @@
-﻿using StoreUI.Entities;
+﻿using StoreDB.Entities;
 using System;
 using Serilog;
+using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
     public class CustomerMenu : IMenu
     {
         private CustomerOrderHistoryMenu customerOrderHistoryMenu;
+      
         private CustomerLocationMenu customerLocationMenu;
-        private ixdssaucContext storeContext;
-        private StoreMapper storeMapper;
-        private Customer customer;
-        private ixdssaucContext ixdssaucContext;
+        private readonly ixdssaucContext storeContext;
+        private readonly StoreMapper storeMapper;
+        private readonly CustomerModels customer;
 
-        public CustomerMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public CustomerMenu(CustomerModels customer, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
 
-        public void Start()
+       public void Start()
         {
             Console.WriteLine("Howdy! What would you like to do today at Sports Authenticated?");
             Console.WriteLine("[1] View your order history");
@@ -58,6 +59,5 @@ namespace StoreUI.Menus
                 }
             } while (!customerInput.Equals(4));
         }
-       // public void AddProduct()
     }
 }

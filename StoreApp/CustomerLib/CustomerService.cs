@@ -1,33 +1,31 @@
 using StoreUI;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using StoreDB.Models;
+
 namespace CustomerLib
 {
     public class CustomerService
     {
-        private DBRepo dbRepo;
-        private readonly ixdssaucContext context;
-        private readonly IMapper mapper;
+        private readonly DBRepo dbRepo;
         public CustomerService(DBRepo dbRepo)
         {
             this.dbRepo = dbRepo;
         }
-        public Customer GetCustomerByID(int id)
+        public CustomerModels GetCustomerByID(int id)
         {
-            Customer customer = dbRepo.GetCustomerByID(id);
+            CustomerModels customer = dbRepo.GetCustomerByID(id);
             return customer;
         }
-        public Customer GetCustomerByName(string name)
+        public CustomerModels GetCustomerByName(string name)
         {
-            Customer customer = dbRepo.GetCustomerByName(name);
+            CustomerModels customer = dbRepo.GetCustomerByName(name);
             return customer;
         }
-        public void AddCustomer(Customer customer)
+        public void AddCustomer(CustomerModels customer)
         {
-            Task<List<Customer>> getCustomersTask = dbRepo.GetAllCustomersAsync();
-            foreach(var h in getCustomersTask.Result)
+            List<CustomerModels> getCustomersTask = dbRepo.GetAllCustomersOrderByUsername();
+            foreach(var h in getCustomersTask)
             {
                 if(customer.Username.Equals(h.Username))
                 {
@@ -35,7 +33,7 @@ namespace CustomerLib
                 }
                 else 
                 {
-                    if(customer.Email.Equals(h.Email))
+                    if(customer.email.Equals(h.email))
                     {
                         throw new System.Exception("Sorry this email is already registered");
                     }
@@ -43,47 +41,37 @@ namespace CustomerLib
             }
             dbRepo.AddCustomer(customer);
         }
-        public List<Customer> GetAllCustomersAsync()
+        public List<CustomerModels> GetAllCustomers()
         {
             /// <summary>
             /// retrieve list of customers from customer table
             /// </summary>
-            Task<List<Customer>> getCustomers = dbRepo.GetAllCustomersAsync();
-            return getCustomers.Result;
+            List<CustomerModels> getCustomers = dbRepo.GetAllCustomersOrderByOrders();
+            return getCustomers;
         }
-        public List<Products> ViewAllProductsAtLocationGroupBySport(int id)
+        public List<InventoryModel> ViewAllProductsAtLocation(int id)
         {
-            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupBySport(id);
+            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocation(id);
             return viewProductsAtLocation;
         } 
-        public List<Products> ViewAllProductsAtLocationGroupByItem(int id)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
-            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupByItem(id);
-            return viewProductsAtLocation;
-        } 
-        public List<Products> ViewAllProductsAtLocationGroupByAthlete(int id)
-        {
-            List<Products> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationGroupByAthlete(id);
-            return viewProductsAtLocation;
-        } 
-        public List<Orders> GetAllOrdersByCustomerIDDateAscending(int id)
-        {
-            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(id);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(customer);
             return orders;
         }
-        public List<Orders> GetAllOrdersByCustomerIDDateDescending(int id)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
-            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDDateDescending(id);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateDescending(customer);
             return orders;
         }
-        public List<Orders> GetAllOrdersByCustomerIDPriceAscending(int id)
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
         {
-            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDPriceAscending(id);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceAscending(customer);
             return orders;
         }
-        public List<Orders> GetAllOrdersByCustomerIDPriceDescending(int id)
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
         {
-            List<Orders> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(customer);
             return orders;
         } 
     }

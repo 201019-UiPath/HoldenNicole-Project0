@@ -1,18 +1,19 @@
 using System.Collections.Generic;
-using StoreUI.Entities;
+using StoreDB.Entities;
+using StoreDB.Models;
 
 namespace StoreUI
 {
     public interface IOrderRepo
    {
-         void PlaceOrderAsync(Orders order);
-         List<Orders> GetAllOrdersByCustomerIDDateAscending(int id);
-         List<Orders> GetAllOrdersByCustomerIDDateDescending(int id);
-         List<Orders> GetAllOrdersByCustomerIDPriceAscending(int id);
-         List<Orders> GetAllOrdersByCustomerIDPriceDescending(int id);
-         List<Orders> GetAllOrdersByLocationIDDateAscending(int id);
-         List<Orders> GetAllOrdersByLocationIDDateDescending(int id);
-         List<Orders> GetAllOrdersByLocationIDPriceAscending(int id);
-         List<Orders> GetAllOrdersByLocationIDPriceDescending(int id); 
-    } 
+         void PlaceOrder(OrderModel order);
+         List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer);
+         List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer);
+         List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer);
+         List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer);
+         List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id);
+         List<OrderModel> GetAllOrdersByLocationIDDateDescending(int id);
+         List<OrderModel> GetAllOrdersByLocationIDPriceAscending(int id);
+         List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id); 
+    }  
 }

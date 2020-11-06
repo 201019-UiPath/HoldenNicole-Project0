@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace StoreUI.Entities
+namespace StoreDB.Entities
 {
     public partial class Customer
     {
@@ -12,7 +11,6 @@ namespace StoreUI.Entities
         }
 
         public int Id { get; set; }
-        public object ID { get; internal set; }
         public string Username { get; set; }
         public string Email { get; set; }
 

@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 
-namespace StoreUI.Entities
+namespace StoreDB.Entities
 {
     public partial class ixdssaucContext : DbContext
     {
@@ -25,7 +25,20 @@ namespace StoreUI.Entities
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
-        public int CustomerID { get; internal set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+                var connectionString = configuration.GetConnectionString("HerosDB");
+                optionsBuilder.UseNpgsql(connectionString);
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

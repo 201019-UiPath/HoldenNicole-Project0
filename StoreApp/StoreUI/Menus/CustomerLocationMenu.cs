@@ -1,23 +1,28 @@
-﻿using StoreUI.Entities;
+﻿using StoreDB.Entities;
 using Serilog;
+using LocationLib;
+using System;
+using StoreDB.Models;
 
 namespace StoreUI.Menus
 {
     public class CustomerLocationMenu : IMenu
     {
-        private SignInMenu signInMenu;
+        private readonly SignInMenu signInMenu;
         private CustomerLocationMenu customerLocationMenu;
-        private ixdssaucContext storeContext;
-        private StoreMapper storeMapper;
+        private readonly ixdssaucContext storeContext;
+        private readonly StoreMapper storeMapper;
+        private CustomerInventoryMenu customerInventoryMenu;
+        private readonly LocationService locationService;
 
-        private Customer customer;
-        private ixdssaucContext ixdssaucContext;
+        private readonly CustomerModels customer;
 
-        public CustomerLocationMenu(Customer customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public CustomerLocationMenu(CustomerModels customer, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
+            this.locationService = new LocationService();
         }
         public void Start()
         {
@@ -34,25 +39,42 @@ namespace StoreUI.Menus
                 case "1":
                     System.Console.WriteLine("Sending you to the World of Bats store");
                     System.Console.WriteLine("Hope you find something you like");
+                    int id = 1;
+                    Log.Information("Please work");
+                    LocationModel location = locationService.GetLocationByID(id);
                     /// change info here
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location, new StoreMapper());
+                    customerInventoryMenu.Start();
                     Log.Information("bats store selected");
                     break;
                 case "2":
                     System.Console.WriteLine("Sending you to the World of Sticks branch");
                     System.Console.WriteLine("Hope you find something you like");
+                    int id2 = 2;
+                    LocationModel location2 = locationService.GetLocationByID(id2);
                     /// change info here
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location2, new StoreMapper());
+                    customerInventoryMenu.Start();
                     Log.Information("sticks store selected");
                     break;
                 case "3":
                     System.Console.WriteLine("Sending you to the World of Jerseys branch");
                     System.Console.WriteLine("Hope you find something you like");
-                    // change info here
+                    int id3 = 3;
+                    LocationModel location3 = locationService.GetLocationByID(id3);
+                    /// change info here
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location3, new StoreMapper());
+                    customerInventoryMenu.Start();
                     Log.Information("jersey store selected");
                     break;
                 case "4":
                     System.Console.WriteLine("Sending you to the World of Games branch");
                     System.Console.WriteLine("Hope you find somthing you like");
-                    //change info here
+                    int id4 = 4;
+                    LocationModel location4 = locationService.GetLocationByID(id4);
+                    /// change info here
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location4, new StoreMapper());
+                    customerInventoryMenu.Start();
                     Log.Information("games store selected");
                     break;
                 case "5":
@@ -71,5 +93,5 @@ namespace StoreUI.Menus
             }
         }
 
-    }
+    } 
 }

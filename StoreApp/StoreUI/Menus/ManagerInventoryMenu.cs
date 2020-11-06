@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using LocationLib;
 using Serilog;
-using StoreUI.Entities;
+using StoreDB.Entities;
 using System;
 
 namespace StoreUI.Menus
@@ -9,35 +9,37 @@ namespace StoreUI.Menus
     public class ManagerInventoryMenu : IMenu
     {
         
-        private ProductServices productServices;
-        private ixdssaucContext storeContext;
-        private StoreMapper storeMapper;
-        private Managers manager;
-        private ixdssaucContext ixdssaucContext;
+        private readonly ProductServices productServices;
+        private readonly ixdssaucContext storeContext;
+        private readonly StoreMapper storeMapper;
+        private readonly Managers manager;
+        private readonly Locations locations;
 
-        public ManagerInventoryMenu(Managers manager, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public ManagerInventoryMenu(Managers manager, ixdssaucContext storeContext, Locations location, StoreMapper storeMapper)
         {
             this.manager = manager;
             this.storeContext = storeContext;
+            this.locations = location;
             this.storeMapper = storeMapper;
         }
         public void Start()
         {
             ///retrieve location from previous menus
-            StoreUI.Entities.Locations location = new StoreUI.Entities.Locations();
-            System.Console.WriteLine($"How would you like to see the inventory for {location.Name} sorted?");
-            System.Console.WriteLine("[1] By type of item");
-            System.Console.WriteLine("[2] By sport");
-            System.Console.WriteLine("[3] By person");
-            System.Console.WriteLine("[4] exit store");
-            string sorting = System.Console.ReadLine();
+            Locations location = new Locations();
+            Console.WriteLine($"How would you like to see the inventory for {location.Name} sorted?");
+            Console.WriteLine("[1] By type of item");
+            Console.WriteLine("[2] By sport");
+            Console.WriteLine("[3] By person");
+            Console.WriteLine("[4] exit store");
+            string sorting = Console.ReadLine();
             
             switch (sorting)
             {
+                /// want to be able to sort but may go away
                 /// lists products sorted by type
                 case "1":
-                    System.Console.WriteLine("What type of autographed item are you looking for?");
-                    string item = System.Console.ReadLine();
+                    Console.WriteLine("What type of autographed item are you looking for?");
+                    string item = Console.ReadLine();
                     List<Products> allProductsByType = productServices.ViewAllProductsByItem(item);
                     Log.Information("type of item selected");
                     break;
@@ -66,5 +68,5 @@ namespace StoreUI.Menus
             }
         }
         
-    }
+    } 
 }
