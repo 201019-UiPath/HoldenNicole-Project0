@@ -55,9 +55,9 @@ namespace StoreUI
         #region inventory methods
         public ProductModel GetProductByID(int id)
         {
-            return mapper.ParseProduct(
+            return mapper.ParseProducts(
                 context.Products
-                .Where(i => i.Id == id)
+                .First(i => i.Id == id)
 
                 );
         }
@@ -88,12 +88,12 @@ namespace StoreUI
                 .ToList()
             );
         }
-        public Inventory AddProductToLocation(int locationid, int productid, int quantity)
+        public void AddProductToLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
             inventory.Quantity = inventory.Quantity + quantity;
             context.SaveChanges();
-            return null;
+            
         }
 
         public Inventory DeleteProductAtLocation(int locationid, int productid, int quantity)

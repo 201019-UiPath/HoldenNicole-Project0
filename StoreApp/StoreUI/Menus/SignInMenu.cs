@@ -18,6 +18,7 @@ namespace StoreUI.Menus
         private readonly ixdssaucContext storeContext;
         private readonly CustomerService customerService;
         private readonly ManagerSevices managerSevices;
+        private DBRepo dBRepo;
         public SignInMenu(ixdssaucContext context, IMapper mapper)
         {
             this.customerMenu = new CustomerMenu(new CustomerModels(), new ixdssaucContext(), new StoreMapper());
@@ -54,6 +55,7 @@ namespace StoreUI.Menus
                 case "4":
                     Console.WriteLine("Bye come again some other time.");
                     Log.Information("seriously????");
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Invalid Input please try again");
@@ -89,13 +91,15 @@ namespace StoreUI.Menus
         }
         public ManagerModel ManagerSignIn()
         {
-            ManagerModel manager = new ManagerModel();
             Console.WriteLine("Please enter your username:");
             string Username = Console.ReadLine();
+            ManagerModel managerModel = new ManagerModel();
+            dBRepo = new DBRepo();
             try
             {
+                managerModel = dBRepo.GetManagerByName(Username);
                 //validation breaks my functional code
-                managerMenu = new ManagerMenu(manager, storeContext, new StoreMapper());
+                managerMenu = new ManagerMenu(managerModel, storeContext, new StoreMapper());
                 managerMenu.Start();
                 /// would like to validate this but idk how
                 ///if output from dBRepo contains user input redirect to location corresponding to manager
@@ -103,9 +107,9 @@ namespace StoreUI.Menus
             }
             catch (InvalidOperationException)
             {
-                Console.WriteLine($"There is no manager with username: {manager.Username}");
+                Console.WriteLine($"There is no manager with username: {managerModel.Username}");
             }
-            return manager;
+            return managerModel;
         }
         public CustomerModels Registration()
         {

@@ -405,12 +405,12 @@ namespace StoreUI
             }
             return products;
         }
-        public ProductModel ParseProduct(IQueryable<Products> queryables)
-        {
-            return new ProductModel()
-            {
-                ID = queryables.Count()
-            };
-            }
+        // public ProductModel ParseProduct(IQueryable<Products> queryables)
+        // {
+        //     return new ProductModel()
+        //     {
+        //         ID = queryables.Count()
+        //     };
+        //     }
         }
     }

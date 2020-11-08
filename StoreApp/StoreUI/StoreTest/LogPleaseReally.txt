@@ -1,4 +1,0 @@
-2020-11-08 13:56:56.366 -06:00 [INF] type of item selected
-2020-11-08 13:59:18.267 -06:00 [INF] type of item selected
-2020-11-08 14:00:21.625 -06:00 [INF] type of item selected
-2020-11-08 14:00:49.414 -06:00 [INF] Hsss leaving store

@@ -21,6 +21,7 @@ namespace StoreUI
         private CustomerLocationMenu customerLocationMenu;
         private CustomerMenu customerMenu;
         private SignInMenu signInMenu;
+        CartsModel cart = new CartsModel();
 
         public CustomerInventoryMenu(CustomerModels customer, ixdssaucContext ixdssaucContext, LocationModel location, StoreMapper storeMapper)
         {
@@ -48,38 +49,39 @@ namespace StoreUI
             {
                 case "1":
                     List<InventoryModel> allProducts = productServices.ViewAllProductsAtLocationSortByID(id);
+                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
                     foreach(var p in allProducts)
                     {
                         DBRepo bRepo = new DBRepo();
                         ProductModel product = bRepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
                     }
                     Log.Information("type of item selected");
-                    AddToCart(customer);
+                    AddToCart(customer, cart);
                     break;
-                ///lists products sorted by sport
                 case "2":
                     List<InventoryModel> allProducts2 = productServices.ViewAllProductsAtLocationSortByQuantityAscending(id);
+                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
                     foreach (var p in allProducts2)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
                     }
                     Log.Information("sport selected");
-                    AddToCart(customer);
+                    AddToCart(customer, cart);
                     break;
-                /// lists products by person
                 case "3":
                     List<InventoryModel> allProducts3 = productServices.ViewAllProductsAtLocationSortByQuantityDescending(id);
+                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
                     foreach (var p in allProducts3)
                     {
                         DBRepo repo = new DBRepo();
                         ProductModel product = repo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
                     }
                     Log.Information("athlete selected");
-                    AddToCart(customer);
+                    AddToCart(customer, cart);
                     break;
                 case "4": Console.WriteLine("Hope you find something you like at another location");
                     Log.Information("changing locations");
@@ -95,15 +97,15 @@ namespace StoreUI
                     break;
             }
         }
-        public void AddToCart(CustomerModels customer)
+        public void AddToCart(CustomerModels customer, CartsModel cart)
         {
-            Carts cart = new Carts();
             DBRepo dB2 = new DBRepo();
-            cart.Customer = customer.ID;
-            cart.Location = location.ID;
+            cart.CustomerID = customer.ID;
+            cart.LocationID = location.ID;
             DBRepo dB1 = new DBRepo();
             Console.WriteLine("What is the product ID you would like to add to your cart?");
             CartItemModel addItem = new CartItemModel();
+            addItem.CartID = cart.ID;
             addItem.productID = Convert.ToInt32(Console.ReadLine());
             addItem.quantity += 1;
             CartItemModel items = dB2.AddProductToCart(addItem);
@@ -116,7 +118,7 @@ namespace StoreUI
             }
             else
             {
-                int id = cart.Id;
+                int id = cart.ID;
                 cartItemService = new CartItemService();
                 List<CartItemModel> item = cartItemService.GetAllProductsInCartByCartID(id);
                 foreach (var i in item)
@@ -160,14 +162,14 @@ namespace StoreUI
                         string request = Console.ReadLine();
                         if(request == "Y")
                         {
-                            AddToCart(customer);
+                            AddToCart(customer, cart);
                         }
                         else
                         {
                             Console.WriteLine("Enter the product ID you would like to remove from your order");
                             int d = Convert.ToInt32(Console.ReadLine());
                             CartItemModel cartItem = new CartItemModel();
-                            cartItem.CartID = cart.Id;
+                            cartItem.CartID = cart.ID;
                             cartItem.productID = d;
                             cartItem.quantity -= 1;
                             DBRepo dbRepo = new DBRepo();

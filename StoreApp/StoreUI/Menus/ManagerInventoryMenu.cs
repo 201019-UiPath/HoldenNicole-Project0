@@ -48,37 +48,36 @@ namespace StoreUI.Menus
                 /// lists products sorted by type
                 case "1":
                     List<InventoryModel> allProducts = productServices.ViewAllProductsAtLocationSortByID(id);
+                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
                     foreach (var p in allProducts)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        string Athlete = product.Athlete;
-                        string Item = product.Item;
-                        string Sport = product.Sport;
-                        decimal Price = product.Price;
-                        Console.WriteLine($"{Athlete} {Item} {Sport} {Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
                     }
                     Log.Information("type of item selected");
                     AddToInventory(locations);
                     break;
                 case "2":
                     List<InventoryModel> allProductBySport = productServices.ViewAllProductsAtLocationSortByQuantityAscending(id);
+                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
                     foreach (var p in allProductBySport)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
                     }
                     Log.Information("sport selected");
                     AddToInventory(locations);
                     break;
                 case "3":
                     List<InventoryModel> allProductsByPerson = productServices.ViewAllProductsAtLocationSortByQuantityDescending(id);
+                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
                     foreach (var p in allProductsByPerson)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
                     }
                     Log.Information("athlete selected");
                     AddToInventory(locations);
@@ -90,7 +89,6 @@ namespace StoreUI.Menus
                     signInMenu.Start();
                     break;
                 case "5":
-                    Console.WriteLine("Exiting store");
                     Console.WriteLine("Leaving store");
                     Environment.Exit(0);
                     break;
@@ -102,25 +100,28 @@ namespace StoreUI.Menus
         }
         public void AddToInventory(LocationModel location)
         {
-            Inventory inventory = new Inventory();
-            inventory.Location = location.ID;
-            Console.WriteLine("What would you like to do to the inventory?");
-            Console.WriteLine("[1] Add product to inventory");
-            Console.WriteLine("[2] Remove product from inventory");
-            Console.WriteLine("[3] Return to location inventory selection menu");
-            Console.WriteLine("[4] Return to manager menu");
-            Console.WriteLine("[5] Return to sign in menu");
-            Console.WriteLine("[6] Exit store");
-            string UserInput = Console.ReadLine();
-            switch (UserInput)
-            {
+            string UserInput = "";
+            do {
+                Inventory inventory = new Inventory();
+                inventory.Location = location.ID;
+                Console.WriteLine("What would you like to do to the inventory?");
+                Console.WriteLine("[1] Add product to inventory");
+                Console.WriteLine("[2] Remove product from inventory");
+                Console.WriteLine("[3] Return to location inventory selection menu");
+                Console.WriteLine("[4] Return to manager menu");
+                Console.WriteLine("[5] Return to sign in menu");
+                Console.WriteLine("[6] Exit store");
+                UserInput = Console.ReadLine();
+                switch (UserInput)
+                {
                 case "1":
                     Console.WriteLine("Enter the product ID you would like to add to the location inventory");
                     Inventory item = new Inventory();
                     item.Product = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("How many would you like to add?");
+                    item.Quantity = Convert.ToInt32(Console.ReadLine());
                     DBRepo dBRepo = new DBRepo();
-                    Inventory product = dBRepo.AddProductToLocation(location.ID, item.Product, item.Quantity);
+                    dBRepo.AddProductToLocation(location.ID, item.Product, item.Quantity);
                     Console.WriteLine("Would you like to modify the inventory more (Y/N)?");
                     string maybe = Console.ReadLine();
                     if(maybe == "Y")
@@ -133,14 +134,16 @@ namespace StoreUI.Menus
                     Inventory ritem = new Inventory();
                     ritem.Product = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("How many would you like to remove?");
+                    ritem.Quantity = Convert.ToInt32(Console.ReadLine());
                     DBRepo bRepo = new DBRepo();
+                    
                     Inventory products = bRepo.DeleteProductAtLocation(location.ID, ritem.Product, ritem.Quantity);
                     Console.WriteLine("Would you like to modify the inventory more (Y/N)?");
                     string possibly = Console.ReadLine();
-                    if(possibly == "Y")
-                    {
-                        AddToInventory(location);
-                    }
+                    // if(possibly == "N")
+                    // {
+                        
+                    // }
                     break;
                 case "3":
                     managerInventoryMenu = new ManagerInventoryMenu(manager, new ixdssaucContext(), location, new StoreMapper());
@@ -160,7 +163,9 @@ namespace StoreUI.Menus
                     Console.WriteLine("Exiting store");
                     Environment.Exit(0);
                     break;
+                }
             }
+            while(UserInput != "6");
         }
 
     }
