@@ -3,7 +3,6 @@ using StoreDB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace StoreUI
 {
@@ -56,9 +55,10 @@ namespace StoreUI
         #region inventory methods
         public ProductModel GetProductByID(int id)
         {
-            return mapper.ParseProducts(
-                (Products)context.Products
+            return mapper.ParseProduct(
+                context.Products
                 .Where(i => i.Id == id)
+
                 );
         }
         public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)

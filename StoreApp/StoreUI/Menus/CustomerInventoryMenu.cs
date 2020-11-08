@@ -33,7 +33,7 @@ namespace StoreUI
         public void Start()
         {
             ///retrieve location from previous menus
-            LocationModel location = new LocationModel();
+            ///LocationModel location = new LocationModel();
             int id = location.ID;
             string name = location.Name;
             Console.WriteLine($"How would you like to see the inventory for {name} sorted?"); ///{name} doesnt work
@@ -54,8 +54,8 @@ namespace StoreUI
                         ProductModel product = bRepo.GetProductByID(p.productID);
                         Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
                     }
-                    AddToCart(customer);
                     Log.Information("type of item selected");
+                    AddToCart(customer);
                     break;
                 ///lists products sorted by sport
                 case "2":
@@ -66,8 +66,8 @@ namespace StoreUI
                         ProductModel product = dbrepo.GetProductByID(p.productID);
                         Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
                     }
-                    AddToCart(customer);
                     Log.Information("sport selected");
+                    AddToCart(customer);
                     break;
                 /// lists products by person
                 case "3":
@@ -78,20 +78,20 @@ namespace StoreUI
                         ProductModel product = repo.GetProductByID(p.productID);
                         Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
                     }
-                    AddToCart(customer);
                     Log.Information("athlete selected");
+                    AddToCart(customer);
                     break;
                 case "4": Console.WriteLine("Hope you find something you like at another location");
                     Log.Information("changing locations");
                     break;
                 case "5":
                     Console.WriteLine("Bye hope you come again soon");
-                    Environment.Exit(0);
                     Log.Information("Hsss leaving store");
+                    Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Invalid Input");
                     Log.Error("Invalid input");
+                    Console.WriteLine("Invalid Input");
                     break;
             }
         }

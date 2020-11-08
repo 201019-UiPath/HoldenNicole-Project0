@@ -8,7 +8,5 @@ namespace StoreUI
     {
         Managers ParseManager(ManagerModel manager);
         ManagerModel ParseManager(Managers managers);
-        List<Managers> ParseManager(ICollection<Managers> manager);
-        ICollection<Managers> ParseManager(List<Managers> managers);
     }
 }

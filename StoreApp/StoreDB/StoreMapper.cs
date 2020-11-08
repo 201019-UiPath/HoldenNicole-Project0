@@ -1,7 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreUI
 {
@@ -294,6 +296,7 @@ namespace StoreUI
             }
             return managers;
         }
+
         public List<ManagerModel> ParseManager(ICollection<Managers> manager)
         {
             List<ManagerModel> managers = new List<ManagerModel>();
@@ -402,15 +405,12 @@ namespace StoreUI
             }
             return products;
         }
-
-        List<Managers> IManagerMapper.ParseManager(ICollection<Managers> manager)
+        public ProductModel ParseProduct(IQueryable<Products> queryables)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public ICollection<Managers> ParseManager(List<Managers> managers)
-        {
-            throw new System.NotImplementedException();
+            return new ProductModel()
+            {
+                ID = queryables.Count()
+            };
+            }
         }
     }
-}

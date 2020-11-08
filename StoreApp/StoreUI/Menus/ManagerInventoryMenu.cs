@@ -23,15 +23,16 @@ namespace StoreUI.Menus
         {
             this.manager = manager;
             this.storeContext = storeContext;
-            this.locations = location;
+            locations = location;
             this.storeMapper = storeMapper;
         }
         public void Start()
         {
             ///retrieve location from previous menus
-            LocationModel location = new LocationModel();
-            int id = location.ID;
-            Console.WriteLine($"How would you like to see the inventory for {location.Name} sorted?");
+            ///LocationModel location = new LocationModel();
+            int id = locations.ID;
+            string name = locations.Name;
+            Console.WriteLine($"How would you like to see the inventory for {name} sorted?");
             Console.WriteLine("[1] By item ID");
             Console.WriteLine("[2] By quantity of item ascending");
             Console.WriteLine("[3] By quantity of item descending");
@@ -51,10 +52,14 @@ namespace StoreUI.Menus
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        string Athlete = product.Athlete;
+                        string Item = product.Item;
+                        string Sport = product.Sport;
+                        decimal Price = product.Price;
+                        Console.WriteLine($"{Athlete} {Item} {Sport} {Price} {p.Quantity}");
                     }
-                    AddToInventory(location);
                     Log.Information("type of item selected");
+                    AddToInventory(locations);
                     break;
                 case "2":
                     List<InventoryModel> allProductBySport = productServices.ViewAllProductsAtLocationSortByQuantityAscending(id);
@@ -64,8 +69,8 @@ namespace StoreUI.Menus
                         ProductModel product = dbrepo.GetProductByID(p.productID);
                         Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
                     }
-                    AddToInventory(location);
                     Log.Information("sport selected");
+                    AddToInventory(locations);
                     break;
                 case "3":
                     List<InventoryModel> allProductsByPerson = productServices.ViewAllProductsAtLocationSortByQuantityDescending(id);
@@ -75,14 +80,14 @@ namespace StoreUI.Menus
                         ProductModel product = dbrepo.GetProductByID(p.productID);
                         Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
                     }
-                    AddToInventory(location);
                     Log.Information("athlete selected");
+                    AddToInventory(locations);
                     break;
                 case "4":
                     Console.WriteLine("Returning to sign in menu");
                     signInMenu = new SignInMenu(new ixdssaucContext(), new StoreMapper());
-                    signInMenu.Start();
                     Log.Information("no idea what youre doing");
+                    signInMenu.Start();
                     break;
                 case "5":
                     Console.WriteLine("Exiting store");
