@@ -19,10 +19,11 @@ namespace StoreUI
         }
 
         #region cart methods
-        public void AddProductToCart(CartItemModel cartItem)
+        public CartItemModel AddProductToCart(CartItemModel cartItem)
         {
             context.CartItems.Add(mapper.ParseCartItem(cartItem));
             context.SaveChanges();
+            return null;
         }
         public void UpdateCartItems(CartItemModel cartItem)
         {

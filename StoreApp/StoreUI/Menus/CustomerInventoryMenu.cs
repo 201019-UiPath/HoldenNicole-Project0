@@ -98,17 +98,15 @@ namespace StoreUI
         public void AddToCart(CustomerModels customer)
         {
             Carts cart = new Carts();
-            LocationModel location = new LocationModel();
+            DBRepo dB2 = new DBRepo();
             cart.Customer = customer.ID;
             cart.Location = location.ID;
             DBRepo dB1 = new DBRepo();
-            location = dB1.GetLocationByID(location.ID);
-            LocationModel locationModel = location;
             Console.WriteLine("What is the product ID you would like to add to your cart?");
-            CartItems addItem = new CartItems();
-            addItem.Product = Convert.ToInt32(Console.ReadLine());
-            addItem.Quantity += 1;
-            CartItems items = cartItemService.AddProductToCart(addItem);
+            CartItemModel addItem = new CartItemModel();
+            addItem.productID = Convert.ToInt32(Console.ReadLine());
+            addItem.quantity += 1;
+            CartItemModel items = dB2.AddProductToCart(addItem);
             Console.WriteLine("Would you like to add another item (Y/N)?");
             string userInput = Console.ReadLine();
             if (userInput == "Y")

@@ -10,8 +10,8 @@ namespace StoreUI
         static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                 .WriteTo.File("StoreTest/LogPlease.txt")
-                 .CreateLogger();
+                 .WriteTo.File("StoreTest/LogPleaseReally.txt")
+                 .CreateLogger(); 
             IMenu main = new SignInMenu(new ixdssaucContext(), new StoreMapper());
             main.Start();
 
