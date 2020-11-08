@@ -26,3 +26,32 @@
 2020-11-06 17:09:41.069 -06:00 [INF] Hsss leaving store
 2020-11-06 17:09:41.078 -06:00 [INF] sticks store selected
 2020-11-06 17:09:41.078 -06:00 [INF] location menu selected
+2020-11-06 17:47:09.153 -06:00 [INF] Please work
+2020-11-06 17:47:13.290 -06:00 [INF] type of item selected
+2020-11-06 17:47:13.290 -06:00 [INF] bats store selected
+2020-11-06 17:47:13.290 -06:00 [INF] location menu selected
+2020-11-06 17:47:30.344 -06:00 [INF] type of item selected
+2020-11-06 17:47:30.345 -06:00 [INF] sticks store selected
+2020-11-06 17:47:30.345 -06:00 [INF] location menu selected
+2020-11-06 17:48:17.815 -06:00 [INF] athlete selected
+2020-11-06 17:48:17.815 -06:00 [INF] games store selected
+2020-11-06 17:48:17.815 -06:00 [INF] location menu selected
+2020-11-06 17:48:39.935 -06:00 [INF] sport selected
+2020-11-06 17:48:39.935 -06:00 [INF] sticks store selected
+2020-11-06 17:48:39.935 -06:00 [INF] location menu selected
+2020-11-06 17:48:53.560 -06:00 [INF] seriously buy something
+2020-11-06 17:48:53.561 -06:00 [INF] location menu selected
+2020-11-06 17:48:55.983 -06:00 [INF] seriously buy something
+2020-11-06 17:48:55.983 -06:00 [INF] location menu selected
+2020-11-06 17:48:56.984 -06:00 [INF] seriously buy something
+2020-11-06 17:48:56.984 -06:00 [INF] location menu selected
+2020-11-06 17:48:58.005 -06:00 [INF] seriously buy something
+2020-11-06 17:48:58.005 -06:00 [INF] location menu selected
+2020-11-06 17:48:59.292 -06:00 [INF] seriously buy something
+2020-11-06 17:48:59.293 -06:00 [INF] location menu selected
+2020-11-06 17:49:36.265 -06:00 [INF] sport selected
+2020-11-06 17:49:36.275 -06:00 [INF] jersey store selected
+2020-11-06 17:49:36.275 -06:00 [INF] location menu selected
+2020-11-07 17:00:19.370 -06:00 [ERR] Invalid input
+2020-11-07 17:00:19.383 -06:00 [INF] Great One
+2020-11-07 17:00:19.383 -06:00 [INF] manager sighted

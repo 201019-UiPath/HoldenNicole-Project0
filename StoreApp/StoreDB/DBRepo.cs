@@ -3,6 +3,7 @@ using StoreDB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace StoreUI
 {
@@ -29,16 +30,6 @@ namespace StoreUI
             context.SaveChanges();
         }
 
-        public void GetManagerByName(string managerUserName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetManagerByName(string v, string managerUserName)
-        {
-            throw new NotImplementedException();
-        }
-
         public void DeleteProductInCart(CartItemModel cartItems)
         {
             context.CartItems.Remove(mapper.ParseCartItem(cartItems));
@@ -62,6 +53,13 @@ namespace StoreUI
         #endregion
 
         #region inventory methods
+        public ProductModel GetProductByID(int id)
+        {
+            return mapper.ParseProducts(
+                (Products)context.Products
+                .Where(i => i.Id == id)
+                );
+        }
         public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {
             return mapper.ParseInventory(
@@ -89,18 +87,20 @@ namespace StoreUI
                 .ToList()
             );
         }
-        public void AddProductToLocation(int locationid, int productid, int quantity)
+        public Inventory AddProductToLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
             inventory.Quantity = inventory.Quantity + quantity;
             context.SaveChanges();
+            return null;
         }
 
-        public void DeleteProductAtLocation(int locationid, int productid, int quantity)
+        public Inventory DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
             inventory.Quantity = inventory.Quantity - quantity;
             context.SaveChanges();
+            return null;
         }
         #endregion
 
@@ -136,6 +136,7 @@ namespace StoreUI
             }
             return null;
         }
+
         public CustomerModels GetCustomerByEmail(string email)
         {
             try
@@ -151,11 +152,13 @@ namespace StoreUI
             }
             return null;
         }
+
         public void AddCustomer(CustomerModels customer)
         {
             context.Customer.Add(mapper.ParseCustomer(customer));
             context.SaveChanges();
         }
+
         public List<CustomerModels> GetAllCustomersOrderByUsername()
         {
             return mapper.ParseCustomer(
@@ -243,15 +246,20 @@ namespace StoreUI
                 return null;
             }
         }
-
         #endregion
 
         #region location methods
+        public ManagerModel GetManagerByName(string name)
+        {
+            return mapper.ParseManager(
+                context.Managers
+                .First(m => m.Username == name));
+        }
         public LocationModel GetLocationByID(int id)
         {
             return mapper.ParseLocation(
                 context.Locations
-                .First(l => l.Id == id)
+                .FirstOrDefault(l => l.Id == id)
             );
         }
         public LocationModel GetLocationByName(string name)

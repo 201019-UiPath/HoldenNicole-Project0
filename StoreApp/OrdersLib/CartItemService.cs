@@ -13,6 +13,11 @@ namespace OrdersLib
         {
             this.dBRepo = dBRepo;
         }
+
+        public CartItemService()
+        {
+        }
+
         public void AddProductToCart(CartItemModel cartItem)
         {
             dBRepo.AddProductToCart(cartItem);
@@ -40,6 +45,11 @@ namespace OrdersLib
         }
 
         public Products GetProductByID(object iD)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CartItems AddProductToCart(CartItems addItem)
         {
             throw new NotImplementedException();
         }

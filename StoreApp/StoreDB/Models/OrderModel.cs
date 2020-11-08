@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace StoreDB.Models
 {
@@ -9,5 +10,7 @@ namespace StoreDB.Models
         public int LocationID { get; set; }
         public decimal Price { get; set; }
         public DateTime OrderDate { get; set; }
+
+        public virtual ICollection<LineItemModel> items { get; set; }
     }
 }
