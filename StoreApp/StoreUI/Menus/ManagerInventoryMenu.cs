@@ -48,36 +48,36 @@ namespace StoreUI.Menus
                 /// lists products sorted by type
                 case "1":
                     List<InventoryModel> allProducts = productServices.ViewAllProductsAtLocationSortByID(id);
-                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
+                    Console.WriteLine("ID \t Athlete \t Item \t Sport \t Price \t Quantity");
                     foreach (var p in allProducts)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {p.Quantity}");
                     }
                     Log.Information("type of item selected");
                     AddToInventory(locations);
                     break;
                 case "2":
                     List<InventoryModel> allProductBySport = productServices.ViewAllProductsAtLocationSortByQuantityAscending(id);
-                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
+                    Console.WriteLine("ID \t Athlete \t Item \t Sport \t Price \t Quantity");
                     foreach (var p in allProductBySport)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {p.Quantity}");
                     }
                     Log.Information("sport selected");
                     AddToInventory(locations);
                     break;
                 case "3":
                     List<InventoryModel> allProductsByPerson = productServices.ViewAllProductsAtLocationSortByQuantityDescending(id);
-                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
+                    Console.WriteLine("ID \t Athlete \t Item \t Sport \t Price \t Quantity");
                     foreach (var p in allProductsByPerson)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} {product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {p.Quantity}");
                     }
                     Log.Information("athlete selected");
                     AddToInventory(locations);

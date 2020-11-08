@@ -18,10 +18,16 @@ namespace StoreUI.Menus
         private readonly ixdssaucContext storeContext;
         private readonly CustomerService customerService;
         private readonly ManagerSevices managerSevices;
+
+        public SignInMenu(CustomerService customerService)
+        {
+            this.customerService = customerService;
+        }
+
         private DBRepo dBRepo;
         public SignInMenu(ixdssaucContext context, IMapper mapper)
         {
-            this.customerMenu = new CustomerMenu(new CustomerModels(), new ixdssaucContext(), new StoreMapper());
+            this.customerMenu = new CustomerMenu(new CustomerModels(), new CartsModel(), new ixdssaucContext(), new StoreMapper());
             this.managerMenu = new ManagerMenu(new ManagerModel(), new ixdssaucContext(), new StoreMapper());
         }
 
@@ -73,13 +79,13 @@ namespace StoreUI.Menus
             string returningCustomerUserName = Console.ReadLine();
             try
             {
+                DBRepo bRepo = new DBRepo();
                 //validation brakes the functional code
-                // customer = customerService.GetCustomerByName(returningCustomerUserName);
+                customer = bRepo.GetCustomerByName(returningCustomerUserName);
                 CustomerModels returningCustomer = customer;
-                Orders orders = new Orders();
-                Orders newOrder = orders;
-                newOrder.Customer = (int)returningCustomer.ID;
-                customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
+                CartsModel cart = new CartsModel();
+                cart.CustomerID = (int)returningCustomer.ID;
+                customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
                 customerMenu.Start();
                 Log.Information("Returning customer sighted");
             }
@@ -122,7 +128,9 @@ namespace StoreUI.Menus
                 Username = Name,
                 email = email,
             };
-            customerMenu = new CustomerMenu(newCustomer, storeContext, new StoreMapper());
+            CartsModel cart = new CartsModel();
+            cart.CustomerID = (int)newCustomer.ID;
+            customerMenu = new CustomerMenu(newCustomer, cart, storeContext, new StoreMapper());
             customerMenu.Start();
             Log.Information("New customer sighted");
             return newCustomer;

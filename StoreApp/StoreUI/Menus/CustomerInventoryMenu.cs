@@ -1,3 +1,4 @@
+using CustomerLib;
 using LocationLib;
 using OrdersLib;
 using Serilog;
@@ -16,6 +17,7 @@ namespace StoreUI
         private readonly StoreMapper storeMapper;
         private readonly LocationModel location;
         private readonly ProductServices productServices;
+        private readonly CustomerService customerService;
         private CustomerInventoryMenu customerInventoryMenu;
         private CartItemService cartItemService;
         private CustomerLocationMenu customerLocationMenu;
@@ -23,13 +25,15 @@ namespace StoreUI
         private SignInMenu signInMenu;
         CartsModel cart = new CartsModel();
 
-        public CustomerInventoryMenu(CustomerModels customer, ixdssaucContext ixdssaucContext, LocationModel location, StoreMapper storeMapper)
+        public CustomerInventoryMenu(CustomerModels customer, CartsModel cart, ixdssaucContext ixdssaucContext, LocationModel location, StoreMapper storeMapper)
         {
             this.customer = customer;
+            this.cart = cart;
             this.ixdssaucContext = ixdssaucContext;
             this.storeMapper = storeMapper;
             this.location = location;
             this.productServices = new ProductServices();
+            this.customerService = new CustomerService();
         }
         public void Start()
         {
@@ -49,36 +53,36 @@ namespace StoreUI
             {
                 case "1":
                     List<InventoryModel> allProducts = productServices.ViewAllProductsAtLocationSortByID(id);
-                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
-                    foreach(var p in allProducts)
+                    Console.WriteLine("ID \t Athlete \t Item \t \t Sport \t \t Price \t Quantity");
+                    foreach (var p in allProducts)
                     {
                         DBRepo bRepo = new DBRepo();
                         ProductModel product = bRepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {p.Quantity}");
                     }
                     Log.Information("type of item selected");
                     AddToCart(customer, cart);
                     break;
                 case "2":
                     List<InventoryModel> allProducts2 = productServices.ViewAllProductsAtLocationSortByQuantityAscending(id);
-                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
+                    Console.WriteLine("ID \t Athlete \t Item \t Sport \t Price \t Quantity");
                     foreach (var p in allProducts2)
                     {
                         DBRepo dbrepo = new DBRepo();
                         ProductModel product = dbrepo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {p.Quantity}");
                     }
                     Log.Information("sport selected");
                     AddToCart(customer, cart);
                     break;
                 case "3":
                     List<InventoryModel> allProducts3 = productServices.ViewAllProductsAtLocationSortByQuantityDescending(id);
-                    System.Console.WriteLine("Product ID - Athlete - Item - Sport - Price - Quantity available");
+                    Console.WriteLine("ID \t Athlete \t Item \t Sport \t Price \t Quantity");
                     foreach (var p in allProducts3)
                     {
                         DBRepo repo = new DBRepo();
                         ProductModel product = repo.GetProductByID(p.productID);
-                        Console.WriteLine($"{product.ID} {product.Athlete} {product.Item} {product.Sport} ${product.Price} {p.Quantity}");
+                        Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {p.Quantity}");
                     }
                     Log.Information("athlete selected");
                     AddToCart(customer, cart);
@@ -113,7 +117,7 @@ namespace StoreUI
             string userInput = Console.ReadLine();
             if (userInput == "Y")
             {
-                customerInventoryMenu = new CustomerInventoryMenu(customer, ixdssaucContext, location, new StoreMapper());
+                customerInventoryMenu = new CustomerInventoryMenu(customer, cart, ixdssaucContext, location, new StoreMapper());
                 customerInventoryMenu.Start();
             }
             else
@@ -178,17 +182,17 @@ namespace StoreUI
                         break;
                     case "3":
                         Console.WriteLine("Returning you to this location menu");
-                        customerInventoryMenu = new CustomerInventoryMenu(customer, new ixdssaucContext(), location, new StoreMapper());
+                        customerInventoryMenu = new CustomerInventoryMenu(customer, cart, new ixdssaucContext(), location, new StoreMapper());
                         customerInventoryMenu.Start();
                         break;
                     case "4":
                         Console.WriteLine("Returning you to location selection menu");
-                        customerLocationMenu = new CustomerLocationMenu(customer, new ixdssaucContext(), new StoreMapper());
+                        customerLocationMenu = new CustomerLocationMenu(customer, cart, new ixdssaucContext(), new StoreMapper());
                         customerLocationMenu.Start();
                         break;
                     case "5":
                         Console.WriteLine("Returning you to customer menu");
-                        customerMenu = new CustomerMenu(customer, new ixdssaucContext(), new StoreMapper());
+                        customerMenu = new CustomerMenu(customer, cart, new ixdssaucContext(), new StoreMapper());
                         customerMenu.Start();
                         break;
                     case "6":

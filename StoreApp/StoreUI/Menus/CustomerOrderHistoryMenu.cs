@@ -13,9 +13,11 @@ namespace StoreUI.Menus
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
         private readonly CustomerModels customer;
-        public CustomerOrderHistoryMenu(CustomerModels customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        private readonly CartsModel cart;
+        public CustomerOrderHistoryMenu(CustomerModels customer, CartsModel cart, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
+            this.cart = cart;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -60,7 +62,7 @@ namespace StoreUI.Menus
                     break;
                 case "5":
                     Console.WriteLine("Redirecting you back to customer main menu");
-                    customerMenu = new CustomerMenu(customer, storeContext, new StoreMapper());
+                    customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
                     customerMenu.Start();
                     Log.Information("back to customer menu");
                     /// <summary>

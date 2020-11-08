@@ -13,10 +13,12 @@ namespace StoreUI.Menus
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
         private readonly CustomerModels customer;
+        private readonly CartsModel cart;
 
-        public CustomerMenu(CustomerModels customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public CustomerMenu(CustomerModels customer, CartsModel cart, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
+            this.cart = cart;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
         }
@@ -35,14 +37,14 @@ namespace StoreUI.Menus
                     case "1":
                         //redirect to customer order history
                         Console.WriteLine("Redirecting you to your order history");
-                        customerOrderHistoryMenu = new CustomerOrderHistoryMenu(customer, storeContext, new StoreMapper());
+                        customerOrderHistoryMenu = new CustomerOrderHistoryMenu(customer, cart, storeContext, new StoreMapper());
                         customerOrderHistoryMenu.Start();
                         Log.Information("order history");
                         break;
                     case "2":
                         //redirect to location menu
                         Console.WriteLine("Redirecting you to the location menu. Hope you find something you like.");
-                        customerLocationMenu = new CustomerLocationMenu(customer, storeContext, new StoreMapper());
+                        customerLocationMenu = new CustomerLocationMenu(customer, cart, storeContext, new StoreMapper());
                         customerLocationMenu.Start();
                         Log.Information("location menu selected");
                         break;

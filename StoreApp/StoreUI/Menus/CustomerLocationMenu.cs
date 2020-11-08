@@ -13,12 +13,13 @@ namespace StoreUI.Menus
         private readonly StoreMapper storeMapper;
         private CustomerInventoryMenu customerInventoryMenu;
         private readonly LocationService locationService;
-
+        private readonly CartsModel cart;
         private readonly CustomerModels customer;
 
-        public CustomerLocationMenu(CustomerModels customer, ixdssaucContext storeContext, StoreMapper storeMapper)
+        public CustomerLocationMenu(CustomerModels customer, CartsModel cart, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
+            this.cart = cart;
             this.storeContext = storeContext;
             this.storeMapper = storeMapper;
             this.locationService = new LocationService();
@@ -42,7 +43,7 @@ namespace StoreUI.Menus
                     Log.Information("Please work");
                     LocationModel location = locationService.GetLocationByID(id);
                     /// change info here
-                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location, new StoreMapper());
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, cart, storeContext, location, new StoreMapper());
                     customerInventoryMenu.Start();
                     Log.Information("bats store selected");
                     break;
@@ -52,7 +53,7 @@ namespace StoreUI.Menus
                     int id2 = 2;
                     LocationModel location2 = locationService.GetLocationByID(id2);
                     /// change info here
-                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location2, new StoreMapper());
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, cart, storeContext, location2, new StoreMapper());
                     customerInventoryMenu.Start();
                     Log.Information("sticks store selected");
                     break;
@@ -62,7 +63,7 @@ namespace StoreUI.Menus
                     int id3 = 3;
                     LocationModel location3 = locationService.GetLocationByID(id3);
                     /// change info here
-                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location3, new StoreMapper());
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, cart, storeContext, location3, new StoreMapper());
                     customerInventoryMenu.Start();
                     Log.Information("jersey store selected");
                     break;
@@ -72,7 +73,7 @@ namespace StoreUI.Menus
                     int id4 = 4;
                     LocationModel location4 = locationService.GetLocationByID(id4);
                     /// change info here
-                    customerInventoryMenu = new CustomerInventoryMenu(customer, storeContext, location4, new StoreMapper());
+                    customerInventoryMenu = new CustomerInventoryMenu(customer, cart, storeContext, location4, new StoreMapper());
                     customerInventoryMenu.Start();
                     Log.Information("games store selected");
                     break;
@@ -86,7 +87,7 @@ namespace StoreUI.Menus
                     Log.Information("seriously buy something");
                     break;
                 default:
-                    customerLocationMenu = new CustomerLocationMenu(customer, storeContext, new StoreMapper());
+                    customerLocationMenu = new CustomerLocationMenu(customer, cart, storeContext, new StoreMapper());
                     customerLocationMenu.Start();
                     Log.Information("Invalid try again");
                     break;

@@ -11,6 +11,11 @@ namespace CustomerLib
         {
             this.dbRepo = dbRepo;
         }
+
+        public CustomerService()
+        {
+        }
+
         public CustomerModels GetCustomerByID(int id)
         {
             CustomerModels customer = dbRepo.GetCustomerByID(id);

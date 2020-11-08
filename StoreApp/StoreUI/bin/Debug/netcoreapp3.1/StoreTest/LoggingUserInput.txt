@@ -1,0 +1,10 @@
+2020-11-08 17:21:19.311 -06:00 [INF] type of item selected
+2020-11-08 17:23:28.299 -06:00 [INF] type of item selected
+2020-11-08 17:24:12.683 -06:00 [INF] type of item selected
+2020-11-08 17:25:02.953 -06:00 [INF] type of item selected
+2020-11-08 17:28:16.395 -06:00 [INF] type of item selected
+2020-11-08 17:29:38.157 -06:00 [INF] type of item selected
+2020-11-08 17:30:22.760 -06:00 [INF] type of item selected
+2020-11-08 17:31:06.635 -06:00 [INF] Please work
+2020-11-08 17:31:12.183 -06:00 [INF] type of item selected
+2020-11-08 17:32:13.241 -06:00 [INF] type of item selected
