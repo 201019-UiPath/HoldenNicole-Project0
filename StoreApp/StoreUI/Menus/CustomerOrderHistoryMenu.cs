@@ -4,7 +4,6 @@ using StoreDB.Entities;
 using StoreDB.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections;
 
 namespace StoreUI.Menus
 {

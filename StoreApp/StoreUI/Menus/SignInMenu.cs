@@ -78,19 +78,21 @@ namespace StoreUI.Menus
             Console.WriteLine("Please enter your username:");
             string returningCustomerUserName = Console.ReadLine();
             DBRepo bRepo = new DBRepo();
+            CartsModel cart = new CartsModel();
+            cart.CustomerID = customer.ID;
             try
             {
                 //validation brakes the functional code
                 customer = bRepo.GetCustomerByName(returningCustomerUserName);
-                //CustomerModels returningCustomer = customer;
+                CustomerModels returningCustomer = customer;
                 
+                
+
             }
             catch (InvalidOperationException)
             {
                 Console.WriteLine($"There is no registered user with the username: {customer.Username}");
             }
-            CartsModel cart = new CartsModel();
-            cart.CustomerID = customer.ID;
             customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
             customerMenu.Start();
             Log.Information("Returning customer sighted");
