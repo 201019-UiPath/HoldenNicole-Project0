@@ -34,12 +34,12 @@ namespace StoreUI
                 .First(c => c.Customer == id)
                 );
         }
-        public CartItemModel AddProductToCart(CartItemModel cartItem)
+        public void AddProductToCart(CartItemModel cartItem)
         {
             context.CartItems.Add(mapper.ParseCartItem(cartItem));
             context.SaveChangesAsync();
-            return null;
         }
+        
         public LineItemModel AddToOrder(LineItemModel cartItem)
         {
             context.LineItems.Add(mapper.ParseLineItem(cartItem));

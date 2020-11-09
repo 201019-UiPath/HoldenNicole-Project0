@@ -6,13 +6,14 @@ namespace OrdersLib
     public class OrdersService
     {
         private readonly DBRepo dBRepo;
-        public OrdersService(DBRepo dBRepo)
+        public OrdersService()
         {
-            this.dBRepo = dBRepo;
+            this.dBRepo = new DBRepo();
         }
         public void PlaceOrder(OrderModel order)
         {
             dBRepo.PlaceOrder(order);
         }
+        
     }
 }

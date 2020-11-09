@@ -24,6 +24,7 @@ namespace StoreUI
         private CustomerMenu customerMenu;
         private SignInMenu signInMenu;
         CartsModel cart = new CartsModel();
+        private readonly OrdersService ordersService;
 
         public CustomerInventoryMenu(CustomerModels customer, CartsModel cart, ixdssaucContext ixdssaucContext, LocationModel location, StoreMapper storeMapper)
         {
@@ -34,6 +35,8 @@ namespace StoreUI
             this.location = location;
             this.productServices = new ProductServices();
             this.customerService = new CustomerService();
+            this.ordersService = new OrdersService();
+            this.cartItemService = new CartItemService();
         }
         public void Start()
         {
@@ -109,11 +112,11 @@ namespace StoreUI
             cart.LocationID = location.ID;
             int cartID = dB2.GetCartID(customer.ID).ID;
             Console.WriteLine("What is the product ID you would like to add to your cart?");
-            CartItemModel addItem = new CartItemModel();
-            addItem.CartID = cartID;
-            addItem.productID = Convert.ToInt32(Console.ReadLine());
-            addItem.quantity += 1;
-            dB2.AddProductToCart(addItem);
+            CartItems addItem = new CartItems();
+            addItem.Cart = cartID;
+            addItem.Product = Convert.ToInt32(Console.ReadLine());
+            addItem.Quantity += 1;
+            cartItemService.AddProductToCart(cartID, addItem.Id);
             Console.WriteLine("Would you like to add another item (Y/N)?");
             string userInput = Console.ReadLine();
             if (userInput == "Y")

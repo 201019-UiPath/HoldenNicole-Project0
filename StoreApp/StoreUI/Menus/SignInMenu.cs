@@ -92,6 +92,8 @@ namespace StoreUI.Menus
             catch (InvalidOperationException)
             {
                 Console.WriteLine($"There is no registered user with the username: {customer.Username}");
+                signInMenu = new SignInMenu(new ixdssaucContext(), new StoreMapper());
+                signInMenu.Start();
             }
             customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
             customerMenu.Start();

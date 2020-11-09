@@ -1,7 +1,6 @@
 using StoreDB.Entities;
 using StoreDB.Models;
 using StoreUI;
-using System;
 using System.Collections.Generic;
 
 namespace OrdersLib
@@ -13,10 +12,13 @@ namespace OrdersLib
         {
             this.dBRepo = new DBRepo();
         }
-
-
-        public void AddProductToCart(CartItemModel cartItem)
+        public void AddProductToCart(int cartid, int productid)
         {
+            CartItemModel cartItem = new CartItemModel()
+            {
+                CartID = cartid,
+                productID = productid
+            };
             dBRepo.AddProductToCart(cartItem);
         }
         public void UpdateCartItems(CartItemModel products)
@@ -41,14 +43,10 @@ namespace OrdersLib
             dBRepo.PlaceOrder(order);
         }
 
-        public Products GetProductByID(object iD)
+        public ProductModel GetProductByID(int iD)
         {
-            throw new NotImplementedException();
-        }
-
-        public CartItems AddProductToCart(CartItems addItem)
-        {
-            throw new NotImplementedException();
+            ProductModel product = dBRepo.GetProductByID(iD);
+            return product;
         }
     }
 }
