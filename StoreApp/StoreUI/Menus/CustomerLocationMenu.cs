@@ -2,6 +2,7 @@
 using Serilog;
 using StoreDB.Entities;
 using StoreDB.Models;
+using System;
 
 namespace StoreUI.Menus
 {
@@ -85,6 +86,7 @@ namespace StoreUI.Menus
                 case "6":
                     System.Console.WriteLine("Come back again soon!");
                     Log.Information("seriously buy something");
+                    Environment.Exit(0);
                     break;
                 default:
                     customerLocationMenu = new CustomerLocationMenu(customer, cart, storeContext, new StoreMapper());

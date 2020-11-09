@@ -8,3 +8,89 @@
 2020-11-08 17:31:06.635 -06:00 [INF] Please work
 2020-11-08 17:31:12.183 -06:00 [INF] type of item selected
 2020-11-08 17:32:13.241 -06:00 [INF] type of item selected
+2020-11-08 19:03:06.917 -06:00 [INF] type of item selected
+2020-11-08 19:04:33.763 -06:00 [INF] type of item selected
+2020-11-08 19:05:33.265 -06:00 [INF] type of item selected
+2020-11-08 19:07:14.782 -06:00 [INF] Please work
+2020-11-08 19:07:19.943 -06:00 [INF] type of item selected
+2020-11-08 19:27:53.776 -06:00 [INF] Please work
+2020-11-08 19:27:59.728 -06:00 [INF] type of item selected
+2020-11-08 19:51:13.179 -06:00 [INF] type of item selected
+2020-11-08 19:54:53.933 -06:00 [INF] type of item selected
+2020-11-08 19:56:23.295 -06:00 [INF] type of item selected
+2020-11-08 20:00:26.443 -06:00 [INF] type of item selected
+2020-11-08 20:00:40.876 -06:00 [INF] type of item selected
+2020-11-08 20:03:27.885 -06:00 [INF] type of item selected
+2020-11-08 20:05:23.005 -06:00 [INF] type of item selected
+2020-11-08 20:32:56.394 -06:00 [INF] type of item selected
+2020-11-08 20:33:41.561 -06:00 [INF] type of item selected
+2020-11-08 20:34:48.791 -06:00 [INF] type of item selected
+2020-11-08 20:35:13.482 -06:00 [INF] sticks store selected
+2020-11-08 20:35:13.482 -06:00 [INF] location menu selected
+2020-11-08 20:36:57.410 -06:00 [INF] type of item selected
+2020-11-08 20:38:06.431 -06:00 [INF] sport selected
+2020-11-08 20:38:59.603 -06:00 [INF] type of item selected
+2020-11-08 20:39:52.109 -06:00 [INF] type of item selected
+2020-11-08 20:41:30.159 -06:00 [INF] type of item selected
+2020-11-08 20:48:01.120 -06:00 [INF] type of item selected
+2020-11-08 20:56:17.604 -06:00 [INF] type of item selected
+2020-11-08 20:58:32.095 -06:00 [INF] type of item selected
+2020-11-08 21:04:16.533 -06:00 [INF] type of item selected
+2020-11-08 21:04:23.157 -06:00 [INF] sticks store selected
+2020-11-08 21:04:23.158 -06:00 [INF] location menu selected
+2020-11-08 21:08:13.419 -06:00 [INF] order history newest first
+2020-11-08 21:08:13.427 -06:00 [INF] order history
+2020-11-08 21:08:14.564 -06:00 [INF] order history newest first
+2020-11-08 21:08:14.564 -06:00 [INF] order history
+2020-11-08 21:08:46.556 -06:00 [INF] type of item selected
+2020-11-08 21:09:48.217 -06:00 [INF] sticks store selected
+2020-11-08 21:09:48.217 -06:00 [INF] location menu selected
+2020-11-08 21:10:46.381 -06:00 [INF] type of item selected
+2020-11-08 21:13:36.532 -06:00 [INF] type of item selected
+2020-11-08 22:04:06.621 -06:00 [INF] order history newest first
+2020-11-08 22:04:06.631 -06:00 [INF] order history
+2020-11-08 22:04:27.989 -06:00 [INF] type of item selected
+2020-11-08 22:04:48.009 -06:00 [INF] type of item selected
+2020-11-08 22:04:55.851 -06:00 [INF] sticks store selected
+2020-11-08 22:04:55.851 -06:00 [INF] location menu selected
+2020-11-08 22:05:09.577 -06:00 [INF] type of item selected
+2020-11-08 22:05:52.421 -06:00 [INF] type of item selected
+2020-11-08 22:05:59.099 -06:00 [INF] sticks store selected
+2020-11-08 22:05:59.100 -06:00 [INF] location menu selected
+2020-11-08 22:06:04.296 -06:00 [INF] seriously buy something
+2020-11-08 22:06:04.296 -06:00 [INF] location menu selected
+2020-11-08 22:06:07.242 -06:00 [INF] seriously buy something
+2020-11-08 22:06:07.242 -06:00 [INF] location menu selected
+2020-11-08 22:06:10.010 -06:00 [INF] seriously buy something
+2020-11-08 22:06:10.011 -06:00 [INF] location menu selected
+2020-11-08 22:45:57.255 -06:00 [INF] order history newest first
+2020-11-08 22:45:57.264 -06:00 [INF] order history
+2020-11-08 22:56:11.130 -06:00 [INF] order history newest first
+2020-11-08 22:56:11.147 -06:00 [INF] order history
+2020-11-08 22:59:13.091 -06:00 [INF] type of item selected
+2020-11-08 22:59:32.941 -06:00 [ERR] Invalid input
+2020-11-08 22:59:32.942 -06:00 [INF] games store selected
+2020-11-08 22:59:32.942 -06:00 [INF] location menu selected
+2020-11-08 22:59:56.691 -06:00 [INF] type of item selected
+2020-11-08 23:00:03.524 -06:00 [INF] games store selected
+2020-11-08 23:00:03.525 -06:00 [INF] location menu selected
+2020-11-08 23:00:16.474 -06:00 [INF] type of item selected
+2020-11-08 23:00:39.348 -06:00 [INF] jersey store selected
+2020-11-08 23:00:39.349 -06:00 [INF] location menu selected
+2020-11-08 23:00:58.703 -06:00 [INF] sport selected
+2020-11-08 23:01:12.665 -06:00 [INF] jersey store selected
+2020-11-08 23:01:12.666 -06:00 [INF] location menu selected
+2020-11-08 23:01:23.423 -06:00 [INF] order history newest first
+2020-11-08 23:01:23.424 -06:00 [INF] order history
+2020-11-08 23:05:16.761 -06:00 [INF] order history newest first
+2020-11-08 23:05:16.769 -06:00 [INF] order history
+2020-11-08 23:10:02.823 -06:00 [INF] sport selected
+2020-11-08 23:10:18.120 -06:00 [INF] sport selected
+2020-11-08 23:10:31.544 -06:00 [INF] sport selected
+2020-11-08 23:10:38.886 -06:00 [INF] sticks store selected
+2020-11-08 23:10:38.887 -06:00 [INF] location menu selected
+2020-11-08 23:10:59.071 -06:00 [INF] order history newest first
+2020-11-08 23:10:59.072 -06:00 [INF] order history
+2020-11-08 23:24:20.392 -06:00 [INF] order history
+2020-11-08 23:26:28.605 -06:00 [INF] order history cheapest first
+2020-11-08 23:26:28.621 -06:00 [INF] order history

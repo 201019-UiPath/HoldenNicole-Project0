@@ -6643,6 +6643,7 @@
       "OrdersLib >= 1.0.0",
       "Serilog >= 2.10.0",
       "StoreDB >= 1.0.0",
+      "System.Collections >= 4.3.0",
       "System.Text.Json >= 4.7.2",
       "serilog.sinks.file >= 4.1.0",
       "xunit >= 2.4.1"
@@ -6720,6 +6721,10 @@
           "Serilog": {
             "target": "Package",
             "version": "[2.10.0, )"
+          },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           },
           "System.Text.Json": {
             "target": "Package",

@@ -18,6 +18,7 @@ namespace StoreUI.Menus
         private SignInMenu signInMenu;
         private ManagerInventoryMenu managerInventoryMenu;
         private ManagerMenu managerMenu;
+        private LocationOrderHistoryMenu locationOrderHistoryMenu;
 
         public ManagerInventoryMenu(ManagerModel manager, ixdssaucContext storeContext, LocationModel location, StoreMapper storeMapper)
         {
@@ -37,7 +38,8 @@ namespace StoreUI.Menus
             Console.WriteLine("[2] By quantity of item ascending");
             Console.WriteLine("[3] By quantity of item descending");
             Console.WriteLine("[4] Return to the sign in menu");
-            Console.WriteLine("[5] exit store");
+            Console.WriteLine("[5] View location order history");
+            Console.WriteLine("[6] exit store");
             
             string sorting = Console.ReadLine();
             ProductServices productServices = new ProductServices();
@@ -89,6 +91,12 @@ namespace StoreUI.Menus
                     signInMenu.Start();
                     break;
                 case "5":
+                    Console.WriteLine("Redirecting you to location order history");
+                    locationOrderHistoryMenu = new LocationOrderHistoryMenu(manager, storeContext, new StoreMapper());
+                    Log.Information("order history");
+                    locationOrderHistoryMenu.Start();
+                    break;
+                case "6":
                     Console.WriteLine("Leaving store");
                     Environment.Exit(0);
                     break;

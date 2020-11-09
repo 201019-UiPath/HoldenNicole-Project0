@@ -18,6 +18,7 @@
           "OrdersLib": "1.0.0",
           "Serilog": "2.10.0",
           "StoreDB": "1.0.0",
+          "System.Collections": "4.3.0",
           "System.Text.Json": "4.7.2",
           "Serilog.Sinks.File": "4.1.0",
           "xunit": "2.4.1"

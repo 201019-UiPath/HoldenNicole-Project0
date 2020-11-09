@@ -106,10 +106,12 @@ namespace StoreUI
             DBRepo dB2 = new DBRepo();
             cart.CustomerID = customer.ID;
             cart.LocationID = location.ID;
+            dB2.AddCart(cart);
+            int cartID = dB2.GetCartID(customer.ID).ID;
             DBRepo dB1 = new DBRepo();
             Console.WriteLine("What is the product ID you would like to add to your cart?");
             CartItemModel addItem = new CartItemModel();
-            addItem.CartID = cart.ID;
+            addItem.CartID = cartID;
             addItem.productID = Convert.ToInt32(Console.ReadLine());
             addItem.quantity += 1;
             CartItemModel items = dB2.AddProductToCart(addItem);
@@ -145,18 +147,30 @@ namespace StoreUI
                     case "1":
                         OrderModel order = new OrderModel();
                         order.CustomerID = customer.ID;
-                        order.items = (ICollection<LineItemModel>)(ICollection<LineItems>)item;
                         order.LocationID = location.ID;
+                        dB1.AddOrder(order);
+                        order = dB1.GetOrderByID(location, customer);
                         int total = 0;
-                        foreach(var l in order.items)
+                        foreach(var i in item)
+                        {
+                            LineItemModel lineItem = new LineItemModel();
+                            lineItem.ProductID = i.productID;
+                            lineItem.Quantity = i.quantity;
+                            lineItem.OrderID = i.orderID;
+                            dB1.AddToOrder(lineItem);
+                           // dB1.DeleteProductInCart(i);
+                            dB1.DeleteProduct(i.productID);
+                        }
+                        foreach(var l in item)
                         {
                             Products product = new Products();
-                            product.Id = l.ID;
+                            product.Id = l.productID;
                             int price = (int)product.Price;
-                            total += price;
+                            total = price + total;
                         }
                         ///need to calculate price
                         order.Price = total;
+                        order.OrderDate = DateTime.Now;
                         DBRepo dBRepo = new DBRepo();
                         dBRepo.PlaceOrder(order);
                         Console.WriteLine("Glad you found something you like come back soon");
@@ -178,6 +192,7 @@ namespace StoreUI
                             cartItem.quantity -= 1;
                             DBRepo dbRepo = new DBRepo();
                             dbRepo.UpdateCartItems(cartItem);
+                            ///need to change redirect to another place
                         }
                         break;
                     case "3":

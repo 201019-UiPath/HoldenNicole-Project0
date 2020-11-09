@@ -10,7 +10,6 @@ namespace LocationLib
         public LocationService()
         {
             this.dbRepo = new DBRepo();
-
         }
 
         public LocationModel GetLocationByID(int id)

@@ -409,6 +409,10 @@
               "target": "Package",
               "version": "[2.10.0, )"
             },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[4.7.2, )"

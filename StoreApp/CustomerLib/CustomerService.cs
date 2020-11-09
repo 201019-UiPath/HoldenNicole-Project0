@@ -7,13 +7,9 @@ namespace CustomerLib
     public class CustomerService
     {
         private readonly DBRepo dbRepo;
-        public CustomerService(DBRepo dbRepo)
-        {
-            this.dbRepo = dbRepo;
-        }
-
         public CustomerService()
         {
+            this.dbRepo = new DBRepo();
         }
 
         public CustomerModels GetCustomerByID(int id)

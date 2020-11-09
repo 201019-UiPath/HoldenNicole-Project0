@@ -9,14 +9,11 @@ namespace OrdersLib
     public class CartItemService
     {
         private readonly DBRepo dBRepo;
-        public CartItemService(DBRepo dBRepo)
-        {
-            this.dBRepo = dBRepo;
-        }
-
         public CartItemService()
         {
+            this.dBRepo = new DBRepo();
         }
+
 
         public void AddProductToCart(CartItemModel cartItem)
         {

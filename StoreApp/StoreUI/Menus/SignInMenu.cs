@@ -77,22 +77,23 @@ namespace StoreUI.Menus
 
             Console.WriteLine("Please enter your username:");
             string returningCustomerUserName = Console.ReadLine();
+            DBRepo bRepo = new DBRepo();
             try
             {
-                DBRepo bRepo = new DBRepo();
                 //validation brakes the functional code
                 customer = bRepo.GetCustomerByName(returningCustomerUserName);
-                CustomerModels returningCustomer = customer;
-                CartsModel cart = new CartsModel();
-                cart.CustomerID = (int)returningCustomer.ID;
-                customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
-                customerMenu.Start();
-                Log.Information("Returning customer sighted");
+                //CustomerModels returningCustomer = customer;
+                
             }
             catch (InvalidOperationException)
             {
                 Console.WriteLine($"There is no registered user with the username: {customer.Username}");
             }
+            CartsModel cart = new CartsModel();
+            cart.CustomerID = customer.ID;
+            customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
+            customerMenu.Start();
+            Log.Information("Returning customer sighted");
             return customer;
         }
         public ManagerModel ManagerSignIn()
@@ -129,9 +130,11 @@ namespace StoreUI.Menus
                 email = email,
             };
             CartsModel cart = new CartsModel();
-            cart.CustomerID = (int)newCustomer.ID;
-            customerMenu = new CustomerMenu(newCustomer, cart, storeContext, new StoreMapper());
-            customerMenu.Start();
+            cart.CustomerID = newCustomer.ID;
+            DBRepo dB = new DBRepo();
+            dB.AddCustomer(newCustomer);
+            signInMenu = new SignInMenu(storeContext, new StoreMapper());
+            signInMenu.Start();
             Log.Information("New customer sighted");
             return newCustomer;
         }

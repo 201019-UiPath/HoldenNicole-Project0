@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;
@@ -10,6 +11,9 @@ namespace StoreUI
     {
         private readonly ixdssaucContext context;
         private readonly IMapper mapper;
+        public IMapper Mapper;
+
+        public ixdssaucContext Context { get; set; }
 
         public DBRepo()
         {
@@ -18,16 +22,34 @@ namespace StoreUI
         }
 
         #region cart methods
+        public void AddCart(CartsModel cartsModel)
+        {
+            context.Carts.Add(mapper.ParseCarts(cartsModel));
+            context.SaveChanges();
+        }
+        public CartsModel GetCartID(int id)
+        {
+            return mapper.ParseCarts(
+                context.Carts
+                .First(c => c.Customer == id)
+                );
+        }
         public CartItemModel AddProductToCart(CartItemModel cartItem)
         {
             context.CartItems.Add(mapper.ParseCartItem(cartItem));
+            context.SaveChangesAsync();
+            return null;
+        }
+        public LineItemModel AddToOrder(LineItemModel cartItem)
+        {
+            context.LineItems.Add(mapper.ParseLineItem(cartItem));
             context.SaveChanges();
             return null;
         }
         public void UpdateCartItems(CartItemModel cartItem)
         {
             context.CartItems.Update(mapper.ParseCartItem(cartItem));
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void DeleteProductInCart(CartItemModel cartItems)
@@ -35,7 +57,11 @@ namespace StoreUI
             context.CartItems.Remove(mapper.ParseCartItem(cartItems));
             context.SaveChanges();
         }
-
+        public void DeleteProductInCart(LineItemModel cartItems)
+        {
+            context.LineItems.Remove(mapper.ParseLineItem(cartItems));
+            context.SaveChanges();
+        }
         public List<CartItemModel> GetAllProductsInCartByCartID(int id)
         {
             return mapper.ParseCartItem(
@@ -44,9 +70,16 @@ namespace StoreUI
                 .ToList()
             );
         }
+        public List<LineItemModel> GetAllProductsInOrderByID(int id)
+        {
+            return mapper.ParseLineItem(
+                context.LineItems
+                .Where(i => i.Id == id)
+                .ToList());
+        }
         public void PlaceOrder(OrderModel order)
         {
-            context.Orders.First(i => i.Id == order.ID);
+            context.Orders.Add(mapper.ParseOrder(order));
             context.SaveChanges();
         }
 
@@ -92,8 +125,13 @@ namespace StoreUI
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
             inventory.Quantity = inventory.Quantity + quantity;
+            context.SaveChanges();   
+        }
+        public void DeleteProduct(int productid)
+        {
+            var inventory = context.Inventory.First(i => i.Product == productid);
+            inventory.Quantity -= 1;
             context.SaveChanges();
-            
         }
 
         public Inventory DeleteProductAtLocation(int locationid, int productid, int quantity)
@@ -134,8 +172,8 @@ namespace StoreUI
             catch (InvalidOperationException)
             {
                 System.Console.WriteLine("This customer username does not exist try again");
+                return null;
             }
-            return null;
         }
 
         public CustomerModels GetCustomerByEmail(string email)
@@ -144,7 +182,7 @@ namespace StoreUI
             {
                 return mapper.ParseCustomer(
                     context.Customer
-                    .First(c => c.Email == email)
+                    .FirstOrDefault(c => c.Email == email)
                 );
             }
             catch (InvalidOperationException)
@@ -193,7 +231,12 @@ namespace StoreUI
                 return null;
             }
         }
-
+        public OrderModel GetOrderByID(LocationModel location, CustomerModels customer)
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .First(o => o.Location == location.ID && o.Customer == customer.ID));
+        }
         public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
             try
@@ -210,6 +253,12 @@ namespace StoreUI
                 System.Console.WriteLine("This customer does not have any order history yet");
                 return null;
             }
+        }
+
+        public void AddOrder(OrderModel order)
+        {
+            context.Orders.Add(mapper.ParseOrder(order));
+            context.SaveChanges();
         }
 
         public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
@@ -260,7 +309,7 @@ namespace StoreUI
         {
             return mapper.ParseLocation(
                 context.Locations
-                .FirstOrDefault(l => l.Id == id)
+                .First(l => l.Id == id)
             );
         }
         public LocationModel GetLocationByName(string name)

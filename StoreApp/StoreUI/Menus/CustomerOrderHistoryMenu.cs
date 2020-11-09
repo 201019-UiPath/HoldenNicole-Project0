@@ -3,17 +3,19 @@ using Serilog;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace StoreUI.Menus
 {
     public class CustomerOrderHistoryMenu : IMenu
     {
         private CustomerMenu customerMenu;
-        private CustomerService customerService;
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
         private readonly CustomerModels customer;
         private readonly CartsModel cart;
+        CustomerService customerService = new CustomerService();
         public CustomerOrderHistoryMenu(CustomerModels customer, CartsModel cart, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
@@ -42,23 +44,90 @@ namespace StoreUI.Menus
             {
                 case "1":
                     Console.WriteLine("Here is your order history sorted by most recent first: ");
-                    customerService.GetAllOrdersByCustomerIDDateDescending(customer);
+                    List<OrderModel> orders = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
+                    Console.WriteLine("Order Date - Total Price");
+                    Console.WriteLine("Athlete - Item - Price");
+                    foreach(var o in orders)
+                    {
+                        DBRepo bRepo = new DBRepo();
+                        List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
+                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        foreach (var i in items)
+                        {
+                            ProductModel pro = new ProductModel();
+                            pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                        }
+                    }
                     Log.Information("order history newest first");
+                    customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
+                    customerMenu.Start();
                     break;
                 case "2":
                     Console.WriteLine("Here is your order history with oldest orders first: ");
                     customerService.GetAllOrdersByCustomerIDPriceAscending(customer);
+                    List<OrderModel> orders2 = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
+                    Console.WriteLine("Order Date - Total Price");
+                    Console.WriteLine("Athlete - Item - Price");
+                    foreach (var o in orders2)
+                    {
+                        DBRepo bRepo = new DBRepo();
+                        List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
+                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        foreach (var i in items)
+                        {
+                            ProductModel pro = new ProductModel();
+                            pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                        }
+                    }
                     Log.Information("order history oldest first");
+                    customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
+                    customerMenu.Start();
                     break;
                 case "3":
                     Console.WriteLine("Here is your order history sorted by highest price first: ");
                     customerService.GetAllOrdersByCustomerIDPriceDescending(customer);
+                    List<OrderModel> orders3 = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
+                    Console.WriteLine("Order Date - Total Price");
+                    Console.WriteLine("Athlete - Item - Price");
+                    foreach (var o in orders3)
+                    {
+                        DBRepo bRepo = new DBRepo();
+                        List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
+                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        foreach (var i in items)
+                        {
+                            ProductModel pro = new ProductModel();
+                            pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                        }
+                    }
                     Log.Information("order history most expensive first");
+                    customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
+                    customerMenu.Start();
                     break;
                 case "4":
                     Console.WriteLine("Here is your order history with cheapest items first: ");
                     customerService.GetAllOrdersByCustomerIDPriceDescending(customer);
+                    List<OrderModel> orders4 = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
+                    Console.WriteLine("Order Date - Total Price");
+                    Console.WriteLine("Athlete - Item - Price");
+                    foreach (var o in orders4)
+                    {
+                        DBRepo bRepo = new DBRepo();
+                        List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
+                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        foreach (var i in items)
+                        {
+                            ProductModel pro = new ProductModel();
+                            pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                        }
+                    }
                     Log.Information("order history cheapest first");
+                    customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
+                    customerMenu.Start();
                     break;
                 case "5":
                     Console.WriteLine("Redirecting you back to customer main menu");
