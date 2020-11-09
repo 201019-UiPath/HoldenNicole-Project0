@@ -3,6 +3,7 @@ using ManagerLib;
 using Serilog;
 using StoreDB.Entities;
 using StoreDB.Models;
+
 using System;
 
 namespace StoreUI.Menus
@@ -18,6 +19,7 @@ namespace StoreUI.Menus
         private readonly ixdssaucContext storeContext;
         private readonly CustomerService customerService;
         private readonly ManagerSevices managerSevices;
+        Random random = new Random();
 
         public SignInMenu(CustomerService customerService)
         {
@@ -66,28 +68,25 @@ namespace StoreUI.Menus
                 default:
                     Console.WriteLine("Invalid Input please try again");
                     signInMenu = new SignInMenu(storeContext, storeMapper);
-                    signInMenu.Start();
                     Log.Information("invalid input");
+                    signInMenu.Start();
+                    
                     break;
             }
         }
         public CustomerModels CustomerSignIn()
         {
             CustomerModels customer = new CustomerModels();
-
             Console.WriteLine("Please enter your username:");
             string returningCustomerUserName = Console.ReadLine();
             DBRepo bRepo = new DBRepo();
             CartsModel cart = new CartsModel();
-            cart.CustomerID = customer.ID;
             try
             {
                 //validation brakes the functional code
                 customer = bRepo.GetCustomerByName(returningCustomerUserName);
                 CustomerModels returningCustomer = customer;
-                
-                
-
+                cart.CustomerID = customer.ID;
             }
             catch (InvalidOperationException)
             {
@@ -96,8 +95,9 @@ namespace StoreUI.Menus
                 signInMenu.Start();
             }
             customerMenu = new CustomerMenu(customer, cart, storeContext, new StoreMapper());
-            customerMenu.Start();
             Log.Information("Returning customer sighted");
+            customerMenu.Start();
+
             return customer;
         }
         public ManagerModel ManagerSignIn()
@@ -111,10 +111,11 @@ namespace StoreUI.Menus
                 managerModel = dBRepo.GetManagerByName(Username);
                 //validation breaks my functional code
                 managerMenu = new ManagerMenu(managerModel, storeContext, new StoreMapper());
+                Log.Information("manager sighted");
                 managerMenu.Start();
                 /// would like to validate this but idk how
                 ///if output from dBRepo contains user input redirect to location corresponding to manager
-                Log.Information("manager sighted");
+                
             }
             catch (InvalidOperationException)
             {
@@ -138,8 +139,9 @@ namespace StoreUI.Menus
             DBRepo dB = new DBRepo();
             dB.AddCustomer(newCustomer);
             signInMenu = new SignInMenu(storeContext, new StoreMapper());
-            signInMenu.Start();
             Log.Information("New customer sighted");
+            signInMenu.Start();
+            
             return newCustomer;
         }
     }

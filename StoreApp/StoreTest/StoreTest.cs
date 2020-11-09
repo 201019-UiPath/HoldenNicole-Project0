@@ -60,17 +60,17 @@ namespace StoreTest
             Username = "Testing",
             Email = "testing@test.com"
         };
-        private readonly OrderModel orderModel = new OrderModel()
+        private readonly Orders orders = new Orders()
         {
-            ID = 1,
-            CustomerID = 1,
-            LocationID = 2,
+            Id = 1,
+            Customer = 1,
+            Location = 2,
             OrderDate = Convert.ToDateTime("November 11, 2020"),
             Price = Convert.ToDecimal(7000)
         };
-        private readonly ProductModel productModel = new ProductModel()
+        private readonly Products products = new Products()
         {
-            ID = 2,
+            Id = 2,
             Athlete = "Wayne Gretzky",
             Item = "skates",
             Price = Convert.ToDecimal(10000),
@@ -88,8 +88,8 @@ namespace StoreTest
             testcontext.LineItems.AddRange((System.Collections.Generic.IEnumerable<LineItems>)lineItemModel);
             testcontext.Locations.AddRange((System.Collections.Generic.IEnumerable<Locations>)locationModel);
             testcontext.Managers.AddRange((System.Collections.Generic.IEnumerable<Managers>)managerModel);
-            testcontext.Orders.AddRange((System.Collections.Generic.IEnumerable<Orders>)orderModel);
-            testcontext.Products.AddRange((System.Collections.Generic.IEnumerable<Products>)productModel);
+            testcontext.Orders.AddRange(orders);
+            testcontext.Products.AddRange(products);
             testcontext.SaveChanges();
         }
         #endregion
@@ -175,10 +175,10 @@ namespace StoreTest
                 Mapper = mapper
             };
             //Act
-            dBrepo.AddOrder(orderModel);
+            dBrepo.AddOrder(orders);
             //Assert
             using var assertContext = new ixdssaucContext(options);
-            Assert.NotNull(assertContext.Orders.First(c => c.Id == orderModel.ID));
+            Assert.NotNull(assertContext.Orders.First(c => c.Id == orders.Id));
         }
         [Fact]
         public void GetCartIDShouldGetCart()
@@ -212,7 +212,7 @@ namespace StoreTest
             ProductModel result = dBrepo.GetProductByID(1);
             //Assert 
             using var assertContext = new ixdssaucContext(options);
-            Assert.Equal(result.ID, productModel.ID);
+            Assert.Equal(result.ID, products.Id);
         }
         [Fact]
         public void GetCustomerByIDShouldGetCustomer()

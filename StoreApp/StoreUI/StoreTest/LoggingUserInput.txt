@@ -45,3 +45,18 @@
 2020-11-08 15:06:05.719 -06:00 [INF] type of item selected
 2020-11-08 15:07:00.569 -06:00 [INF] type of item selected
 2020-11-08 15:40:01.307 -06:00 [INF] seriously????
+2020-11-09 11:55:27.984 -06:00 [INF] type of item selected
+2020-11-09 11:55:40.435 -06:00 [INF] sport selected
+2020-11-09 11:55:48.710 -06:00 [INF] order history newest first
+2020-11-09 11:57:47.527 -06:00 [INF] type of item selected
+2020-11-09 11:57:57.081 -06:00 [INF] type of item selected
+2020-11-09 11:58:07.077 -06:00 [INF] order history newest first
+2020-11-09 16:25:57.227 -06:00 [INF] New customer sighted
+2020-11-09 16:26:05.634 -06:00 [INF] seriously????
+2020-11-09 16:26:59.415 -06:00 [INF] seriously????
+2020-11-09 16:27:23.181 -06:00 [INF] seriously????
+2020-11-09 16:28:36.927 -06:00 [INF] manager sighted
+2020-11-09 16:28:43.959 -06:00 [INF] type of item selected
+2020-11-09 16:31:02.959 -06:00 [INF] invalid input
+2020-11-09 16:31:12.545 -06:00 [INF] Returning customer sighted
+2020-11-09 16:31:26.998 -06:00 [INF] type of item selected

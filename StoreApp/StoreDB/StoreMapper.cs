@@ -22,9 +22,10 @@ namespace StoreUI
         {
             return new CartItemModel()
             {
-                CartID = cartItems.Id,
+                CartID = cartItems.Cart,
                 productID = cartItems.Product,
-                quantity = cartItems.Quantity
+                quantity = cartItems.Quantity,
+                id = cartItems.Id
             };
         }
 
@@ -32,8 +33,10 @@ namespace StoreUI
         {
             return new CartItems()
             {
+                Cart = cartItems.CartID,
                 Product = cartItems.productID,
-                Quantity = cartItems.quantity
+                Quantity = cartItems.quantity,
+                Id = cartItems.id
             };
         }
 
@@ -63,7 +66,7 @@ namespace StoreUI
         {
             return new CartsModel()
             {
-                ID = carts.Id,
+               // ID = carts.Id,
                 CustomerID = carts.Customer,
                 LocationID = carts.Location
             };
@@ -97,7 +100,15 @@ namespace StoreUI
             }
             return cartsModels;
         }
-
+        public List<CartsModel> ParseCarts(List<Carts> cart)
+        {
+            List<CartsModel> cartsModels = new List<CartsModel>();
+            foreach(var x in cart)
+            {
+                cartsModels.Add(ParseCarts(x));
+            }
+            return cartsModels;
+        }
         /// <summary>
         /// customer section
         /// </summary>

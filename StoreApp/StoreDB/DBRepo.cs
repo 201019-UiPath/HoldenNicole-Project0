@@ -34,6 +34,12 @@ namespace StoreUI
                 .First(c => c.Customer == id)
                 );
         }
+       /* public CartsModel GetCartID(CustomerModels customer)
+        {
+            return mapper.ParseCarts(
+                context.Carts
+                .First(c => c.Customer == customer.ID));
+        } */
         public void AddProductToCart(CartItemModel cartItem)
         {
             context.CartItems.Add(mapper.ParseCartItem(cartItem));
@@ -62,14 +68,15 @@ namespace StoreUI
             context.LineItems.Remove(mapper.ParseLineItem(cartItems));
             context.SaveChanges();
         }
-        public List<CartItemModel> GetAllProductsInCartByCartID(int id)
+        public List<CartsModel> GetAllProductsInCartByCartID(int id)
         {
-            return mapper.ParseCartItem(
-                context.CartItems
+            return mapper.ParseCarts(
+                context.Carts
+                //.Include("CartItems")
                 .Where(i => i.Id == id)
                 .ToList()
             );
-        }
+        } 
         public List<LineItemModel> GetAllProductsInOrderByID(int id)
         {
             return mapper.ParseLineItem(
@@ -91,7 +98,6 @@ namespace StoreUI
             return mapper.ParseProducts(
                 context.Products
                 .First(i => i.Id == id)
-
                 );
         }
         public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
@@ -206,6 +212,12 @@ namespace StoreUI
                 .ToList()
             );
         }
+
+        public void AddOrder(Orders orders)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<CustomerModels> GetAllCustomersOrderByOrders()
         {
             return mapper.ParseCustomer(
@@ -278,7 +290,6 @@ namespace StoreUI
                 return null;
             }
         }
-
         public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
         {
             try
@@ -335,7 +346,6 @@ namespace StoreUI
                     .ToList()
                 );
         }
-
         public List<OrderModel> GetAllOrdersByLocationIDDateDescending(int id)
         {
             return mapper.ParseOrder(
@@ -345,7 +355,6 @@ namespace StoreUI
                 .ToList()
             );
         }
-
         public List<OrderModel> GetAllOrdersByLocationIDPriceAscending(int id)
         {
             return mapper.ParseOrder(
@@ -355,7 +364,6 @@ namespace StoreUI
                 .ToList()
             );
         }
-
         public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
         {
             return mapper.ParseOrder(
@@ -365,7 +373,6 @@ namespace StoreUI
                 .ToList()
             );
         }
-
         #endregion
     }
 }

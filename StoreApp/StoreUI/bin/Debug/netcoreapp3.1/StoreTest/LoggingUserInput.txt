@@ -7172,3 +7172,107 @@
 2020-11-09 11:41:27.521 -06:00 [INF] type of item selected
 2020-11-09 11:41:36.103 -06:00 [INF] type of item selected
 2020-11-09 11:41:51.423 -06:00 [INF] order history newest first
+2020-11-09 11:47:40.881 -06:00 [INF] type of item selected
+2020-11-09 11:47:50.275 -06:00 [INF] type of item selected
+2020-11-09 11:48:39.810 -06:00 [INF] type of item selected
+2020-11-09 11:48:50.161 -06:00 [INF] order history newest first
+2020-11-09 11:52:18.829 -06:00 [INF] sport selected
+2020-11-09 12:00:35.785 -06:00 [INF] sport selected
+2020-11-09 12:01:31.597 -06:00 [INF] order history newest first
+2020-11-09 12:03:37.620 -06:00 [INF] sport selected
+2020-11-09 12:03:45.518 -06:00 [INF] type of item selected
+2020-11-09 12:03:53.637 -06:00 [INF] order history newest first
+2020-11-09 12:04:49.843 -06:00 [INF] type of item selected
+2020-11-09 12:04:58.041 -06:00 [INF] sport selected
+2020-11-09 12:05:07.893 -06:00 [INF] order history newest first
+2020-11-09 12:08:57.267 -06:00 [INF] type of item selected
+2020-11-09 12:09:08.365 -06:00 [INF] type of item selected
+2020-11-09 12:09:18.429 -06:00 [INF] order history newest first
+2020-11-09 12:16:47.200 -06:00 [INF] order history newest first
+2020-11-09 12:16:56.452 -06:00 [INF] type of item selected
+2020-11-09 12:17:08.641 -06:00 [INF] sport selected
+2020-11-09 12:17:17.685 -06:00 [INF] sport selected
+2020-11-09 12:17:45.836 -06:00 [INF] order history newest first
+2020-11-09 12:28:53.437 -06:00 [INF] type of item selected
+2020-11-09 12:29:04.168 -06:00 [INF] type of item selected
+2020-11-09 12:29:15.587 -06:00 [INF] order history newest first
+2020-11-09 12:34:59.957 -06:00 [INF] sport selected
+2020-11-09 12:35:20.597 -06:00 [INF] sport selected
+2020-11-09 12:35:36.261 -06:00 [INF] order history newest first
+2020-11-09 12:43:04.444 -06:00 [INF] type of item selected
+2020-11-09 12:43:13.453 -06:00 [INF] sport selected
+2020-11-09 12:45:24.812 -06:00 [INF] Please work
+2020-11-09 12:45:29.685 -06:00 [INF] type of item selected
+2020-11-09 12:45:43.738 -06:00 [INF] sport selected
+2020-11-09 12:48:56.075 -06:00 [INF] type of item selected
+2020-11-09 12:52:15.342 -06:00 [INF] Please work
+2020-11-09 12:52:20.608 -06:00 [INF] sport selected
+2020-11-09 12:54:29.179 -06:00 [INF] sport selected
+2020-11-09 13:08:40.253 -06:00 [INF] sport selected
+2020-11-09 13:08:49.930 -06:00 [INF] sport selected
+2020-11-09 13:09:00.963 -06:00 [INF] order history newest first
+2020-11-09 13:10:56.147 -06:00 [INF] sport selected
+2020-11-09 13:12:29.728 -06:00 [INF] type of item selected
+2020-11-09 13:23:07.871 -06:00 [INF] type of item selected
+2020-11-09 13:23:29.580 -06:00 [INF] type of item selected
+2020-11-09 13:25:51.690 -06:00 [INF] sport selected
+2020-11-09 13:26:29.819 -06:00 [INF] type of item selected
+2020-11-09 13:28:18.564 -06:00 [INF] order history newest first
+2020-11-09 13:58:54.663 -06:00 [INF] sport selected
+2020-11-09 13:59:28.565 -06:00 [INF] sport selected
+2020-11-09 14:00:27.365 -06:00 [INF] sport selected
+2020-11-09 14:00:38.016 -06:00 [INF] order history newest first
+2020-11-09 14:02:30.309 -06:00 [INF] sport selected
+2020-11-09 14:02:40.975 -06:00 [INF] sport selected
+2020-11-09 14:05:47.804 -06:00 [INF] sport selected
+2020-11-09 14:06:51.372 -06:00 [INF] sport selected
+2020-11-09 14:07:43.708 -06:00 [INF] sport selected
+2020-11-09 14:08:46.501 -06:00 [INF] sport selected
+2020-11-09 14:09:58.863 -06:00 [INF] sport selected
+2020-11-09 14:10:49.786 -06:00 [INF] sport selected
+2020-11-09 14:15:14.671 -06:00 [INF] sport selected
+2020-11-09 14:16:32.005 -06:00 [INF] sport selected
+2020-11-09 14:25:10.578 -06:00 [INF] sport selected
+2020-11-09 14:26:19.503 -06:00 [INF] order history newest first
+2020-11-09 14:26:30.811 -06:00 [INF] type of item selected
+2020-11-09 14:27:14.697 -06:00 [INF] Please work
+2020-11-09 14:27:19.465 -06:00 [INF] sport selected
+2020-11-09 14:27:31.149 -06:00 [INF] order history newest first
+2020-11-09 14:32:37.787 -06:00 [INF] sport selected
+2020-11-09 14:33:12.056 -06:00 [INF] sport selected
+2020-11-09 14:34:06.915 -06:00 [INF] sport selected
+2020-11-09 14:34:34.253 -06:00 [INF] sport selected
+2020-11-09 14:36:04.905 -06:00 [INF] sport selected
+2020-11-09 14:40:02.069 -06:00 [INF] sport selected
+2020-11-09 14:41:18.980 -06:00 [INF] sport selected
+2020-11-09 14:44:03.493 -06:00 [INF] sport selected
+2020-11-09 14:46:04.835 -06:00 [INF] sport selected
+2020-11-09 14:46:56.208 -06:00 [INF] sport selected
+2020-11-09 14:48:22.802 -06:00 [INF] order history newest first
+2020-11-09 14:48:36.306 -06:00 [INF] athlete selected
+2020-11-09 14:50:06.337 -06:00 [INF] sport selected
+2020-11-09 16:11:52.477 -06:00 [INF] Please work
+2020-11-09 16:11:56.999 -06:00 [INF] type of item selected
+2020-11-09 16:18:23.370 -06:00 [INF] seriously????
+2020-11-09 16:19:29.536 -06:00 [INF] seriously????
+2020-11-09 16:21:00.327 -06:00 [INF] seriously????
+2020-11-09 16:22:33.302 -06:00 [INF] seriously????
+2020-11-09 16:33:13.266 -06:00 [INF] Returning customer sighted
+2020-11-09 16:33:17.400 -06:00 [INF] Please work
+2020-11-09 16:33:22.341 -06:00 [INF] sport selected
+2020-11-09 16:38:51.583 -06:00 [INF] Returning customer sighted
+2020-11-09 16:38:58.556 -06:00 [INF] sport selected
+2020-11-09 16:41:18.046 -06:00 [INF] Returning customer sighted
+2020-11-09 16:41:28.709 -06:00 [INF] sport selected
+2020-11-09 16:46:36.586 -06:00 [INF] Returning customer sighted
+2020-11-09 16:46:43.716 -06:00 [INF] sport selected
+2020-11-09 16:49:34.701 -06:00 [INF] Returning customer sighted
+2020-11-09 16:49:41.820 -06:00 [INF] sport selected
+2020-11-09 17:18:14.560 -06:00 [INF] Returning customer sighted
+2020-11-09 17:18:29.831 -06:00 [INF] sport selected
+2020-11-09 17:19:32.328 -06:00 [INF] Returning customer sighted
+2020-11-09 17:19:39.972 -06:00 [INF] sport selected
+2020-11-09 17:26:53.972 -06:00 [INF] Returning customer sighted
+2020-11-09 17:26:59.157 -06:00 [INF] sport selected
+2020-11-09 17:28:58.448 -06:00 [INF] Returning customer sighted
+2020-11-09 17:29:04.192 -06:00 [INF] sport selected

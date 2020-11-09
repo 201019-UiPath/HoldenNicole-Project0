@@ -116,7 +116,7 @@ namespace StoreUI
             addItem.Cart = cartID;
             addItem.Product = Convert.ToInt32(Console.ReadLine());
             addItem.Quantity += 1;
-            cartItemService.AddProductToCart(cartID, addItem.Id);
+            cartItemService.AddProductToCart(cartID, addItem.Product, addItem.Quantity);
             Console.WriteLine("Would you like to add another item (Y/N)?");
             string userInput = Console.ReadLine();
             if (userInput == "Y")
@@ -126,19 +126,20 @@ namespace StoreUI
             }
             else
             {
-                int id = cart.ID;
                 cartItemService = new CartItemService();
-                List<CartItemModel> item = cartItemService.GetAllProductsInCartByCartID(id);
+                List<CartsModel> item = cartItemService.GetAllProductsInCartByCartID(cartID);
                 foreach (var i in item)
                 {
                     DBRepo dB = new DBRepo();
-                    ProductModel product = dB.GetProductByID(i.productID);
-                    Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {i.quantity}");
+                    CartItemModel cartItemModel = new CartItemModel();
+                    cartItemModel.CartID = i.ID;
+                    ProductModel product = dB.GetProductByID(cartItemModel.productID);
+                    Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {cartItemModel.quantity}");
                 }
                 ModifyOrder(customer, cart);
             }
         }
-        public void ModifyOrder(CustomerModels customer, CartsModel cart)
+        public void ModifyOrder(CustomerModels c, CartsModel cart)
         {
             Console.WriteLine("What would you like to do now?");
             Console.WriteLine("[1] Place Order now");
@@ -159,31 +160,36 @@ namespace StoreUI
                     dB1.AddOrder(order);
                     order = dB1.GetOrderByID(location, customer);
                     int total = 0;
-                    List<CartItemModel> item = dB1.GetAllProductsInCartByCartID(cart.ID);
+                    CartsModel carts = dB1.GetCartID(customer.ID);
+                    List<CartsModel> item = dB1.GetAllProductsInCartByCartID(carts.ID);
                     foreach (var i in item)
                     {
                         LineItemModel lineItem = new LineItemModel();
-                        lineItem.ProductID = i.productID;
-                        lineItem.Quantity = i.quantity;
-                        lineItem.OrderID = i.orderID;
+                        lineItem.OrderID = order.ID;
+                        CartItemModel cartItemModel = new CartItemModel();
+                        cartItemModel.CartID = i.ID;
+                        cartItemModel.orderID = order.ID;
+                        lineItem.ProductID = cartItemModel.productID;
+                        cartItemModel.quantity = lineItem.Quantity;
                         dB1.AddToOrder(lineItem);
-                        dB1.DeleteProductInCart(i);
-                        dB1.DeleteProduct(i.productID);
+                        //dB1.DeleteProductInCart(cartItemModel);
+                        //dB1.DeleteProductAtLocation(location.ID, lineItem.ProductID, lineItem.Quantity);
                     }
                     foreach (var l in item)
                     {
                         Products product = new Products();
-                        product.Id = l.productID;
+                        LineItemModel lineItem = new LineItemModel();
+                        product.Id = lineItem.ProductID;
                         int price = (int)product.Price;
                         total = price + total;
                     }
                     ///need to calculate price
                     order.Price = total;
-                    order.OrderDate = DateTime.Now;
+                    DateTime orderDate = order.OrderDate = DateTime.Now;
                     DBRepo dBRepo = new DBRepo();
-                    dBRepo.PlaceOrder(order);
+                    dBRepo.AddOrder(order);
                     Console.WriteLine("Glad you found something you like come back soon");
-                    customerMenu = new CustomerMenu(customer, cart, ixdssaucContext, new StoreMapper());
+                    customerMenu = new CustomerMenu(c, cart, ixdssaucContext, new StoreMapper());
                     customerMenu.Start();
                     break;
                 case "2":
@@ -191,7 +197,7 @@ namespace StoreUI
                     string request = Console.ReadLine();
                     if (request == "Y")
                     {
-                        AddToCart(customer, cart);
+                        AddToCart(c, cart);
                     }
                     else
                     {
@@ -203,22 +209,22 @@ namespace StoreUI
                         cartItem.quantity -= 1;
                         DBRepo dbRepo = new DBRepo();
                         dbRepo.UpdateCartItems(cartItem);
-                        ModifyOrder(customer, cart);
+                        ModifyOrder(c, cart);
                     }
                     break;
                 case "3":
                     Console.WriteLine("Returning you to this location menu");
-                    customerInventoryMenu = new CustomerInventoryMenu(customer, cart, new ixdssaucContext(), location, new StoreMapper());
+                    customerInventoryMenu = new CustomerInventoryMenu(c, cart, new ixdssaucContext(), location, new StoreMapper());
                     customerInventoryMenu.Start();
                     break;
                 case "4":
                     Console.WriteLine("Returning you to location selection menu");
-                    customerLocationMenu = new CustomerLocationMenu(customer, cart, new ixdssaucContext(), new StoreMapper());
+                    customerLocationMenu = new CustomerLocationMenu(c, cart, new ixdssaucContext(), new StoreMapper());
                     customerLocationMenu.Start();
                     break;
                 case "5":
                     Console.WriteLine("Returning you to customer menu");
-                    customerMenu = new CustomerMenu(customer, cart, new ixdssaucContext(), new StoreMapper());
+                    customerMenu = new CustomerMenu(c, cart, new ixdssaucContext(), new StoreMapper());
                     customerMenu.Start();
                     break;
                 case "6":

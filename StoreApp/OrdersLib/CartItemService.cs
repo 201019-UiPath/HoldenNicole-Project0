@@ -12,12 +12,13 @@ namespace OrdersLib
         {
             this.dBRepo = new DBRepo();
         }
-        public void AddProductToCart(int cartid, int productid)
+        public void AddProductToCart(int cartid, int productid, int quantity)
         {
             CartItemModel cartItem = new CartItemModel()
             {
                 CartID = cartid,
-                productID = productid
+                productID = productid,
+                quantity = quantity
             };
             dBRepo.AddProductToCart(cartItem);
         }
@@ -25,9 +26,9 @@ namespace OrdersLib
         {
             dBRepo.UpdateCartItems(products);
         }
-        public List<CartItemModel> GetAllProductsInCartByCartID(int id)
+        public List<CartsModel> GetAllProductsInCartByCartID(int id)
         {
-            List<CartItemModel> products = dBRepo.GetAllProductsInCartByCartID(id);
+            List<CartsModel> products = dBRepo.GetAllProductsInCartByCartID(id);
             return products;
         }
         public void DeleteProductInCart(CartItemModel product)

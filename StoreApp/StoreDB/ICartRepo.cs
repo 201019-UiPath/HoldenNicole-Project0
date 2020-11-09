@@ -1,3 +1,4 @@
+using StoreDB.Entities;
 using StoreDB.Models;
 using System.Collections.Generic;
 
@@ -7,6 +8,6 @@ namespace StoreUI
     {
         void UpdateCartItems(CartItemModel cartItem);
         void AddProductToCart(CartItemModel cartItem);
-        List<CartItemModel> GetAllProductsInCartByCartID(int id);
+        List<CartsModel> GetAllProductsInCartByCartID(int id);
     }
 }
