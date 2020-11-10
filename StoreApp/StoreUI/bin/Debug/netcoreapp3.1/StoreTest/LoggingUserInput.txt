@@ -11727,3 +11727,52 @@
 2020-11-10 01:14:24.401 -06:00 [INF] order history
 2020-11-10 01:14:27.812 -06:00 [INF] order history newest first
 2020-11-10 01:14:49.869 -06:00 [INF] order history
+2020-11-10 07:41:31.840 -06:00 [INF] New customer sighted
+2020-11-10 07:41:36.195 -06:00 [INF] Returning customer sighted
+2020-11-10 07:41:49.225 -06:00 [INF] sport selected
+2020-11-10 07:42:11.294 -06:00 [INF] order history newest first
+2020-11-10 07:43:04.162 -06:00 [INF] Returning customer sighted
+2020-11-10 07:43:15.232 -06:00 [INF] sport selected
+2020-11-10 07:43:27.956 -06:00 [INF] order history newest first
+2020-11-10 07:44:10.707 -06:00 [INF] Returning customer sighted
+2020-11-10 07:44:22.262 -06:00 [INF] sport selected
+2020-11-10 07:44:37.660 -06:00 [INF] order history newest first
+2020-11-10 07:46:04.708 -06:00 [INF] Returning customer sighted
+2020-11-10 07:46:12.837 -06:00 [INF] order history most expensive first
+2020-11-10 07:46:30.125 -06:00 [INF] order history oldest first
+2020-11-10 07:47:02.415 -06:00 [INF] order history newest first
+2020-11-10 07:48:31.980 -06:00 [INF] order history newest first
+2020-11-10 07:48:38.172 -06:00 [INF] order history oldest first
+2020-11-10 07:49:00.366 -06:00 [INF] order history most expensive first
+2020-11-10 07:49:08.940 -06:00 [INF] order history cheapest first
+2020-11-10 07:49:33.582 -06:00 [INF] manager sighted
+2020-11-10 07:49:43.400 -06:00 [INF] order history
+2020-11-10 07:49:44.583 -06:00 [INF] order history newest first
+2020-11-10 07:57:53.186 -06:00 [INF] Returning customer sighted
+2020-11-10 07:58:00.788 -06:00 [INF] order history most expensive first
+2020-11-10 07:58:24.240 -06:00 [INF] order history newest first
+2020-11-10 08:00:01.230 -06:00 [INF] manager sighted
+2020-11-10 08:00:08.672 -06:00 [INF] order history
+2020-11-10 08:00:10.671 -06:00 [INF] order history newest first
+2020-11-10 08:05:52.646 -06:00 [INF] manager sighted
+2020-11-10 08:05:58.846 -06:00 [INF] order history
+2020-11-10 08:06:00.343 -06:00 [INF] order history newest first
+2020-11-10 08:06:20.291 -06:00 [INF] Returning customer sighted
+2020-11-10 08:06:27.032 -06:00 [INF] order history newest first
+2020-11-10 08:59:32.366 -06:00 [INF] Returning customer sighted
+2020-11-10 08:59:39.024 -06:00 [INF] order history cheapest first
+2020-11-10 09:00:01.820 -06:00 [INF] Returning customer sighted
+2020-11-10 09:00:06.778 -06:00 [INF] order history most expensive first
+2020-11-10 09:00:40.238 -06:00 [INF] order history most expensive first
+2020-11-10 09:01:17.994 -06:00 [INF] order history cheapest first
+2020-11-10 09:01:27.110 -06:00 [INF] order history most expensive first
+2020-11-10 09:01:36.591 -06:00 [INF] order history newest first
+2020-11-10 09:01:47.791 -06:00 [INF] order history oldest first
+2020-11-10 09:02:35.504 -06:00 [INF] manager sighted
+2020-11-10 09:02:43.427 -06:00 [INF] order history
+2020-11-10 09:02:50.964 -06:00 [ERR] Invalid input
+2020-11-10 09:02:50.964 -06:00 [INF] Cob
+2020-11-10 09:03:03.042 -06:00 [INF] manager sighted
+2020-11-10 09:03:15.112 -06:00 [INF] order history
+2020-11-10 09:03:22.836 -06:00 [INF] order history newest first
+2020-11-10 09:03:32.130 -06:00 [INF] order history

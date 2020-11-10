@@ -51,7 +51,7 @@ namespace StoreUI
             Console.WriteLine("[4] Pick another location");
             Console.WriteLine("[5] exit store");
             string sorting = Console.ReadLine();
-
+            ///would like to implement what is in foreach loops but studying for QC is more important
             switch (sorting)
             {
                 case "1":
@@ -161,7 +161,6 @@ namespace StoreUI
                         CustomerID = customer.ID,
                         LocationID = location.ID
                     };
-                    dB1.AddOrder(order);
                     order = dB1.GetOrderByID(location, customer);
                     decimal total = 0;
                     CartsModel carts = dB1.GetCartID(customer.ID);

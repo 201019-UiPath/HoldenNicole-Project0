@@ -31,12 +31,10 @@ namespace StoreUI.Menus
             /// <returns></returns>
             int id = customer.ID;
             Console.WriteLine("How would you like your order history sorted?");
-            Console.WriteLine("[1] Date most recent-oldest");
-            Console.WriteLine("[2] Date oldest-most recent");
-            Console.WriteLine("[3] Price high-low");
-            Console.WriteLine("[4] Price low-high");
-            Console.WriteLine("[5] Return to customer menu");
-            Console.WriteLine("[6] exit");
+            Console.WriteLine("[1] Date most recent-oldest"); //doesnt work
+            Console.WriteLine("[2] Date oldest-most recent"); //works
+            Console.WriteLine("[3] Price high-low"); // doesnt work
+            Console.WriteLine("[4] Price low-high"); // works
             string sortedHistory = Console.ReadLine();
 
             switch (sortedHistory)

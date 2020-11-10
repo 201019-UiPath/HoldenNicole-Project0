@@ -204,20 +204,12 @@ namespace StoreUI
         }
         public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
-            try
-            {
-                return mapper.ParseOrder(
-                    context.Orders
-                    .Where(c => c.Customer == customer.ID)
-                    .OrderBy(c => c.OrderDate)
-                    .ToList()
-                );
-            }
-            catch (System.InvalidOperationException)
-            {
-                System.Console.WriteLine("This customer does not have any order history yet");
-                return null;
-            }
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(c => c.Customer == customer.ID)
+                .OrderBy(c => c.OrderDate)
+                .ToList()
+            );
         }
         public OrderModel GetOrderByID(LocationModel location, CustomerModels customer)
         {
@@ -227,20 +219,12 @@ namespace StoreUI
         }
         public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
-            try
-            {
-                return mapper.ParseOrder(
-                    context.Orders
-                    .Where(c => c.Customer == customer.ID)
-                    .OrderByDescending(c => c.OrderDate)
-                    .ToList()
-                );
-            }
-            catch (System.InvalidOperationException)
-            {
-                System.Console.WriteLine("This customer does not have any order history yet");
-                return null;
-            }
+           return mapper.ParseOrder(
+                context.Orders
+                .Where(c => c.Customer == customer.ID)
+                .OrderByDescending(c => c.OrderDate)
+                .ToList()
+            );
         }
 
         public void AddOrder(OrderModel order)
@@ -251,37 +235,21 @@ namespace StoreUI
 
         public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
         {
-            try
-            {
-                return mapper.ParseOrder(
-                    context.Orders
-                    .Where(c => c.Customer == customer.ID)
-                    .OrderBy(c => c.Price)
-                    .ToList()
-                );
-            }
-            catch (System.InvalidOperationException)
-            {
-                System.Console.WriteLine("This customer does not have any order history yet");
-                return null;
-            }
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(c => c.Customer == customer.ID)
+                .OrderBy(c => c.Price)
+                .ToList()
+            );
         }
         public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
         {
-            try
-            {
-                return mapper.ParseOrder(
-                    context.Orders
-                    .Where(c => c.Customer == customer.ID)
-                    .OrderByDescending(c => c.Price)
-                    .ToList()
-                );
-            }
-            catch (System.InvalidOperationException)
-            {
-                System.Console.WriteLine("This customer does not have any order history yet");
-                return null;
-            }
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(c => c.Customer == customer.ID)
+                .OrderByDescending(c => c.Price)
+                .ToList()
+            );
         }
         #endregion
 
