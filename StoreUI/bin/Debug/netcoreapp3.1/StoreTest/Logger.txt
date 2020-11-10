@@ -1,0 +1,13 @@
+2020-11-05 09:08:42.140 -06:00 [INF] Great One
+2020-11-05 09:08:42.147 -06:00 [INF] manager sighted
+2020-11-05 15:25:58.270 -06:00 [INF] Great One
+2020-11-05 15:25:58.279 -06:00 [INF] manager sighted
+2020-11-05 15:40:01.347 -06:00 [INF] Returning customer sighted
+2020-11-05 15:41:56.945 -06:00 [INF] Returning customer sighted
+2020-11-05 15:42:07.952 -06:00 [INF] Hsss leaving store
+2020-11-05 15:42:13.827 -06:00 [INF] seriously buy something
+2020-11-05 15:43:47.566 -06:00 [INF] Cob
+2020-11-05 15:43:47.574 -06:00 [INF] manager sighted
+2020-11-05 15:45:27.146 -06:00 [INF] Returning customer sighted
+2020-11-05 15:48:14.611 -06:00 [INF] Please work
+2020-11-05 15:49:40.299 -06:00 [INF] Please work
