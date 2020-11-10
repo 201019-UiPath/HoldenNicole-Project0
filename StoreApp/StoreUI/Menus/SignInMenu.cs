@@ -14,12 +14,11 @@ namespace StoreUI.Menus
         private CustomerMenu customerMenu;
         private SignInMenu signInMenu;
         private ManagerMenu managerMenu;
-        private ixdssaucContext storeContext1;
-        private StoreMapper storeMapper;
+        private readonly ixdssaucContext storeContext1;
+        private readonly StoreMapper storeMapper;
         private readonly ixdssaucContext storeContext;
         private readonly CustomerService customerService;
         private readonly ManagerSevices managerSevices;
-        Random random = new Random();
 
         public SignInMenu(CustomerService customerService)
         {
@@ -70,7 +69,6 @@ namespace StoreUI.Menus
                     signInMenu = new SignInMenu(storeContext, storeMapper);
                     Log.Information("invalid input");
                     signInMenu.Start();
-                    
                     break;
             }
         }
@@ -115,7 +113,7 @@ namespace StoreUI.Menus
                 managerMenu.Start();
                 /// would like to validate this but idk how
                 ///if output from dBRepo contains user input redirect to location corresponding to manager
-                
+
             }
             catch (InvalidOperationException)
             {
@@ -134,14 +132,16 @@ namespace StoreUI.Menus
                 Username = Name,
                 email = email,
             };
-            CartsModel cart = new CartsModel();
-            cart.CustomerID = newCustomer.ID;
+            CartsModel cart = new CartsModel
+            {
+                CustomerID = newCustomer.ID
+            };
             DBRepo dB = new DBRepo();
             dB.AddCustomer(newCustomer);
             signInMenu = new SignInMenu(storeContext, new StoreMapper());
             Log.Information("New customer sighted");
             signInMenu.Start();
-            
+
             return newCustomer;
         }
     }

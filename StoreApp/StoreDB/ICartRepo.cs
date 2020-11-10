@@ -8,6 +8,6 @@ namespace StoreUI
     {
         void UpdateCartItems(CartItemModel cartItem);
         void AddProductToCart(CartItemModel cartItem);
-        List<CartsModel> GetAllProductsInCartByCartID(int id);
+        List<CartItemModel> GetAllProductsInCartByCartID(int id);
     }
 }

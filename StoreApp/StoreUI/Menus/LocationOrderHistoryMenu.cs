@@ -14,7 +14,7 @@ namespace StoreUI.Menus
         private readonly ixdssaucContext storeContext;
         private readonly StoreMapper storeMapper;
         private readonly ManagerModel manager;
-        LocationService locationservice = new LocationService();
+        readonly LocationService locationservice = new LocationService();
 
         public LocationOrderHistoryMenu(ManagerModel manager, ixdssaucContext storeContext, StoreMapper storeMapper)
         {

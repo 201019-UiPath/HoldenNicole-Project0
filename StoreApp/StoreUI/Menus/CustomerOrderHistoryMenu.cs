@@ -14,7 +14,7 @@ namespace StoreUI.Menus
         private readonly StoreMapper storeMapper;
         private readonly CustomerModels customer;
         private readonly CartsModel cart;
-        CustomerService customerService = new CustomerService();
+        readonly CustomerService customerService = new CustomerService();
         public CustomerOrderHistoryMenu(CustomerModels customer, CartsModel cart, ixdssaucContext storeContext, StoreMapper storeMapper)
         {
             this.customer = customer;
@@ -44,18 +44,18 @@ namespace StoreUI.Menus
                 case "1":
                     Console.WriteLine("Here is your order history sorted by most recent first: ");
                     List<OrderModel> orders = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
-                    Console.WriteLine("Order Date - Total Price");
-                    Console.WriteLine("Athlete - Item - Price");
+                    Console.WriteLine("Order Date \t Total Price");
+                    Console.WriteLine("Athlete \t Item \t Price");
                     foreach(var o in orders)
                     {
                         DBRepo bRepo = new DBRepo();
                         List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
-                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        Console.WriteLine($"{o.OrderDate} \t {o.Price}");
                         foreach (var i in items)
                         {
-                            ProductModel pro = new ProductModel();
-                            pro = bRepo.GetProductByID(i.ProductID);
-                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                            //ProductModel pro = new ProductModel();
+                            ProductModel pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} \t {pro.Item} \t {pro.Price}");
                         }
                     }
                     Log.Information("order history newest first");
@@ -66,18 +66,18 @@ namespace StoreUI.Menus
                     Console.WriteLine("Here is your order history with oldest orders first: ");
                     customerService.GetAllOrdersByCustomerIDPriceAscending(customer);
                     List<OrderModel> orders2 = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
-                    Console.WriteLine("Order Date - Total Price");
-                    Console.WriteLine("Athlete - Item - Price");
+                    Console.WriteLine("Order Date \t Total Price");
+                    Console.WriteLine("Athlete \t Item \t Price");
                     foreach (var o in orders2)
                     {
                         DBRepo bRepo = new DBRepo();
                         List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
-                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        Console.WriteLine($"{o.OrderDate} \t {o.Price}");
                         foreach (var i in items)
                         {
-                            ProductModel pro = new ProductModel();
-                            pro = bRepo.GetProductByID(i.ProductID);
-                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                            //ProductModel pro = new ProductModel();
+                            ProductModel pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} \t {pro.Item} \t {pro.Price}");
                         }
                     }
                     Log.Information("order history oldest first");
@@ -88,18 +88,18 @@ namespace StoreUI.Menus
                     Console.WriteLine("Here is your order history sorted by highest price first: ");
                     customerService.GetAllOrdersByCustomerIDPriceDescending(customer);
                     List<OrderModel> orders3 = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
-                    Console.WriteLine("Order Date - Total Price");
-                    Console.WriteLine("Athlete - Item - Price");
+                    Console.WriteLine("Order Date \t Total Price");
+                    Console.WriteLine("Athlete \t Item \t Price");
                     foreach (var o in orders3)
                     {
                         DBRepo bRepo = new DBRepo();
                         List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
-                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        Console.WriteLine($"{o.OrderDate} \t {o.Price}");
                         foreach (var i in items)
                         {
-                            ProductModel pro = new ProductModel();
-                            pro = bRepo.GetProductByID(i.ProductID);
-                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                            //ProductModel pro = new ProductModel();
+                            ProductModel pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} \t {pro.Item} \t {pro.Price}");
                         }
                     }
                     Log.Information("order history most expensive first");
@@ -110,18 +110,18 @@ namespace StoreUI.Menus
                     Console.WriteLine("Here is your order history with cheapest items first: ");
                     customerService.GetAllOrdersByCustomerIDPriceDescending(customer);
                     List<OrderModel> orders4 = customerService.GetAllOrdersByCustomerIDDateDescending(customer);
-                    Console.WriteLine("Order Date - Total Price");
-                    Console.WriteLine("Athlete - Item - Price");
+                    Console.WriteLine("Order Date \t Total Price");
+                    Console.WriteLine("Athlete \t Item \t Price");
                     foreach (var o in orders4)
                     {
                         DBRepo bRepo = new DBRepo();
                         List<LineItemModel> items = bRepo.GetAllProductsInOrderByID(o.ID);
-                        Console.WriteLine($"{o.OrderDate} - {o.Price}");
+                        Console.WriteLine($"{o.OrderDate} \t {o.Price}");
                         foreach (var i in items)
                         {
-                            ProductModel pro = new ProductModel();
-                            pro = bRepo.GetProductByID(i.ProductID);
-                            Console.WriteLine($"{pro.Athlete} - {pro.Item} - {pro.Price}");
+                            //ProductModel pro = new ProductModel();
+                            ProductModel pro = bRepo.GetProductByID(i.ProductID);
+                            Console.WriteLine($"{pro.Athlete} \t {pro.Item} \t {pro.Price}");
                         }
                     }
                     Log.Information("order history cheapest first");

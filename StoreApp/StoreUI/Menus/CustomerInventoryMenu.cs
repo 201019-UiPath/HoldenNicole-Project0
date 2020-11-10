@@ -23,7 +23,7 @@ namespace StoreUI
         private CustomerLocationMenu customerLocationMenu;
         private CustomerMenu customerMenu;
         private SignInMenu signInMenu;
-        CartsModel cart = new CartsModel();
+        readonly CartsModel cart = new CartsModel();
         private readonly OrdersService ordersService;
 
         public CustomerInventoryMenu(CustomerModels customer, CartsModel cart, ixdssaucContext ixdssaucContext, LocationModel location, StoreMapper storeMapper)
@@ -110,13 +110,17 @@ namespace StoreUI
             DBRepo dB2 = new DBRepo();
             cart.CustomerID = customer.ID;
             cart.LocationID = location.ID;
+            dB2.AddCart(cart);
             int cartID = dB2.GetCartID(customer.ID).ID;
             Console.WriteLine("What is the product ID you would like to add to your cart?");
-            CartItems addItem = new CartItems();
-            addItem.Cart = cartID;
-            addItem.Product = Convert.ToInt32(Console.ReadLine());
+            CartItems addItem = new CartItems
+            {
+                Cart = cartID,
+                Product = Convert.ToInt32(Console.ReadLine())
+            };
             addItem.Quantity += 1;
             cartItemService.AddProductToCart(cartID, addItem.Product, addItem.Quantity);
+            dB2.DeleteProductAtLocation(location.ID, addItem.Product, addItem.Quantity);
             Console.WriteLine("Would you like to add another item (Y/N)?");
             string userInput = Console.ReadLine();
             if (userInput == "Y")
@@ -127,14 +131,12 @@ namespace StoreUI
             else
             {
                 cartItemService = new CartItemService();
-                List<CartsModel> item = cartItemService.GetAllProductsInCartByCartID(cartID);
+                //List<CartsModel> item = cartItemService.GetAllProductsInCartByCartID(cartID);
+                List<CartItemModel> item = cartItemService.GetAllProductsInCartByCartID(cartID);
                 foreach (var i in item)
                 {
-                    DBRepo dB = new DBRepo();
-                    CartItemModel cartItemModel = new CartItemModel();
-                    cartItemModel.CartID = i.ID;
-                    ProductModel product = dB.GetProductByID(cartItemModel.productID);
-                    Console.WriteLine($"{product.Athlete} {product.Item} {product.Sport} {product.Price} {cartItemModel.quantity}");
+                    ProductModel product = cartItemService.GetProductByID(i.productID);
+                    Console.WriteLine($"{product.ID} \t {product.Athlete} \t {product.Item} \t {product.Sport} \t {product.Price} \t {i.quantity}");
                 }
                 ModifyOrder(customer, cart);
             }
@@ -154,44 +156,62 @@ namespace StoreUI
             switch (UserInput)
             {
                 case "1":
-                    OrderModel order = new OrderModel();
-                    order.CustomerID = customer.ID;
-                    order.LocationID = location.ID;
+                    OrderModel order = new OrderModel
+                    {
+                        CustomerID = customer.ID,
+                        LocationID = location.ID
+                    };
                     dB1.AddOrder(order);
                     order = dB1.GetOrderByID(location, customer);
-                    int total = 0;
+                    decimal total = 0;
                     CartsModel carts = dB1.GetCartID(customer.ID);
-                    List<CartsModel> item = dB1.GetAllProductsInCartByCartID(carts.ID);
+                    List<CartItemModel> item = dB1.GetAllProductsInCartByCartID(carts.ID);
                     foreach (var i in item)
                     {
-                        LineItemModel lineItem = new LineItemModel();
-                        lineItem.OrderID = order.ID;
-                        CartItemModel cartItemModel = new CartItemModel();
-                        cartItemModel.CartID = i.ID;
-                        cartItemModel.orderID = order.ID;
+                        LineItemModel lineItem = new LineItemModel
+                        {
+                            OrderID = order.ID,
+                            ProductID = i.productID
+                        };
+                        CartItemModel cartItemModel = new CartItemModel
+                        {
+                            CartID = i.CartID,
+                            orderID = order.ID,
+                            productID = i.productID
+                        };
                         lineItem.ProductID = cartItemModel.productID;
-                        cartItemModel.quantity = lineItem.Quantity;
+                        cartItemModel.quantity = 1;
+                        lineItem.Quantity = 1;
                         dB1.AddToOrder(lineItem);
-                        //dB1.DeleteProductInCart(cartItemModel);
-                        //dB1.DeleteProductAtLocation(location.ID, lineItem.ProductID, lineItem.Quantity);
+
+                        ///dB1.DeleteProductInCart(cartItemModel);
                     }
                     foreach (var l in item)
                     {
-                        Products product = new Products();
-                        LineItemModel lineItem = new LineItemModel();
-                        product.Id = lineItem.ProductID;
-                        int price = (int)product.Price;
-                        total = price + total;
+                        ProductModel product = new ProductModel
+                        {
+                            ID = l.productID
+                        };
+                        LineItemModel lineItem = new LineItemModel
+                        {
+                            ProductID = l.productID,
+                            OrderID = l.orderID,
+                            Quantity = l.quantity
+                        };
+                        product = dB1.GetProductByID(l.productID);
+                        decimal price = product.Price;
+                        total += price;
                     }
                     ///need to calculate price
                     order.Price = total;
-                    DateTime orderDate = order.OrderDate = DateTime.Now;
+                    order.OrderDate = DateTime.Now;
                     DBRepo dBRepo = new DBRepo();
                     dBRepo.AddOrder(order);
                     Console.WriteLine("Glad you found something you like come back soon");
-                    customerMenu = new CustomerMenu(c, cart, ixdssaucContext, new StoreMapper());
+                    customerMenu = new CustomerMenu(c, new CartsModel(), ixdssaucContext, new StoreMapper());
                     customerMenu.Start();
                     break;
+
                 case "2":
                     Console.WriteLine("Would you like to add to your order (Y/N)?");
                     string request = Console.ReadLine();
@@ -203,9 +223,11 @@ namespace StoreUI
                     {
                         Console.WriteLine("Enter the product ID you would like to remove from your order");
                         int d = Convert.ToInt32(Console.ReadLine());
-                        CartItemModel cartItem = new CartItemModel();
-                        cartItem.CartID = cart.ID;
-                        cartItem.productID = d;
+                        CartItemModel cartItem = new CartItemModel
+                        {
+                            CartID = cart.ID,
+                            productID = d
+                        };
                         cartItem.quantity -= 1;
                         DBRepo dbRepo = new DBRepo();
                         dbRepo.UpdateCartItems(cartItem);

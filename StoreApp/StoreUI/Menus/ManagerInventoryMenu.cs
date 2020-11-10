@@ -110,8 +110,10 @@ namespace StoreUI.Menus
         {
             string UserInput = "";
             do {
-                Inventory inventory = new Inventory();
-                inventory.Location = location.ID;
+                Inventory inventory = new Inventory
+                {
+                    Location = location.ID
+                };
                 Console.WriteLine("What would you like to do to the inventory?");
                 Console.WriteLine("[1] Add product to inventory");
                 Console.WriteLine("[2] Remove product from inventory");
@@ -124,8 +126,10 @@ namespace StoreUI.Menus
                 {
                 case "1":
                     Console.WriteLine("Enter the product ID you would like to add to the location inventory");
-                    Inventory item = new Inventory();
-                    item.Product = Convert.ToInt32(Console.ReadLine());
+                    Inventory item = new Inventory
+                    {
+                        Product = Convert.ToInt32(Console.ReadLine())
+                    };
                     Console.WriteLine("How many would you like to add?");
                     item.Quantity = Convert.ToInt32(Console.ReadLine());
                     DBRepo dBRepo = new DBRepo();
@@ -139,9 +143,11 @@ namespace StoreUI.Menus
                     break;
                 case "2":
                     Console.WriteLine("Enter the product ID you would like to remove from the location inventory");
-                    Inventory ritem = new Inventory();
-                    ritem.Product = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("How many would you like to remove?");
+                        Inventory ritem = new Inventory
+                        {
+                            Product = Convert.ToInt32(Console.ReadLine())
+                        };
+                        Console.WriteLine("How many would you like to remove?");
                     ritem.Quantity = Convert.ToInt32(Console.ReadLine());
                     DBRepo bRepo = new DBRepo();
                     

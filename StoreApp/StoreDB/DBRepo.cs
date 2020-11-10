@@ -33,17 +33,11 @@ namespace StoreUI
                 context.Carts
                 .First(c => c.Customer == id)
                 );
-        }
-       /* public CartsModel GetCartID(CustomerModels customer)
-        {
-            return mapper.ParseCarts(
-                context.Carts
-                .First(c => c.Customer == customer.ID));
-        } */
+        } 
         public void AddProductToCart(CartItemModel cartItem)
         {
             context.CartItems.Add(mapper.ParseCartItem(cartItem));
-            context.SaveChangesAsync();
+            context.SaveChanges();
         }
         
         public LineItemModel AddToOrder(LineItemModel cartItem)
@@ -63,17 +57,17 @@ namespace StoreUI
             context.CartItems.Remove(mapper.ParseCartItem(cartItems));
             context.SaveChanges();
         }
-        public void DeleteProductInCart(LineItemModel cartItems)
+        public void DeleteCart(CartsModel carts)
         {
-            context.LineItems.Remove(mapper.ParseLineItem(cartItems));
+            context.Carts.Remove(mapper.ParseCarts(carts));
             context.SaveChanges();
         }
-        public List<CartsModel> GetAllProductsInCartByCartID(int id)
+        public List<CartItemModel> GetAllProductsInCartByCartID(int id)
         {
-            return mapper.ParseCarts(
-                context.Carts
+            return mapper.ParseCartItem(
+                context.CartItems
                 //.Include("CartItems")
-                .Where(i => i.Id == id)
+                .Where(i => i.Cart == id)
                 .ToList()
             );
         } 
@@ -127,23 +121,17 @@ namespace StoreUI
                 .ToList()
             );
         }
+
         public void AddProductToLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
-            inventory.Quantity = inventory.Quantity + quantity;
+            inventory.Quantity += quantity;
             context.SaveChanges();   
         }
-        public void DeleteProduct(int productid)
-        {
-            var inventory = context.Inventory.First(i => i.Product == productid);
-            inventory.Quantity -= 1;
-            context.SaveChanges();
-        }
-
         public Inventory DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
-            inventory.Quantity = inventory.Quantity - quantity;
+            inventory.Quantity -= quantity;
             context.SaveChanges();
             return null;
         }
@@ -168,18 +156,11 @@ namespace StoreUI
 
         public CustomerModels GetCustomerByName(string name)
         {
-            try
-            {
                 return mapper.ParseCustomer(
                     context.Customer
                     .First(c => c.Username == name)
                 );
-            }
-            catch (InvalidOperationException)
-            {
-                System.Console.WriteLine("This customer username does not exist try again");
-                return null;
-            }
+            
         }
 
         public CustomerModels GetCustomerByEmail(string email)
@@ -211,11 +192,6 @@ namespace StoreUI
                 .OrderBy(i => i.Username)
                 .ToList()
             );
-        }
-
-        public void AddOrder(Orders orders)
-        {
-            throw new NotImplementedException();
         }
 
         public List<CustomerModels> GetAllCustomersOrderByOrders()

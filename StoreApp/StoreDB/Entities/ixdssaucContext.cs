@@ -91,7 +91,7 @@ namespace StoreDB.Entities
 
             modelBuilder.Entity<Carts>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.ID).HasColumnName("ID");
 
                 entity.Property(e => e.Customer).HasColumnName("customer");
 

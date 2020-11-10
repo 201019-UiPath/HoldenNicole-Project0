@@ -9,7 +9,7 @@ namespace StoreDB.Entities
             CartItems = new HashSet<CartItems>();
         }
 
-        public int Id { get; set; }
+        public int ID { get; set; }
         public int Customer { get; set; }
         public int Location { get; set; }
 

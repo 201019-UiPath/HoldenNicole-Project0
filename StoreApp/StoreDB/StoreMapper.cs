@@ -66,7 +66,7 @@ namespace StoreUI
         {
             return new CartsModel()
             {
-               // ID = carts.Id,
+                ID = carts.ID,
                 CustomerID = carts.Customer,
                 LocationID = carts.Location
             };
@@ -416,12 +416,5 @@ namespace StoreUI
             }
             return products;
         }
-        // public ProductModel ParseProduct(IQueryable<Products> queryables)
-        // {
-        //     return new ProductModel()
-        //     {
-        //         ID = queryables.Count()
-        //     };
-        //     }
-        }
     }
+}
