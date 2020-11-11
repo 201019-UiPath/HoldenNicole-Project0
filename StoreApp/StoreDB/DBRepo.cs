@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace StoreUI
 {
-    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo, IOrderRepo
+    public class DBRepo : IStoreRepo
     {
         private readonly ixdssaucContext context;
         private readonly IMapper mapper;

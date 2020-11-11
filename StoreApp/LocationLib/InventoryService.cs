@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LocationLib
 {
-    public class InventoryService
+    public class InventoryService : IInventoryService
     {
         private readonly DBRepo dBRepo;
         public InventoryService()

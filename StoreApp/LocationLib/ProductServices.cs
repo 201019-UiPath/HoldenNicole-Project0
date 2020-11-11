@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LocationLib
 {
-    public class ProductServices
+    public class ProductServices : IProductServices
     {
         private readonly DBRepo dBRepo;
         public ProductServices()

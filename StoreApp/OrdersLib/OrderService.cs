@@ -3,7 +3,7 @@ using StoreUI;
 
 namespace OrdersLib
 {
-    public class OrdersService
+    public class OrdersService : IOrdersService
     {
         private readonly DBRepo dBRepo;
         public OrdersService()
@@ -14,6 +14,6 @@ namespace OrdersLib
         {
             dBRepo.PlaceOrder(order);
         }
-        
+
     }
 }

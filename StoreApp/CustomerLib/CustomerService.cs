@@ -1,10 +1,11 @@
+using StoreDB.Entities;
 using StoreDB.Models;
 using StoreUI;
 using System.Collections.Generic;
 
 namespace CustomerLib
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         private readonly DBRepo dbRepo;
         public CustomerService()
@@ -83,6 +84,16 @@ namespace CustomerLib
         {
             List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(customer);
             return orders;
+        }
+
+        public object GetCustomerByEmail(string email)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddCustomer(Customer newCustomer)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ManagerLib
 {
-    public class ManagerSevices
+  /*  public class ManagerSevices : IManagerSevices
     {
         private readonly DBRepo dBRepo;
         public ManagerSevices(DBRepo dBRepo)
@@ -22,5 +22,5 @@ namespace ManagerLib
         {
             dBRepo.GetManagerByName(managerUserName);
         }
-    }
+    } */
 }

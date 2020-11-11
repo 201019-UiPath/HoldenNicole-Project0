@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace OrdersLib
 {
-    public class CartItemService
+    public class CartItemService : ICartItemService
     {
         private readonly DBRepo dBRepo;
         public CartItemService()
