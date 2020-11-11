@@ -21,7 +21,7 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// order history by locations
         /// </summary>
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByLocationIDDateAscending(int id)
         {
@@ -35,7 +35,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByLocationIDDateDescending(int id)
         {
@@ -49,7 +49,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByLocationIDPriceAscending(int id)
         {
@@ -63,7 +63,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByLocationIDPriceDescending(int id)
         {
@@ -117,7 +117,7 @@ namespace StoreAPI.Controllers
         /// shows manager current inventory at location
         /// </summary>
         
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult ViewAllProductsAtLocationSortByID(int id)
         {
@@ -131,7 +131,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult ViewAllProductsAtLocationSortByQuantityAscending(int id)
         {
@@ -145,13 +145,27 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult ViewAllProductsAtLocationSortByQuantityDescending(int id)
         {
             try
             {
                 return Ok(_inventoryService.ViewAllProductsAtLocationSortByQuantityDescending(id));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("get")]
+        [Produces("application/json")]
+        public IActionResult GetAllLocations()
+        {
+            try
+            {
+                return Ok(_locationService.GetAllLocations());
             }
             catch (Exception)
             {

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CustomerLib;
 using LocationLib;
-using ManagerLib;
+using OrdersLib;
+using StoreDB.Entities;
+using StoreDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,10 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OrdersLib;
-using StoreDB.Entities;
 using StoreUI;
-using StoreDB;
 
 namespace StoreAPI
 {
@@ -33,13 +32,11 @@ namespace StoreAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddXmlSerializerFormatters();
             services.AddDbContext<ixdssaucContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddScoped<ILocationService, LocationService>();
-            services.AddScoped<IProductServices, ProductServices>();
-          //  services.AddScoped<IManagerSevices, ManagerSevices>();
             services.AddScoped<ICartItemService, CartItemService>();
             services.AddScoped<IOrdersService, OrdersService>();
             services.AddScoped<IStoreRepo, DBRepo>();

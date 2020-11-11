@@ -55,12 +55,10 @@ C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Proj
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\CustomerLib.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\LocationLib.dll
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\ManagerLib.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\OrdersLib.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\StoreDB.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\CustomerLib.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\LocationLib.pdb
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\ManagerLib.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\OrdersLib.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\StoreDB.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\StoreAPI.styles.css
@@ -68,3 +66,6 @@ C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Proj
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\obj\Debug\netcoreapp3.1\StoreAPI.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\obj\Debug\netcoreapp3.1\StoreAPI.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\obj\Debug\netcoreapp3.1\StoreAPI.genruntimeconfig.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

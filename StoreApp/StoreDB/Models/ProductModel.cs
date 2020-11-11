@@ -1,4 +1,6 @@
-﻿namespace StoreDB.Models
+﻿using System.Collections.Generic;
+
+namespace StoreDB.Models
 {
     public class ProductModel
     {
@@ -7,5 +9,7 @@
         public string Item { get; set; }
         public string Sport { get; set; }
         public decimal Price { get; set; }
+        public List<CartItemModel> CartItems { get; set; }
+        public List<InventoryModel> inventoryModels { get; set; }
     }
 }

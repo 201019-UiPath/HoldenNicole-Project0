@@ -31,10 +31,11 @@ namespace OrdersLib
             List<CartItemModel> products = dBRepo.GetAllProductsInCartByCartID(id);
             return products;
         }
-        public void DeleteProductInCart(int cartid, int productid)
+        public void DeleteProductInCart(int cartid, int productid, int quantity)
         {
-            dBRepo.DeleteProductInCart(cartid, productid);
+            dBRepo.DeleteProductInCart(cartid, productid, quantity);
         }
+
         public void PlaceOrder(OrderModel order)
         {
             /// <summary>
@@ -43,7 +44,11 @@ namespace OrdersLib
             /// <param name="order"></param>
             dBRepo.PlaceOrder(order);
         }
-
+        /// <summary>
+        /// may need to add this one to controller but dont want to until it starts yelling at me
+        /// </summary>
+        /// <param name="iD"></param>
+        /// <returns></returns>
         public ProductModel GetProductByID(int iD)
         {
             ProductModel product = dBRepo.GetProductByID(iD);

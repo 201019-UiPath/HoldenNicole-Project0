@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace StoreDB.Models
 {
@@ -8,9 +9,7 @@ namespace StoreDB.Models
         public string Username { get; set; }
         public string email { get; set; }
 
-       /* public static implicit operator int(CustomerModels v)
-        {
-            throw new NotImplementedException();
-        } */
+        public List<CartsModel> carts { get; set; }
+        public List<OrderModel> orders { get; set; }
     }
 }

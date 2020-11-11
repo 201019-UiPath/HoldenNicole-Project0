@@ -1,5 +1,6 @@
 ﻿using StoreDB.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace StoreDB.Models
 {
@@ -9,9 +10,8 @@ namespace StoreDB.Models
         public string Name { get; set; }
         public int ManagerID { get; set; }
 
-      /*  public static implicit operator LocationModel(Locations v)
-        {
-            throw new NotImplementedException();
-        } */
+        public List<CartsModel> carts { get; set; }
+        public List<InventoryModel> inventory { get; set; }
+        public List<OrderModel> orders { get; set; }
     }
 }

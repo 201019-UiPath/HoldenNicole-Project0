@@ -25,7 +25,7 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// order histories
         /// </summary>
-        [HttpGet("get")]
+        [HttpGet("get/{customer}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
@@ -35,11 +35,11 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(520);
             }
         }
-
-        [HttpGet("get")]
+/*
+        [HttpGet("get/{customer}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
@@ -49,11 +49,11 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(520);
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{customer}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
         {
@@ -63,11 +63,11 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(520);
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{customer}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
         {
@@ -77,9 +77,9 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(520);
             }
-        }
+        } */
         /// <summary>
         /// Add customer
         /// </summary>
