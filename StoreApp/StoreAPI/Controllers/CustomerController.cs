@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreDB.Entities;
+using StoreDB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,50 +22,67 @@ namespace StoreAPI.Controllers
         {
             _customerService = customerService;
         }
-        //unnecessary except when modified to get order history for customer
+        /// <summary>
+        /// order histories
+        /// </summary>
         [HttpGet("get")]
         [Produces("application/json")]
-        public IActionResult GetAllCustomers()
+        public IActionResult GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
             try
             {
-                return Ok(_customerService.GetAllCustomers());
+                return Ok(_customerService.GetAllOrdersByCustomerIDDateAscending(customer));
             }
             catch (Exception)
             {
                 return StatusCode(500);
             }
         }
-        // if returns exception then the username is available
-        [HttpGet("get/{username}")]
+
+        [HttpGet("get")]
         [Produces("application/json")]
-        public IActionResult GetCustomerByUsername(string username)
+        public IActionResult GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
             try
             {
-                return Ok(_customerService.GetCustomerByName(username));
+                return Ok(_customerService.GetAllOrdersByCustomerIDDateDescending(customer));
             }
             catch (Exception)
             {
-                return NotFound();
+                return StatusCode(500);
             }
         }
-        // if returns exception then the email is available
-        [HttpGet("get/{email}")]
+
+        [HttpGet("get")]
         [Produces("application/json")]
-        public IActionResult GetCustomerByEmail(string email)
+        public IActionResult GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
         {
             try
             {
-                return Ok(_customerService.GetCustomerByEmail(email));
+                return Ok(_customerService.GetAllOrdersByCustomerIDPriceAscending(customer));
             }
             catch (Exception)
             {
-                return NotFound();
+                return StatusCode(500);
             }
         }
 
-
+        [HttpGet("get")]
+        [Produces("application/json")]
+        public IActionResult GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
+        {
+            try
+            {
+                return Ok(_customerService.GetAllOrdersByCustomerIDPriceDescending(customer));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// Add customer
+        /// </summary>
         [HttpPost("add")]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -80,5 +98,6 @@ namespace StoreAPI.Controllers
                 return BadRequest();
             }
         } 
+
     } 
 }

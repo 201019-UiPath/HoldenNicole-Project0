@@ -31,9 +31,9 @@ namespace OrdersLib
             List<CartItemModel> products = dBRepo.GetAllProductsInCartByCartID(id);
             return products;
         }
-        public void DeleteProductInCart(CartItemModel product)
+        public void DeleteProductInCart(int cartid, int productid)
         {
-            dBRepo.DeleteProductInCart(product);
+            dBRepo.DeleteProductInCart(cartid, productid);
         }
         public void PlaceOrder(OrderModel order)
         {

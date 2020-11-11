@@ -86,14 +86,24 @@ namespace CustomerLib
             return orders;
         }
 
-        public object GetCustomerByEmail(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void AddCustomer(Customer newCustomer)
         {
-            throw new System.NotImplementedException();
+            List<CustomerModels> getCustomersTask = dbRepo.GetAllCustomersOrderByUsername();
+            foreach (var h in getCustomersTask)
+            {
+                if (newCustomer.Username.Equals(h.Username))
+                {
+                    throw new System.Exception("Sorry this username is already taken");
+                }
+                else
+                {
+                    if (newCustomer.Email.Equals(h.email))
+                    {
+                        throw new System.Exception("Sorry this email is already registered");
+                    }
+                }
+            }
+            dbRepo.AddCustomer(newCustomer);
         }
     }
 }

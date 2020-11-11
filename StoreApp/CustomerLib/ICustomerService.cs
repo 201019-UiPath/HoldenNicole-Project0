@@ -17,7 +17,6 @@ namespace CustomerLib
         List<InventoryModel> ViewAllProductsAtLocationSortByID(int id);
         List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id);
         List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id);
-        object GetCustomerByEmail(string email);
         void AddCustomer(Customer newCustomer);
     }
 }

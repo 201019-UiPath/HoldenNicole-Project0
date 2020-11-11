@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -14,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CustomerLib\CustomerLib.csproj" />
     <ProjectReference Include="..\LocationLib\LocationLib.csproj" />
-    <ProjectReference Include="..\ManagerLib\ManagerLib.csproj" />
     <ProjectReference Include="..\OrdersLib\OrdersLib.csproj" />
     <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
   </ItemGroup>

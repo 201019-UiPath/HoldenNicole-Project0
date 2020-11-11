@@ -136,6 +136,11 @@ namespace StoreUI
             context.SaveChanges();
             return null;
         }
+
+        public void AddCustomer(Customer newCustomer)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region customer methods
