@@ -1,0 +1,3 @@
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\obj\Debug\netcoreapp3.1\ConsumeStoreApp-HttpClient.AssemblyInfoInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\obj\Debug\netcoreapp3.1\ConsumeStoreApp-HttpClient.AssemblyInfo.cs
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\obj\Debug\netcoreapp3.1\ConsumeStoreApp-HttpClient.csproj.CoreCompileInputs.cache
