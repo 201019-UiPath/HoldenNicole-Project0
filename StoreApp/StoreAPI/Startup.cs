@@ -22,6 +22,7 @@ namespace StoreAPI
 {
     public class Startup
     {
+        readonly string Allowed = "_allowed";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,6 +33,16 @@ namespace StoreAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: Allowed,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://127.0.0.1:44319")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
             services.AddControllers().AddXmlSerializerFormatters();
             services.AddDbContext<ixdssaucContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
             services.AddScoped<ICustomerService, CustomerService>();
@@ -54,6 +65,8 @@ namespace StoreAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(Allowed);
 
             app.UseAuthorization();
 

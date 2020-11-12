@@ -1,4 +1,5 @@
 ﻿using CustomerLib;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreDB.Entities;
@@ -20,13 +21,15 @@ namespace StoreAPI.Controllers
         private readonly ICustomerService _customerService;
         public CustomerController(ICustomerService customerService)
         {
-            _customerService = customerService;
+            _customerService=customerService;
         }
         /// <summary>
         /// order histories
         /// </summary>
-        [HttpGet("get/{customer}")]
+        [HttpGet("getHistory/{customer}")]
         [Produces("application/json")]
+        [EnableCors("_allowed")]
+        //[FormatFilter]
         public IActionResult GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
             try
@@ -35,7 +38,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(520);
+                return StatusCode(500);
             }
         }
 /*
@@ -86,6 +89,7 @@ namespace StoreAPI.Controllers
         [HttpPost("add")]
         [Consumes("application/json")]
         [Produces("application/json")]
+
         public IActionResult AddCustomer(Customer newCustomer)
         {
             try

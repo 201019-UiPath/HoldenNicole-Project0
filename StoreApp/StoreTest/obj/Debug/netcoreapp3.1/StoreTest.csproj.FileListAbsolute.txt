@@ -145,3 +145,5 @@ C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Proj
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreTest\obj\Debug\netcoreapp3.1\StoreTest.dll
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreTest\obj\Debug\netcoreapp3.1\StoreTest.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreTest\obj\Debug\netcoreapp3.1\StoreTest.genruntimeconfig.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreTest\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

@@ -1,4 +1,5 @@
 ﻿using LocationLib;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,18 @@ namespace StoreAPI.Controllers
         private readonly ILocationService _locationService;
         private readonly IInventoryService _inventoryService;
 
+        public LocationController(ILocationService locationService, IInventoryService inventoryService)
+        {
+            _locationService = locationService;
+            _inventoryService = inventoryService;
+        }
+
         /// <summary>
         /// order history by locations
         /// </summary>
-        [HttpGet("get/{id}")]
+        [HttpGet("get/history/{id}")]
         [Produces("application/json")]
+        [EnableCors("_allowed")]
         public IActionResult GetAllOrdersByLocationIDDateAscending(int id)
         {
             try
@@ -35,7 +43,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{id}")]
+    /*    [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByLocationIDDateDescending(int id)
         {
@@ -75,13 +83,13 @@ namespace StoreAPI.Controllers
             {
                 return StatusCode(500);
             }
-        }
+        } */
 
         /// <summary>
         /// manager modifying inventory
         /// </summary>
         /// <returns></returns>
-        [HttpPost("add")]
+        [HttpPost("add/product")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult AddProductToLocation(int locationid, int productid, int quantity)
@@ -97,7 +105,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/product")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult DeleteProductAtLocation(int locationid, int productid, int quantity)
@@ -117,8 +125,9 @@ namespace StoreAPI.Controllers
         /// shows manager current inventory at location
         /// </summary>
         
-        [HttpGet("get/{id}")]
+        [HttpGet("get/inventory/{id}")]
         [Produces("application/json")]
+        [EnableCors("_allowed")]
         public IActionResult ViewAllProductsAtLocationSortByID(int id)
         {
             try
@@ -131,7 +140,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{id}")]
+    /*    [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult ViewAllProductsAtLocationSortByQuantityAscending(int id)
         {
@@ -171,6 +180,6 @@ namespace StoreAPI.Controllers
             {
                 return StatusCode(500);
             }
-        }
-    }
+        } */
+    } 
 }

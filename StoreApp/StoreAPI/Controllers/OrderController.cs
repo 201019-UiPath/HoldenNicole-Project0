@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using OrdersLib;
 using StoreDB.Entities;
@@ -17,11 +18,18 @@ namespace StoreAPI.Controllers
         private readonly ICartItemService _cartItemService;
         private readonly IOrdersService _ordersService;
         private readonly CartService _cartService;
-        
+
+        public OrderController(ICartItemService cartItemService, IOrdersService ordersService, CartService cartService)
+        {
+            _cartItemService = cartItemService;
+            _ordersService = ordersService;
+            _cartService = cartService;
+        }
+
         /// <summary>
         /// carts section
         /// </summary>
-        [HttpPost("add")]
+        [HttpPost("add/cart")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult AddCart(CartsModel carts)
@@ -37,7 +45,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/cart")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult DeleteCart(CartsModel carts)
@@ -56,7 +64,7 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// cart items section
         /// </summary>
-        [HttpPost("add")]
+        [HttpPost("add/product")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult AddProductToCart(int cartid, int productid, int quantity)
@@ -72,8 +80,9 @@ namespace StoreAPI.Controllers
             }
         }
         
-        [HttpGet("get/{id}")]
+        [HttpGet("get/product/{id}")]
         [Produces("application/json")]
+        [EnableCors("_allowed")]
         public IActionResult GetAllProductsInCartByCartID(int id)
         {
             try
@@ -86,7 +95,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/product")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult DeleteProductInCart(int cartid, int productid, int quantity)
@@ -104,7 +113,7 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// orders section
         /// </summary>
-        [HttpPost("add")]
+        [HttpPost("add/order")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult PlaceOrder(OrderModel order)
@@ -120,7 +129,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpPost("add")]
+        [HttpPost("add/item")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult AddToOrder(LineItemModel lineItem)
@@ -136,8 +145,9 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{id}")]
+        [HttpGet("get/products/{id}")]
         [Produces("application/json")]
+        [EnableCors("_allowed")]
         public IActionResult GetAllProductsInOrderByID(int id)
         {
             try
