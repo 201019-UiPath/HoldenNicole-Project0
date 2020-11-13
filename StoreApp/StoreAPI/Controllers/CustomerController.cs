@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using OrdersLib;
-using StoreDB.Entities;
 using StoreDB.Models;
 using System;
 using System.Collections.Generic;
@@ -82,7 +81,7 @@ namespace StoreAPI.Controllers
             {
                 return BadRequest();
             }
-        } 
+        }
         [HttpPost("signin")]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -106,5 +105,5 @@ namespace StoreAPI.Controllers
                 return BadRequest();
             }
         }
-    } 
+    }
 }

@@ -1,6 +1,5 @@
 ﻿using StoreDB.Entities;
 using StoreDB.Models;
-using System.Collections.Generic;
 
 namespace StoreUI
 {

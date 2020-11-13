@@ -80,7 +80,7 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// shows manager current inventory at location
         /// </summary>
-        
+
         [HttpGet("get/inventory/{id}")]
         [Produces("application/json")]
         // giving 500 error
@@ -96,5 +96,5 @@ namespace StoreAPI.Controllers
             }
         }
 
-    } 
+    }
 }

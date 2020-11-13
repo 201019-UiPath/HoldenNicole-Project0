@@ -1,5 +1,3 @@
-using System;
-
 namespace StoreWeb2.Models
 {
     public class ErrorViewModel

@@ -4,13 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using StoreDB;
 using StoreDB.Entities;
 using StoreUI;
-using System;
-using System.Reflection;
-using System.IO;
-using Microsoft.OpenApi.Models;
 
 namespace StoreWeb2
 {
@@ -26,17 +23,29 @@ namespace StoreWeb2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddControllersWithViews();
             services.AddDbContext<ixdssaucContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
             services.AddScoped<IStoreRepo, DBRepo>();
             services.AddScoped<IMapper, StoreMapper>();
 
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(
+                options =>
+                {
+                    options.SwaggerDoc(
+                        "v1",
+                        new OpenApiInfo
+                        {
+                            Version = "v1",
+                            Title = "StoreAPI"
+                        });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //app.UseMvc();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -53,12 +62,12 @@ namespace StoreWeb2
             app.UseRouting();
 
             app.UseAuthorization();
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swaggerplease.json", "StoreAPI (V1.0");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Version 1");
             });
+
             app.UseMvc();
             app.UseEndpoints(endpoints =>
             {

@@ -1,14 +1,14 @@
 using CustomerLib;
 using LocationLib;
-using OrdersLib;
-using StoreDB.Entities;
-using StoreDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OrdersLib;
+using StoreDB;
+using StoreDB.Entities;
 using StoreUI;
 
 namespace StoreAPI

@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using StoreDB;
-using StoreWeb2.Models;
-using db = StoreDB.Models;
 using StoreDB.Models;
+using System.Collections.Generic;
+using db = StoreDB.Models;
 
 namespace StoreWeb2.Controllers
 {
@@ -33,17 +29,17 @@ namespace StoreWeb2.Controllers
             List<OrderModel> orders = storeRepo.GetAllOrdersByLocationIDDateAscending(id);
             return View(orders);
         }
-       /* public IActionResult AddProductToLocation(int locationid, int productid, int quantity)
-        {
-            
-            return View(locationInventory);
-            ///want to send this to matching location may need to have 1 for each
-        }
-        public IActionResult RemoveProductFromLocation(Inventory inventory)
-        {
-            
-            return View(locationInventory);
-            ///want to send this to matching location may need to have 1 for each
-        } */
-    } 
+        /* public IActionResult AddProductToLocation(int locationid, int productid, int quantity)
+         {
+
+             return View(locationInventory);
+             ///want to send this to matching location may need to have 1 for each
+         }
+         public IActionResult RemoveProductFromLocation(Inventory inventory)
+         {
+
+             return View(locationInventory);
+             ///want to send this to matching location may need to have 1 for each
+         } */
+    }
 }

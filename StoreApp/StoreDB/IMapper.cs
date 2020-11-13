@@ -1,7 +1,4 @@
 ﻿using StoreDB;
-using StoreDB.Entities;
-using StoreDB.Models;
-using System.Linq;
 
 namespace StoreUI
 {

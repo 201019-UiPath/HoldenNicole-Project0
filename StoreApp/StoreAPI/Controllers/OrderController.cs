@@ -78,7 +78,7 @@ namespace StoreAPI.Controllers
                 return BadRequest();
             }
         }
-        
+
         [HttpGet("getProduct/{id}")]
         [Produces("application/json")]
         //keeping error page open

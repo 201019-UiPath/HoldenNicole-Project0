@@ -14,9 +14,9 @@ namespace StoreWeb2.Models
         [DisplayName("Username")]
         [DataType(DataType.Text)]
         public string Username { get; set; }
-        [Required(ErrorMessage ="a valid email is required")]
+        [Required(ErrorMessage = "a valid email is required")]
         [DisplayName("Email")]
-        [EmailAddress(ErrorMessage ="invalid email address")]
+        [EmailAddress(ErrorMessage = "invalid email address")]
         public string Email { get; set; }
         [DisplayName("Carts")]
         public List<Cart> Carts { get; set; }

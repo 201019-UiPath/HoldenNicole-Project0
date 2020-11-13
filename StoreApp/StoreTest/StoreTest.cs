@@ -1,10 +1,9 @@
-using StoreUI;
-using StoreDB.Entities;
-using System;
-using Xunit;
-using StoreDB.Models;
 using Microsoft.EntityFrameworkCore;
+using StoreDB.Entities;
+using StoreDB.Models;
+using StoreUI;
 using System.Linq;
+using Xunit;
 
 namespace StoreTest
 {
@@ -275,5 +274,5 @@ namespace StoreTest
              Assert.Equal(4, result.Count);
          }
  */
-    } 
+    }
 }
