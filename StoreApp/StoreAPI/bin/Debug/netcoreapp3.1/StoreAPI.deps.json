@@ -31,6 +31,8 @@
           "OrdersLib": "1.0.0",
           "StoreDB": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
           "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
@@ -1724,7 +1726,10 @@
       "CustomerLib/1.0.0": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "StoreDB": "1.0.0"
+          "StoreDB": "1.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
         },
         "runtime": {
           "CustomerLib.dll": {}
@@ -1736,7 +1741,10 @@
       "LocationLib/1.0.0": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "StoreDB": "1.0.0"
+          "StoreDB": "1.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
         },
         "runtime": {
           "LocationLib.dll": {}
@@ -1748,7 +1756,10 @@
       "OrdersLib/1.0.0": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "StoreDB": "1.0.0"
+          "StoreDB": "1.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
         },
         "runtime": {
           "OrdersLib.dll": {}
@@ -1767,6 +1778,9 @@
           "Microsoft.Extensions.Configuration.Json": "3.1.9",
           "Npgsql": "4.1.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4",
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3",
           "System.Text.Json": "4.7.2"
         },
         "runtime": {

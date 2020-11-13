@@ -266,6 +266,12 @@ namespace StoreUI
                 context.Managers
                 .First(m => m.Username == name));
         }
+        public LocationModel GetLocationByManager(int id)
+        {
+            return mapper.ParseLocation(
+                context.Locations
+                .First(l => l.Manager == id));
+        }
         public LocationModel GetLocationByID(int id)
         {
             return mapper.ParseLocation(

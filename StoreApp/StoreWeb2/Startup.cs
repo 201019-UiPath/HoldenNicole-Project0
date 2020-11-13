@@ -7,6 +7,10 @@ using Microsoft.Extensions.Hosting;
 using StoreDB;
 using StoreDB.Entities;
 using StoreUI;
+using System;
+using System.Reflection;
+using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace StoreWeb2
 {
@@ -26,6 +30,8 @@ namespace StoreWeb2
             services.AddDbContext<ixdssaucContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
             services.AddScoped<IStoreRepo, DBRepo>();
             services.AddScoped<IMapper, StoreMapper>();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +54,12 @@ namespace StoreWeb2
 
             app.UseAuthorization();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swaggerplease.json", "StoreAPI (V1.0");
+            });
+            app.UseMvc();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

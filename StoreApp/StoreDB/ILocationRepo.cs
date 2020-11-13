@@ -12,5 +12,7 @@ namespace StoreUI
         LocationModel GetLocationByID(int id);
         LocationModel GetLocationByName(string name);
         List<LocationModel> GetAllLocations();
+        ManagerModel GetManagerByName(string name);
+        LocationModel GetLocationByManager(int id);
     }
 }
