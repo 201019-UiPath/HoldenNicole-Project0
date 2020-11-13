@@ -21,9 +21,5 @@ namespace StoreDB.Entities
         public virtual ICollection<Inventory> Inventory { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
 
-        public static implicit operator int(Locations v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

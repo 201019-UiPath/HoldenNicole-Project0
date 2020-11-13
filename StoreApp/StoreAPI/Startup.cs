@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CustomerLib;
 using LocationLib;
 using OrdersLib;
@@ -9,13 +5,10 @@ using StoreDB.Entities;
 using StoreDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using StoreUI;
 
 namespace StoreAPI
@@ -38,7 +31,7 @@ namespace StoreAPI
                 options.AddPolicy(name: Allowed,
                     builder =>
                     {
-                        builder.WithOrigins("http://127.0.0.1:44319")
+                        builder.WithOrigins("http://127.0.0.1: 44319")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });

@@ -47,8 +47,6 @@ namespace OrdersLib
         /// <summary>
         /// may need to add this one to controller but dont want to until it starts yelling at me
         /// </summary>
-        /// <param name="iD"></param>
-        /// <returns></returns>
         public ProductModel GetProductByID(int iD)
         {
             ProductModel product = dBRepo.GetProductByID(iD);

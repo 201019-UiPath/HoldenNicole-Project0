@@ -1,36 +1,41 @@
 ﻿using CustomerLib;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OrdersLib;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StoreAPI.Controllers
 {
+    public class Services
+    {
+        ICustomerService customerService;
+        ICartService cartService;
+    }
     [Route("[controller]")]
     [ApiController]
+    [EnableCors("_allowed")]
     public class CustomerController : ControllerBase
     {
         /// <summary>
         /// BL methods here
         /// </summary>
         private readonly ICustomerService _customerService;
-        public CustomerController(ICustomerService customerService)
+        private readonly ICartService _cartService;
+        public CustomerController(Services service)
         {
-            _customerService=customerService;
+            this._customerService = new CustomerService();
+            this._cartService = new CartService();
         }
         /// <summary>
         /// order histories
         /// </summary>
         [HttpGet("getHistory/{customer}")]
         [Produces("application/json")]
-        [EnableCors("_allowed")]
-        //[FormatFilter]
-        public IActionResult GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
+
+        public IActionResult GetAllOrdersByCustomerID(CustomerModels customer)
         {
             try
             {
@@ -41,67 +46,65 @@ namespace StoreAPI.Controllers
                 return StatusCode(500);
             }
         }
-/*
-        [HttpGet("get/{customer}")]
-        [Produces("application/json")]
-        public IActionResult GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
-        {
-            try
-            {
-                return Ok(_customerService.GetAllOrdersByCustomerIDDateDescending(customer));
-            }
-            catch (Exception)
-            {
-                return StatusCode(520);
-            }
-        }
-
-        [HttpGet("get/{customer}")]
-        [Produces("application/json")]
-        public IActionResult GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
-        {
-            try
-            {
-                return Ok(_customerService.GetAllOrdersByCustomerIDPriceAscending(customer));
-            }
-            catch (Exception)
-            {
-                return StatusCode(520);
-            }
-        }
-
-        [HttpGet("get/{customer}")]
-        [Produces("application/json")]
-        public IActionResult GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
-        {
-            try
-            {
-                return Ok(_customerService.GetAllOrdersByCustomerIDPriceDescending(customer));
-            }
-            catch (Exception)
-            {
-                return StatusCode(520);
-            }
-        } */
         /// <summary>
         /// Add customer
         /// </summary>
-        [HttpPost("add")]
+        [HttpPost("register")]
         [Consumes("application/json")]
         [Produces("application/json")]
-
-        public IActionResult AddCustomer(Customer newCustomer)
+        //giving 405 error
+        public IActionResult Register(CustomerModels newCustomer)
         {
             try
             {
+                List<CustomerModels> getCustomersTask = _customerService.GetAllCustomers();
+                foreach (var h in getCustomersTask)
+                {
+                    if (newCustomer.Username.Equals(h.Username))
+                    {
+                        throw new Exception("Sorry this username is already taken");
+                    }
+                    else
+                    {
+                        if (newCustomer.email.Equals(h.email))
+                        {
+                            throw new Exception("Sorry this email is already registered");
+                        }
+                    }
+                }
                 _customerService.AddCustomer(newCustomer);
-                return CreatedAtAction("AddCustomer", newCustomer);
+                CartsModel cart = new CartsModel();
+                cart.CustomerID = newCustomer.ID;
+                _cartService.AddCart(cart);
+                return Ok();
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         } 
-
+        [HttpPost("signin")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        // 405 error
+        public IActionResult SignIn(CustomerModels customer)
+        {
+            try
+            {
+                CustomerModels returner = _customerService.GetCustomerByName(customer.Username);
+                if (returner.email != customer.email)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    return Ok();
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     } 
 }

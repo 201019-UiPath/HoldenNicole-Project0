@@ -35,7 +35,7 @@ namespace StoreDB.Entities
                 .AddJsonFile(@"C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\appsettings.json")
                 .Build();
 
-                var connectionString = configuration.GetConnectionString("HerosDB");
+                var connectionString = configuration.GetConnectionString("StoreDB");
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }

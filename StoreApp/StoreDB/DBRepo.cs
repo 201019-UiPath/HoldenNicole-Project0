@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using StoreDB;
+﻿using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;

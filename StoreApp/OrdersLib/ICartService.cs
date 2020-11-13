@@ -2,7 +2,7 @@
 
 namespace OrdersLib
 {
-    interface ICartService
+    public interface ICartService
     {
         void AddCart(CartsModel carts);
         void DeleteCart(CartsModel carts);

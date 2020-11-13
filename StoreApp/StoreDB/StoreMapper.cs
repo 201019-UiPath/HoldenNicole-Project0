@@ -1,9 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace StoreUI
 {
