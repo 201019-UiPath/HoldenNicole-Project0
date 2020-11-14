@@ -40,7 +40,6 @@ namespace OrdersLib
             /// <summary>
             /// if order not in orders table
             /// </summary>
-            /// <param name="order"></param>
             dBRepo.PlaceOrder(order);
         }
         /// <summary>

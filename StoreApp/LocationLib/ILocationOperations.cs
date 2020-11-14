@@ -1,8 +1,10 @@
-﻿namespace LocationLib
+﻿using StoreDB.Models;
+
+namespace LocationLib
 {
     interface ILocationOperations
     {
-        void AddProductToLocation(int locationid, int productid, int quantity);
+        void AddProductToLocation(InventoryModel item, int quantity);
         void GetInventory(int id);
         void GetHistory(int id);
     }

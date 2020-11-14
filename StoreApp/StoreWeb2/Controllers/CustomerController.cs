@@ -16,6 +16,10 @@ namespace StoreWeb2.Controllers
         {
             storeRepo = repo;
         }
+        public IActionResult Index()
+        {
+            return View();
+        }
      /*   public IActionResult AddCustomer(CustomerModels newCustomer)
         {
             db.CustomerModels customer = storeRepo.AddCustomer(newCustomer);

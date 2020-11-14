@@ -7,5 +7,6 @@ namespace StoreUI
     {
         CustomerModels AddCustomer(CustomerModels customer);
         CustomerModels GetCustomerByName(string username);
+        List<CustomerModels> GetAllCustomersOrderByUsername();
     }
 }

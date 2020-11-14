@@ -29,16 +29,16 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpGet("get/history/{id}")]
         [Produces("application/json")]
-        //giving 500 error: processing request
+        //giving 400 error so going to catch block
         public IActionResult GetAllOrdersByLocationIDDateAscending(int id)
         {
             try
             {
-                return Ok(_locationService.GetAllOrdersByLocationIDDateAscending(id));
+                return Ok(_locationService.GetAllOrdersByLocationID(id));
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(400); //coming here so return messed up
             }
         }
 
@@ -46,14 +46,15 @@ namespace StoreAPI.Controllers
         /// manager modifying inventory
         /// </summary>
         [HttpPost("add/product/{locationid}/{productid}/{quantity}")]
+        [Produces("application/json")]
         [Consumes("application/json")]
-        //400 error service error again
-        public IActionResult AddProductToLocation(int locationid, int productid, int quantity)
+        //415 error return type problem
+        public IActionResult AddProductToLocation(InventoryModel item, int quantity)
         {
             try
             {
-                _locationService.AddProductToLocation(locationid, productid, quantity);
-                return CreatedAtAction("AddProductToLocation", (locationid, productid, quantity));
+                _locationService.AddProductToLocation(item, quantity);
+                return CreatedAtAction("AddProductToLocation", (item, quantity));
             }
             catch (Exception)
             {
@@ -62,7 +63,6 @@ namespace StoreAPI.Controllers
         }
 
         [HttpDelete("delete/product/{locationid}/{productid}/{quantity}")]
-        [Consumes("application/json")]
         //500 error processing request
         public IActionResult DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
@@ -83,18 +83,16 @@ namespace StoreAPI.Controllers
 
         [HttpGet("get/inventory/{id}")]
         [Produces("application/json")]
-        // giving 500 error same as above
-        public IActionResult ViewAllProductsAtLocationSortByID(int id)
+        // going into catch block
+        public IActionResult ViewAllProductsAtLocation(int id)
         {
             try
             {
-                List<InventoryModel> inventory = new List<InventoryModel>();
-                inventory = _inventoryService.ViewAllProductsAtLocation(id);
-                return Ok(inventory);
+                return Ok(_inventoryService.ViewAllProductsAtLocation(id));
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return NotFound(); //doing this matches shaelies but still doesnt work
             }
         }
 

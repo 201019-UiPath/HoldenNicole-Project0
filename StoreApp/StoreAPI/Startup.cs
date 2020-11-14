@@ -57,7 +57,6 @@ namespace StoreAPI
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ICartItemService, CartItemService>();
-            services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrdersService, OrdersService>();
         }
 

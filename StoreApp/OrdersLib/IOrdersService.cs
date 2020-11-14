@@ -7,6 +7,8 @@ namespace OrdersLib
     {
         void PlaceOrder(OrderModel order);
         void AddToOrder(LineItemModel lineItem);
+        void AddCart(CartsModel cart);
+        void DeleteCart(CartsModel cart);
         List<LineItemModel> GetAllProductsInOrderByID(int id);
     }
 }

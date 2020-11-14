@@ -1733,12 +1733,7 @@
       },
       "CustomerLib/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.1.1",
-          "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "StoreDB": "1.0.0",
-          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
+          "StoreDB": "1.0.0"
         },
         "runtime": {
           "CustomerLib.dll": {}
@@ -1749,12 +1744,7 @@
       },
       "LocationLib/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.1.1",
-          "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "StoreDB": "1.0.0",
-          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
+          "StoreDB": "1.0.0"
         },
         "runtime": {
           "LocationLib.dll": {}
@@ -1765,12 +1755,7 @@
       },
       "OrdersLib/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.1.1",
-          "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "StoreDB": "1.0.0",
-          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
+          "StoreDB": "1.0.0"
         },
         "runtime": {
           "OrdersLib.dll": {}
@@ -1781,7 +1766,6 @@
       },
       "StoreDB/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.1.1",
           "EntityFramework": "6.4.4",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.EntityFrameworkCore": "5.0.0",

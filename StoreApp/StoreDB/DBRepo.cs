@@ -1,4 +1,5 @@
-﻿using StoreDB;
+﻿using Microsoft.EntityFrameworkCore;
+using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;
@@ -62,6 +63,11 @@ namespace StoreUI
             context.SaveChanges();
             return null;
         }
+        public void DeleteProductInCart(CartItemModel cartItem)
+        {
+            context.CartItems.Remove(mapper.ParseCartItem(cartItem));
+            context.SaveChanges();
+        } //this one is in a previously working version
 
         public void DeleteCart(CartsModel carts)
         {
@@ -72,7 +78,8 @@ namespace StoreUI
         {
             return mapper.ParseCartItem(
                 context.CartItems
-                //.Include("CartItems")
+                .Include("Products")
+                .Include("Inventory")
                 .Where(i => i.Cart == id)
                 .ToList()
             );
@@ -81,6 +88,7 @@ namespace StoreUI
         {
             return mapper.ParseLineItem(
                 context.LineItems
+                .Include("Products")
                 .Where(i => i.Id == id)
                 .ToList());
         }
@@ -90,6 +98,11 @@ namespace StoreUI
             context.SaveChanges();
             return order;
         }
+        public void PlaceOrders(OrderModel order)
+        {
+            context.Orders.Add(mapper.ParseOrder(order));
+            context.SaveChanges();
+        } // in a working version
         #endregion
 
         #region inventory methods
@@ -100,19 +113,26 @@ namespace StoreUI
                 .First(i => i.Id == id)
                 );
         } 
+        public LocationModel GetLocationInventory(int id)
+        {
+            return mapper.ParseLocation(
+                context.Locations
+                .Include("Inventory")
+                //.Include("Orders")
+                .First(l => l.Id == id));
+        } //not in a working version
         public List<InventoryModel> ViewAllProductsAtLocation(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
-                .Where(i => i.Location == id)
-                .OrderBy(i => i.Product)
-                .ToList()
-            );
+                .Include("Products")
+                .ToList());
         }
         public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
+                .Include("Inventory")
                 .Where(i => i.Location == id)
                 .OrderBy(i => i.Quantity)
                 .ToList()
@@ -122,18 +142,17 @@ namespace StoreUI
         {
             return mapper.ParseInventory(
                 context.Inventory
+                .Include("Inventory")
                 .Where(i => i.Location == id)
                 .OrderByDescending(i => i.Quantity)
                 .ToList()
             );
         }
       
-        public InventoryModel AddProductToLocation(int locationid, int productid, int quantity)
+        public void AddProductToLocation(InventoryModel item, int quantity)
         {
-            var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
-            inventory.Quantity += quantity;
+            context.Inventory.First(i => i.Location == item.locationID && i.Product == item.productID).Quantity += quantity;
             context.SaveChanges();
-            return null;
         } 
         public InventoryModel DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
@@ -192,6 +211,11 @@ namespace StoreUI
             context.SaveChanges();
             return customer;
         }
+        public void AddCustomer2(CustomerModels customer)
+        {
+            context.Customer.Add(mapper.ParseCustomer(customer));
+            context.SaveChanges();
+        }
 
         public List<CustomerModels> GetAllCustomersOrderByUsername()
         {
@@ -213,6 +237,8 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("Products")
+                .Include("LineItems")
                 .Where(c => c.Customer == customer.ID)
                 .OrderBy(c => c.OrderDate)
                 .ToList()
@@ -222,12 +248,16 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("Products")
+                .Include("LineItems")
                 .First(o => o.Location == location.ID && o.Customer == customer.ID));
         }
         public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
         {
             return mapper.ParseOrder(
                  context.Orders
+                 .Include("Products")
+                .Include("LineItems")
                  .Where(c => c.Customer == customer.ID)
                  .OrderByDescending(c => c.OrderDate)
                  .ToList()
@@ -238,6 +268,8 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("Products")
+                .Include("LineItems")
                 .Where(c => c.Customer == customer.ID)
                 .OrderBy(c => c.Price)
                 .ToList()
@@ -247,6 +279,8 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("Products")
+                .Include("LineItems")
                 .Where(c => c.Customer == customer.ID)
                 .OrderByDescending(c => c.Price)
                 .ToList()
@@ -259,6 +293,7 @@ namespace StoreUI
         {
             return mapper.ParseManager(
                 context.Managers
+                .Include("Location")
                 .First(m => m.Username == name));
         }
         public LocationModel GetLocationByManager(int id)
@@ -287,13 +322,13 @@ namespace StoreUI
                 context.Locations
                 .ToList()
             );
-        } 
-        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
+        }
+        public List<OrderModel> GetAllOrdersByLocationID(int id)
         {
             return mapper.ParseOrder(
                     context.Orders
                     .Where(c => c.Location == id)
-                    .OrderBy(c => c.OrderDate)
+                    .Include("LineItems")
                     .ToList()
                 );
         }
@@ -301,6 +336,7 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("LineItems")
                 .Where(l => l.Location == id)
                 .OrderByDescending(l => l.OrderDate)
                 .ToList()
@@ -310,6 +346,7 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("LineItems")
                 .Where(l => l.Location == id)
                 .OrderBy(l => l.Price)
                 .ToList()
@@ -319,6 +356,7 @@ namespace StoreUI
         {
             return mapper.ParseOrder(
                 context.Orders
+                .Include("LineItems")
                 .Where(l => l.Location == id)
                 .OrderByDescending(l => l.Price)
                 .ToList()

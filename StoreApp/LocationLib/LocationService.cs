@@ -37,9 +37,9 @@ namespace LocationLib
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
             return getOrdersByLocation;
         } 
-        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
+        public List<OrderModel> GetAllOrdersByLocationID(int id)
         {
-            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationID(id);
             return getOrdersByLocation;
         }
         public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
@@ -48,9 +48,9 @@ namespace LocationLib
             return getOrdersByLocation;
         } 
 
-        public void AddProductToLocation(int locationid, int productid, int quantity)
+        public void AddProductToLocation(InventoryModel item, int quantity)
         {
-            dbRepo.AddProductToLocation(locationid, productid, quantity);
+            dbRepo.AddProductToLocation(item, quantity);
         }
         public void DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
@@ -60,6 +60,6 @@ namespace LocationLib
         public void GetManagerByName(string managerUserName)
         {
             dbRepo.GetManagerByName(managerUserName);
-        }
+        } 
     }
 }

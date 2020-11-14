@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using OrdersLib;
+using StoreDB;
 using StoreDB.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,6 @@ namespace StoreAPI.Controllers
     public class Services
     {
         ICustomerService customerService;
-        ICartService cartService;
     }
     [Route("[controller]")]
     [ApiController]
@@ -22,7 +22,7 @@ namespace StoreAPI.Controllers
         /// BL methods here
         /// </summary>
         private readonly ICustomerService _customerService;
-        private readonly ICartService _cartService;
+        private readonly IStoreRepo storeRepo;
         public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
@@ -32,17 +32,15 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpGet("get/history/{customer}")]
         [Produces("application/json")]
-        //415 unsupported media type
+        //415 unsupported media type header matches produces
         public IActionResult GetAllOrdersByCustomerID(CustomerModels customer)
         {
             try
             {
-                List<OrderModel> orders = new List<OrderModel>();
-                orders = _customerService.GetAllOrdersByCustomerIDDateAscending(customer);
-                return Ok(orders);
+                return Ok(_customerService.GetAllOrdersByCustomerIDDateAscending(customer));
             }
             catch (Exception)
-            {
+            { 
                 return StatusCode(500);
             }
         }
@@ -51,6 +49,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpPost("register")]
         [Consumes("application/json")]
+        [Produces("application/json")]
         //giving 400 error: "The JSON value could not be converted to StoreDB.Models.CustomerModels
         public IActionResult Register(CustomerModels newCustomer)
         {
@@ -74,16 +73,16 @@ namespace StoreAPI.Controllers
                 _customerService.AddCustomer(newCustomer);
                 CartsModel cart = new CartsModel();
                 cart.CustomerID = newCustomer.ID;
-                _cartService.AddCart(cart);
                 return Ok();
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(); //doing this
             }
         }
         [HttpPost("signin")]
         [Consumes("application/json")]
+        [Produces("application/json")]
         // 400 error same as above
         public IActionResult SignIn(CustomerModels customer)
         {
@@ -92,7 +91,7 @@ namespace StoreAPI.Controllers
                 CustomerModels returner = _customerService.GetCustomerByName(customer.Username);
                 if (returner.email != customer.email)
                 {
-                    throw new Exception();
+                    throw new Exception("this customer does not exist");
                 }
                 else
                 {
@@ -101,7 +100,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(); //doing this
             }
         }
     }
