@@ -5,7 +5,9 @@ namespace StoreUI
 {
     public interface IOrderRepo
     {
-        void PlaceOrder(OrderModel order);
+        OrderModel PlaceOrder(OrderModel order);
+        LineItemModel AddToOrder(LineItemModel lineItem);
+        List<LineItemModel> GetAllProductsInOrderByID(int id);
         List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer);
         List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer);
         List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer);

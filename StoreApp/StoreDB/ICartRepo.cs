@@ -5,8 +5,9 @@ namespace StoreUI
 {
     public interface ICartRepo
     {
-        void UpdateCartItems(CartItemModel cartItem);
-        void AddProductToCart(CartItemModel cartItem);
+        CartItemModel UpdateCartItems(CartItemModel cartItem);
+        CartItemModel AddProductToCart(CartItemModel cartItem);
         List<CartItemModel> GetAllProductsInCartByCartID(int id);
+        CartItemModel DeleteProductInCart(int id, int productid, int quantity);
     }
 }

@@ -5,7 +5,7 @@ namespace LocationLib
 {
     public interface IInventoryService
     {
-        List<InventoryModel> ViewAllProductsAtLocationSortByID(int id);
+        List<InventoryModel> ViewAllProductsAtLocation(int id);
         List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id);
         List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id);
     }

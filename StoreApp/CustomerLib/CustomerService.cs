@@ -23,25 +23,6 @@ namespace CustomerLib
             CustomerModels customer = dbRepo.GetCustomerByName(name);
             return customer;
         }
-        public void AddCustomer(CustomerModels customer)
-        {
-            List<CustomerModels> getCustomersTask = dbRepo.GetAllCustomersOrderByUsername();
-            foreach (var h in getCustomersTask)
-            {
-                if (customer.Username.Equals(h.Username))
-                {
-                    throw new System.Exception("Sorry this username is already taken");
-                }
-                else
-                {
-                    if (customer.email.Equals(h.email))
-                    {
-                        throw new System.Exception("Sorry this email is already registered");
-                    }
-                }
-            }
-            dbRepo.AddCustomer(customer);
-        }
         public List<CustomerModels> GetAllCustomers()
         {
             /// <summary>
@@ -52,7 +33,7 @@ namespace CustomerLib
         }
         public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {
-            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByID(id);
+            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocation(id);
             return viewProductsAtLocation;
         }
         public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
@@ -84,9 +65,9 @@ namespace CustomerLib
         {
             List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(customer);
             return orders;
-        }
+        } 
 
-        public void AddCustomer(Customer newCustomer)
+        public void AddCustomer(CustomerModels newCustomer)
         {
             List<CustomerModels> getCustomersTask = dbRepo.GetAllCustomersOrderByUsername();
             foreach (var h in getCustomersTask)
@@ -97,7 +78,7 @@ namespace CustomerLib
                 }
                 else
                 {
-                    if (newCustomer.Email.Equals(h.email))
+                    if (newCustomer.email.Equals(h.email))
                     {
                         throw new System.Exception("Sorry this email is already registered");
                     }

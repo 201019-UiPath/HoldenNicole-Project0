@@ -1,4 +1,6 @@
-﻿namespace StoreDB.Models
+﻿using System;
+
+namespace StoreDB.Models
 {
     public class LineItemModel
     {
@@ -6,5 +8,10 @@
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public int Quantity { get; set; }
+
+        public static explicit operator LineItemModel(CartItemModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

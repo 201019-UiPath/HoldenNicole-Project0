@@ -26,6 +26,7 @@ namespace StoreUI
         {
             context.Carts.Add(mapper.ParseCarts(cartsModel));
             context.SaveChanges();
+            //want to add this at creation of new customer
         }
         public CartsModel GetCartID(int id)
         {
@@ -33,24 +34,28 @@ namespace StoreUI
                 context.Carts
                 .First(c => c.Customer == id)
                 );
-        }
-        public void AddProductToCart(CartItemModel cartItem)
+        } 
+        public CartItemModel AddProductToCart(CartItemModel cartItem)
         {
             context.CartItems.Add(mapper.ParseCartItem(cartItem));
             context.SaveChanges();
+            return cartItem;
         }
-        public void AddToOrder(LineItemModel cartItem)
+        public LineItemModel AddToOrder(LineItemModel cartItem)
         {
             context.LineItems.Add(mapper.ParseLineItem(cartItem));
             context.SaveChanges();
+            return cartItem;
+            //need to make order controller that will work without user input to make cart into order
         }
-        public void UpdateCartItems(CartItemModel cartItem)
+        public CartItemModel UpdateCartItems(CartItemModel cartItem)
         {
             context.CartItems.Update(mapper.ParseCartItem(cartItem));
             context.SaveChangesAsync();
-        }
+            return cartItem;
+        } 
 
-        public CartItems DeleteProductInCart(int cartid, int productid, int quantity)
+        public CartItemModel DeleteProductInCart(int cartid, int productid, int quantity)
         {
             var cartItem = context.CartItems.First(i => i.Cart == cartid && i.Product == productid);
             cartItem.Quantity -= 1;
@@ -62,7 +67,7 @@ namespace StoreUI
         {
             context.Carts.Remove(mapper.ParseCarts(carts));
             context.SaveChanges();
-        }
+        } 
         public List<CartItemModel> GetAllProductsInCartByCartID(int id)
         {
             return mapper.ParseCartItem(
@@ -79,12 +84,12 @@ namespace StoreUI
                 .Where(i => i.Id == id)
                 .ToList());
         }
-        public void PlaceOrder(OrderModel order)
+        public OrderModel PlaceOrder(OrderModel order)
         {
             context.Orders.Add(mapper.ParseOrder(order));
             context.SaveChanges();
+            return order;
         }
-
         #endregion
 
         #region inventory methods
@@ -94,8 +99,8 @@ namespace StoreUI
                 context.Products
                 .First(i => i.Id == id)
                 );
-        }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
+        } 
+        public List<InventoryModel> ViewAllProductsAtLocation(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
@@ -122,24 +127,20 @@ namespace StoreUI
                 .ToList()
             );
         }
-
-        public void AddProductToLocation(int locationid, int productid, int quantity)
+      
+        public InventoryModel AddProductToLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
             inventory.Quantity += quantity;
             context.SaveChanges();
-        }
-        public Inventory DeleteProductAtLocation(int locationid, int productid, int quantity)
+            return null;
+        } 
+        public InventoryModel DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
             var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
             inventory.Quantity -= quantity;
             context.SaveChanges();
             return null;
-        }
-
-        public void AddCustomer(Customer newCustomer)
-        {
-            throw new NotImplementedException();
         }
         #endregion
 
@@ -158,7 +159,7 @@ namespace StoreUI
                 System.Console.WriteLine("This customer id does not exist try again");
             }
             return null;
-        }
+        } 
 
         public CustomerModels GetCustomerByName(string name)
         {
@@ -167,7 +168,7 @@ namespace StoreUI
                 .First(c => c.Username == name)
             );
 
-        }
+        } 
 
         public CustomerModels GetCustomerByEmail(string email)
         {
@@ -183,12 +184,13 @@ namespace StoreUI
                 System.Console.WriteLine("This email is not registered try again");
             }
             return null;
-        }
+        } 
 
-        public void AddCustomer(CustomerModels customer)
+        public CustomerModels AddCustomer(CustomerModels customer)
         {
             context.Customer.Add(mapper.ParseCustomer(customer));
             context.SaveChanges();
+            return customer;
         }
 
         public List<CustomerModels> GetAllCustomersOrderByUsername()
@@ -199,7 +201,6 @@ namespace StoreUI
                 .ToList()
             );
         }
-
         public List<CustomerModels> GetAllCustomersOrderByOrders()
         {
             return mapper.ParseCustomer(
@@ -207,7 +208,7 @@ namespace StoreUI
                 .OrderBy(i => i.Orders)
                 .ToList()
             );
-        }
+        } 
         public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
         {
             return mapper.ParseOrder(
@@ -216,7 +217,7 @@ namespace StoreUI
                 .OrderBy(c => c.OrderDate)
                 .ToList()
             );
-        }
+        } 
         public OrderModel GetOrderByID(LocationModel location, CustomerModels customer)
         {
             return mapper.ParseOrder(
@@ -231,12 +232,6 @@ namespace StoreUI
                  .OrderByDescending(c => c.OrderDate)
                  .ToList()
              );
-        }
-
-        public void AddOrder(OrderModel order)
-        {
-            context.Orders.Add(mapper.ParseOrder(order));
-            context.SaveChanges();
         }
 
         public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
@@ -256,7 +251,7 @@ namespace StoreUI
                 .OrderByDescending(c => c.Price)
                 .ToList()
             );
-        }
+        } 
         #endregion
 
         #region location methods
@@ -292,7 +287,7 @@ namespace StoreUI
                 context.Locations
                 .ToList()
             );
-        }
+        } 
         public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
         {
             return mapper.ParseOrder(
@@ -328,7 +323,7 @@ namespace StoreUI
                 .OrderByDescending(l => l.Price)
                 .ToList()
             );
-        }
+        } 
         #endregion
     }
 }

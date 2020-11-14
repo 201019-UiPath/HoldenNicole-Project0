@@ -26,7 +26,7 @@ namespace LocationLib
         {
             List<LocationModel> locations = dbRepo.GetAllLocations();
             return locations;
-        }
+        } 
         public List<OrderModel> GetAllOrdersByLocationIDPriceAscending(int id)
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceAscending(id);
@@ -36,7 +36,7 @@ namespace LocationLib
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
             return getOrdersByLocation;
-        }
+        } 
         public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
@@ -46,7 +46,7 @@ namespace LocationLib
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceDescending(id);
             return getOrdersByLocation;
-        }
+        } 
 
         public void AddProductToLocation(int locationid, int productid, int quantity)
         {

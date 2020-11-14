@@ -2,6 +2,7 @@ using CustomerLib;
 using LocationLib;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,13 +39,26 @@ namespace StoreAPI
             });
             services.AddControllers().AddXmlSerializerFormatters();
             services.AddDbContext<ixdssaucContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ProducesAttribute("application/json"));
+                options.Filters.Add(new ConsumesAttribute("application/json"));
+            });
+
+            services.AddAuthorization();
+            services.AddScoped<IStoreRepo, DBRepo>();
+            services.AddScoped<ICartRepo, DBRepo>();
+            services.AddScoped<ICustomerRepo, DBRepo>();
+            services.AddScoped<ILocationRepo, DBRepo>();
+            services.AddScoped<IOrderRepo, DBRepo>();
+
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ICartItemService, CartItemService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrdersService, OrdersService>();
-            services.AddScoped<IStoreRepo, DBRepo>();
-            services.AddScoped<IMapper, StoreMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

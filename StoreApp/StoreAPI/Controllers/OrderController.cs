@@ -27,8 +27,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpPost("add/cart")]
         [Consumes("application/json")]
-        [Produces("application/json")]
-        // 405 error
+        // 415 error service unresolved again
         public IActionResult AddCart(CartsModel carts)
         {
             try
@@ -45,7 +44,7 @@ namespace StoreAPI.Controllers
         [HttpDelete("delete/cart")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        // 405 error
+        // 415 error same
         public IActionResult DeleteCart(CartsModel carts)
         {
             try
@@ -64,8 +63,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpPost("add/product/{cartid}/{productid}/{quantity}")]
         [Consumes("application/json")]
-        [Produces("application/json")]
-        // 405 error
+        // 400 bad request error
         public IActionResult AddProductToCart(int cartid, int productid, int quantity)
         {
             try
@@ -81,7 +79,7 @@ namespace StoreAPI.Controllers
 
         [HttpGet("getProduct/{id}")]
         [Produces("application/json")]
-        //keeping error page open
+        // 500 error occured while processing request
         public IActionResult GetAllProductsInCartByCartID(int id)
         {
             try
@@ -97,7 +95,7 @@ namespace StoreAPI.Controllers
         [HttpDelete("delete/product/{cartid}/{productid}/{quantity}")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        //405 error
+        //500 error occured while processing request
         public IActionResult DeleteProductInCart(int cartid, int productid, int quantity)
         {
             try
@@ -114,9 +112,8 @@ namespace StoreAPI.Controllers
         /// orders section
         /// </summary>
         [HttpPost("add/order")]
-        [Consumes("application/json")]
         [Produces("application/json")]
-        //405 error
+        //415 unsupported media type
         public IActionResult PlaceOrder(OrderModel order)
         {
             try
@@ -133,7 +130,7 @@ namespace StoreAPI.Controllers
         [HttpPatch("add/item")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        // 405 error
+        // 400 error one or more validation errors occured
         public IActionResult AddToOrder(LineItemModel lineItem)
         {
             try
@@ -149,7 +146,7 @@ namespace StoreAPI.Controllers
 
         [HttpGet("getProducts/{id}")]
         [Produces("application/json")]
-        //keeping error page open
+        //404 error
         public IActionResult GetAllProductsInOrderByID(int id)
         {
             try

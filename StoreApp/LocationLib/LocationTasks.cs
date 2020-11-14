@@ -13,7 +13,7 @@ namespace LocationLib
         {
             System.Console.WriteLine("Getting all items in inventory");
             System.Console.WriteLine("Items in store inventory");
-            dbRepo.ViewAllProductsAtLocationSortByID(id);
+            dbRepo.ViewAllProductsAtLocation(id);
             ///return list "items"
         }
         /// allows manager to see add to inventory

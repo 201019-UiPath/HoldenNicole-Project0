@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using StoreDB.Models;
 
 namespace StoreAPI.Controllers
 {
@@ -27,7 +29,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpGet("get/history/{id}")]
         [Produces("application/json")]
-        //giving 500 error
+        //giving 500 error: processing request
         public IActionResult GetAllOrdersByLocationIDDateAscending(int id)
         {
             try
@@ -45,8 +47,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpPost("add/product/{locationid}/{productid}/{quantity}")]
         [Consumes("application/json")]
-        [Produces("application/json")]
-        //405 error
+        //400 error service error again
         public IActionResult AddProductToLocation(int locationid, int productid, int quantity)
         {
             try
@@ -56,14 +57,13 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest();//doing this
             }
         }
 
         [HttpDelete("delete/product/{locationid}/{productid}/{quantity}")]
         [Consumes("application/json")]
-        [Produces("application/json")]
-        //405 error
+        //500 error processing request
         public IActionResult DeleteProductAtLocation(int locationid, int productid, int quantity)
         {
             try
@@ -73,7 +73,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(500); //doing this
             }
         }
 
@@ -83,12 +83,14 @@ namespace StoreAPI.Controllers
 
         [HttpGet("get/inventory/{id}")]
         [Produces("application/json")]
-        // giving 500 error
+        // giving 500 error same as above
         public IActionResult ViewAllProductsAtLocationSortByID(int id)
         {
             try
             {
-                return Ok(_inventoryService.ViewAllProductsAtLocationSortByID(id));
+                List<InventoryModel> inventory = new List<InventoryModel>();
+                inventory = _inventoryService.ViewAllProductsAtLocation(id);
+                return Ok(inventory);
             }
             catch (Exception)
             {

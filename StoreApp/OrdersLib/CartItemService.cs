@@ -24,7 +24,7 @@ namespace OrdersLib
         public void UpdateCartItems(CartItemModel products)
         {
             dBRepo.UpdateCartItems(products);
-        }
+        } 
         public List<CartItemModel> GetAllProductsInCartByCartID(int id)
         {
             List<CartItemModel> products = dBRepo.GetAllProductsInCartByCartID(id);

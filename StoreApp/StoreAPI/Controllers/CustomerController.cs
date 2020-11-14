@@ -23,22 +23,23 @@ namespace StoreAPI.Controllers
         /// </summary>
         private readonly ICustomerService _customerService;
         private readonly ICartService _cartService;
-        public CustomerController(Services service)
+        public CustomerController(ICustomerService customerService)
         {
-            this._customerService = new CustomerService();
-            this._cartService = new CartService();
+            _customerService = customerService;
         }
         /// <summary>
         /// order histories
         /// </summary>
-        [HttpGet("getHistory/{customer}")]
+        [HttpGet("get/history/{customer}")]
         [Produces("application/json")]
-
+        //415 unsupported media type
         public IActionResult GetAllOrdersByCustomerID(CustomerModels customer)
         {
             try
             {
-                return Ok(_customerService.GetAllOrdersByCustomerIDDateAscending(customer));
+                List<OrderModel> orders = new List<OrderModel>();
+                orders = _customerService.GetAllOrdersByCustomerIDDateAscending(customer);
+                return Ok(orders);
             }
             catch (Exception)
             {
@@ -50,8 +51,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpPost("register")]
         [Consumes("application/json")]
-        [Produces("application/json")]
-        //giving 405 error
+        //giving 400 error: "The JSON value could not be converted to StoreDB.Models.CustomerModels
         public IActionResult Register(CustomerModels newCustomer)
         {
             try
@@ -84,8 +84,7 @@ namespace StoreAPI.Controllers
         }
         [HttpPost("signin")]
         [Consumes("application/json")]
-        [Produces("application/json")]
-        // 405 error
+        // 400 error same as above
         public IActionResult SignIn(CustomerModels customer)
         {
             try
