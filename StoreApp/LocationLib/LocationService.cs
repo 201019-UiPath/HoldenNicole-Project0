@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LocationLib
 {
-    public class LocationService
+    public class LocationService : ILocationService
     {
         private readonly DBRepo dbRepo;
         public LocationService()
@@ -37,9 +37,9 @@ namespace LocationLib
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
             return getOrdersByLocation;
         }
-        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
+        public List<OrderModel> GetAllOrdersByLocationID(int id)
         {
-            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationID(id);
             return getOrdersByLocation;
         }
         public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
@@ -47,5 +47,12 @@ namespace LocationLib
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceDescending(id);
             return getOrdersByLocation;
         }
+
+        public ManagerModel GetManagerByName(string managerUserName)
+        {
+            ManagerModel manager = dbRepo.GetManagerByName(managerUserName);
+            return manager;
+        }
+
     }
 }

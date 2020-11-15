@@ -6,12 +6,12 @@ namespace CustomerLib
 {
     public interface ICustomerService
     {
-        void AddCustomer(CustomerModels customer);
+        CustomerModels AddCustomer(CustomerModels customer);
         List<CustomerModels> GetAllCustomers();
-        List<OrderModel> GetAllOrdersByCustomerID(CustomerModels customer);
-        List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer);
-        List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer);
-        List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer);
+        List<OrderModel> GetAllOrdersByCustomerID(int id);
+        List<OrderModel> GetAllOrdersByCustomerIDDateDescending(int id);
+        List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(int id);
+        List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(int id);
         CustomerModels GetCustomerByID(int id);
         CustomerModels GetCustomerByName(string name);
         List<InventoryModel> ViewAllProductsAtLocationSortByID(int id);

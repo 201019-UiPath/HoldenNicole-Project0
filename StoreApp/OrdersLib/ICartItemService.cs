@@ -5,8 +5,8 @@ namespace OrdersLib
 {
     public interface ICartItemService
     {
-        void AddProductToCart(int cartid, int productid, int quantity);
-        void DeleteProductInCart(int cartid, int productid, int quantity);
+        CartItemModel AddProductToCart(CartItemModel cartItem);
+        CartItemModel DeleteProductInCart(CartItemModel cartItem);
         List<CartItemModel> GetAllProductsInCartByCartID(int id);
         ProductModel GetProductByID(int iD);
         void PlaceOrder(OrderModel order);

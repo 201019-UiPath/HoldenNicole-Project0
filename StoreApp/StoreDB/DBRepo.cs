@@ -202,13 +202,13 @@ namespace StoreUI
                 .ToList()
             );
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             try
             {
                 return mapper.ParseOrder(
                     context.Orders
-                    .Where(c => c.Customer == customer.ID)
+                    .Where(c => c.Customer == id)
                     .OrderBy(c => c.OrderDate)
                     .ToList()
                 );
@@ -225,13 +225,13 @@ namespace StoreUI
                 context.Orders
                 .First(o => o.Location == location.ID && o.Customer == customer.ID));
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(int id)
         {
             try
             {
                 return mapper.ParseOrder(
                     context.Orders
-                    .Where(c => c.Customer == customer.ID)
+                    .Where(c => c.Customer == id)
                     .OrderByDescending(c => c.OrderDate)
                     .ToList()
                 );
@@ -249,13 +249,13 @@ namespace StoreUI
             context.SaveChanges();
         }
 
-        public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(int id)
         {
             try
             {
                 return mapper.ParseOrder(
                     context.Orders
-                    .Where(c => c.Customer == customer.ID)
+                    .Where(c => c.Customer == id)
                     .OrderBy(c => c.Price)
                     .ToList()
                 );
@@ -266,14 +266,30 @@ namespace StoreUI
                 return null;
             }
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(int id)
         {
             try
             {
                 return mapper.ParseOrder(
                     context.Orders
-                    .Where(c => c.Customer == customer.ID)
+                    .Where(c => c.Customer == id)
                     .OrderByDescending(c => c.Price)
+                    .ToList()
+                );
+            }
+            catch (System.InvalidOperationException)
+            {
+                System.Console.WriteLine("This customer does not have any order history yet");
+                return null;
+            }
+        }
+        public List<OrderModel> GetAllOrdersByCustomerID(int id)
+        {
+            try
+            {
+                return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Customer == id)
                     .ToList()
                 );
             }
@@ -313,12 +329,11 @@ namespace StoreUI
                 .ToList()
             );
         }
-        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
+        public List<OrderModel> GetAllOrdersByLocationID(int id)
         {
             return mapper.ParseOrder(
                     context.Orders
                     .Where(c => c.Location == id)
-                    .OrderBy(c => c.OrderDate)
                     .ToList()
                 );
         }
@@ -328,6 +343,15 @@ namespace StoreUI
                 context.Orders
                 .Where(l => l.Location == id)
                 .OrderByDescending(l => l.OrderDate)
+                .ToList()
+            );
+        }
+        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .Where(l => l.Location == id)
+                .OrderBy(l => l.OrderDate)
                 .ToList()
             );
         }

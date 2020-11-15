@@ -12,15 +12,17 @@ namespace OrdersLib
         {
             this.dBRepo = new DBRepo();
         }
-        public void AddProductToCart(int cartid, int productid, int quantity)
+        public CartItemModel AddProductToCart(CartItemModel cartItem)
         {
-            CartItemModel cartItem = new CartItemModel()
+            
+            CartItemModel cartItems = new CartItemModel()
             {
-                CartID = cartid,
-                productID = productid,
-                quantity = quantity
+                CartID = cartItem.CartID,
+                productID = cartItem.productID,
+                quantity = cartItem.quantity
             };
             dBRepo.AddProductToCart(cartItem);
+            return (cartItem);
         }
         public void UpdateCartItems(CartItemModel products)
         {

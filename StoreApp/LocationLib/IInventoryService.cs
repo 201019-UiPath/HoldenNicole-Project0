@@ -8,6 +8,10 @@ namespace LocationLib
         List<InventoryModel> ViewAllProductsAtLocation(int id);
         //LocationModel GetLocationInventory(int id);
         List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id);
+       // List<InventoryModel> GetLocationInventory(int id);
         List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id);
+
+        void AddProductToLocation(InventoryModel item);
+        void DeleteProductAtLocation(InventoryModel item);
     }
 }

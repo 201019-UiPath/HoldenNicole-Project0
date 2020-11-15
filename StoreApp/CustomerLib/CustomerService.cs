@@ -22,7 +22,7 @@ namespace CustomerLib
             CustomerModels customer = dbRepo.GetCustomerByName(name);
             return customer;
         }
-        public void AddCustomer(CustomerModels customer)
+        public CustomerModels AddCustomer(CustomerModels customer)
         {
             List<CustomerModels> getCustomersTask = dbRepo.GetAllCustomersOrderByUsername();
             foreach (var h in getCustomersTask)
@@ -40,6 +40,7 @@ namespace CustomerLib
                 }
             }
             dbRepo.AddCustomer(customer);
+            return (customer);
         }
         public List<CustomerModels> GetAllCustomers()
         {
@@ -64,24 +65,24 @@ namespace CustomerLib
             List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByQuantityDescending(id);
             return viewProductsAtLocation;
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(int id)
         {
-            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(customer);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(id);
             return orders;
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDDateDescending(int id)
         {
-            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateDescending(customer);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateDescending(id);
             return orders;
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(int id)
         {
-            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceAscending(customer);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceAscending(id);
             return orders;
         }
-        public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer)
+        public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(int id)
         {
-            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(customer);
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
             return orders;
         }
     }

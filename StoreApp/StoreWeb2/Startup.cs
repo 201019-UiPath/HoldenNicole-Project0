@@ -62,11 +62,6 @@ namespace StoreWeb2
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Version 1");
-            });
 
             app.UseMvc();
             app.UseEndpoints(endpoints =>
