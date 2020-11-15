@@ -30,11 +30,13 @@ namespace StoreAPI.Controllers
         [HttpGet("get/history/{id}")]
         [Produces("application/json")]
         //giving 400 error so going to catch block
-        public IActionResult GetAllOrdersByLocationIDDateAscending(int id)
+        public IActionResult GetAllOrdersByLocationID(int id)
         {
             try
             {
-                return Ok(_locationService.GetAllOrdersByLocationID(id));
+                List<OrderModel> orders = _locationService.GetAllOrdersByLocationID(id);
+                List<OrderModel> order = orders;
+                return Ok(order);
             }
             catch (Exception)
             {
@@ -49,12 +51,12 @@ namespace StoreAPI.Controllers
         [Produces("application/json")]
         [Consumes("application/json")]
         //415 error return type problem
-        public IActionResult AddProductToLocation(InventoryModel item, int quantity)
+        public IActionResult AddProductToLocation(InventoryModel item)
         {
             try
             {
-                _locationService.AddProductToLocation(item, quantity);
-                return CreatedAtAction("AddProductToLocation", (item, quantity));
+                _locationService.AddProductToLocation(item);
+                return CreatedAtAction("AddProductToLocation", item);
             }
             catch (Exception)
             {
@@ -64,11 +66,11 @@ namespace StoreAPI.Controllers
 
         [HttpDelete("delete/product/{locationid}/{productid}/{quantity}")]
         //500 error processing request
-        public IActionResult DeleteProductAtLocation(int locationid, int productid, int quantity)
+        public IActionResult DeleteProductAtLocation(InventoryModel item)
         {
             try
             {
-                _locationService.DeleteProductAtLocation(locationid, productid, quantity);
+                _locationService.DeleteProductAtLocation(item);
                 return NoContent();
             }
             catch (Exception)
@@ -88,7 +90,9 @@ namespace StoreAPI.Controllers
         {
             try
             {
-                return Ok(_inventoryService.ViewAllProductsAtLocation(id));
+                List<InventoryModel> items = _locationService.GetLocationInventory(id);
+                List<InventoryModel> item2 = items;
+                return Ok(item2);
             }
             catch (Exception)
             {

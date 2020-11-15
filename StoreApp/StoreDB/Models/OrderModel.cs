@@ -11,6 +11,6 @@ namespace StoreDB.Models
         public decimal Price { get; set; }
         public DateTime OrderDate { get; set; }
 
-        public virtual List<LineItemModel> items { get; set; }
+        public virtual ICollection<LineItemModel> items { get; set; }
     }
 }

@@ -30,14 +30,16 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// order histories
         /// </summary>
-        [HttpGet("get/history/{customer}")]
+        [HttpGet("get/history/{id}")]
         [Produces("application/json")]
         //415 unsupported media type header matches produces
-        public IActionResult GetAllOrdersByCustomerID(CustomerModels customer)
+        public IActionResult GetAllOrdersByCustomerID(int id)
         {
             try
             {
-                return Ok(_customerService.GetAllOrdersByCustomerIDDateAscending(customer));
+                CustomerModels customer = _customerService.GetCustomerByID(id);
+                List<OrderModel> orders = _customerService.GetAllOrdersByCustomerID(customer);
+                return Ok(orders);
             }
             catch (Exception)
             { 

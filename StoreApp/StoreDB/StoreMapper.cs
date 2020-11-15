@@ -1,7 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreUI
 {
@@ -101,7 +103,7 @@ namespace StoreUI
         public List<CartsModel> ParseCarts(List<Carts> cart)
         {
             List<CartsModel> cartsModels = new List<CartsModel>();
-            foreach (var x in cart)
+            foreach(var x in cart)
             {
                 cartsModels.Add(ParseCarts(x));
             }

@@ -12,8 +12,9 @@ namespace LocationLib
         List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id);
         LocationModel GetLocationByID(int id);
         LocationModel GetLocationByName(string name);
-        void AddProductToLocation(InventoryModel item, int quantity);
-        void DeleteProductAtLocation(int locationid, int productid, int quantity);
-        void GetManagerByName(string managerUserName); 
+        void AddProductToLocation(InventoryModel item);
+        void DeleteProductAtLocation(InventoryModel item);
+        void GetManagerByName(string managerUserName);
+        List<InventoryModel> GetLocationInventory(int id);
     }
 }

@@ -8,7 +8,7 @@ namespace CustomerLib
     {
         void AddCustomer(CustomerModels customer);
         List<CustomerModels> GetAllCustomers();
-        List<OrderModel> GetAllOrdersByCustomerIDDateAscending(CustomerModels customer);
+        List<OrderModel> GetAllOrdersByCustomerID(CustomerModels customer);
         List<OrderModel> GetAllOrdersByCustomerIDDateDescending(CustomerModels customer);
         List<OrderModel> GetAllOrdersByCustomerIDPriceAscending(CustomerModels customer);
         List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(CustomerModels customer);

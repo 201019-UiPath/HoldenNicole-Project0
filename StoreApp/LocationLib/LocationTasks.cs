@@ -1,4 +1,3 @@
-using StoreDB.Models;
 using StoreUI;
 
 namespace LocationLib
@@ -14,14 +13,14 @@ namespace LocationLib
         {
             System.Console.WriteLine("Getting all items in inventory");
             System.Console.WriteLine("Items in store inventory");
-            dbRepo.ViewAllProductsAtLocation(id);
+            dbRepo.ViewAllProductsAtLocationSortByID(id);
             ///return list "items"
         }
         /// allows manager to see add to inventory
-        public void AddProductToLocation(InventoryModel item, int quantity)
+        public void AddProductToLocation(int locationid, int productid, int quantity)
         {
             System.Console.WriteLine("Opened Store Inventory");
-            dbRepo.AddProductToLocation(item, quantity); //manager can add to location inventory
+            dbRepo.AddProductToLocation(locationid, productid, quantity); //manager can add to location inventory
             System.Console.WriteLine("Adding to inventory");
             OnAddInventory();
         }

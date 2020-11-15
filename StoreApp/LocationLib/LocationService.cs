@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LocationLib
 {
-    public class LocationService : ILocationService
+    public class LocationService
     {
         private readonly DBRepo dbRepo;
         public LocationService()
@@ -26,7 +26,7 @@ namespace LocationLib
         {
             List<LocationModel> locations = dbRepo.GetAllLocations();
             return locations;
-        } 
+        }
         public List<OrderModel> GetAllOrdersByLocationIDPriceAscending(int id)
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceAscending(id);
@@ -36,30 +36,16 @@ namespace LocationLib
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateDescending(id);
             return getOrdersByLocation;
-        } 
-        public List<OrderModel> GetAllOrdersByLocationID(int id)
+        }
+        public List<OrderModel> GetAllOrdersByLocationIDDateAscending(int id)
         {
-            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationID(id);
+            List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDDateAscending(id);
             return getOrdersByLocation;
         }
         public List<OrderModel> GetAllOrdersByLocationIDPriceDescending(int id)
         {
             List<OrderModel> getOrdersByLocation = dbRepo.GetAllOrdersByLocationIDPriceDescending(id);
             return getOrdersByLocation;
-        } 
-
-        public void AddProductToLocation(InventoryModel item, int quantity)
-        {
-            dbRepo.AddProductToLocation(item, quantity);
         }
-        public void DeleteProductAtLocation(int locationid, int productid, int quantity)
-        {
-            dbRepo.DeleteProductAtLocation(locationid, productid, quantity);
-        }
-
-        public void GetManagerByName(string managerUserName)
-        {
-            dbRepo.GetManagerByName(managerUserName);
-        } 
     }
 }

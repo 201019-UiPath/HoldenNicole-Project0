@@ -5,8 +5,9 @@ namespace StoreUI
 {
     public interface ICustomerRepo
     {
-        CustomerModels AddCustomer(CustomerModels customer);
-        CustomerModels GetCustomerByName(string username);
+        void PlaceOrder(OrderModel order);
         List<CustomerModels> GetAllCustomersOrderByUsername();
+        List<CustomerModels> GetAllCustomersOrderByOrders();
+        void AddCustomer(CustomerModels customer);
     }
 }
