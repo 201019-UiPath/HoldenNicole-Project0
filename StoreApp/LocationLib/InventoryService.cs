@@ -4,13 +4,30 @@ using System.Collections.Generic;
 
 namespace LocationLib
 {
-    public class InventoryService
+    public class InventoryService: IInventoryService
     {
         private readonly DBRepo dBRepo;
         public InventoryService()
         {
             this.dBRepo = new DBRepo();
         }
+
+        public void AddProductToLocation(InventoryModel item)
+        {
+            dBRepo.AddProductToLocation(item);
+        }
+
+        public void DeleteProductAtLocation(InventoryModel item)
+        {
+            dBRepo.DeleteProductAtLocation(item);
+        }
+
+        public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        {
+            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocation(id);
+            return viewAllProductsAtLocation;
+        }
+
         public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {
             List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByID(id);

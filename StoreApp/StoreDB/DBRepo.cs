@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using StoreDB;
 using StoreDB.Entities;
 using StoreDB.Models;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace StoreUI
 {
-    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo, IOrderRepo
+    public class DBRepo : ICustomerRepo, ILocationRepo, ICartRepo, IOrderRepo, IStoreRepo
     {
         private readonly ixdssaucContext context;
         private readonly IMapper mapper;
@@ -122,18 +123,15 @@ namespace StoreUI
             );
         }
 
-        public void AddProductToLocation(int locationid, int productid, int quantity)
+        public void AddProductToLocation(InventoryModel item)
         {
-            var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
-            inventory.Quantity += quantity;
-            context.SaveChanges();   
-        }
-        public Inventory DeleteProductAtLocation(int locationid, int productid, int quantity)
-        {
-            var inventory = context.Inventory.First(i => i.Location == locationid && i.Product == productid);
-            inventory.Quantity -= quantity;
+            context.Inventory.Add(mapper.ParseInventory(item));
             context.SaveChanges();
-            return null;
+        }
+        public void DeleteProductAtLocation(InventoryModel item)
+        {
+            context.Inventory.Remove(mapper.ParseInventory(item));
+            context.SaveChanges();
         }
         #endregion
 
@@ -370,6 +368,15 @@ namespace StoreUI
                 context.Orders
                 .Where(l => l.Location == id)
                 .OrderByDescending(l => l.Price)
+                .ToList()
+            );
+        }
+
+        public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        {
+            return mapper.ParseInventory(
+                context.Inventory
+                .Where(i => i.Location == id)
                 .ToList()
             );
         }

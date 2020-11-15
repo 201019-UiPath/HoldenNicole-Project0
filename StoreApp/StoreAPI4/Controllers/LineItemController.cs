@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StoreAPI4.Controllers
 {
-    [Route("[controller")]
+    [Route("[controller]")]
     [ApiController]
     [EnableCors("_allowed")]
     public class LineItemController : Controller

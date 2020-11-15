@@ -33,7 +33,7 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpGet("get/history/{id}")]
         [Produces("application/json")]
-        //415 unsupported media type header matches produces
+        //500 unsupported media type header matches produces
         public IActionResult GetAllOrdersByCustomerID(int id)
         {
             try

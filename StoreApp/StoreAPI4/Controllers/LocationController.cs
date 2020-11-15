@@ -27,6 +27,7 @@ namespace StoreAPI.Controllers
         [HttpGet("get")]
         [Produces("application/json")]
         [Consumes("application/json")]
+        //500 error
         public IActionResult GetAllLocations()
         {
             try
@@ -43,6 +44,7 @@ namespace StoreAPI.Controllers
         [HttpGet("get/{id}")]
         [Produces("application/json")]
         [Consumes("application/json")]
+        //500 error
         public IActionResult GetLocationByID(int id)
         {
             try

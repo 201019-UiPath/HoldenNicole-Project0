@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CustomerLib
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         private readonly DBRepo dbRepo;
         public CustomerService()
@@ -83,6 +83,12 @@ namespace CustomerLib
         public List<OrderModel> GetAllOrdersByCustomerIDPriceDescending(int id)
         {
             List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDPriceDescending(id);
+            return orders;
+        }
+
+        public List<OrderModel> GetAllOrdersByCustomerID(int id)
+        {
+            List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(id);
             return orders;
         }
     }

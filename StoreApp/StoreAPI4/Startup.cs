@@ -47,6 +47,7 @@ namespace StoreAPI
             });
 
             services.AddAuthorization();
+            services.AddScoped<IMapper, StoreMapper>();
             services.AddScoped<IStoreRepo, DBRepo>();
             services.AddScoped<ICartRepo, DBRepo>();
             services.AddScoped<ICustomerRepo, DBRepo>();

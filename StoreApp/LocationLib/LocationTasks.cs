@@ -3,7 +3,7 @@ using StoreUI;
 namespace LocationLib
 {
     public delegate void LocationDel();
-    public class LocationTasks : ILocationOperations
+  /*  public class LocationTasks : ILocationOperations
     {
         public DBRepo dbRepo;
         public event LocationDel ManagedInventory;
@@ -17,13 +17,13 @@ namespace LocationLib
             ///return list "items"
         }
         /// allows manager to see add to inventory
-        public void AddProductToLocation(int locationid, int productid, int quantity)
+     /*   public void AddProductToLocation(InventoryIt)
         {
             System.Console.WriteLine("Opened Store Inventory");
             dbRepo.AddProductToLocation(locationid, productid, quantity); //manager can add to location inventory
             System.Console.WriteLine("Adding to inventory");
             OnAddInventory();
-        }
+        } 
         public void OnAddInventory()
         {
             if (ManagedInventory != null)
@@ -41,6 +41,6 @@ namespace LocationLib
             System.Console.WriteLine("Order history acquired");
             // dbRepo.GetAllOrdersByLocationIDDateAscending(id); //return OrderHistory
             OrderHistory();
-        }
-    }
+        } 
+    }*/
 }

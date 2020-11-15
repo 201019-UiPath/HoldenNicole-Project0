@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace OrdersLib
 {
-    public class CartItemService
+    public class CartItemService : ICartItemService
     {
         private readonly DBRepo dBRepo;
         public CartItemService()
@@ -14,7 +14,7 @@ namespace OrdersLib
         }
         public CartItemModel AddProductToCart(CartItemModel cartItem)
         {
-            
+
             CartItemModel cartItems = new CartItemModel()
             {
                 CartID = cartItem.CartID,
@@ -33,9 +33,9 @@ namespace OrdersLib
             List<CartItemModel> products = dBRepo.GetAllProductsInCartByCartID(id);
             return products;
         }
-        public void DeleteProductInCart(CartItemModel product)
+        public void DeleteProductInCart(CartItemModel cartItem)
         {
-            dBRepo.DeleteProductInCart(product);
+            dBRepo.DeleteProductInCart(cartItem);
         }
         public void PlaceOrder(OrderModel order)
         {
