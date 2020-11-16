@@ -140,10 +140,9 @@ namespace StoreUI
         {
             try
             {
-                return mapper.ParseCustomer(
-                    context.Customer
-                    .First(c => c.Id == id)
-                );
+                var customers = context.Customer.First(c => c.Id == id);
+                CustomerModels customer = mapper.ParseCustomer(customers);
+                return customer;
             }
             catch (InvalidOperationException)
             {
