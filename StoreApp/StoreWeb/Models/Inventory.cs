@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -18,5 +19,9 @@ namespace StoreWeb2.Models
         [Required]
         [DisplayName("Quantity")]
         public int Quantity { get; set; }
+    }
+    public class EmpDBContextI : DbContext
+    {
+        public DbSet<Inventory> Inventories { get; set; }
     }
 }

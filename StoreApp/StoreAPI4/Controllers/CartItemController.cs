@@ -5,8 +5,6 @@ using OrdersLib;
 using StoreDB.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StoreAPI4.Controllers
 {
@@ -15,10 +13,10 @@ namespace StoreAPI4.Controllers
     [EnableCors("_allowed")]
     public class CartItemController : Controller
     {
-        private readonly ICartItemService cartItemService;
-        private readonly ICustomerService customerService;
+        private readonly CartItemService cartItemService;
+        private readonly CustomerService customerService;
 
-        public CartItemController(ICartItemService cartItemService, ICustomerService customerService)
+        public CartItemController(CartItemService cartItemService, CustomerService customerService)
         {
             this.cartItemService = cartItemService;
             this.customerService = customerService;

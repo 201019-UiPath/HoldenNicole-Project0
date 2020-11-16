@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -22,5 +23,9 @@ namespace StoreWeb2.Models
         public List<Inventory> Inventory { get; set; }
         [DisplayName("Order")]
         public List<Order> Order { get; set; }
+    }
+    public class EmpDBContextL: DbContext
+    {
+        public DbSet<Location> Locations { get; set; }
     }
 }

@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Net;
+using Microsoft.EntityFrameworkCore;
+using StoreWeb.Data;
 
 namespace StoreWeb
 {
@@ -26,6 +28,9 @@ namespace StoreWeb
                 options.Cookie.IsEssential = true;
             });
             services.AddControllersWithViews();
+
+            services.AddDbContext<EmpDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("EmpDBContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

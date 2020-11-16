@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -20,5 +21,9 @@ namespace StoreWeb2.Models
         public string Email { get; set; }
         [DisplayName("Locations")]
         public List<Location> Location { get; set; }
+    }
+    public class EmpDBContextM: DbContext
+    {
+        public DbSet<Manager> Managers { get; set; }
     }
 }

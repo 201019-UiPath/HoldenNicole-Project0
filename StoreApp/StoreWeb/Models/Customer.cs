@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -22,5 +23,9 @@ namespace StoreWeb2.Models
         public List<Cart> Carts { get; set; }
         [DisplayName("Orders")]
         public List<Order> Orders { get; set; }
+    }
+    public class EmpDBContextCu: DbContext
+    {
+        public DbSet<Customer> Customers { get; set; }
     }
 }

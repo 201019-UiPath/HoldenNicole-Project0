@@ -15,10 +15,10 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// will include location and inventory services
         /// </summary>
-        private readonly ILocationService _locationService;
-        private readonly IInventoryService _inventoryService;
+        private readonly LocationService _locationService;
+        private readonly InventoryService _inventoryService;
 
-        public LocationController(ILocationService locationService, IInventoryService inventoryService)
+        public LocationController(LocationService locationService, InventoryService inventoryService)
         {
             _locationService = locationService;
             _inventoryService = inventoryService;
@@ -27,7 +27,6 @@ namespace StoreAPI.Controllers
         [HttpGet("get")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        //500 error
         public IActionResult GetAllLocations()
         {
             try
@@ -44,7 +43,6 @@ namespace StoreAPI.Controllers
         [HttpGet("get/{id}")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        //500 error
         public IActionResult GetLocationByID(int id)
         {
             try
@@ -63,7 +61,6 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpGet("get/history/{id}")]
         [Produces("application/json")]
-        //giving 400 error so going to catch block
         public IActionResult GetAllOrdersByLocationID(int id)
         {
             try
@@ -79,7 +76,6 @@ namespace StoreAPI.Controllers
         }
         [HttpGet("get/history/datedesc/{id}")]
         [Produces("application/json")]
-        //giving 400 error so going to catch block
         public IActionResult GetAllOrdersByLocationIDDateDesc(int id)
         {
             try
@@ -95,7 +91,6 @@ namespace StoreAPI.Controllers
         }
         [HttpGet("get/history/priceasc/{id}")]
         [Produces("application/json")]
-        //giving 400 error so going to catch block
         public IActionResult GetAllOrdersByLocationIDPriceAsc(int id)
         {
             try
@@ -111,7 +106,6 @@ namespace StoreAPI.Controllers
         }
         [HttpGet("get/history/pricedsc/{id}")]
         [Produces("application/json")]
-        //giving 400 error so going to catch block
         public IActionResult GetAllOrdersByLocationIDPriceDesc(int id)
         {
             try
@@ -168,7 +162,6 @@ namespace StoreAPI.Controllers
 
         [HttpGet("get/inventory/{id}")]
         [Produces("application/json")]
-        // going into catch block
         public IActionResult ViewAllProductsAtLocation(int id)
         {
             try

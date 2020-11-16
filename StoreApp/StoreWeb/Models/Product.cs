@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -24,5 +25,9 @@ namespace StoreWeb2.Models
         [Required]
         [DisplayName("Price")]
         public decimal Price { get; set; }
+    }
+    public class EmpDBContextP: DbContext
+    {
+        public DbSet<Product> Products { get; set; }
     }
 }

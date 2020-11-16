@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -26,5 +27,9 @@ namespace StoreWeb2.Models
         public decimal Price { get; set; }
         [DisplayName("Line Items")]
         public List<LineItem> LineItem { get; set; }
+    }
+    public class EmpDBContextO: DbContext 
+    {
+        public DbSet<Order> Orders { get; set; }
     }
 }

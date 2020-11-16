@@ -16,7 +16,7 @@ namespace StoreUI
 
         public ixdssaucContext Context { get; set; }
 
-        public DBRepo(ixdssaucContext storeContext, StoreMapper mapper)
+        public DBRepo(ixdssaucContext storeContext, IMapper mapper)
         {
             this.context = storeContext;
             this.mapper = mapper;

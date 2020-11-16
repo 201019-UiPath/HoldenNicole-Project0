@@ -15,11 +15,11 @@ namespace StoreAPI4.Controllers
     [EnableCors("_allowed")]
     public class LineItemController : Controller
     {
-        private readonly ICartItemService cartItemService;
-        private readonly IOrdersService ordersService;
-        private readonly ICustomerService customerService;
+        private readonly CartItemService cartItemService;
+        private readonly OrdersService ordersService;
+        private readonly CustomerService customerService;
         
-        public LineItemController(ICartItemService cartItemService, IOrdersService ordersService, ICustomerService customerService)
+        public LineItemController(CartItemService cartItemService, OrdersService ordersService, CustomerService customerService)
         {
             this.cartItemService = cartItemService;
             this.ordersService = ordersService;

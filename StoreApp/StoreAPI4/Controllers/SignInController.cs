@@ -15,13 +15,13 @@ namespace StoreAPI4.Controllers
     [EnableCors("_allowed")]
     public class SignInController : Controller
     {
-        private readonly ICustomerService customerService1;
-        private readonly ILocationService locationService1;
+        private readonly CustomerService customerService1;
+        private readonly LocationService locationService1;
 
-        public SignInController(ICustomerService customerService, ILocationService locationServices)
+        public SignInController(CustomerService customerService, LocationService locationServices)
         {
-            ICustomerService customerService1 = customerService;
-            ILocationService locationService1 = locationServices;
+            CustomerService customerService1 = customerService;
+            LocationService locationService1 = locationServices;
         }
         [HttpPost("register")]
         [Consumes("appliction/json")]

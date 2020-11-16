@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -19,8 +20,8 @@ namespace StoreWeb2.Models
         [DisplayName("Cart Items")]
         public List<CartItem> CartItem { get; set; }
     }
- /*   public class EmpDBContext: DBContext
+    public class EmpDBContextCa: DbContext
     {
         public DbSet<Cart> Cart { get; set; }
-    } */
+    } 
 }

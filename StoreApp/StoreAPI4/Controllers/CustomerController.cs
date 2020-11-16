@@ -21,9 +21,9 @@ namespace StoreAPI.Controllers
         /// <summary>
         /// BL methods here
         /// </summary>
-        private readonly ICustomerService _customerService;
+        private readonly CustomerService _customerService;
         private readonly IStoreRepo storeRepo;
-        public CustomerController(ICustomerService customerService)
+        public CustomerController(CustomerService customerService)
         {
             _customerService = customerService;
         }

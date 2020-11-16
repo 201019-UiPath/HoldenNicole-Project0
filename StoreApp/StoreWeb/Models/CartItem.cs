@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace StoreWeb2.Models
 {
@@ -18,5 +19,9 @@ namespace StoreWeb2.Models
         [Required]
         [DisplayName("Cart ID")]
         public string CartID { get; set; }
+    }
+    public class EmpDBContextCI: DbContext 
+    {
+        public DbSet<CartItem> CartItem { get; set; }
     }
 }
