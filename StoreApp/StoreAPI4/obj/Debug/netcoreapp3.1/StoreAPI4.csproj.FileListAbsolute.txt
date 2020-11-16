@@ -1,8 +1,3 @@
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.csprojAssemblyReference.cache
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.AssemblyInfoInputs.cache
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.AssemblyInfo.cs
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.csproj.CoreCompileInputs.cache
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\bin\Debug\netcoreapp3.1\StoreAPI4.exe
@@ -61,6 +56,11 @@ C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Proj
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\bin\Debug\netcoreapp3.1\LocationLib.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\bin\Debug\netcoreapp3.1\OrdersLib.pdb
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\bin\Debug\netcoreapp3.1\StoreDB.pdb
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.csprojAssemblyReference.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.AssemblyInfoInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.AssemblyInfo.cs
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.csproj.CoreCompileInputs.cache
+C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\StoreAPI4.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\staticwebassets\StoreAPI4.StaticWebAssets.Manifest.cache
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\staticwebassets\StoreAPI4.StaticWebAssets.xml
 C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\obj\Debug\netcoreapp3.1\scopedcss\bundle\StoreAPI4.styles.css

@@ -19,8 +19,8 @@ namespace StoreWeb2.Models
         [DisplayName("Cart Items")]
         public List<CartItem> CartItem { get; set; }
     }
-    public class EmpDBContext: DBContext
+ /*   public class EmpDBContext: DBContext
     {
         public DbSet<Cart> Cart { get; set; }
-    }
+    } */
 }

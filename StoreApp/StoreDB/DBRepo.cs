@@ -22,6 +22,10 @@ namespace StoreUI
             this.mapper = mapper;
         }
 
+        public DBRepo()
+        {
+        }
+
         #region cart methods
         public void AddCart(CartsModel cartsModel)
         {
