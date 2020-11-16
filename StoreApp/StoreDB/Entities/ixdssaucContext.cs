@@ -26,18 +26,19 @@ namespace StoreDB.Entities
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+      /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(@"C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreAPI4\appsettings.json")
+                .AddJsonFile(@"C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\appsettings.json")
                 .Build();
+
                 var connectionString = configuration.GetConnectionString("StoreDB");
                 optionsBuilder.UseNpgsql(connectionString);
             }
-        }
+        } */
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

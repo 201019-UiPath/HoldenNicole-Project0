@@ -28,6 +28,7 @@
           "LocationLib": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.EntityFrameworkCore.Design": "5.0.0",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4",
           "OrdersLib": "1.0.0",
           "StoreDB": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",

@@ -65,12 +65,9 @@ namespace StoreUI
         }
         public List<CartItemModel> GetAllProductsInCartByCartID(int id)
         {
-            return mapper.ParseCartItem(
-                context.CartItems
-                //.Include("CartItems")
-                .Where(i => i.Cart == id)
-                .ToList()
-            );
+            List<CartItemModel> cart = (List<CartItemModel>)context.CartItems.Where(i => i.Cart == id);
+            List<CartItemModel> carts = (List<CartItemModel>)mapper.ParseCartItem(cart);
+            return carts;
         } 
         public List<LineItemModel> GetAllProductsInOrderByID(int id)
         {
@@ -144,8 +141,9 @@ namespace StoreUI
                 CustomerModels customer = mapper.ParseCustomer(customers);
                 return customer;
             }
-            catch (InvalidOperationException)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 System.Console.WriteLine("This customer id does not exist try again");
             }
             return null;
@@ -284,17 +282,20 @@ namespace StoreUI
         {
             try
             {
-                return mapper.ParseOrder(
-                    context.Orders
-                    .Where(c => c.Customer == id)
-                    .ToList()
-                );
+                List<OrderModel> order = (List<OrderModel>)context.Orders.Where(c => c.Customer == id);
+                List<OrderModel> orders = (List<OrderModel>)ParseOrder(order);
+                return orders;
             }
             catch (System.InvalidOperationException)
             {
                 System.Console.WriteLine("This customer does not have any order history yet");
                 return null;
             }
+        }
+
+        private List<OrderModel> ParseOrder(List<OrderModel> order)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

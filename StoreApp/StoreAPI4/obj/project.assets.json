@@ -7076,6 +7076,7 @@
       "LocationLib >= 1.0.0",
       "Microsoft.AspNet.WebApi.Client >= 5.2.7",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.0",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 3.1.4",
       "OrdersLib >= 1.0.0",
       "StoreDB >= 1.0.0"
     ]
@@ -7141,6 +7142,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "[3.1.4, )"
           }
         },
         "imports": [
