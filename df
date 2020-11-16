@@ -1,0 +1,359 @@
+[33mcommit d64dccfaf70cf03ee77742183d8650c51c521d07[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Mon Nov 16 07:06:11 2020 -0600
+
+    messed up dependencies
+
+[33mcommit f8c59cd309ef7ebffcf52ad37ac726166b4dc7f5[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 22:33:43 2020 -0600
+
+    fixed api and added mvc models and controllers
+
+[33mcommit a271c0a0aa5c8e17ffb839a2ff269cea59f34ffb[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 21:28:12 2020 -0600
+
+    added more stuff
+
+[33mcommit 7c0f4e41d938e0e6ec641e7353531d0fcc2a59ee[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 21:04:18 2020 -0600
+
+    added stuff to gitignore and added some web models
+
+[33mcommit 099e84dd0a384e31cdf3bde8e981ae896dcfc3e2[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 20:24:05 2020 -0600
+
+    added constructors
+
+[33mcommit a4c0b426860f672f6f0d2e2526f6f4b4d9886e57[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 19:39:34 2020 -0600
+
+    pushing npgsql plz work
+
+[33mcommit b3515fec8ab6add71f749c6d0268a57dd5d649ee[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 18:07:47 2020 -0600
+
+    added some to controller and front end
+
+[33mcommit c086629adbcff89fcf7ad51edd5f031ca69bb7d8[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 13:28:05 2020 -0600
+
+    apis still dont work but no more errors
+
+[33mcommit 7b74bc4ba26b261da99628310f2b1a7b5ffbafc9[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 12:31:13 2020 -0600
+
+    deleted duplicates
+
+[33mcommit db7239ea5b707b288826800b6dfaac31028b5a39[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 12:30:54 2020 -0600
+
+    deleted duplicates
+
+[33mcommit 2b952325dd103e3819bf1be1d1a3cff84ab3a019[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 12:26:32 2020 -0600
+
+    made controllers and got rid of errors resulting from reverting to old code
+
+[33mcommit 21c2d23d52ffb71fd1052f793af7edb144be8d77[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 15 02:14:16 2020 -0600
+
+    reverting to old code
+
+[33mcommit 4673732e52b55b84e6d13a2bde4c768c25cd2b04[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sat Nov 14 16:48:46 2020 -0600
+
+    modified some controllers but api doesnt work idk why
+
+[33mcommit 4706fe4b5fff56e8d7a7184c867c48261b7587cf[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sat Nov 14 00:39:54 2020 -0600
+
+    api doesnt work but defining it more and controllers
+
+[33mcommit bc5da38b7f27b4da2a1cda7727754df2ef3a1644[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Nov 13 13:35:31 2020 -0600
+
+    trying to get swagger to work
+
+[33mcommit 2ddc96b18844a53404f805bdfb49e8990dd658ae[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Nov 13 12:38:21 2020 -0600
+
+    added models and some controller functions
+
+[33mcommit b1f3b67494c55674cc71e4b11cac06700a1c9033[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Nov 13 00:11:12 2020 -0600
+
+    added MVC and made models
+
+[33mcommit e94999791ccd11aa4e7e0bbff61fea9980f7a8d8[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 11 19:38:15 2020 -0600
+
+    finished backend just need to fix errors
+
+[33mcommit 1550df847a2c086df91b5bb92fbb706f51b2d90c[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 11 19:37:00 2020 -0600
+
+    set up backend just need to fix 400 errors
+
+[33mcommit 87514c9c559ac08c376a4e1a12a103c354e17bfa[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 11 11:38:55 2020 -0600
+
+    added more to controllers
+
+[33mcommit 14a1edef98ae9cb7cc9c45b2d1b94c5629e8bb3c[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 11 03:51:50 2020 -0600
+
+    added services and controllers
+
+[33mcommit 0763b36696cc0f4c9e7a481a9a60a132d3d90a46[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 11 00:39:44 2020 -0600
+
+    connected to Postman
+
+[33mcommit c6425c7bcd7a344ba881a3ac526f70545dcc22a1[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 11 00:38:30 2020 -0600
+
+    started API and connected to Postman
+
+[33mcommit 9b42b7c0397b01b919cd419778e18e8feed57bfa[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 10 15:10:09 2020 -0600
+
+    added about me page
+
+[33mcommit 292cf9a7cec9619cd1324f8830a82e12b58f7a31[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 10 12:17:53 2020 -0600
+
+    added storeWeb and moved UI to another folder
+
+[33mcommit d31f9bcfe079f0b079af35d1071f6d0aa2c3b474[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 10 12:17:28 2020 -0600
+
+    added StoreWeb and moved UI
+
+[33mcommit e8598427a6510b2f8e2ee61925080fa867e65054[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 10 12:16:39 2020 -0600
+
+    added storeWeb and moved UI to another folder
+
+[33mcommit d2d50c9a918d616c451be1faf264b6aac4b4d598[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 10 09:49:52 2020 -0600
+
+    slight modifications
+
+[33mcommit d84e8ac3d86f66755b4cb1d8107f5e1a8483184f[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 10 01:16:40 2020 -0600
+
+    WHOOP P0 DONEish
+
+[33mcommit 5e0096f34787a453504e8b7c687c86683d4c84d1[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Mon Nov 9 17:31:23 2020 -0600
+
+    customer order doesnt work
+
+[33mcommit e620ce5a4318ae077f49427fd74281499524edd7[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Mon Nov 9 11:44:04 2020 -0600
+
+    mostly works
+
+[33mcommit c4c61d136b3c411fc4002362ac508c6177825fb2[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Mon Nov 9 09:05:39 2020 -0600
+
+    work already!
+
+[33mcommit e81f732b24b841314a67765faaae60456df6bff3[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Mon Nov 9 00:48:13 2020 -0600
+
+    WHOOPgit add .
+
+[33mcommit 203999ca9ab94a6765161d46ee7482334f2ee880[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 8 17:35:52 2020 -0600
+
+    Manager works customer doesnt
+
+[33mcommit e7e40e3756d43e3eaccc4199723f2f739127c005[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 8 16:48:25 2020 -0600
+
+    BTHO P0
+
+[33mcommit 85e5babc188c545dd2f501bc3241e3613342a5ca[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 8 14:04:49 2020 -0600
+
+    BTHO
+
+[33mcommit b57313c2496549b1500a495e961e398d9a075fcf[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sat Nov 7 20:48:05 2020 -0600
+
+    BTHO UT
+
+[33mcommit 2e07ae9bb50085721f38b2fe38997068854503a2[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sat Nov 7 19:29:35 2020 -0600
+
+    Farmers Fight
+
+[33mcommit 6f8acd501fab40fb1a5dc35d00e68eb9bec9e91e[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Nov 6 17:22:00 2020 -0600
+
+    modified entities, mappers, menus, and repo
+
+[33mcommit 1ab1e3cac089deedf89001e599ac70c9cfe8e49f[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Nov 6 11:26:54 2020 -0600
+
+    fixed entities, mapping, dbrepo, menus
+
+[33mcommit 2afb5ab57022cc9b7f72b0d197fe916d00687041[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 4 13:53:26 2020 -0600
+
+    error messages gone just warnings remain
+
+[33mcommit c6e48f972d314ff7bafbf71456bde78b01116bb1[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 4 08:05:59 2020 -0600
+
+    added ER Diagram
+
+[33mcommit c7a33d0e42998d6b3c0f8d57f37e93ea8475f2da[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 4 07:47:12 2020 -0600
+
+    most of it works now. WHOOOPgit add .git add .git add .git add .git add .git add .!
+
+[33mcommit 294093807a08af052acf0c2bc6562fb6d4b7b35a[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 4 04:35:17 2020 -0600
+
+    only menu works
+
+[33mcommit f3fba1fe95dad5831f47240ddd74993c61dd8750[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Wed Nov 4 04:34:33 2020 -0600
+
+    only the menu is functional
+
+[33mcommit 3af42469e3b26517c6daf99fa177bec998b4b33f[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Nov 3 05:44:02 2020 -0600
+
+    added some functionality but mainly found broken code
+
+[33mcommit 86fe742d8e81621d66e8124704ba1d511110925e[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Mon Nov 2 12:16:18 2020 -0600
+
+    fixed some menus
+
+[33mcommit 2a88854b0c4229efb23fa157059b3e8df8b8884b[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 1 20:57:49 2020 -0600
+
+    connected database and menus
+
+[33mcommit 16fc163c84690bbbdff73d245237a7297430cfd3[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 1 16:59:27 2020 -0600
+
+    needed to make new branch
+
+[33mcommit 516ca6d77efd9c5fb3ff325064baeecef5d8242e[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Nov 1 14:18:13 2020 -0600
+
+    added some functionality and mapping
+
+[33mcommit 1771a85827807514b4d3ce77f3dcb8874e899230[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Oct 30 15:46:13 2020 -0500
+
+    added db first functionality
+
+[33mcommit 81158290f988f13bc7f73767d340169400e94d0e[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Oct 30 01:34:10 2020 -0500
+
+    modified menues, tasks, and repositories
+
+[33mcommit e5e7eb211ab05f183f3a116f22066c9e3a33304c[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Tue Oct 27 00:50:34 2020 -0500
+
+    added repository and modified models using more inheritance
+
+[33mcommit d3d60b89e2c9f34435a6359c4b0632eecb42e665[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sun Oct 25 20:37:16 2020 -0500
+
+    added menus
+
+[33mcommit e323794abe2f46372738067c479d52d7abd0bb88[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Sat Oct 24 18:13:53 2020 -0500
+
+    added some functionality to menus and models
+
+[33mcommit 23a0cbfeb20a371b2f71aab981cc5b1ab5c38033[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Oct 23 22:34:01 2020 -0500
+
+    reorganized storeapp and added some functionality
+
+[33mcommit 19d7dff6103027e10db49c773a997a672f6e0bd4[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Fri Oct 23 11:34:14 2020 -0500
+
+    added some menu options
+
+[33mcommit 8d7e9bf457591ab7a3efb0d6cbb66419fb4536d8[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Thu Oct 22 23:45:34 2020 -0500
+
+    added some functionality
+
+[33mcommit 60af12772496203532202484239a6412de2268f5[m
+Author: nfh2019 <nfh.22.2019@gmail.com>
+Date:   Thu Oct 22 21:31:56 2020 -0500
+
+    folders creation
+
+[33mcommit e9b21386538ca0fdeee5569f0935d5607ff292e7[m
+Author: nfh2019 <72892073+nfh2019@users.noreply.github.com>
+Date:   Thu Oct 22 21:15:39 2020 -0500
+
+    Initial commit

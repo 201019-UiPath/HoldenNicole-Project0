@@ -10,7 +10,7 @@ namespace StoreAPI.Controllers
     [Route("[controller]")]
     [ApiController]
     [EnableCors("_allowed")]
-    public class LocationController : Controller
+    public class LocationController : ControllerBase
     {
         /// <summary>
         /// will include location and inventory services

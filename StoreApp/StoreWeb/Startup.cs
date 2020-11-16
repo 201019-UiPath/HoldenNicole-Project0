@@ -29,6 +29,9 @@ namespace StoreWeb
             });
             services.AddControllersWithViews();
 
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddOptions();
+
             services.AddDbContext<EmpDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("EmpDBContext")));
         }
@@ -62,7 +65,7 @@ namespace StoreWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=SignIn}/{id?}");
             });
         }
     }

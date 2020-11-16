@@ -13,7 +13,7 @@ namespace StoreAPI4.Controllers
     [Route("[controller]")]
     [ApiController]
     [EnableCors("_allowed")]
-    public class SignInController : Controller
+    public class SignInController : ControllerBase
     {
         private readonly CustomerService customerService1;
         private readonly LocationService locationService1;

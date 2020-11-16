@@ -33,7 +33,6 @@ namespace StoreAPI.Controllers
         /// </summary>
         [HttpGet("get/history/{id}")]
         [Produces("application/json")]
-        //500 unsupported media type header matches produces
         public IActionResult GetAllOrdersByCustomerID(int id)
         {
             try
@@ -53,7 +52,6 @@ namespace StoreAPI.Controllers
         [HttpPost("register")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        //giving 400 error: "The JSON value could not be converted to StoreDB.Models.CustomerModels
         public IActionResult Register(CustomerModels newCustomer)
         {
             try
@@ -80,13 +78,12 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(); //doing this
+                return BadRequest(); 
             }
         }
         [HttpPost("signin")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        // 400 error same as above
         public IActionResult SignIn(CustomerModels customer)
         {
             try
@@ -103,7 +100,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(); //doing this
+                return BadRequest(); 
             }
         }
     }

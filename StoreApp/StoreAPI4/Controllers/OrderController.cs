@@ -9,7 +9,7 @@ namespace StoreAPI4.Controllers
     [Route("[controller]")]
     [ApiController]
     [EnableCors("_allowed")]
-    public class OrderController : Controller
+    public class OrderController : ControllerBase
     {
         private readonly IOrdersService orderService;
         

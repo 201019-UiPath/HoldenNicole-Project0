@@ -1,8 +1,106 @@
-﻿@{
+﻿@model StoreWeb2.Models.Customer
+@{
     ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        h1 {
+            font-size: 16px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        .form-group {
+            display: inline-flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome To Sports Authenticated</h1>
+        <p>Check out what we have in our stores today!</p>
+        <p>You never know what you will be able to find.</p>
+        <p>To start looking please sign in or sign up here.</p>
+    </div>
+
+    <div class="table">
+        @using (Html.BeginForm("Create", "Customers", FormMethod.Post))
+        {
+            <div class="form-group" type="box">
+                <div class="form-group">
+                    <h1>Register Today</h1>
+                </div>
+                <div class="form-group">
+                    <label>User Name: </label>
+                    @Html.EditorFor(model => model.Username)*
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email: </label>
+                @Html.EditorFor(m => m.Email)*
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        }
+
+        @using (Html.BeginForm("SignInCustomer", "Customers", FormMethod.Post))
+        {
+
+            <div class="form-group" type="box">
+                <div class="form-group">
+                    <h1>Sign In</h1>
+                </div>
+                <div class="form-group">
+                    <label>User Name: </label>
+                    @Html.EditorFor(model => model.Username)*
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+                <div class="form-group">
+                    <label>Email: </label>
+                    @Html.EditorFor(m => m.Email)*
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Log In" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+
+        @using (Html.BeginForm("SignInManager", "Manager", FormMethod.Post))
+        {
+            <div class="form-group" type="box">
+                <div class="form-group float-right">
+                    <h1>Manager Sign In</h1>
+                </div>
+                <div class="form-group float-right">
+                    <label>User Name: </label>
+                    @Html.EditorFor(model => model.Username)*
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+                <div class="form-group float-left">
+                    <label>Email: </label>
+                    @Html.EditorFor(m => m.Email)*
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+                <div class="form-group float-left">
+                    <input type="submit" value="Log In" class="btn btn-primary" />
+                </div>
+
+            </div>
+        }
+        </div>    
+    </div>
+</body>
+</html>

@@ -37,7 +37,7 @@ namespace StoreAPI
                         .AllowAnyHeader();
                     });
             });
-            services.AddControllers().AddXmlSerializerFormatters();
+            services.AddControllers();
             services.AddDbContext<ixdssaucContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
 
             services.AddMvc(options =>
@@ -52,7 +52,7 @@ namespace StoreAPI
             services.AddScoped<ICartRepo, DBRepo>();
             services.AddScoped<ICustomerRepo, DBRepo>();
             services.AddScoped<ILocationRepo, DBRepo>();
-            services.AddScoped<IOrderRepo, DBRepo>(); 
+            services.AddScoped<IOrderRepo, DBRepo>();
 
             services.AddScoped<DBRepo>();
             services.AddScoped<CustomerService>();
@@ -62,7 +62,7 @@ namespace StoreAPI
             services.AddScoped<LocationService>();
             services.AddScoped<CartItemService>();
             services.AddScoped<OrdersService>();
-            services.AddScoped<ProductServices>(); 
+            services.AddScoped<ProductServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

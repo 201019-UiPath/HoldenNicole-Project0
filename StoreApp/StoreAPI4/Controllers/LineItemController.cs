@@ -2,18 +2,17 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using OrdersLib;
+using StoreDB;
 using StoreDB.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StoreAPI4.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     [EnableCors("_allowed")]
-    public class LineItemController : Controller
+    public class LineItemController : ControllerBase
     {
         private readonly CartItemService cartItemService;
         private readonly OrdersService ordersService;
@@ -41,7 +40,7 @@ namespace StoreAPI4.Controllers
                 return BadRequest();
             }
         }
-        [HttpDelete("get/{id}")]
+        [HttpGet("get/{id}")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult GetAllLineItemsByOrder(int id)

@@ -11,7 +11,7 @@ namespace StoreAPI4.Controllers
     [Route("[controller]")]
     [ApiController]
     [EnableCors("_allowed")]
-    public class CartItemController : Controller
+    public class CartItemController : ControllerBase
     {
         private readonly CartItemService cartItemService;
         private readonly CustomerService customerService;

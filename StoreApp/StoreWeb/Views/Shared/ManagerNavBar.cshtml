@@ -1,0 +1,29 @@
+﻿@{ 
+    ViewData["Title"] = "ManagerNavBar";
+}
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a href="@Url.Action("Details","Managers")">
+                <span class="glyphicon glyphicon-home">
+
+                </span>
+                Profile
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Details","Locations")">
+                <span class="glyphicon glyphicon-home">
+                </span>
+                Location
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Details","Orders")">
+                <span class="glyphicon glyphicon-home">
+                </span>
+                Order History
+            </a>
+        </li>
+    </ul>
+</div>

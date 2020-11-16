@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StoreWeb2.Models;
 
 namespace StoreWeb.Data
@@ -14,22 +10,22 @@ namespace StoreWeb.Data
         {
         }
 
-        public DbSet<StoreWeb2.Models.Cart> Cart { get; set; }
+        public DbSet<Cart> Cart { get; set; }
 
-        public DbSet<StoreWeb2.Models.CartItem> CartItem { get; set; }
+        public DbSet<CartItem> CartItem { get; set; }
 
-        public DbSet<StoreWeb2.Models.Customer> Customer { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
-        public DbSet<StoreWeb2.Models.Inventory> Inventory { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
 
-        public DbSet<StoreWeb2.Models.LineItem> LineItem { get; set; }
+        public DbSet<LineItem> LineItem { get; set; }
 
-        public DbSet<StoreWeb2.Models.Location> Location { get; set; }
+        public DbSet<Location> Location { get; set; }
 
-        public DbSet<StoreWeb2.Models.Manager> Manager { get; set; }
+        public DbSet<Manager> Manager { get; set; }
 
-        public DbSet<StoreWeb2.Models.Order> Order { get; set; }
+        public DbSet<Order> Order { get; set; }
 
-        public DbSet<StoreWeb2.Models.Product> Product { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

@@ -17,6 +17,7 @@
 *appsettings.json
 *logs
 debug.log
+packages
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
