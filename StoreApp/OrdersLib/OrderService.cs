@@ -7,9 +7,9 @@ namespace OrdersLib
     public class OrdersService : IOrdersService
     {
         private readonly DBRepo dBRepo;
-        public OrdersService()
+        public OrdersService(DBRepo repo)
         {
-            this.dBRepo = new DBRepo();
+            this.dBRepo = repo;
         }
 
         public void AddCart(CartsModel cart)

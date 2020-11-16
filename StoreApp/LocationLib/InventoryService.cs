@@ -7,9 +7,9 @@ namespace LocationLib
     public class InventoryService: IInventoryService
     {
         private readonly DBRepo dBRepo;
-        public InventoryService()
+        public InventoryService(DBRepo repo)
         {
-            this.dBRepo = new DBRepo();
+            this.dBRepo = repo;
         }
 
         public void AddProductToLocation(InventoryModel item)

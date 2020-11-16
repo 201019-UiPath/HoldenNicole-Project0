@@ -16,10 +16,10 @@ namespace StoreUI
 
         public ixdssaucContext Context { get; set; }
 
-        public DBRepo()
+        public DBRepo(ixdssaucContext storeContext, StoreMapper mapper)
         {
-            this.context = new ixdssaucContext();
-            this.mapper = new StoreMapper();
+            this.context = storeContext;
+            this.mapper = mapper;
         }
 
         #region cart methods

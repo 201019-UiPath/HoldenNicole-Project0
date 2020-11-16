@@ -7,9 +7,9 @@ namespace LocationLib
     public class ProductServices
     {
         private readonly DBRepo dBRepo;
-        public ProductServices()
+        public ProductServices(DBRepo repo)
         {
-            this.dBRepo = new DBRepo();
+            this.dBRepo = repo;
         }
         public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
         {

@@ -8,9 +8,9 @@ namespace OrdersLib
     public class CartItemService : ICartItemService
     {
         private readonly DBRepo dBRepo;
-        public CartItemService()
+        public CartItemService(DBRepo repo)
         {
-            this.dBRepo = new DBRepo();
+            this.dBRepo = repo;
         }
         public CartItemModel AddProductToCart(CartItemModel cartItem)
         {

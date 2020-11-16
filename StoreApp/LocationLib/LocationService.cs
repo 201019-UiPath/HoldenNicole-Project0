@@ -7,9 +7,9 @@ namespace LocationLib
     public class LocationService : ILocationService
     {
         private readonly DBRepo dbRepo;
-        public LocationService()
+        public LocationService(DBRepo repo)
         {
-            this.dbRepo = new DBRepo();
+            this.dbRepo = repo;
         }
 
         public LocationModel GetLocationByID(int id)

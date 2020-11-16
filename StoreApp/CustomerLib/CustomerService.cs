@@ -7,9 +7,9 @@ namespace CustomerLib
     public class CustomerService : ICustomerService
     {
         private readonly DBRepo dbRepo;
-        public CustomerService()
+        public CustomerService(DBRepo repo)
         {
-            this.dbRepo = new DBRepo();
+            this.dbRepo = repo;
         }
 
         public CustomerModels GetCustomerByID(int id)
