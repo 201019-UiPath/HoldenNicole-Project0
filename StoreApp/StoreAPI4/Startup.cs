@@ -54,11 +54,13 @@ namespace StoreAPI
             services.AddScoped<ILocationRepo, DBRepo>();
             services.AddScoped<IOrderRepo, DBRepo>();
 
+
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ICartItemService, CartItemService>();
             services.AddScoped<IOrdersService, OrdersService>();
+            services.AddScoped<IProductServices, ProductServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
