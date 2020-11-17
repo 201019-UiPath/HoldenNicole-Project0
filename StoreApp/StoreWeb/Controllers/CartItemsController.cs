@@ -1,11 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreWeb.Data;
 
 namespace StoreWeb.Controllers
 {
-    public class CartItemsController : BaseController
+    public class CartItemsController : Controller
     {
         private readonly EmpDBContext _context;
 

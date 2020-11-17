@@ -17,11 +17,13 @@ namespace StoreAPI.Controllers
         /// </summary>
         private readonly LocationService _locationService;
         private readonly InventoryService _inventoryService;
+        private readonly ProductServices _productService;
 
-        public LocationController(LocationService locationService, InventoryService inventoryService)
+        public LocationController(LocationService locationService, InventoryService inventoryService, ProductServices productServices)
         {
             _locationService = locationService;
             _inventoryService = inventoryService;
+            _productService = productServices;
         }
 
         [HttpGet("get")]
@@ -71,7 +73,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(400); //coming here so return messed up
+                return StatusCode(400); 
             }
         }
         [HttpGet("get/history/datedesc/{id}")]
@@ -86,7 +88,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(400); //coming here so return messed up
+                return StatusCode(400);
             }
         }
         [HttpGet("get/history/priceasc/{id}")]
@@ -101,7 +103,7 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(400); //coming here so return messed up
+                return StatusCode(400); 
             }
         }
         [HttpGet("get/history/pricedsc/{id}")]
@@ -116,43 +118,55 @@ namespace StoreAPI.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(400); //coming here so return messed up
+                return StatusCode(400); 
             }
         }
         /// <summary>
         /// manager modifying inventory
         /// </summary>
-        [HttpPost("add/product/{locationid}/{productid}/{quantity}")]
+        [HttpPost("add/product/{item}")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        //415 error return type problem
-        public IActionResult AddProductToLocation(InventoryModel item)
+        public IActionResult AddProductToLocation(InventoryModel inventory)
         {
             try
             {
-                _inventoryService.AddProductToLocation(item);
-                int location = item.productID;
-                return CreatedAtAction("AddProductToLocation", item);
+                ProductModel newItem = new ProductModel();
+                newItem = _productService.GetProductByID(inventory.productID);
+                InventoryModel iitem = new InventoryModel()
+                {
+                    productID = newItem.ID,
+                    locationID = inventory.locationID,
+                    Quantity = inventory.Quantity
+                };
+                _inventoryService.AddProductToLocation(iitem);
+                return CreatedAtAction("AddProductToLocation", inventory);
             }
             catch (Exception)
             {
-                return BadRequest();//doing this
+                return BadRequest();
             }
         }
 
-        [HttpDelete("delete/product/{locationid}/{productid}/{quantity}")]
-        //500 error processing request
+        [HttpDelete("delete/product")]
         public IActionResult DeleteProductAtLocation(InventoryModel item)
         {
             try
             {
+                ProductModel product = new ProductModel();
+                product = _productService.GetProductByID(item.productID);
+                InventoryModel items = new InventoryModel()
+                {
+                    productID = item.productID,
+                    locationID = item.locationID,
+                    Quantity = item.Quantity
+                };
                 _inventoryService.DeleteProductAtLocation(item);
-                int id = item.productID;
                 return Ok();
             }
             catch (Exception)
             {
-                return StatusCode(500); //doing this
+                return StatusCode(500);
             }
         }
 
@@ -160,19 +174,34 @@ namespace StoreAPI.Controllers
         /// shows manager current inventory at location
         /// </summary>
 
-        [HttpGet("get/inventory/{id}")]
+        [HttpGet("get/inventory/lh/{id}")]
         [Produces("application/json")]
-        public IActionResult ViewAllProductsAtLocation(int id)
+        public IActionResult ViewAllProductsAtLocationPriceLowToHigh(int id)
         {
             try
             {
-                List<InventoryModel> items = _inventoryService.ViewAllProductsAtLocation(id);
-                List<InventoryModel> item2 = items;
+                List<ProductModel> items = _productService.ViewAllProductsAtLocationSortByIDPriceLowToHigh(id);
+                List<ProductModel> item2 = items;
                 return Ok(item2);
             }
             catch (Exception)
             {
-                return NotFound(); //doing this matches shaelies but still doesnt work
+                return NotFound();
+            }
+        }
+        [HttpGet("get/inventory/hl/{id}")]
+        [Produces("application/json")]
+        public IActionResult ViewAllProductsAtLocationPriceHighToLow(int id)
+        {
+            try
+            {
+                List<ProductModel> items = _productService.ViewAllProductsAtLocationSortByIDPriceHighToLow(id);
+                List<ProductModel> item2 = items;
+                return Ok(item2);
+            }
+            catch (Exception)
+            {
+                return NotFound();
             }
         }
 

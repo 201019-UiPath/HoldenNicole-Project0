@@ -20,8 +20,8 @@ namespace StoreWeb2.Models
         [DisplayName("Cart Items")]
         public List<CartItem> CartItem { get; set; }
     }
-    public class EmpDBContextCa: DbContext
+    public class EmpDBContextCa : DbContext
     {
         public DbSet<Cart> Cart { get; set; }
-    } 
+    }
 }

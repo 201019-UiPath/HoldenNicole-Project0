@@ -29,7 +29,7 @@ namespace StoreWeb
             });
             services.AddControllersWithViews();
 
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMvcCore(option => option.EnableEndpointRouting = false);
             services.AddOptions();
 
             services.AddDbContext<EmpDBContext>(options =>

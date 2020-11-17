@@ -28,7 +28,7 @@ namespace StoreWeb2.Models
         [DisplayName("Line Items")]
         public List<LineItem> LineItem { get; set; }
     }
-    public class EmpDBContextO: DbContext 
+    public class EmpDBContextO : DbContext
     {
         public DbSet<Order> Orders { get; set; }
     }

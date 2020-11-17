@@ -96,7 +96,23 @@ namespace StoreUI
                 .First(i => i.Id == id)
                 );
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
+        public List<ProductModel> ViewAllProductsPriceHighToLow(InventoryModel inventory)
+        {
+            return mapper.ParseProducts(
+                context.Products
+                .Where(i => i.Id == inventory.productID)
+                .OrderBy(i => i.Price)
+                .ToList());
+        }
+        public List<ProductModel> ViewAllProductsPriceLowToHigh(InventoryModel inventory)
+        {
+            return mapper.ParseProducts(
+                context.Products
+                .Where(i => i.Id == inventory.productID)
+                .OrderByDescending(i => i.Price)
+                .ToList());
+        }
+        public List<InventoryModel> ViewAllInventoryAtLocationSortByID(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
@@ -105,7 +121,7 @@ namespace StoreUI
                 .ToList()
             );
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
+        public List<InventoryModel> ViewAllInventoryAtLocationSortByQuantityAscending(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
@@ -114,7 +130,7 @@ namespace StoreUI
                 .ToList()
             );
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
+        public List<InventoryModel> ViewAllInventoryAtLocationSortByQuantityDescending(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
@@ -124,14 +140,20 @@ namespace StoreUI
             );
         }
 
-        public void AddProductToLocation(InventoryModel item)
+        public void AddProductToLocation(InventoryModel inventory)
         {
-            context.Inventory.Add(mapper.ParseInventory(item));
+            ProductModel item = new ProductModel();
+            LocationModel location = new LocationModel();
+            context.Products.Add(mapper.ParseProducts(item));
+            context.Locations.Add(mapper.ParseLocation(location));
             context.SaveChanges();
         }
-        public void DeleteProductAtLocation(InventoryModel item)
+        public void DeleteProductAtLocation(InventoryModel inventory)
         {
-            context.Inventory.Remove(mapper.ParseInventory(item));
+            ProductModel item = new ProductModel();
+            LocationModel location = new LocationModel();
+            context.Products.Remove(mapper.ParseProducts(item));
+            context.Locations.Remove(mapper.ParseLocation(location));
             context.SaveChanges();
         }
         #endregion

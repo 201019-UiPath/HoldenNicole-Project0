@@ -26,7 +26,7 @@ namespace StoreWeb2.Models
         [DisplayName("Price")]
         public decimal Price { get; set; }
     }
-    public class EmpDBContextP: DbContext
+    public class EmpDBContextP : DbContext
     {
         public DbSet<Product> Products { get; set; }
     }

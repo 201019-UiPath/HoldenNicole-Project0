@@ -22,7 +22,7 @@ namespace StoreWeb2.Models
         [DisplayName("Locations")]
         public List<Location> Location { get; set; }
     }
-    public class EmpDBContextM: DbContext
+    public class EmpDBContextM : DbContext
     {
         public DbSet<Manager> Managers { get; set; }
     }

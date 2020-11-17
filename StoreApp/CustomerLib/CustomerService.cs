@@ -50,21 +50,31 @@ namespace CustomerLib
             List<CustomerModels> getCustomers = dbRepo.GetAllCustomersOrderByOrders();
             return getCustomers;
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
+        public List<ProductModel> ViewAllProductsAtLocationSortByIDPriceLowToHigh(int id)
         {
-            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByID(id);
+            List<InventoryModel> viewInventoryAtLocation = dbRepo.ViewAllInventoryAtLocationSortByID(id);
+            List<ProductModel> viewProductsAtLocation = new List<ProductModel>();
+            foreach (var i in viewInventoryAtLocation)
+            {
+                int ID = i.productID;
+                ProductModel product = dbRepo.GetProductByID(ID);
+                viewProductsAtLocation.Add(product);
+            }
             return viewProductsAtLocation;
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
+        public List<ProductModel> ViewAllProductsAtLocationSortByIDPriceHighToLow(int id)
         {
-            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByQuantityAscending(id);
+            List<InventoryModel> viewInventoryAtLocation = dbRepo.ViewAllInventoryAtLocationSortByID(id);
+            List<ProductModel> viewProductsAtLocation = new List<ProductModel>();
+            foreach (var i in viewInventoryAtLocation)
+            {
+                int ID = i.productID;
+                ProductModel product = dbRepo.GetProductByID(ID);
+                viewProductsAtLocation.Add(product);
+            }
             return viewProductsAtLocation;
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
-        {
-            List<InventoryModel> viewProductsAtLocation = dbRepo.ViewAllProductsAtLocationSortByQuantityDescending(id);
-            return viewProductsAtLocation;
-        }
+        
         public List<OrderModel> GetAllOrdersByCustomerIDDateAscending(int id)
         {
             List<OrderModel> orders = dbRepo.GetAllOrdersByCustomerIDDateAscending(id);

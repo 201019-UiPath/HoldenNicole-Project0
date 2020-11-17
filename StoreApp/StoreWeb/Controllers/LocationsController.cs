@@ -39,7 +39,7 @@ namespace StoreWeb.Controllers
 
             return View(location);
         }
-         private bool LocationExists(int id)
+        private bool LocationExists(int id)
         {
             return _context.Location.Any(e => e.ID == id);
         }

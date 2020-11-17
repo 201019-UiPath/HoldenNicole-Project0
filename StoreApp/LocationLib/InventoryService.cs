@@ -1,5 +1,6 @@
 using StoreDB.Models;
 using StoreUI;
+using System;
 using System.Collections.Generic;
 
 namespace LocationLib
@@ -12,36 +13,19 @@ namespace LocationLib
             this.dBRepo = repo;
         }
 
-        public void AddProductToLocation(InventoryModel item)
+        public void AddProductToLocation(InventoryModel inventory)
         {
-            dBRepo.AddProductToLocation(item);
+            dBRepo.AddProductToLocation(inventory);
         }
 
-        public void DeleteProductAtLocation(InventoryModel item)
+        public void DeleteProductAtLocation(InventoryModel inventory)
         {
-            dBRepo.DeleteProductAtLocation(item);
+            dBRepo.DeleteProductAtLocation(inventory);
         }
 
-        public List<InventoryModel> ViewAllProductsAtLocation(int id)
+        public void DeleteProductAtLocation(InventoryModel items, LocationModel location)
         {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocation(id);
-            return viewAllProductsAtLocation;
-        }
-
-        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
-        {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByID(id);
-            return viewAllProductsAtLocation;
-        }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
-        {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByQuantityAscending(id);
-            return viewAllProductsAtLocation;
-        }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
-        {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByQuantityDescending(id);
-            return viewAllProductsAtLocation;
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 using StoreDB.Models;
 using StoreUI;
+using System;
 using System.Collections.Generic;
 
 namespace LocationLib
@@ -11,20 +12,35 @@ namespace LocationLib
         {
             this.dBRepo = repo;
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByID(int id)
+        public List<ProductModel> ViewAllProductsAtLocationSortByIDPriceLowToHigh(int id)
         {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByID(id);
-            return viewAllProductsAtLocation;
+            List<InventoryModel> viewAllInventoryAtLocation = dBRepo.ViewAllInventoryAtLocationSortByID(id);
+            List<ProductModel> ViewAllProducts = new List<ProductModel>();
+            foreach (var i in viewAllInventoryAtLocation)
+            {
+                int ID = i.productID;
+                ProductModel product = dBRepo.GetProductByID(ID);
+                ViewAllProducts.Add(product);
+            }
+            return ViewAllProducts;
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id)
+        public List<ProductModel> ViewAllProductsAtLocationSortByIDPriceHighToLow(int id)
         {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByQuantityAscending(id);
-            return viewAllProductsAtLocation;
+            List<InventoryModel> viewAllInventoryAtLocation = dBRepo.ViewAllInventoryAtLocationSortByID(id);
+            List<ProductModel> ViewAllProducts = new List<ProductModel>();
+            foreach (var i in viewAllInventoryAtLocation)
+            {
+                int ID = i.productID;
+                ProductModel product = dBRepo.GetProductByID(ID);
+                ViewAllProducts.Add(product);
+            }
+            return ViewAllProducts;
         }
-        public List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id)
+
+        public ProductModel GetProductByID(int iD)
         {
-            List<InventoryModel> viewAllProductsAtLocation = dBRepo.ViewAllProductsAtLocationSortByQuantityDescending(id);
-            return viewAllProductsAtLocation;
+            ProductModel product = dBRepo.GetProductByID(iD);
+            return product;
         }
     }
 }

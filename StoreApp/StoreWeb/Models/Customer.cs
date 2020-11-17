@@ -24,7 +24,7 @@ namespace StoreWeb2.Models
         [DisplayName("Orders")]
         public List<Order> Orders { get; set; }
     }
-    public class EmpDBContextCu: DbContext
+    public class EmpDBContextCu : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
     }

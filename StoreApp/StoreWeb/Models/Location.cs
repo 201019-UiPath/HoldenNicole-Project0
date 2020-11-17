@@ -24,7 +24,7 @@ namespace StoreWeb2.Models
         [DisplayName("Order")]
         public List<Order> Order { get; set; }
     }
-    public class EmpDBContextL: DbContext
+    public class EmpDBContextL : DbContext
     {
         public DbSet<Location> Locations { get; set; }
     }

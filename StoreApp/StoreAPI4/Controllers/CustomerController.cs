@@ -15,7 +15,7 @@ namespace StoreAPI.Controllers
     }
     [Route("[controller]")]
     [ApiController]
-    [EnableCors("_allowed")]
+    //[EnableCors("_allowed")]
     public class CustomerController : ControllerBase
     {
         /// <summary>
@@ -53,10 +53,15 @@ namespace StoreAPI.Controllers
         [Consumes("application/json")]
         [Produces("application/json")]
         public IActionResult Register(CustomerModels newCustomer)
-        {
+        {//works only if no customer validation lol
             try
             {
-                List<CustomerModels> getCustomersTask = _customerService.GetAllCustomers();
+                CustomerModels customer = new CustomerModels()
+                {
+                    Username = newCustomer.Username,
+                    email = newCustomer.email
+                };
+               /* List<CustomerModels> getCustomersTask = _customerService.GetAllCustomers();
                 foreach (var h in getCustomersTask)
                 {
                     if (newCustomer.Username.Equals(h.Username))
@@ -70,7 +75,7 @@ namespace StoreAPI.Controllers
                             throw new Exception("Sorry this email is already registered");
                         }
                     }
-                }
+                } */
                 _customerService.AddCustomer(newCustomer);
                 CartsModel cart = new CartsModel();
                 cart.CustomerID = newCustomer.ID;
@@ -81,6 +86,39 @@ namespace StoreAPI.Controllers
                 return BadRequest(); 
             }
         }
+        [HttpGet("get")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public IActionResult GetAllCustomers()
+        {
+            try
+            {
+                List<CustomerModels> customers = _customerService.GetAllCustomers();
+                List<CustomerModels> customerss = customers;
+                return Ok(customerss);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("get/{id}")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public IActionResult GetCustomerByID(int id)
+        {
+            try
+            {
+                CustomerModels customer = _customerService.GetCustomerByID(id);
+                return Ok(customer);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
         [HttpPost("signin")]
         [Consumes("application/json")]
         [Produces("application/json")]

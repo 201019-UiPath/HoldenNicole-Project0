@@ -15,8 +15,7 @@ namespace CustomerLib
         List<OrderModel> GetAllOrdersByCustomerIDDateAscending(int id);
         CustomerModels GetCustomerByID(int id);
         CustomerModels GetCustomerByName(string name);
-        List<InventoryModel> ViewAllProductsAtLocationSortByID(int id);
-        List<InventoryModel> ViewAllProductsAtLocationSortByQuantityAscending(int id);
-        List<InventoryModel> ViewAllProductsAtLocationSortByQuantityDescending(int id);
+        List<ProductModel> ViewAllProductsAtLocationSortByIDPriceLowToHigh(int id);
+        List<ProductModel> ViewAllProductsAtLocationSortByIDPriceHighToLow(int id);
     }
 }
