@@ -1,6 +1,0 @@
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreWeb\obj\Debug\netcoreapp2.0\StoreWeb.csprojAssemblyReference.cache
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreWeb\obj\Debug\netcoreapp2.0\StoreWeb.Properties.Resources.resources
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreWeb\obj\Debug\netcoreapp2.0\StoreWeb.csproj.GenerateResource.cache
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreWeb\obj\Debug\netcoreapp2.0\StoreWeb.AssemblyInfoInputs.cache
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreWeb\obj\Debug\netcoreapp2.0\StoreWeb.AssemblyInfo.cs
-C:\Users\nfh22\OneDrive\Desktop\Training\HoldenNicole-Project0\HoldenNicole-Project0\StoreApp\StoreWeb\obj\Debug\netcoreapp2.0\StoreWeb.csproj.CoreCompileInputs.cache
