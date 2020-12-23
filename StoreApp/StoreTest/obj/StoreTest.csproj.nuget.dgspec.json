@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj": {}
+    "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreTest\\StoreTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj": {
+    "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\StoreDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
+        "projectUniqueName": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\StoreDB.csproj",
         "projectName": "StoreDB",
-        "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
+        "projectPath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\StoreDB.csproj",
         "packagesPath": "C:\\Users\\nfh22\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\obj\\",
+        "outputPath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nfh22\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -113,14 +113,14 @@
         }
       }
     },
-    "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj": {
+    "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreTest\\StoreTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
+        "projectUniqueName": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreTest\\StoreTest.csproj",
         "projectName": "StoreTest",
-        "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
+        "projectPath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreTest\\StoreTest.csproj",
         "packagesPath": "C:\\Users\\nfh22\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\obj\\",
+        "outputPath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nfh22\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -137,8 +137,8 @@
           "netcoreapp2.0": {
             "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj": {
-                "projectPath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj"
+              "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\StoreDB.csproj": {
+                "projectPath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\StoreDB.csproj"
               }
             }
           }

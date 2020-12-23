@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yXQNAqVy951ecwiVWoV0XrP09sPlr97lRCdyWt9MFE5r8zUfdDykhQAEWrNbTQS2vbuLUkiAOyoH7GNcvzIF9w==",
+  "dgSpecHash": "wvcJqpIaqPAESHMWx/AYnAk6XgFWFqIXzn+slvO7/DbPPPrWyZQiBFDoJ7q1y1/New/Jd7XOn/keOIc2KRkkAw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreTest\\StoreTest.csproj",
+  "projectFilePath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreTest\\StoreTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",

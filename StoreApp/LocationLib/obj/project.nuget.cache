@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zXiula6QHubTg6w5jcWkaKT1FQVeOewBLUJkzFTSO4BrhSr9pp5rTJgurBkHK0VK4QVNyQAR2bRFyubCYWziSw==",
+  "dgSpecHash": "eBYsXaMCVSE6BZwv1qIvV8Ql32sbkQsrTdxZPYtZmGHTa89WHYlvvlrKn3+tWoD7v2GQaY6jSRdR//8/jSzclA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\LocationLib\\LocationLib.csproj",
+  "projectFilePath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\LocationLib\\LocationLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.1.0\\microsoft.aspnetcore.hosting.abstractions.2.1.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KRPCQdYK35sVXC6LLePi5novB5HoQ2jbYoRUQeBtzsgJT6Zs3F1mBliteG6Pupxpc1/JMOGhlI2+8BpC51pW0Q==",
+  "dgSpecHash": "naTxRXL/kekTS8+74Mhr4mRJL9DNM+TJ1qHOyVl2oCxEFH1Mq3OVLECEGCecpzyq5x3ts3/k91bpyqk5qYnvzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreWeb\\StoreWeb.csproj",
+  "projectFilePath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreWeb\\StoreWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",

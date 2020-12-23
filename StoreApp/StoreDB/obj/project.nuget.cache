@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W8rFLCTAKMCh5yLmw1E3GZQZkXuv68UG/lO7/MJ37E4SubwFiA2IJSTR6ZTc0G/lLzWNhatuhJBbI8l7LXvg2g==",
+  "dgSpecHash": "eVflBwWTtMn29hjPMAUcwOdGgfUFX0P1hYdzW0b1H2ItUGwabfL8jKkMkOuuGW1ZzyyXVWsnVi/OXqzfLXTS+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfh22\\OneDrive\\Desktop\\Training\\HoldenNicole-Project0\\HoldenNicole-Project0\\StoreApp\\StoreDB\\StoreDB.csproj",
+  "projectFilePath": "C:\\Users\\nfh22\\Source\\Repos\\HoldenNicole-Project1\\StoreApp\\StoreDB\\StoreDB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfh22\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\nfh22\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.1.0\\microsoft.aspnetcore.hosting.abstractions.2.1.0.nupkg.sha512",
